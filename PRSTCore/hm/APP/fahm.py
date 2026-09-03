@@ -85,7 +85,6 @@ class MissingBaseCaseOutputError(CreateProjectError):
 class ProjectStateError(CreateProjectError):
     """INIT/EGRID/UNRST exists but cannot form FAHM's project state."""
 
-
 @dataclass(frozen=True)
 class BaseCaseCommand:
     """One of the three command branches at FAHM.m:1727-1737."""
