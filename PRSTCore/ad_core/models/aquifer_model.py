@@ -26,7 +26,6 @@ references an undefined variable ``V_aq`` (should be the function's own
 almost certainly a copy/paste typo, since MRST's own function would raise
 an "undefined variable" error if ever called as written).
 """
-
 from __future__ import annotations
 
 import numpy as _np
