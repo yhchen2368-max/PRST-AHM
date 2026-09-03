@@ -39,7 +39,6 @@ Run it with::
 
     python -m PRSTCore.hm.APP.fahm_app
 """
-
 import os
 import queue
 import threading
