@@ -9,7 +9,6 @@ path for a box specified one cell *outside* the active domain (requires a
 neighbor-cell lookup back into the domain) -- not exercised by the local
 MSW.data reference deck this port is validated against.
 """
-
 from __future__ import annotations
 
 import numpy as _np
