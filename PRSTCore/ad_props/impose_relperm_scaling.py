@@ -60,7 +60,6 @@ def _set(model, name, value):
     else:
         setattr(model, name, value)
 
-
 def impose_relperm_scaling(model, n_points=2, **scaling_kwargs):
     """Impose rel-perm endpoint scaling for a model not associated with a deck.
 
