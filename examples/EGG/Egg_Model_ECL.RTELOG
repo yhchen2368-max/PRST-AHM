@@ -1,0 +1,17 @@
+INFO 2026-07-26 18:52:13,530 LJJ-PC-M Version 2022.7.0
+INFO 2026-07-26 18:52:13,629 LJJ-PC-M Workflow starting task: Egg_Model_ECL
+INFO 2026-07-26 18:52:13,673 LJJ-PC-M Submission Command: C:\ecl\2022.4\bin\pc_x86_64\eclipse.exe Egg_Model_ECL
+INFO 2026-07-26 18:52:50,701 LJJ-PC-M E100 has finished
+INFO 2026-07-26 18:52:50,755 LJJ-PC-M Workflow starting task: Egg_Model_ECL summary conversion
+INFO 2026-07-26 18:52:50,758 LJJ-PC-M Creating temp conversion directory convert_20260726105250_e4984289
+INFO 2026-07-26 18:52:50,763 LJJ-PC-M Submission Command: C:\ecl\2022.4\bin\pc_x86_64\ConvertSummaryData2DataBase.exe Egg_Model_ECL.DATA convert_20260726105250_e4984289
+INFO 2026-07-26 18:52:52,896 LJJ-PC-M Conversion has finished
+INFO 2026-07-26 18:52:52,928 LJJ-PC-M Removing temp conversion directory convert_20260726105250_e4984289
+INFO 2026-07-26 18:52:52,971 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:52:52,971 LJJ-PC-M Session in progress.
+INFO 2026-07-26 18:52:53,868 LJJ-PC-M Version 2022.7.0
+INFO 2026-07-26 18:52:54,056 LJJ-PC-M E100 has finished
+INFO 2026-07-26 18:52:54,062 LJJ-PC-M Conversion has finished
+INFO 2026-07-26 18:52:54,062 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:52:54,062 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:52:54,062 LJJ-PC-M Session ended.

@@ -1,0 +1,4 @@
+C:\Users\junji\anaconda3\Lib\site-packages\numpy\linalg\_linalg.py:2792: RuntimeWarning: overflow encountered in dot
+  sqnorm = x.dot(x)
+C:\Users\junji\anaconda3\Lib\site-packages\scipy\sparse\linalg\_isolve\iterative.py:789: RuntimeWarning: invalid value encountered in scalar multiply
+  tmp = -np.conjugate(s)*S[col]

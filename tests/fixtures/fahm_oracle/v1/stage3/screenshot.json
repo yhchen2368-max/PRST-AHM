@@ -1,0 +1,10 @@
+{
+  "classification": "PARITY",
+  "height": 736,
+  "image": "prst_initial_915x736.png",
+  "parity_scope": "FAHM client-area dimensions, tab/control layout and initial post-splash state; native toolkit raster pixels are platform-specific",
+  "sha256": "69bf1b2cd8772fcf0197961b588d411c27aa47d122323177a12ce8498557eb13",
+  "source": "MRST/dev/APP/FAHM.m:createComponents/startupFcn/*SizeChanged",
+  "title": "MATLAB App",
+  "width": 915
+}

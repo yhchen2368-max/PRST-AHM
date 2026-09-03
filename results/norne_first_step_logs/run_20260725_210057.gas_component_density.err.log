@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_norne_first_step.py", line 19, in <module>
+    state, report, _ = solver.solveTimestep(
+                       ~~~~~~~~~~~~~~~~~~~~^
+        deepcopy(state0), dt, model, drivingForces=forces,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initialGuess=deepcopy(state0), controlId=control_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\solvers\nonlinear_solver.py", line 291, in solveTimestep
+    state, step_report = model.stepFunction(deepcopy(state), deepcopy(state0_inner), dt,
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           drivingForces=drivingForces,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           linsolver=linear_solver,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+                                           nonlinsolver=self,
+                                           ^^^^^^^^^^^^^^^^^^
+                                           iteration=1)
+                                           ^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 1254, in stepFunction
+    problem, state = self.get_equations(state0, state, dt, drivingForces,
+                     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                       iteration=iteration, **kwargs)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 1423, in get_equations
+    return self._get_equations_mrst_generic(state0, state, dt, drivingForces, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 2504, in _get_equations_mrst_generic
+    assembled, meta = self._mrst_generic_adi_residual(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        state0, state, dt, drivingForces, wells
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 2293, in _mrst_generic_adi_residual
+    rho_scale = _np.asarray([rhoWS / _np.mean(rhoW0), rhoOS / _np.mean(rhoO0), rhoGS / _np.mean(rhoG0)])
+                                                                                                ^^^^^
+NameError: name 'rhoG0' is not defined. Did you mean: 'rhoGS'?

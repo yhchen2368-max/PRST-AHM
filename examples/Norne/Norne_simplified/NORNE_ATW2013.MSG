@@ -1,0 +1,2449 @@
+<eclipse>
+<message date="6/11/1997" time="0.00000000000000">
+ OPTIONS(78) HAS BEEN SET TO USE                                         
+ SCRATCH FILES FOR NNCS                                                  
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ CHECKING FOR LICENSES                                                   
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ THE MEMORY REQUIRED TO PROCESS THE GRID SECTION IS                      
+      54249 KBYTES                                                       
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      2 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      3 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      3 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      4 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      4 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      4 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      5 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      5 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      5 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      5 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      6 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      6 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      6 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      6 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      6 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      7 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      8 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS      9 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     10 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     11 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     12 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     13 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     14 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     15 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     16 AND     15                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     15                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     17 AND     16                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     15                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     16                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     18 AND     17                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     15                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     16                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     17                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     19 AND     18                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      1                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      2                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      3                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      4                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      5                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      6                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      7                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      8                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND      9                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     10                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     11                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     12                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     13                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     14                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     15                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     16                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     17                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     18                              
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+  THE FLUXNUM ARRAY WILL BE USED WITH THE MULTREGT                       
+  KEYWORD BETWEEN REGIONS     20 AND     19                              
+</message>
+<comment date="6/11/1997" time="0.00000000000000">
+ MODEL CONTAINS PINCHOUTS WHERE THE CALCULATED CONNECTED AREA IS         
+ SIGNIFICANTLY AFFECTED BY THE ANGLE OF THE COLUMNS.                     
+ OPTIONS(286)=1 MAY IMPROVE THE TRANSMISSIBILITY CALCULATIONS.           
+</comment>
+<message date="6/11/1997" time="0.00000000000000">
+     1598 PINCH-OUT CONNECTIONS GENERATED                                
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ PRE-PROCESSING HAS FOUND 1598 NON-NEIGHBOUR CONNECTIONS                 
+ WHICH EITHER JOIN ADJACENT CELLS OR CAN BE TREATED AS A                 
+ NORMAL CONNECTION. THE TRANSMISSIBILITY HAS BEEN ADDED TO               
+ THE APPROPRIATE CELL TRANSMISSIBILITY AND THE                           
+ NON-NEIGHBOUR CONNECTION REMOVED FROM THE SIMULATION                    
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ A FULL LISTING OF THESE NNCS CAN BE OBTAINED BY SETTING                 
+ THE ALLNNC MNEMONIC IN RPTGRID. THE OUTPUT HAS THE                      
+ TITLE MNEMONIC DEL-NNC                                                  
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+     2201 NON-NEIGHBOUR CONNECTIONS HAVE BEEN IGNORED                    
+ AS THEIR TRANSMISSIBILITY IS LESS THAN 0.100000E-05                     
+</message>
+<warning date="6/11/1997" time="0.00000000000000">
+ A TOTAL OF 496 CELLS HAVE BECOME INACTIVE BECAUSE                       
+ THEY HAD A PORE VOLUME LESS THAN THAT SUPPLIED VIA THE                  
+ MINPV OR MINPVV KEYWORDS IN THE GRID SECTION.                           
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ THE TOTAL PORE VOLUME HAS BEEN REDUCED BY  1.492E-02 PERCENT            
+ BECAUSE CELLS BELOW THE THRESHOLD PORE VOLUME HAVE BEEN                 
+ REMOVED FROM THE MODEL BY MINPV OR MINPVV                               
+</warning>
+<message date="6/11/1997" time="0.00000000000000">
+ 11287 NON-NEIGHBOUR CONNECTIONS PRESENT                                 
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ NUMBER OF ACTIVE CELLS IS 44431                                         
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+ THE MEMORY REQUIRED TO PROCESS THE SOLUTION SECTION IS                  
+     151499 KBYTES                                                       
+</message>
+<message date="6/11/1997" time="0.00000000000000">
+    73325 CHARACTER VARIABLES USED                                       
+</message>
+<warning date="6/11/1997" time="0.00000000000000">
+ TRACER NAMES STARTING WITH A BLANK SPACE OR ANY OF THE                  
+ CHARACTERS F, S OR T ARE NOT RECOMMENDED SINCE THIS MAY CREATE          
+ NAMING AMBIGUITIES FOR POST-PROCESSORS. TRACER: 'SEA'                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ TRACER NAMES STARTING WITH A BLANK SPACE OR ANY OF THE                  
+ CHARACTERS F, S OR T ARE NOT RECOMMENDED SINCE THIS MAY CREATE          
+ NAMING AMBIGUITIES FOR POST-PROCESSORS. TRACER: 'S36'                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ TRACER NAMES STARTING WITH A NUMBER ARE NOT RECOMMENDED SINCE           
+ THIS MAY CREATE NAMING AMBIGUITIES FOR POST-PROCESSORS. TRACER:         
+ '2FB'                                                                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ TRACER NAMES STARTING WITH A NUMBER ARE NOT RECOMMENDED SINCE           
+ THIS MAY CREATE NAMING AMBIGUITIES FOR POST-PROCESSORS. TRACER:         
+ '4FB'                                                                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ TRACER NAMES STARTING WITH A BLANK SPACE OR ANY OF THE                  
+ CHARACTERS F, S OR T ARE NOT RECOMMENDED SINCE THIS MAY CREATE          
+ NAMING AMBIGUITIES FOR POST-PROCESSORS. TRACER: 'TFB'                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ THE MAXIMUM PRESSURE ENTERED IN THE PVT TABLES                          
+ FOR THE OIL PHASE IS    694.290. THIS IS GREATER THAN                   
+ THE MAXIMUM PRESSURE FOR THE GAS PHASE,    594.290                      
+ AND MAY LEAD TO PVT TABLE EXTRAPOLATION                                 
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ MAXIMUM RS IN EQUILIBRATION REGION 1                                    
+ IS GREATER THAN THE MAXIMUM VALUE ENTERED                               
+ IN THE PVTO TABLE NUMBER 2. THIS MAY LEAD TO PVT                        
+ TABLE EXTRAPOLATION. THIS MESSAGE WILL                                  
+ NOT BE REPEATED                                                         
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+  THRESHOLD PRESSURE FROM REGION      2                                  
+  TO REGION     1                                                        
+  HAS ALREADY BEEN SPECIFIED                                             
+  WILL BE OVER-WRITTEN                                                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+  THRESHOLD PRESSURE FROM REGION      3                                  
+  TO REGION     1                                                        
+  HAS ALREADY BEEN SPECIFIED                                             
+  WILL BE OVER-WRITTEN                                                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+  THRESHOLD PRESSURE FROM REGION      4                                  
+  TO REGION     1                                                        
+  HAS ALREADY BEEN SPECIFIED                                             
+  WILL BE OVER-WRITTEN                                                   
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ NO REGIONS WERE SPECIFIED FOLLOWING RGFT                                
+ KEYWORD HAS BEEN IGNORED                                                
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ NO REGIONS WERE SPECIFIED FOLLOWING RWFT                                
+ KEYWORD HAS BEEN IGNORED                                                
+</warning>
+<message date="6/11/1997" time="0.00000000000000">
+ DRSDT CONSTRAINT ENABLED FOR RESERVOIR                                  
+ WITH DISSOLVED GAS AND VAPOURISED OIL.                                  
+</message>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE   5 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   10   1   6   5   1              
+ THE BHP =   2.64090E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE   6 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   10   1   3   6   1              
+ THE BHP =   1.95620E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE   3 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   19   1   1   8   1              
+ THE BHP =   3.31239E+03   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  38 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   18   1   2   8   1              
+ THE BHP =   7.99290E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  39 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   18   1   1   7   1              
+ THE BHP =   9.40180E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  40 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   17   1   3   7   1              
+ THE BHP =   5.83550E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  41 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   18   1   8   7   1              
+ THE BHP =   8.28170E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  42 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   18   1   7   7   1              
+ THE BHP =   9.25500E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  43 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   16   8   1   8   1              
+ THE BHP =   2.39790E+03   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  47 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   18   1   1   8   1              
+ THE BHP =   1.44052E+03   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE   9 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =    4   1   6   9   1              
+ THE BHP =   6.92020E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  31 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =    6   1   4   8   1              
+ THE BHP =   2.76070E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  32 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   10   1   7   9   1              
+ THE BHP =   5.30210E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  33 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =    6   1   3   9   1              
+ THE BHP =   4.17480E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  34 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =    7   1   7   9   1              
+ THE BHP =   2.36860E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  35 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   12   3   4   8   1              
+ THE BHP =   5.69330E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ PRODUCTION WELL VFP TABLE  36 CONTAINS AT LEAST ONE                     
+ POINT WHERE THE BHP INCREASES WITH DECREASING THP.                      
+ AT POINT (FLOW, THP, WFR, GFR, ALQ) =   10   1   2   7   1              
+ THE BHP =   3.52500E+02   BARSA .                                       
+ IF THIS BHP VALUE INDICATES THE FLOW IS CHOKED OR                       
+ EXCEEDS EROSION VELOCITY LIMITS, IT MAY BE CORRECT                      
+ AND THE CHECK MAY BE THRESHOLDED WITH KEYWORD VFPCHK.                   
+ OTHERWISE YOU SHOULD EXAMINE THE TABLE WITH VFPi AS                     
+ IT COULD CAUSE WELL CONVERGENCE OR HUNTING PROBLEMS.                    
+</warning>
+<warning date="6/11/1997" time="0.00000000000000">
+ SPURIOUS DATA BEFORE ZIPPY2   KEYWORD                                   
+ /                                                                       
+</warning>
+<message date="6/11/1997" time="0.00000000000000">
+ OPENING WELL D-1H     AT TIME      0.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<warning date="6/11/1997" time="0.00000000000000">
+ THE PREFERRED PHASE FOR WELL C-4H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="6/11/1997" time="0.00000000000000">
+ CHECKING FOR LICENSES                                                   
+</message>
+<warning date="6/11/1997" time="0.00000000000000">
+ PREVIOUSLY SPECIFIED DRSDT CONSTRAINT IS NOW                            
+ DISABLED BY SPECIFICATION OF VAPPARS KEYWORD                            
+</warning>
+<message date="6/11/1997" time="0.00000000000000">
+ RESTART FILE WRITTEN   REPORT     0                                     
+</message>
+<message date="14/11/1997" time="8.00000001157407">
+ OPENING WELL C-4H     AT TIME      8.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<message date="14/11/1997" time="8.00000001157407">
+ ******************************************                              
+ * WELL C-4H     HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME      8.00   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="1/12/1997" time="25.00000000000000">
+ OPENING WELL B-2H     AT TIME     25.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="17/12/1997" time="41.00000000000000">
+ OPENING WELL D-2H     AT TIME     41.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/1/1998" time="56.00000000000000">
+ RESTART FILE WRITTEN   REPORT     4                                     
+</message>
+<message date="1/1/1998" time="56.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="10/1/1998" time="65.57336424703951">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="20/1/1998" time="75.57336424703951">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="26/1/1998" time="81.28668212351975">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="1/4/1998" time="146.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="2/4/1998" time="147.25000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/4/1998" time="148.81250000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/4/1998" time="150.76562500000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="8/4/1998" time="153.20703125000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="11/4/1998" time="156.25878906250000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/4/1998" time="160.07348632812500">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="19/4/1998" time="164.03674316406250">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="23/4/1998" time="168.00000000000000">
+ OPENING WELL B-4H     AT TIME    168.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="14/6/1998" time="220.00000000000000">
+ OPENING WELL D-4H     AT TIME    220.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/7/1998" time="237.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/7/1998" time="239.79296875000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="7/7/1998" time="243.28417968750000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="11/7/1998" time="247.64208984375000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="16/7/1998" time="252.00000000000000">
+ OPENING WELL C-1H     AT TIME    252.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<warning date="16/7/1998" time="252.00000000000000">
+ THE PREFERRED PHASE FOR WELL C-1H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="16/7/1998" time="252.00000000000000">
+ ******************************************                              
+ * WELL C-1H     HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME    252.00   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="18/9/1998" time="316.00000000000000">
+ OPENING WELL E-3H     AT TIME    316.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/10/1998" time="329.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="4/10/1998" time="332.75000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="8/10/1998" time="336.87500000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="17/10/1998" time="345.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 19) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     349.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="17/10/1998" time="345.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 35, 20) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     349.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="17/10/1998" time="345.00000000000000">
+ ******************************************                              
+ * WELL C-4H     HAS CHANGED TO           *                              
+ * CONTROL BY WATER RATE                  *                              
+ * FROM TIME    345.00   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35,  1) IN WELL C-4H     *              
+ * IS     SHUT AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35,  2) IN WELL C-4H     *              
+ * IS     SHUT AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 19) IN WELL C-4H     *              
+ * IS     SHUT AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 35, 20) IN WELL C-4H     *              
+ * IS     SHUT AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 16) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 17) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 18) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 11, 35, 19) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="25/12/1998" time="414.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 35, 20) IN WELL C-4H     *              
+ * IS   OPENED AT TIME     421.02   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="1/1/1999" time="421.00000000000000">
+ RESTART FILE WRITTEN   REPORT    32                                     
+</message>
+<message date="1/1/1999" time="421.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="21/1/1999" time="441.00000000000000">
+ OPENING WELL C-2H     AT TIME    441.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<warning date="21/1/1999" time="441.00000000000000">
+ THE PREFERRED PHASE FOR WELL C-2H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="29/1/1999" time="449.31250000000000">
+ ******************************************                              
+ * WELL C-2H     HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME    449.31   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="1/4/1999" time="511.00000000000000">
+ OPENING WELL B-1H     AT TIME    511.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/4/1999" time="511.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="3/4/1999" time="513.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/4/1999" time="516.62500000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="10/4/1999" time="520.53125000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="15/4/1999" time="525.41406250000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="21/4/1999" time="531.51757812500000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<warning date="17/5/1999" time="557.00000000000000">
+ THE PREFERRED PHASE FOR WELL C-3H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="20/5/1999" time="560.00000000000000">
+ OPENING WELL C-3H     AT TIME    560.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<message date="1/7/1999" time="602.00000000000000">
+ OPENING WELL B-3H     AT TIME    602.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/7/1999" time="602.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/7/1999" time="607.62500000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 19) IN WELL C-2H     *              
+ * IS     SHUT AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 20) IN WELL C-2H     *              
+ * IS     SHUT AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 13, 20) IN WELL C-2H     *              
+ * IS     SHUT AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 14) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 15) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 16) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 17) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 18) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 19) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 14, 20) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 24, 13, 20) IN WELL C-2H     *              
+ * IS   OPENED AT TIME     624.38   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/7/1999" time="616.00000000000000">
+ ******************************************                              
+ * WELL C-2H     HAS CHANGED TO           *                              
+ * CONTROL BY WATER RATE                  *                              
+ * FROM TIME    616.00   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  5) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  7) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  8) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  9) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72, 10) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72, 11) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72, 13) IN WELL E-3H     *              
+ * IS     SHUT AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  5) IN WELL E-3H     *              
+ * IS   OPENED AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  7) IN WELL E-3H     *              
+ * IS   OPENED AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  8) IN WELL E-3H     *              
+ * IS   OPENED AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72,  9) IN WELL E-3H     *              
+ * IS   OPENED AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="5/8/1999" time="637.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 72, 10) IN WELL E-3H     *              
+ * IS   OPENED AT TIME     641.00   DAYS                    *            
+ **********************************************************              
+</message>
+<warning date="30/8/1999" time="662.00000000000000">
+ THE PREFERRED PHASE FOR WELL F-1H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="1/9/1999" time="664.00000000000000">
+ OPENING WELL F-1H     AT TIME    664.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<message date="3/9/1999" time="666.00000000000000">
+ OPENING WELL E-1H     AT TIME    666.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/10/1999" time="694.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="13/10/1999" time="706.00000000000000">
+ OPENING WELL F-2H     AT TIME    706.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<warning date="13/10/1999" time="706.00000000000000">
+ THE PREFERRED PHASE FOR WELL F-2H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="19/10/1999" time="712.75000000000000">
+ ******************************************                              
+ * WELL F-2H     HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME    712.75   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="13/11/1999" time="737.00000000000000">
+ OPENING WELL E-2H     AT TIME    737.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/1/2000" time="786.00000000000000">
+ RESTART FILE WRITTEN   REPORT    71                                     
+</message>
+<message date="1/1/2000" time="786.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="10/1/2000" time="795.90444183349609">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="20/1/2000" time="805.90444183349609">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="26/1/2000" time="811.45222091674805">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/4/2000" time="877.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="7/4/2000" time="883.34883880615234">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/4/2000" time="891.28488731384277">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="23/4/2000" time="899.14244365692139">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/6/2000" time="938.00000000000000">
+ OPENING WELL E-4AH    AT TIME    938.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="9/6/2000" time="946.00000000000000">
+ ****************************************************                    
+ * WELL E-3H     IS     SHUT AT TIME    946.00  DAYS  *                  
+ ****************************************************                    
+</message>
+<message date="30/6/2000" time="967.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 32, 13) IN WELL B-4H     *              
+ * IS     SHUT AT TIME     972.50   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="30/6/2000" time="967.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 32, 14) IN WELL B-4H     *              
+ * IS     SHUT AT TIME     972.50   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="30/6/2000" time="967.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 32, 15) IN WELL B-4H     *              
+ * IS     SHUT AT TIME     972.50   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="30/6/2000" time="967.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 10, 32, 10) IN WELL B-4H     *              
+ * IS   OPENED AT TIME     972.50   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="1/7/2000" time="968.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="2/7/2000" time="969.25000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/7/2000" time="970.81250000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/7/2000" time="972.76562500000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="8/7/2000" time="975.20703125000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="11/7/2000" time="978.25878906250000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/7/2000" time="982.07348632812500">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="19/7/2000" time="986.84185791015625">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="25/7/2000" time="992.80232238769531">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="27/8/2000" time="1025.00000000000000">
+ OPENING WELL D-3AH    AT TIME   1025.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="22/9/2000" time="1051.00000000000000">
+ OPENING WELL F-3H     AT TIME   1051.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<warning date="22/9/2000" time="1051.00000000000000">
+ THE PREFERRED PHASE FOR WELL F-3H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="1/10/2000" time="1060.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="3/10/2000" time="1062.64648437500000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/10/2000" time="1065.95458984375000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="11/10/2000" time="1070.08972167968750">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="16/10/2000" time="1075.25863647460938">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="22/10/2000" time="1081.71977996826172">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="1/12/2000" time="1121.00000000000000">
+ OPENING WELL E-3AH    AT TIME   1121.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/1/2001" time="1152.00000000000000">
+ RESTART FILE WRITTEN   REPORT    97                                     
+</message>
+<message date="1/1/2001" time="1152.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="9/1/2001" time="1160.71104279998349">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="19/1/2001" time="1170.71104279998349">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="25/1/2001" time="1176.85552139999186">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="1/4/2001" time="1242.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="10/4/2001" time="1251.95430806276454">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="20/4/2001" time="1261.95430806276454">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="31/5/2001" time="1302.00000000000000">
+ ****************************************************                    
+ * WELL B-4H     IS     SHUT AT TIME   1302.00  DAYS  *                  
+ ****************************************************                    
+</message>
+<message date="1/7/2001" time="1333.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/8/2001" time="1364.00000000000000">
+ OPENING WELL B-4BH    AT TIME   1364.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<warning date="10/8/2001" time="1373.00000000000000">
+ THE PREFERRED PHASE FOR WELL F-4H     IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="10/9/2001" time="1404.00000000000000">
+ OPENING WELL F-4H     AT TIME   1404.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<message date="15/9/2001" time="1409.62500000000000">
+ ******************************************                              
+ * WELL F-4H     HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME   1409.62   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="1/10/2001" time="1425.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="11/10/2001" time="1435.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="21/10/2001" time="1445.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="26/10/2001" time="1450.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="1/1/2002" time="1517.00000000000000">
+ RESTART FILE WRITTEN   REPORT   123                                     
+</message>
+<message date="1/1/2002" time="1517.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="4/1/2002" time="1520.75000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="9/1/2002" time="1525.43750000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/1/2002" time="1531.29687500000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="22/1/2002" time="1538.62109375000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/4/2002" time="1607.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="7/4/2002" time="1613.44466042518616">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/4/2002" time="1621.50048595666885">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="23/4/2002" time="1629.25024297833443">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/7/2002" time="1698.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 41, 11) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 42, 11) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 43, 11) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 44, 10) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 45, 10) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 47, 11) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 48, 11) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 48, 12) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 49, 13) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 50, 13) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 51, 14) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 52, 14) IN WELL B-3H     *              
+ * IS     SHUT AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 41, 11) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 42, 11) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 43, 11) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 44, 10) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 45, 10) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 47, 11) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 48, 11) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 48, 12) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 49, 13) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="8/7/2002" time="1705.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  9, 50, 13) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1712.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 57, 13) IN WELL F-3H     *              
+ * IS     SHUT AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 57, 14) IN WELL F-3H     *              
+ * IS     SHUT AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 57, 15) IN WELL F-3H     *              
+ * IS     SHUT AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 56, 16) IN WELL F-3H     *              
+ * IS     SHUT AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 56, 20) IN WELL F-3H     *              
+ * IS     SHUT AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="15/9/2002" time="1774.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  7, 56, 20) IN WELL F-3H     *              
+ * IS   OPENED AT TIME    1776.90   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="1/10/2002" time="1790.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/1/2003" time="1882.00000000000000">
+ RESTART FILE WRITTEN   REPORT   147                                     
+</message>
+<message date="1/1/2003" time="1882.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="7/3/2003" time="1947.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 40, 12) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1948.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="7/3/2003" time="1947.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK (  8, 40, 13) IN WELL B-3H     *              
+ * IS   OPENED AT TIME    1948.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="1/4/2003" time="1972.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="8/4/2003" time="1979.69767761230469">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="18/4/2003" time="1989.31977462768555">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="24/4/2003" time="1995.65988731384277">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/6/2003" time="2035.00000000000000">
+ OPENING WELL D-4AH    AT TIME   2035.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/7/2003" time="2063.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="12/9/2003" time="2136.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 37,  7) IN WELL B-1H     *              
+ * IS   OPENED AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 38,  9) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 38, 10) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 39, 10) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 40, 10) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 41, 10) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 42, 10) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 17, 44, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 17, 45, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 17, 47, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 17, 48, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 18, 48, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 18, 49, 15) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 18, 49, 14) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 18, 50, 14) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 37,  7) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 36,  5) IN WELL B-1H     *              
+ * IS   OPENED AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="13/9/2003" time="2137.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 37,  7) IN WELL B-1H     *              
+ * IS   OPENED AT TIME    2138.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/9/2003" time="2140.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 37,  7) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2141.75   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/9/2003" time="2140.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 36,  5) IN WELL B-1H     *              
+ * IS     SHUT AT TIME    2141.75   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/9/2003" time="2140.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 36,  5) IN WELL B-1H     *              
+ * IS   OPENED AT TIME    2141.75   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/9/2003" time="2140.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 37,  7) IN WELL B-1H     *              
+ * IS   OPENED AT TIME    2141.75   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="1/10/2003" time="2155.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/10/2003" time="2159.16259765625000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="10/10/2003" time="2164.36584472656250">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="16/10/2003" time="2170.68292236328125">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/11/2003" time="2186.00000000000000">
+ OPENING WELL D-1CH    AT TIME   2186.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="18/11/2003" time="2203.00000000000000">
+ ****************************************************                    
+ * WELL C-4H     IS     SHUT AT TIME   2203.00  DAYS  *                  
+ ****************************************************                    
+</message>
+<message date="1/1/2004" time="2247.00000000000000">
+ RESTART FILE WRITTEN   REPORT   179                                     
+</message>
+<message date="1/1/2004" time="2247.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/1/2004" time="2252.02838134765625">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="12/1/2004" time="2258.31385803222656">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="20/1/2004" time="2266.00000000000000">
+ OPENING WELL C-4AH    AT TIME   2266.00   DAYS                          
+ CONTROLLED BY WATER RATE                                                
+</message>
+<warning date="20/1/2004" time="2266.00000000000000">
+ THE PREFERRED PHASE FOR WELL C-4AH    IS RE-SET                         
+ TO WATER FLOW, TO MATCH THE INJECTED PHASE.                             
+</warning>
+<message date="7/2/2004" time="2284.74011230468750">
+ ******************************************                              
+ * WELL C-4AH    HAS CHANGED TO           *                              
+ * CONTROL BY BOTTOM HOLE PRESSURE        *                              
+ * FROM TIME   2284.74   DAYS  .          *                              
+ ******************************************                              
+</message>
+<message date="1/4/2004" time="2338.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="10/4/2004" time="2347.06678125262260">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="20/4/2004" time="2357.06678125262260">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="25/4/2004" time="2362.53339062631130">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/7/2004" time="2429.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/7/2004" time="2431.00000000000000">
+ OPENING WELL B-4DH    AT TIME   2431.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/10/2004" time="2521.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="7/10/2004" time="2527.87500000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="16/10/2004" time="2536.46875000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="24/10/2004" time="2544.23437500000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/1/2005" time="2613.00000000000000">
+ RESTART FILE WRITTEN   REPORT   198                                     
+</message>
+<message date="1/1/2005" time="2613.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/1/2005" time="2618.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/4/2005" time="2703.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="3/4/2005" time="2705.02148437500000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/4/2005" time="2707.54833984375000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="8/4/2005" time="2710.70690917968750">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="12/4/2005" time="2714.65512084960938">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="17/4/2005" time="2719.59038543701172">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/5/2005" time="2733.00000000000000">
+ OPENING WELL E-3CH    AT TIME   2733.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 17, 50, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 50, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 16, 49, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 48, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 15, 47, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 14, 47, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 14, 46, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 13, 46, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 13, 45, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 13, 44, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 44, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="2/6/2005" time="2765.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 12, 43, 14) IN WELL D-3AH    *              
+ * IS     SHUT AT TIME    2766.00   DAYS                    *            
+ **********************************************************              
+</message>
+<warning date="2/6/2005" time="2765.00000000000000">
+ WELL D-3AH    IS OPEN BUT ALL ITS CONNECTIONS                           
+ ARE CLOSED. THE WELL WILL THEREFORE BE SHUT.                            
+</warning>
+<message date="1/7/2005" time="2794.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/7/2005" time="2798.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 98,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 96,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 95,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 94,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 93,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 92,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 91,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 90,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 37, 89,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 89,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 88,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 87,  2) IN WELL E-4AH    *              
+ * IS     SHUT AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="16/7/2005" time="2809.00000000000000">
+ **********************************************************              
+ * THE CONNECTION IN BLOCK ( 38, 98,  2) IN WELL E-4AH    *              
+ * IS   OPENED AT TIME    2815.00   DAYS                    *            
+ **********************************************************              
+</message>
+<message date="4/8/2005" time="2828.00000000000000">
+ OPENING WELL E-2AH    AT TIME   2828.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<comment date="4/8/2005" time="2828.00000000000000">
+  HEEL TO TOE CONNECTION ORDERING FAILED FOR WELL D-3BH                  
+  AND THE ORDERING WILL DEFAULT TO DEPTH. IF YOU                         
+  HAVE SUPPLIED THE CONNECTIONS IN THE CORRECT ORDER,                    
+  YOU MAY USE THE INPUT OPTION OF THE COMPORD KEYWORD                    
+</comment>
+<message date="14/9/2005" time="2869.00000000000000">
+ ****************************************************                    
+ * WELL E-2AH    IS     SHUT AT TIME   2869.00  DAYS  *                  
+ ****************************************************                    
+</message>
+<message date="1/10/2005" time="2886.00000000000000">
+ ****************************************************                    
+ * WELL B-1H     IS     SHUT AT TIME   2886.00  DAYS  *                  
+ ****************************************************                    
+</message>
+<message date="1/10/2005" time="2886.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="11/10/2005" time="2896.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="21/10/2005" time="2906.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="26/10/2005" time="2911.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="1/11/2005" time="2917.00000000000000">
+ **********************************                                      
+ * GROUP FIELD    CANNOT MEET ITS *                                      
+ * WATER  INJECTION  TARGET       *                                      
+ * AFTER TIME   2917.00   DAYS  . *                                      
+ **********************************                                      
+</message>
+<message date="1/1/2006" time="2978.00000000000000">
+ RESTART FILE WRITTEN   REPORT   225                                     
+</message>
+<message date="1/1/2006" time="2978.00000000000000">
+ OPENING WELL B-1BH    AT TIME   2978.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+<message date="1/1/2006" time="2978.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="3/1/2006" time="2980.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="6/1/2006" time="2983.12500000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="9/1/2006" time="2986.40625000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="13/1/2006" time="2990.50781250000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="18/1/2006" time="2995.00000000000000">
+ SHUTTING WELL D-4AH    AT TIME   2995.00   DAYS                         
+</message>
+<message date="24/2/2006" time="3032.00000000000000">
+ ****************************************************                    
+ * WELL D-3BH    IS OPENED AT TIME   3032.00  DAYS  *                    
+ * CONTROLLED BY BOTTOM HOLE PRESSURE                *                   
+ ****************************************************                    
+</message>
+<message date="1/4/2006" time="3068.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="7/4/2006" time="3074.86523437500000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="16/4/2006" time="3083.43261718750000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   2 ITERATIONS                 
+</message>
+<message date="1/7/2006" time="3159.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="7/7/2006" time="3165.98242187500000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="16/7/2006" time="3174.71044921875000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="24/7/2006" time="3182.35522460937500">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<warning date="14/9/2006" time="3234.00000000000000">
+ THE BOTTOM HOLE PRESSURE LIMIT FOR WELL K-3H                            
+ HAS BEEN DEFAULTED.  THE DEFAULT VALUE IS                               
+      1.0   BARSA                                                        
+</warning>
+<message date="1/10/2006" time="3251.00000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="5/10/2006" time="3255.50000000000000">
+ PRODUCTION NETWORK PRESSURES BALANCED IN   1 ITERATIONS                 
+</message>
+<message date="15/10/2006" time="3265.00000000000000">
+ OPENING WELL K-3H     AT TIME   3265.00   DAYS                          
+ CONTROLLED BY BOTTOM HOLE PRESSURE                                      
+</message>
+</eclipse>

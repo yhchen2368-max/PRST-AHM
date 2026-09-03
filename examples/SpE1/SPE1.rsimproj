@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "loaded_model": "F:\\GitHub\\RSTCore\\examples\\SpE1\\BENCH_SPE1.DATA",
+  "engine": "prst",
+  "run_options": {
+    "max_steps": null,
+    "method": "AMGCL CPR",
+    "use_linesearch": true,
+    "enforce_residual_decrease": true,
+    "acceptance_factor": 2.0,
+    "amgcl_strategy": "mrst",
+    "amgcl_decoupling": "trueIMPES",
+    "strategy": "cpr",
+    "pressure_precond": "hypre",
+    "second_stage": "ilu",
+    "outdir_mode": 0,
+    "outdir_custom": "",
+    "run_max_steps": 0,
+    "run_method": "AMGCL CPR",
+    "run_tolerance": "",
+    "run_linesearch": true,
+    "run_enforce_residual_decrease": true,
+    "run_acceptance_factor": 2.0,
+    "run_amgcl_strategy": "mrst",
+    "run_amgcl_decoupling": "trueIMPES",
+    "run_strategy": "cpr",
+    "run_pressure_precond": "hypre",
+    "run_second_stage": "ilu"
+  },
+  "jobs": [
+    {
+      "deck": "F:\\GitHub\\RSTCore\\examples\\SpE1\\BENCH_SPE1.DATA",
+      "engine": "prst",
+      "state": "Done",
+      "outdir": "F:\\GitHub\\RSTCore\\examples\\SpE1\\BENCH_SPE1_run_prst"
+    }
+  ],
+  "active_tab": 0
+}

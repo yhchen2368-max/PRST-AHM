@@ -1,0 +1,108 @@
+cells=44927 dt=691200 wells=3
+   Newton pre: residual=5.94523, converged=False, worst=CNV_O
+      update: relax=1, |dp|=8.631e+05, |dsW|=3.203e+00, |dx|=4.141e-02, |dqW|=4.274e-05, |dqO|=4.125e-02, |dqG|=4.484e+00, |dBHP|=1.815e-05
+   Newton 1: residual=239.558, converged=False, worst=CNV_W, linear=15.34s, linres=1.221e-09
+      update: relax=1, |dp|=1.582e+05, |dsW|=1.910e-01, |dx|=1.272e+01, |dqW|=3.968e-08, |dqO|=2.593e-06, |dqG|=3.388e-04, |dBHP|=1.840e-05
+   Newton 2: residual=1.45061, converged=False, worst=CNV_W, linear=17.11s, linres=1.334e-07
+      update: relax=1, |dp|=3.452e+04, |dsW|=1.179e-01, |dx|=6.230e+01, |dqW|=9.075e-08, |dqO|=2.651e-05, |dqG|=2.906e-03, |dBHP|=2.374e-07
+   Newton 3: residual=6.03605, converged=False, worst=CNV_O, linear=16.00s, linres=2.294e-08
+      update: relax=1, |dp|=2.365e+04, |dsW|=3.346e-01, |dx|=3.320e+02, |dqW|=3.228e-10, |dqO|=8.247e-08, |dqG|=9.056e-06, |dBHP|=1.349e-04
+   Newton 4: residual=1.81572, converged=False, worst=CNV_W, linear=15.69s, linres=3.382e-08
+      update: relax=1, |dp|=1.677e+04, |dsW|=1.896e-01, |dx|=5.638e+02, |dqW|=1.181e-14, |dqO|=2.386e-12, |dqG|=2.562e-10, |dBHP|=1.264e-04
+   Newton 5: residual=1.78963, converged=False, worst=CNV_O, linear=18.33s, linres=1.757e-10
+      update: relax=0.9, |dp|=5.414e+03, |dsW|=7.862e-01, |dx|=5.409e+02, |dqW|=2.776e-16, |dqO|=8.512e-14, |dqG|=9.133e-12, |dBHP|=7.665e-06
+   Newton 6: residual=1.18389, converged=False, worst=CNV_O, linear=18.60s, linres=2.726e-10
+      update: relax=0.8, |dp|=1.045e+05, |dsW|=1.072e-01, |dx|=2.316e+03, |dqW|=6.641e-16, |dqO|=2.045e-12, |dqG|=2.214e-10, |dBHP|=1.845e-04
+   Newton 7: residual=0.762436, converged=False, worst=CNV_W, linear=18.50s, linres=2.088e-08
+      update: relax=0.9, |dp|=9.432e+04, |dsW|=1.049e+00, |dx|=2.546e+03, |dqW|=3.934e-16, |dqO|=1.985e-13, |dqG|=2.163e-11, |dBHP|=1.743e-05
+   Newton 8: residual=4.53172, converged=False, worst=CNV_W, linear=16.29s, linres=6.605e-06
+      update: relax=1, |dp|=2.222e+04, |dsW|=2.605e-01, |dx|=7.206e+02, |dqW|=2.404e-16, |dqO|=2.236e-12, |dqG|=2.422e-10, |dBHP|=2.011e-04
+   Newton 9: residual=1.62948, converged=False, worst=CNV_O, linear=16.95s, linres=5.390e-08
+      update: relax=1, |dp|=3.256e+04, |dsW|=8.739e-01, |dx|=5.162e+02, |dqW|=1.437e-16, |dqO|=3.035e-14, |dqG|=3.242e-12, |dBHP|=2.601e-06
+   Newton 10: residual=1.02982, converged=False, worst=CNV_W, linear=37.88s, linres=4.812e-08
+      update: relax=1, |dp|=1.836e+04, |dsW|=8.312e-01, |dx|=2.528e+03, |dqW|=2.573e-16, |dqO|=7.176e-14, |dqG|=7.691e-12, |dBHP|=6.548e-06
+   Newton 11: residual=1.61711, converged=False, worst=CNV_O, linear=21.25s, linres=7.757e-11
+      update: relax=0.9, |dp|=1.814e+04, |dsW|=2.007e-01, |dx|=5.209e+02, |dqW|=1.031e-16, |dqO|=3.906e-14, |dqG|=4.200e-12, |dBHP|=3.594e-06
+   Newton 12: residual=5.35935, converged=False, worst=CNV_O, linear=18.10s, linres=3.473e-08
+   Ministep 1: dt=69120.0001, converged=False, iterations=12
+   Cutting timestep from 69120.0001 to 34560.00005
+   Newton pre: residual=2.97262, converged=False, worst=CNV_O
+      update: relax=1, |dp|=7.905e+05, |dsW|=1.605e+00, |dx|=2.071e-02, |dqW|=4.397e-05, |dqO|=4.219e-02, |dqG|=4.585e+00, |dBHP|=1.344e-07
+   Newton 1: residual=112.992, converged=False, worst=CNV_W, linear=15.30s, linres=1.013e-09
+      update: relax=1, |dp|=1.354e+05, |dsW|=1.954e-01, |dx|=1.243e+01, |dqW|=1.625e-08, |dqO|=1.624e-05, |dqG|=1.736e-03, |dBHP|=6.128e-06
+   Newton 2: residual=1.16823, converged=False, worst=CNV_W, linear=17.56s, linres=3.159e-07
+      update: relax=1, |dp|=2.951e+04, |dsW|=1.176e-01, |dx|=5.563e+02, |dqW|=6.767e-08, |dqO|=1.781e-05, |dqG|=1.954e-03, |dBHP|=5.839e-06
+   Newton 3: residual=0.894878, converged=False, worst=CNV_O, linear=16.99s, linres=7.181e-08
+      update: relax=1, |dp|=2.952e+04, |dsW|=4.383e-01, |dx|=6.845e+01, |dqW|=1.660e-10, |dqO|=3.991e-08, |dqG|=4.379e-06, |dBHP|=1.565e-07
+   Newton 4: residual=0.501254, converged=False, worst=CNV_W, linear=24.79s, linres=9.378e-07
+      update: relax=1, |dp|=1.702e+04, |dsW|=1.592e-01, |dx|=5.506e+02, |dqW|=6.688e-16, |dqO|=3.034e-13, |dqG|=3.303e-11, |dBHP|=8.045e-06
+   Newton 5: residual=1.22437, converged=False, worst=CNV_W, linear=14.96s, linres=2.012e-09
+      update: relax=0.9, |dp|=1.738e+04, |dsW|=1.944e-01, |dx|=7.002e+02, |dqW|=5.430e-18, |dqO|=8.220e-14, |dqG|=8.906e-12, |dBHP|=7.242e-06
+   Newton 6: residual=0.762142, converged=False, worst=CNV_O, linear=15.51s, linres=9.540e-10
+      update: relax=1, |dp|=9.070e+03, |dsW|=1.059e-01, |dx|=5.097e+02, |dqW|=6.479e-19, |dqO|=9.085e-15, |dqG|=9.854e-13, |dBHP|=8.046e-07
+   Newton 7: residual=0.518075, converged=False, worst=CNV_O, linear=17.62s, linres=6.154e-08
+      update: relax=1, |dp|=6.444e+03, |dsW|=9.014e-01, |dx|=3.107e+03, |dqW|=7.071e-19, |dqO|=1.593e-17, |dqG|=2.418e-15, |dBHP|=2.940e-09
+   Newton 8: residual=1.19779, converged=False, worst=CNV_O, linear=15.53s, linres=7.261e-11
+      update: relax=0.9, |dp|=4.094e+03, |dsW|=3.949e-01, |dx|=5.316e+02, |dqW|=6.472e-19, |dqO|=4.052e-17, |dqG|=4.902e-15, |dBHP|=3.373e-09
+   Newton 9: residual=0.587065, converged=False, worst=CNV_O, linear=15.53s, linres=1.835e-08
+      update: relax=1, |dp|=7.919e+03, |dsW|=1.661e-01, |dx|=1.127e+02, |dqW|=9.182e-20, |dqO|=1.449e-17, |dqG|=1.983e-15, |dBHP|=4.409e-10
+   Newton 10: residual=1.20112, converged=False, worst=CNV_W, linear=14.85s, linres=7.292e-08
+      update: relax=0.9, |dp|=5.801e+03, |dsW|=1.381e-01, |dx|=5.085e+02, |dqW|=1.421e-20, |dqO|=6.512e-18, |dqG|=5.556e-16, |dBHP|=8.334e-12
+   Newton 11: residual=0.764196, converged=False, worst=CNV_O, linear=15.27s, linres=8.173e-11
+      update: relax=1, |dp|=3.964e+03, |dsW|=1.174e-01, |dx|=5.589e+02, |dqW|=3.534e-20, |dqO|=4.727e-18, |dqG|=6.902e-16, |dBHP|=4.172e-10
+   Newton 12: residual=0.583249, converged=False, worst=CNV_O, linear=15.55s, linres=5.077e-10
+   Ministep 1: dt=34560.00005, converged=False, iterations=12
+   Cutting timestep from 34560.00005 to 17280.000025
+   Newton pre: residual=1.48631, converged=False, worst=CNV_O
+      update: relax=1, |dp|=7.112e+05, |dsW|=8.042e-01, |dx|=1.025e-02, |dqW|=4.528e-05, |dqO|=4.316e-02, |dqG|=4.692e+00, |dBHP|=7.541e-05
+   Newton 1: residual=51.1397, converged=False, worst=CNV_W, linear=11.70s, linres=1.484e-09
+      update: relax=1, |dp|=9.110e+04, |dsW|=1.780e-01, |dx|=1.217e+01, |dqW|=1.105e-09, |dqO|=2.594e-05, |dqG|=2.806e-03, |dBHP|=6.235e-05
+   Newton 2: residual=0.596296, converged=False, worst=CNV_W, linear=12.65s, linres=6.083e-07
+      update: relax=1, |dp|=1.216e+04, |dsW|=9.206e-02, |dx|=4.731e+01, |dqW|=4.912e-09, |dqO|=1.137e-06, |dqG|=1.249e-04, |dBHP|=1.191e-05
+   Newton 3: residual=0.985036, converged=False, worst=CNV_O, linear=12.41s, linres=2.234e-07
+      update: relax=1, |dp|=8.428e+03, |dsW|=2.195e-01, |dx|=4.722e+01, |dqW|=9.233e-13, |dqO|=2.041e-10, |dqG|=2.241e-08, |dBHP|=1.186e-06
+   Newton 4: residual=1.16148, converged=False, worst=CNV_W, linear=12.51s, linres=9.989e-08
+      update: relax=1, |dp|=6.099e+03, |dsW|=1.767e-01, |dx|=3.701e+01, |dqW|=1.083e-16, |dqO|=6.380e-14, |dqG|=6.880e-12, |dBHP|=2.939e-06
+   Newton 5: residual=0.669961, converged=False, worst=CNV_O, linear=13.22s, linres=8.572e-09
+      update: relax=0.9, |dp|=1.993e+03, |dsW|=1.153e-01, |dx|=1.157e+01, |dqW|=2.817e-17, |dqO|=3.034e-14, |dqG|=3.297e-12, |dBHP|=2.612e-06
+   Newton 6: residual=0.378687, converged=False, worst=CNV_O, linear=11.33s, linres=2.345e-10
+      update: relax=0.8, |dp|=2.697e+03, |dsW|=5.732e-02, |dx|=3.788e+02, |dqW|=2.432e-18, |dqO|=2.690e-15, |dqG|=2.920e-13, |dBHP|=2.325e-07
+   Newton 7: residual=0.254317, converged=False, worst=CNV_O, linear=12.19s, linres=2.937e-10
+      update: relax=0.9, |dp|=3.708e+03, |dsW|=1.540e+00, |dx|=3.188e+03, |dqW|=5.311e-19, |dqO|=5.871e-16, |dqG|=6.529e-14, |dBHP|=5.364e-08
+   Newton 8: residual=0.249108, converged=False, worst=CNV_O, linear=12.16s, linres=6.533e-11
+      update: relax=1, |dp|=2.401e+03, |dsW|=2.375e-01, |dx|=2.269e-01, |dqW|=1.328e-19, |dqO|=7.764e-17, |dqG|=8.089e-15, |dBHP|=7.451e-09
+   Newton 9: residual=0.646391, converged=False, worst=CNV_W, linear=12.91s, linres=4.059e-12
+      update: relax=1, |dp|=8.904e+02, |dsW|=8.240e-02, |dx|=3.326e-04, |dqW|=4.929e-20, |dqO|=4.077e-18, |dqG|=1.380e-15, |dBHP|=8.028e-15
+   Newton 10: residual=0.415634, converged=False, worst=CNV_O, linear=12.62s, linres=2.163e-12
+      update: relax=1, |dp|=5.105e+02, |dsW|=2.196e-01, |dx|=6.199e-02, |dqW|=1.810e-20, |dqO|=2.592e-17, |dqG|=2.592e-15, |dBHP|=5.074e-11
+   Newton 11: residual=0.239659, converged=False, worst=CNV_W, linear=12.43s, linres=1.080e-10
+      update: relax=0.9, |dp|=6.671e+02, |dsW|=1.590e-01, |dx|=2.427e+00, |dqW|=2.206e-20, |dqO|=1.414e-17, |dqG|=1.644e-15, |dBHP|=4.058e-11
+   Newton 12: residual=0.567265, converged=False, worst=CNV_W, linear=12.41s, linres=3.859e-11
+   Ministep 1: dt=17280.000025, converged=False, iterations=12
+   Cutting timestep from 17280.000025 to 8640.0000125
+   Newton pre: residual=0.743154, converged=False, worst=CNV_O
+      update: relax=1, |dp|=6.214e+05, |dsW|=4.039e-01, |dx|=4.983e-03, |dqW|=4.660e-05, |dqO|=4.421e-02, |dqG|=4.806e+00, |dBHP|=1.125e-05
+   Newton 1: residual=21.6574, converged=False, worst=CNV_W, linear=10.37s, linres=2.478e-09
+      update: relax=1, |dp|=6.471e+04, |dsW|=1.100e-01, |dx|=1.198e+01, |dqW|=1.013e-08, |dqO|=2.761e-05, |dqG|=2.995e-03, |dBHP|=1.143e-05
+   Newton 2: residual=0.394323, converged=False, worst=CNV_W, linear=11.31s, linres=9.244e-07
+      update: relax=1, |dp|=7.226e+03, |dsW|=1.100e-01, |dx|=6.185e+01, |dqW|=8.345e-12, |dqO|=1.745e-09, |dqG|=1.816e-07, |dBHP|=2.598e-07
+   Newton 3: residual=0.490299, converged=False, worst=CNV_O, linear=10.88s, linres=2.652e-07
+      update: relax=1, |dp|=8.057e+03, |dsW|=1.100e-01, |dx|=5.515e+01, |dqW|=2.634e-17, |dqO|=2.128e-15, |dqG|=2.385e-13, |dBHP|=7.451e-08
+   Newton 4: residual=0.562056, converged=False, worst=CNV_W, linear=11.47s, linres=9.523e-08
+      update: relax=1, |dp|=5.723e+03, |dsW|=1.968e-04, |dx|=3.134e+01, |dqW|=1.873e-19, |dqO|=1.557e-16, |dqG|=1.518e-14, |dBHP|=9.072e-09
+   Newton 5: residual=0.332499, converged=False, worst=CNV_O, linear=11.97s, linres=3.750e-09
+      update: relax=0.9, |dp|=1.786e+03, |dsW|=9.888e-02, |dx|=2.413e+01, |dqW|=1.378e-19, |dqO|=8.349e-17, |dqG|=8.061e-15, |dBHP|=6.656e-09
+   Newton 6: residual=0.174113, converged=False, worst=CNV_W, linear=11.66s, linres=1.294e-09
+      update: relax=0.8, |dp|=9.448e+02, |dsW|=7.920e-02, |dx|=3.156e+01, |dqW|=6.913e-20, |dqO|=8.947e-18, |dqG|=1.736e-15, |dBHP|=4.283e-11
+   Newton 7: residual=0.181654, converged=False, worst=CNV_W, linear=11.60s, linres=1.429e-09
+      update: relax=0.7, |dp|=2.065e+02, |dsW|=6.313e-02, |dx|=1.948e+01, |dqW|=1.107e-19, |dqO|=2.477e-17, |dqG|=3.421e-15, |dBHP|=2.662e-11
+   Newton 8: residual=0.0829251, converged=False, worst=CNV_W, linear=11.52s, linres=2.181e-09
+      update: relax=0.8, |dp|=2.352e+02, |dsW|=6.634e-02, |dx|=2.530e+01, |dqW|=9.090e-20, |dqO|=3.009e-17, |dqG|=2.111e-15, |dBHP|=3.411e-11
+   Newton 9: residual=0.192502, converged=False, worst=CNV_W, linear=11.63s, linres=3.397e-09
+      update: relax=0.9, |dp|=2.914e+02, |dsW|=8.406e-02, |dx|=2.492e+01, |dqW|=1.485e-19, |dqO|=4.571e-17, |dqG|=4.312e-15, |dBHP|=4.957e-11
+   Newton 10: residual=0.10064, converged=False, worst=CNV_W, linear=11.94s, linres=2.888e-09
+      update: relax=0.8, |dp|=2.803e+02, |dsW|=8.052e-02, |dx|=2.513e+01, |dqW|=5.860e-20, |dqO|=2.966e-17, |dqG|=3.190e-15, |dBHP|=4.328e-11
+   Newton 11: residual=0.185484, converged=False, worst=CNV_W, linear=11.14s, linres=9.307e-09
+      update: relax=0.7, |dp|=2.189e+02, |dsW|=6.290e-02, |dx|=1.951e+01, |dqW|=5.600e-20, |dqO|=3.062e-18, |dqG|=2.671e-16, |dBHP|=7.325e-11
+   Newton 12: residual=0.0830239, converged=False, worst=CNV_W, linear=11.42s, linres=1.734e-09
+   Ministep 1: dt=8640.0000125, converged=False, iterations=12

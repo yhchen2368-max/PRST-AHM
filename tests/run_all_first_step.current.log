@@ -1,0 +1,18 @@
+
+=== SPE1 ===
+cells=300 dt=86400 gas=True disgas=True vapoil=False wells=2 nls=(12, cuts=6)
+converged=True iterations=8 ministeps=4 elapsed=0.5s
+p_range=[3.134414e+07, 3.518027e+07]
+
+=== SPE9 ===
+cells=9000 dt=864000 gas=True disgas=True vapoil=False wells=26 nls=(12, cuts=6)
+converged=True iterations=20 ministeps=5 elapsed=482.3s
+p_range=[2.185769e+07, 3.119932e+07]
+
+=== EGG ===
+cells=18553 dt=86400 gas=False disgas=False vapoil=False wells=12 nls=(12, cuts=6)
+converged=True iterations=8 ministeps=4 elapsed=24.6s
+p_range=[3.959616e+07, 4.082145e+07]
+
+=== NORNE ===
+cells=44927 dt=691200 gas=True disgas=True vapoil=True wells=3 nls=(12, cuts=6)

@@ -1,0 +1,671 @@
+{
+  "schema_version": "fahm-stage5-oracle-v1",
+  "oracle_id": "FAHM-SPE9-RESULT-STATE0",
+  "reference": "MRST/dev/APP/FAHM.mlapp",
+  "extracted_source_sha256": "a1c29aedd7620438b94bbbcb529c7d9fb6fd62fe909def6d419a10385fb493c7",
+  "matlab_release": "2022b",
+  "case_prefix": "examples/SPE9/RESULTS/SPE9_CP",
+  "source_lines": "FAHM.m:1753-1824",
+  "arrays": [
+    {
+      "name": "grid/cart_dims",
+      "path": "grid__cart_dims.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24
+    },
+    {
+      "name": "grid/cells_num",
+      "path": "grid__cells_num.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8
+    },
+    {
+      "name": "grid/index_map_1based",
+      "path": "grid__index_map_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "grid/index_map_0based",
+      "path": "grid__index_map_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "grid/centroids",
+      "path": "grid__centroids.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        3
+      ],
+      "order": "F",
+      "nbytes": 216000
+    },
+    {
+      "name": "grid/volumes",
+      "path": "grid__volumes.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "grid/PORV",
+      "path": "grid__PORV.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "grid/trans_neighbors_1based",
+      "path": "grid__trans_neighbors_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        25665,
+        2
+      ],
+      "order": "F",
+      "nbytes": 410640
+    },
+    {
+      "name": "grid/trans_neighbors_0based",
+      "path": "grid__trans_neighbors_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        25665,
+        2
+      ],
+      "order": "F",
+      "nbytes": 410640
+    },
+    {
+      "name": "grid/trans_T",
+      "path": "grid__trans_T.bin",
+      "dtype": "<f8",
+      "shape": [
+        25665,
+        1
+      ],
+      "order": "F",
+      "nbytes": 205320
+    },
+    {
+      "name": "rock/poro",
+      "path": "rock__poro.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "rock/perm",
+      "path": "rock__perm.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        3
+      ],
+      "order": "F",
+      "nbytes": 216000
+    },
+    {
+      "name": "rock/ntg",
+      "path": "rock__ntg.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "state0/pressure",
+      "path": "state0__pressure.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "state0/s",
+      "path": "state0__s.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        3
+      ],
+      "order": "F",
+      "nbytes": 216000
+    },
+    {
+      "name": "state0/rs",
+      "path": "state0__rs.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "state0/rv",
+      "path": "state0__rv.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8
+    },
+    {
+      "name": "state0/time",
+      "path": "state0__time.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8
+    },
+    {
+      "name": "operators/N_1based",
+      "path": "operators__N_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        25665,
+        2
+      ],
+      "order": "F",
+      "nbytes": 410640
+    },
+    {
+      "name": "operators/N_0based",
+      "path": "operators__N_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        25665,
+        2
+      ],
+      "order": "F",
+      "nbytes": 410640
+    },
+    {
+      "name": "operators/T",
+      "path": "operators__T.bin",
+      "dtype": "<f8",
+      "shape": [
+        25665,
+        1
+      ],
+      "order": "F",
+      "nbytes": 205320
+    },
+    {
+      "name": "operators/T_all",
+      "path": "operators__T_all.bin",
+      "dtype": "<f8",
+      "shape": [
+        28335,
+        1
+      ],
+      "order": "F",
+      "nbytes": 226680
+    },
+    {
+      "name": "operators/pv",
+      "path": "operators__pv.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "operators/C_shape",
+      "path": "operators__C_shape.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        2
+      ],
+      "order": "F",
+      "nbytes": 16
+    },
+    {
+      "name": "operators/C_nnz",
+      "path": "operators__C_nnz.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8
+    },
+    {
+      "name": "relperm/input/SWL",
+      "path": "relperm__input__SWL.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SWCR",
+      "path": "relperm__input__SWCR.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SWU",
+      "path": "relperm__input__SWU.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/KRW",
+      "path": "relperm__input__KRW.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SOWCR",
+      "path": "relperm__input__SOWCR.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/KRO",
+      "path": "relperm__input__KRO.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SOGCR",
+      "path": "relperm__input__SOGCR.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SGL",
+      "path": "relperm__input__SGL.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SGCR",
+      "path": "relperm__input__SGCR.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/SGU",
+      "path": "relperm__input__SGU.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/input/KRG",
+      "path": "relperm__input__KRG.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "relperm/model/drainage/w",
+      "path": "relperm__model__drainage__w.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/drainage/ow",
+      "path": "relperm__model__drainage__ow.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/drainage/og",
+      "path": "relperm__model__drainage__og.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/drainage/g",
+      "path": "relperm__model__drainage__g.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/imbibition/w",
+      "path": "relperm__model__imbibition__w.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/imbibition/ow",
+      "path": "relperm__model__imbibition__ow.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/imbibition/og",
+      "path": "relperm__model__imbibition__og.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/imbibition/g",
+      "path": "relperm__model__imbibition__g.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/miscible/w",
+      "path": "relperm__model__miscible__w.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/miscible/ow",
+      "path": "relperm__model__miscible__ow.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/miscible/og",
+      "path": "relperm__model__miscible__og.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "relperm/model/miscible/g",
+      "path": "relperm__model__miscible__g.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        5
+      ],
+      "order": "F",
+      "nbytes": 360000
+    },
+    {
+      "name": "model/phases_WOG",
+      "path": "model__phases_WOG.bin",
+      "dtype": "|u1",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 3
+    },
+    {
+      "name": "model/disgas_vapoil",
+      "path": "model__disgas_vapoil.bin",
+      "dtype": "|u1",
+      "shape": [
+        1,
+        2
+      ],
+      "order": "F",
+      "nbytes": 2
+    },
+    {
+      "name": "fluid/phase_pressure_W",
+      "path": "fluid__phase_pressure_W.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/shrinkage_W",
+      "path": "fluid__shrinkage_W.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/viscosity_W",
+      "path": "fluid__viscosity_W.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/phase_pressure_O",
+      "path": "fluid__phase_pressure_O.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/shrinkage_O",
+      "path": "fluid__shrinkage_O.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/viscosity_O",
+      "path": "fluid__viscosity_O.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/phase_pressure_G",
+      "path": "fluid__phase_pressure_G.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/shrinkage_G",
+      "path": "fluid__shrinkage_G.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/viscosity_G",
+      "path": "fluid__viscosity_G.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    },
+    {
+      "name": "fluid/rs_max",
+      "path": "fluid__rs_max.bin",
+      "dtype": "<f8",
+      "shape": [
+        9000,
+        1
+      ],
+      "order": "F",
+      "nbytes": 72000
+    }
+  ]
+}

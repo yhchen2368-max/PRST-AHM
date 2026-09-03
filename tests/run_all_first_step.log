@@ -1,0 +1,10 @@
+
+=== SPE9 ===
+FAIL ValueError: PERMX/PERMY/PERMZ sizes must agree
+
+=== EGG ===
+FAIL ValueError: MRST-compatible well indexing requires per-cell dimensions
+
+=== NORNE ===
+cells=44927 dt=1.0 gas=True wells=0 facility=True
+FAIL ValueError: could not convert string to float: 'Justert'

@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_all_first_step.py", line 21, in <module>
+    s0, model, schedule, _ = init_eclipse_problem_ad(path)
+                             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\initialization\init_eclipse_problem_ad.py", line 46, in init_eclipse_problem_ad
+    model = _initialize_model(deck, opts)
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\initialization\init_eclipse_problem_ad.py", line 69, in _initialize_model
+    rock = init_eclipse_rock(deck)
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\deckformat\params\rock\init_eclipse_rock.py", line 53, in init_eclipse_rock
+    raise ValueError('PERMX/PERMY/PERMZ sizes must agree')
+ValueError: PERMX/PERMY/PERMZ sizes must agree
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_all_first_step.py", line 21, in <module>
+    s0, model, schedule, _ = init_eclipse_problem_ad(path)
+                             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\initialization\init_eclipse_problem_ad.py", line 59, in init_eclipse_problem_ad
+    schedule = _convert_deck_schedule_to_mrst(model, deck, G=G, rock=rock)
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\initialization\init_eclipse_problem_ad.py", line 366, in _convert_deck_schedule_to_mrst
+    _process_well_completions(wells, G, rock)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\initialization\init_eclipse_problem_ad.py", line 558, in _process_well_completions
+    raise ValueError('MRST-compatible well indexing requires per-cell dimensions')
+ValueError: MRST-compatible well indexing requires per-cell dimensions
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_all_first_step.py", line 31, in <module>
+    state, report, minis = nls.solveTimestep(
+                           ~~~~~~~~~~~~~~~~~^
+        deepcopy(s0), dt, model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        drivingForces=forces, initialGuess=deepcopy(s0), controlId=ctrl
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\solvers\nonlinear_solver.py", line 173, in solveTimestep
+    state, step_report = model.stepFunction(deepcopy(state), deepcopy(state0_inner), dt,
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           drivingForces=drivingForces,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           linsolver=linear_solver,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+                                           nonlinsolver=self,
+                                           ^^^^^^^^^^^^^^^^^^
+                                           iteration=1)
+                                           ^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 805, in stepFunction
+    problem, state = self.get_equations(state0, state, dt, drivingForces,
+                     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                       iteration=iteration, **kwargs)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 909, in get_equations
+    return self._get_equations_mrst_generic(state0, state, dt, drivingForces, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 1306, in _get_equations_mrst_generic
+    residual, meta = self._mrst_generic_residual(state0, state, dt, drivingForces, wells=wells)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 1139, in _mrst_generic_residual
+    rhoWS, rhoOS, rhoGS = self._mrst_surface_densities()
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 933, in _mrst_surface_densities
+    vals = _np.asarray(props.get('DENSITY', []), dtype=float).ravel()
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'Justert'

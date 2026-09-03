@@ -1,0 +1,14 @@
+{
+  "array_count": 105,
+  "comparison": "all files compared byte-for-byte after independent MATLAB exports",
+  "exact_byte_comparison": true,
+  "fixture_bytes": 208225,
+  "fixture_file_count": 108,
+  "manifest_sha256": "68daee95f5cba6069fee9b6695b675abe74215d2e8fb866ee7ca9c143c00aab8",
+  "matlab_release": "R2022b",
+  "mrst_release": "2024b",
+  "oracle_id": "FAHM-SPE1-WOG-FIRST-3-STEPS",
+  "run_count": 2,
+  "schema_version": "fahm-oracle-reproducibility-v1",
+  "status": "PASS"
+}

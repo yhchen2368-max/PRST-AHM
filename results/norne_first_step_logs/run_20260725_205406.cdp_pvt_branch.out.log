@@ -1,0 +1,10 @@
+cells=44927 dt=691200 wells=3
+   Newton pre: residual=5.94523, converged=False, worst=CNV_O
+   Newton 1: residual=239.518, converged=False, worst=CNV_W, linear=14.89s, linres=1.219e-09
+   Newton 2: residual=1.45058, converged=False, worst=CNV_W, linear=17.29s, linres=1.378e-07
+   Newton 3: residual=6.03605, converged=False, worst=CNV_O, linear=17.74s, linres=2.264e-08
+   Newton 4: residual=1.81572, converged=False, worst=CNV_W, linear=16.39s, linres=3.385e-08
+   Newton 5: residual=1.78963, converged=False, worst=CNV_O, linear=17.06s, linres=1.769e-10
+   Newton 6: residual=1.18386, converged=False, worst=CNV_O, linear=16.60s, linres=2.719e-10
+   Newton 7: residual=0.762442, converged=False, worst=CNV_W, linear=20.10s, linres=2.088e-08
+   Newton 8: residual=4.53193, converged=False, worst=CNV_W, linear=17.83s, linres=6.560e-06

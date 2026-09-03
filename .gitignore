@@ -1,0 +1,62 @@
+# 但保留 .gitignore 自身
+!.gitignore
+
+# MRST 源码及其全部文件不同步
+mrst-2026a/
+
+# Python 编译缓存
+__pycache__/
+*.pyc
+
+# ECLIPSE 二进制输出文件
+*.UNRST
+*.UNSMRY
+*.INIT
+*.PRT
+*.X*
+*.h5
+*.dbprtx
+
+# NumPy 数据文件
+*.npz
+
+# MRST MAT 数据文件
+*.mat
+
+# COBJ 对象文件
+*.obj
+
+
+# Python virtual environments / conda envs
+.conda/
+.venv/
+venv/
+env/
+
+# Scratch and working output
+.scratch/
+
+# FAHM's default working directory: one simulator run per case, so it
+# grows a deck and a full set of ECLIPSE output per optimiser iteration.
+fahm/
+
+# Serialized results
+*.pkl
+
+# Compiled solver extensions (build artifacts, platform-specific).
+# EXCEPTION: the PREBUILT pyamgcl Windows extensions (.pyd) ARE committed
+# and pushed to GitHub on purpose, so every clone can load pyamgcl
+# (PRSTCore.solvers.linearsolvers.pyamgcl) without recompiling the C++
+# extensions.  Keep this exception in sync with the files actually present
+# under PRSTCore/solvers/linearsolvers/pyamgcl/:
+#   - pyamgcl_ext.cp3xx-win_amd64.pyd
+#   - pyamgcl_block_cpr_capi_ext.cp3xx-win_amd64.pyd
+# Any OTHER *.pyd / build artifact (e.g. a freshly recompiled .pyd outside
+# pyamgcl, or a build tree) remains ignored.
+*.pyd
+!PRSTCore/solvers/linearsolvers/pyamgcl/*.pyd
+PRSTCore/solvers/linearsolvers/amgcl/dependencies/
+
+# Large example model data (public datasets, re-downloadable)
+examples/sleipner/
+examples/spe10model2/

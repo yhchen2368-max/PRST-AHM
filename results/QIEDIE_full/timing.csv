@@ -1,0 +1,4 @@
+step,wall_s,newton_iters,assembly_s,assembly_calls,linear_s,linear_calls,krylov_iters,other_s,pc_setup_s,pc_apply_s,ilu_factor_s,ilu_solve_s,matvec_s,ksp_total_s
+1,54.079,33,23.998,39,27.341,33,281,2.741,5.421,15.528,0.895,0.945,1.290,16.707
+2,24.952,13,9.455,15,14.509,13,150,0.987,2.472,9.577,0.423,0.547,0.758,10.333
+3,25.719,13,9.744,15,14.975,13,146,1.000,2.604,9.826,0.415,0.540,0.731,10.523

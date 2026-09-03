@@ -1,0 +1,62 @@
+{
+  "simulator": "prst",
+  "case": "F:\\GitHub\\RSTCore\\examples\\SpE1\\BENCH_SPE1.DATA",
+  "grid": {
+    "nx": 10,
+    "ny": 10,
+    "nz": 3,
+    "n_active": 300
+  },
+  "states": {
+    "file": "states.h5",
+    "datasets": [
+      "sgas",
+      "soil",
+      "swat"
+    ],
+    "n_steps": 120
+  },
+  "wells": {
+    "file": "wells.h5",
+    "names": [
+      "INJECTOR",
+      "PRODUCER"
+    ],
+    "columns": [
+      "time_days",
+      "WBHP",
+      "WOPR",
+      "WWPR",
+      "WGPR",
+      "WWIR",
+      "WGIR"
+    ],
+    "units": {
+      "time_days": "d",
+      "WBHP": "bar",
+      "WOPR": "sm3/d",
+      "WWPR": "sm3/d",
+      "WGPR": "sm3/d",
+      "WWIR": "sm3/d",
+      "WGIR": "sm3/d"
+    }
+  },
+  "restart": "none",
+  "completed_at": "2026-09-01T02:28:10Z",
+  "method": "AMGCL CPR",
+  "config": {
+    "max_steps": null,
+    "method": "AMGCL CPR",
+    "tolerance": null,
+    "use_linesearch": true,
+    "enforce_residual_decrease": true,
+    "acceptance_factor": 2.0,
+    "amgcl_strategy": "mrst",
+    "amgcl_decoupling": "trueIMPES",
+    "strategy": "cpr",
+    "pressure_precond": "hypre",
+    "second_stage": "ilu",
+    "start": "1999-09-01"
+  },
+  "n_steps": 120
+}

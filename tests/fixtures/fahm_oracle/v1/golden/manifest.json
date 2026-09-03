@@ -1,0 +1,1593 @@
+{
+  "schema_version": "fahm-oracle-v1",
+  "oracle_id": "FAHM-SPE1-WOG-FIRST-3-STEPS",
+  "reference": "MRST/dev/APP/FAHM.mlapp",
+  "fixture_scope": "Three active black-oil phases, first three SPE1 report steps, FAHM objective, default four per-cell rock parameters, and FAHM optimizer history schema.",
+  "matlab": {
+    "version": "9.13.0.2049777 (R2022b)",
+    "release": "2022b"
+  },
+  "mrst_release": "2024b",
+  "model_class": "GenericBlackOilModel",
+  "active_phase_order": "WOG",
+  "deck_files": [
+    {
+      "path": "deck/BENCH_SPE1.DATA",
+      "nbytes": 12242,
+      "sha256": "88756d94a56eb8fb73705c087cba8dd02f0a1a8d4b30064f95b17c7979435ebf"
+    },
+    {
+      "path": "deck/SPE1.GRDECL",
+      "nbytes": 42246,
+      "sha256": "94f0574d0223dfdbff7f6c9b9daef5708879a5410163ab937afe34a070bf1907"
+    }
+  ],
+  "well_names": [
+    "INJECTOR",
+    "PRODUCER"
+  ],
+  "well_types": [
+    "rate",
+    "orat"
+  ],
+  "weight_field_order": [
+    "ww",
+    "wo",
+    "wg",
+    "wp",
+    "wt",
+    "wf",
+    "ws"
+  ],
+  "config_rows": [
+    {
+      "app_name": "Porv",
+      "name": "porevolume",
+      "include": true,
+      "scaling": "linear",
+      "box_limits": [],
+      "relative_limits_array": "config/01_porv_relative_limits",
+      "subset_1based_array": "config/01_porv_subset_1based",
+      "subset_0based_array": "config/01_porv_subset_0based",
+      "uniform_limits": false,
+      "default_limits": [
+        0.95,
+        1.05
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "PermX",
+      "name": "permx",
+      "include": true,
+      "scaling": "log",
+      "box_limits": [],
+      "relative_limits_array": "config/02_permx_relative_limits",
+      "subset_1based_array": "config/02_permx_subset_1based",
+      "subset_0based_array": "config/02_permx_subset_0based",
+      "uniform_limits": false,
+      "default_limits": [
+        0.1,
+        10
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "PermY",
+      "name": "permy",
+      "include": true,
+      "scaling": "log",
+      "box_limits": [],
+      "relative_limits_array": "config/03_permy_relative_limits",
+      "subset_1based_array": "config/03_permy_subset_1based",
+      "subset_0based_array": "config/03_permy_subset_0based",
+      "uniform_limits": false,
+      "default_limits": [
+        0.1,
+        10
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "PermZ",
+      "name": "permz",
+      "include": true,
+      "scaling": "log",
+      "box_limits": [],
+      "relative_limits_array": "config/04_permz_relative_limits",
+      "subset_1based_array": "config/04_permz_subset_1based",
+      "subset_0based_array": "config/04_permz_subset_0based",
+      "uniform_limits": false,
+      "default_limits": [
+        0.1,
+        10
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "krw",
+      "name": "krw",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.5,
+        2
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "kro",
+      "name": "kro",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.5,
+        2
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "krg",
+      "name": "krg",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.5,
+        2
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Swl",
+      "name": "swl",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0,
+        1
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Swcr",
+      "name": "swcr",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        1,
+        1.5
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Swu",
+      "name": "swu",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.8,
+        1
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Sowcr",
+      "name": "sowcr",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.8,
+        1.2
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Sgl",
+      "name": "sgl",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0,
+        1
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Sgcr",
+      "name": "sgcr",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        1,
+        1.5
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Sgu",
+      "name": "sgu",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.8,
+        1
+      ],
+      "relative_limits": [],
+      "subset": []
+    },
+    {
+      "app_name": "Sogcr",
+      "name": "sogcr",
+      "include": false,
+      "scaling": "",
+      "box_limits": [],
+      "relative_limits_array": "",
+      "subset_1based_array": "",
+      "subset_0based_array": "",
+      "uniform_limits": [],
+      "default_limits": [
+        0.8,
+        1.2
+      ],
+      "relative_limits": [],
+      "subset": []
+    }
+  ],
+  "parameter_order": [
+    "porevolume",
+    "permx",
+    "permy",
+    "permz"
+  ],
+  "history_fields": [
+    "val",
+    "u",
+    "pg",
+    "alpha",
+    "lsit",
+    "lsfl",
+    "hess",
+    "rho",
+    "r",
+    "params"
+  ],
+  "contract": {
+    "matlab_index_base": 1,
+    "python_index_base": 0,
+    "matlab_linearization": "A(:)",
+    "raw_array_storage_order": "F",
+    "python_reshape": "reshape(shape, order=\"F\")",
+    "unit_box_bounds": [
+      0,
+      1
+    ],
+    "parameter_slice_order": "vertical concatenation in config/parameter order",
+    "objective_sign": "matchObservedOWGProfile is positive; evaluateMatchFromEclipseRun returns its negative and negative scaled gradient",
+    "optimizer_sign": "optimizeBoundConstrainedForFAHM defaults maximize=true and minimizes the negated callback internally"
+  },
+  "arrays": [
+    {
+      "name": "grid/cart_dims",
+      "path": "arrays/grid__cart_dims.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "4c6d71d7914a2149213c3bc035a37dfa2c060ead1a9b36be1aabcc904fefa489"
+    },
+    {
+      "name": "grid/cells_num",
+      "path": "arrays/grid__cells_num.bin",
+      "dtype": "<i8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "5fbbc50a5e0bc4e1bb5ea4bbacda5ae6709eff8e286fb002fee73a4913820fe9"
+    },
+    {
+      "name": "grid/active_index_map_1based",
+      "path": "arrays/grid__active_index_map_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "7e082dd82439dac6bd1849697b92211390c89fbcd74d92dcedf30f4ca5b42e1f"
+    },
+    {
+      "name": "grid/active_index_map_0based",
+      "path": "arrays/grid__active_index_map_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "98e038d3a30a991777ce2f66d2e9b9f377e44b6444635d2b5dd70d38ae78f241"
+    },
+    {
+      "name": "rock/porosity",
+      "path": "arrays/rock__porosity.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "b8083ec6c5d761a310092432fbbaf32f329fe67f1e2940e01817fddf2f9dd88e"
+    },
+    {
+      "name": "rock/permeability",
+      "path": "arrays/rock__permeability.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        3
+      ],
+      "order": "F",
+      "nbytes": 7200,
+      "sha256": "472c7b203169b96891e653566ef163846b8117a8b0ccadb4e8e05f6e2b232ac3"
+    },
+    {
+      "name": "operators/pore_volume",
+      "path": "arrays/operators__pore_volume.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "cafd1db5d3ef4fd8b473089ac56cd48d95e464eaae51d4cfc8360d8997355e4e"
+    },
+    {
+      "name": "state0/pressure",
+      "path": "arrays/state0__pressure.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "5812233b91074d451896d538a98471b4e4375fb8d6e305012961d0da86bf8f46"
+    },
+    {
+      "name": "state0/saturation_WOG",
+      "path": "arrays/state0__saturation_WOG.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        3
+      ],
+      "order": "F",
+      "nbytes": 7200,
+      "sha256": "76c02c0ba0cb5ffd6eb9e5e5fc5951991e2c76980e521283d2c1952c587ec62a"
+    },
+    {
+      "name": "state0/rs",
+      "path": "arrays/state0__rs.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "10187b69e5e1b6f559ae202b44f4dab05d433bd892cb371ccd72b29241b915b7"
+    },
+    {
+      "name": "schedule/step_val_seconds",
+      "path": "arrays/schedule__step_val_seconds.bin",
+      "dtype": "<f8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "ccf7c5d66cd9022349e341d271f79d1906b6922a29db8d207c7d331e10b6d86d"
+    },
+    {
+      "name": "schedule/step_control_1based",
+      "path": "arrays/schedule__step_control_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "605390e5a369ee568b19ead1733af824c7c1d286d7d24b86283238fc44a99334"
+    },
+    {
+      "name": "schedule/step_control_0based",
+      "path": "arrays/schedule__step_control_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0"
+    },
+    {
+      "name": "schedule/well_cells_1based",
+      "path": "arrays/schedule__well_cells_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "8884b1f854bbb52f41235f91d2e9321e4023f08323239f9e938131aba55f4e51"
+    },
+    {
+      "name": "schedule/well_cells_0based",
+      "path": "arrays/schedule__well_cells_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "70e14f2288a6cda657a54b15ebbd2dde826582bf5a36cd9873f80ecec0808630"
+    },
+    {
+      "name": "schedule/well_cell_offsets_1based",
+      "path": "arrays/schedule__well_cell_offsets_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "e2e2033ae7e19d680599d4eb0a1359a2b48ec5baac75066c317fbf85159c54ef"
+    },
+    {
+      "name": "schedule/well_cell_offsets_0based",
+      "path": "arrays/schedule__well_cell_offsets_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "ab25350e3e65efebe24584461683ecda68725576e825e550038b90e7b1479946"
+    },
+    {
+      "name": "schedule/perforation_to_well_1based",
+      "path": "arrays/schedule__perforation_to_well_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "0c730b69905c5ef7a4ca5269f72365400bde2dd2c04eaf9bbb3d1c4a265a0131"
+    },
+    {
+      "name": "schedule/perforation_to_well_0based",
+      "path": "arrays/schedule__perforation_to_well_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "9d34149fbd1fe777eb238799054c8cbfbce372255f219f8740838def9bfd02db"
+    },
+    {
+      "name": "schedule/well_sign",
+      "path": "arrays/schedule__well_sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "schedule/well_status",
+      "path": "arrays/schedule__well_status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "schedule/well_control_value",
+      "path": "arrays/schedule__well_control_value.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "d86c7987e52fb579d1160885b18f852944b2fc17be67d1cbea44a09378543fae"
+    },
+    {
+      "name": "forward/step_01/pressure",
+      "path": "arrays/forward__step_01__pressure.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "ad6f1ddd18b7336484caf581ca0e6fc51e875f64b7a8224e697794cc198a9ac5"
+    },
+    {
+      "name": "forward/step_01/saturation_WOG",
+      "path": "arrays/forward__step_01__saturation_WOG.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        3
+      ],
+      "order": "F",
+      "nbytes": 7200,
+      "sha256": "a56f00bdf902cf4926fd47ce7035b070d87e04f24405c8d1634ae6d9eaecaac6"
+    },
+    {
+      "name": "forward/step_01/rs",
+      "path": "arrays/forward__step_01__rs.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "c262d015d4eeabbddc135d1ee440960b37ba2e206c3a2aa6c3e96ac11bfa8a44"
+    },
+    {
+      "name": "forward/step_01/rv",
+      "path": "arrays/forward__step_01__rv.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "name": "forward/step_01/well/qWs",
+      "path": "arrays/forward__step_01__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "a6177d7a9445cfb01e39dba33ac587456210b3a82d84c4d51de98cd722aeb991"
+    },
+    {
+      "name": "forward/step_01/well/qOs",
+      "path": "arrays/forward__step_01__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "cfdd97fbb887318d467ea480b5bfdc20fd74e30d4a7cdd85d7c0c25b55345bd1"
+    },
+    {
+      "name": "forward/step_01/well/qGs",
+      "path": "arrays/forward__step_01__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "1d15f7bcabbf3d19e13614b1948ebb1a1684d78dc4ebc770fb337e05f08c0ff5"
+    },
+    {
+      "name": "forward/step_01/well/bhp",
+      "path": "arrays/forward__step_01__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "63810cb9462553af625f88be588015a26ab760d70ce487ac7a83f24916d19dbc"
+    },
+    {
+      "name": "forward/step_01/well/sign",
+      "path": "arrays/forward__step_01__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "forward/step_01/well/status",
+      "path": "arrays/forward__step_01__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "observed/step_01/dt_seconds",
+      "path": "arrays/observed__step_01__dt_seconds.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "687faa659d464b12ead532987927b71ce58856478fa99cc30f72236d7e0de91c"
+    },
+    {
+      "name": "observed/step_01/well/qWs",
+      "path": "arrays/observed__step_01__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "e023c34131e8d10f5e0c66e88c937faff1f64966016dbc6944332fa773cb353c"
+    },
+    {
+      "name": "observed/step_01/well/qOs",
+      "path": "arrays/observed__step_01__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "e9a8db810717c492a2881ce0df4ed8c5b89be30b512915ea7da82326560a00a1"
+    },
+    {
+      "name": "observed/step_01/well/qGs",
+      "path": "arrays/observed__step_01__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "a5c85b8cd4fc449331f9f1f76864d367f6ae7b054e778a30c9421629a873bd0a"
+    },
+    {
+      "name": "observed/step_01/well/bhp",
+      "path": "arrays/observed__step_01__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "f03d1a2680f195ff973ae3b067df59db80a3579996858e6dd623aabf2b8f6ac5"
+    },
+    {
+      "name": "observed/step_01/well/sign",
+      "path": "arrays/observed__step_01__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "observed/step_01/well/status",
+      "path": "arrays/observed__step_01__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "forward/step_02/pressure",
+      "path": "arrays/forward__step_02__pressure.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "2b66d87c4f711732e9129731374739eadfa3a0de871ed81711a57372d4fed91c"
+    },
+    {
+      "name": "forward/step_02/saturation_WOG",
+      "path": "arrays/forward__step_02__saturation_WOG.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        3
+      ],
+      "order": "F",
+      "nbytes": 7200,
+      "sha256": "c9a9fb539bca07df228035da727b44898c17023ee00fc4ccfc4c0b3dca419fbe"
+    },
+    {
+      "name": "forward/step_02/rs",
+      "path": "arrays/forward__step_02__rs.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "e2845e32df043f1ee9986e11bfaab205762e946d9359825b2a95693ae28dfa42"
+    },
+    {
+      "name": "forward/step_02/rv",
+      "path": "arrays/forward__step_02__rv.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "name": "forward/step_02/well/qWs",
+      "path": "arrays/forward__step_02__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "f27d6f47c5d40e759711551893b41e27dd4cc0ecc06af589bd8227011239ca25"
+    },
+    {
+      "name": "forward/step_02/well/qOs",
+      "path": "arrays/forward__step_02__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "cfdd97fbb887318d467ea480b5bfdc20fd74e30d4a7cdd85d7c0c25b55345bd1"
+    },
+    {
+      "name": "forward/step_02/well/qGs",
+      "path": "arrays/forward__step_02__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "1d15f7bcabbf3d19e13614b1948ebb1a1684d78dc4ebc770fb337e05f08c0ff5"
+    },
+    {
+      "name": "forward/step_02/well/bhp",
+      "path": "arrays/forward__step_02__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "cd99258fffd343be3cc6b2bf9e579a23e99e772993f567189b0a0d7cf5683e8e"
+    },
+    {
+      "name": "forward/step_02/well/sign",
+      "path": "arrays/forward__step_02__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "forward/step_02/well/status",
+      "path": "arrays/forward__step_02__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "observed/step_02/dt_seconds",
+      "path": "arrays/observed__step_02__dt_seconds.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "2e5282d598279c4029bc006bf6934c313de7e27f377e9cc9b23fa05bf25fad7c"
+    },
+    {
+      "name": "observed/step_02/well/qWs",
+      "path": "arrays/observed__step_02__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "2dc75afddbb07a4b03e7d74f48e0acc5d87134345a673b7cdfb9e908cdb4cd92"
+    },
+    {
+      "name": "observed/step_02/well/qOs",
+      "path": "arrays/observed__step_02__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "bd7fdc6183164b7ac3aec051987d81f84bef8d151dac5511fc5b7f10bfedc995"
+    },
+    {
+      "name": "observed/step_02/well/qGs",
+      "path": "arrays/observed__step_02__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "d5c8a7d3ad2b670e8c56a686917510e679cb7cc9ba7248741c3f01c9703077b9"
+    },
+    {
+      "name": "observed/step_02/well/bhp",
+      "path": "arrays/observed__step_02__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "18bd6cd9d08766644cb42830efe285d4b26ab117b4f2d5ece5d25ac31c61e978"
+    },
+    {
+      "name": "observed/step_02/well/sign",
+      "path": "arrays/observed__step_02__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "observed/step_02/well/status",
+      "path": "arrays/observed__step_02__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "forward/step_03/pressure",
+      "path": "arrays/forward__step_03__pressure.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "fcc12e135ac306a40d112a4b021ae3b3a262c83a672051f55c0915944ff6191d"
+    },
+    {
+      "name": "forward/step_03/saturation_WOG",
+      "path": "arrays/forward__step_03__saturation_WOG.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        3
+      ],
+      "order": "F",
+      "nbytes": 7200,
+      "sha256": "b9c1e33b32a5a8ec34b1e557c18b16fec2f1787add1d1cf2619224af17db1896"
+    },
+    {
+      "name": "forward/step_03/rs",
+      "path": "arrays/forward__step_03__rs.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "44162909d22aaed18a183f939731b9d6e2fea87081f38d3d0c33a47b33da67b5"
+    },
+    {
+      "name": "forward/step_03/rv",
+      "path": "arrays/forward__step_03__rv.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "name": "forward/step_03/well/qWs",
+      "path": "arrays/forward__step_03__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "c001426ef5aaca332a195e1d575ff256aa5935665e0870d08eb47017f4d5970d"
+    },
+    {
+      "name": "forward/step_03/well/qOs",
+      "path": "arrays/forward__step_03__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "cfdd97fbb887318d467ea480b5bfdc20fd74e30d4a7cdd85d7c0c25b55345bd1"
+    },
+    {
+      "name": "forward/step_03/well/qGs",
+      "path": "arrays/forward__step_03__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "9cad08188e242faf3209dec2f5a8ccdd7a14938a3d36e2d41338ef808618d929"
+    },
+    {
+      "name": "forward/step_03/well/bhp",
+      "path": "arrays/forward__step_03__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "8fd3bdd6360d3c686e308eb22e2395ad2a6eb546bca9614486ccc1c115a63b60"
+    },
+    {
+      "name": "forward/step_03/well/sign",
+      "path": "arrays/forward__step_03__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "forward/step_03/well/status",
+      "path": "arrays/forward__step_03__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "observed/step_03/dt_seconds",
+      "path": "arrays/observed__step_03__dt_seconds.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "2e5282d598279c4029bc006bf6934c313de7e27f377e9cc9b23fa05bf25fad7c"
+    },
+    {
+      "name": "observed/step_03/well/qWs",
+      "path": "arrays/observed__step_03__well__qWs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "2ef61e796dfac5bbd6af3714f882219d62bd19662d0215ca3fee7f6c5384c986"
+    },
+    {
+      "name": "observed/step_03/well/qOs",
+      "path": "arrays/observed__step_03__well__qOs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "ef90178a8b0df33bd7728f3360293e5d42890621437b5d0b7edd10021f782c08"
+    },
+    {
+      "name": "observed/step_03/well/qGs",
+      "path": "arrays/observed__step_03__well__qGs.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "f26413c44e048d47f6760215387e9f1dfd1b7399108cccf54d02ba9c0f4d422d"
+    },
+    {
+      "name": "observed/step_03/well/bhp",
+      "path": "arrays/observed__step_03__well__bhp.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "98c05aed5a33b97dea6590f882944ed89f3d51cfd84ec5ead78f2bb6c3d8a4eb"
+    },
+    {
+      "name": "observed/step_03/well/sign",
+      "path": "arrays/observed__step_03__well__sign.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 16,
+      "sha256": "b74fce6cd8bcafd014a1ce8c6585beac59c5f4098a6d499f5d1d42d464146633"
+    },
+    {
+      "name": "observed/step_03/well/status",
+      "path": "arrays/observed__step_03__well__status.bin",
+      "dtype": "|u1",
+      "shape": [
+        2,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2,
+      "sha256": "9dcf97a184f32623d11a73124ceb99a5709b083721e878a16d78f596718ba7b2"
+    },
+    {
+      "name": "objective/alpha",
+      "path": "arrays/objective__alpha.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        7
+      ],
+      "order": "F",
+      "nbytes": 56,
+      "sha256": "b2fe8c0415c6348984507d0173221d9f66e2a52f7d29e9fc27baebd7817222f8"
+    },
+    {
+      "name": "objective/beta",
+      "path": "arrays/objective__beta.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        7
+      ],
+      "order": "F",
+      "nbytes": 56,
+      "sha256": "fcd3d95df8893180b4dd980ced44a3cc0c8a7cb4e329111f70b5d7bb065d8740"
+    },
+    {
+      "name": "objective/omega",
+      "path": "arrays/objective__omega.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        7
+      ],
+      "order": "F",
+      "nbytes": 112,
+      "sha256": "2536bd333940032713b1c5e052b9f258da9e52210349652ccf04a167065d5f38"
+    },
+    {
+      "name": "objective/per_step_positive_misfit",
+      "path": "arrays/objective__per_step_positive_misfit.bin",
+      "dtype": "<f8",
+      "shape": [
+        3,
+        1
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "b62c6200a0206ed7bec2ec04204011ad8eb4892ee0f1a197685643961c6701c1"
+    },
+    {
+      "name": "objective/total_positive_misfit",
+      "path": "arrays/objective__total_positive_misfit.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "a3b5e2a064052100a9f615cb57c55a9e07f58de2aed0599e8a1f94cc29b3d598"
+    },
+    {
+      "name": "objective/evaluator_return_value",
+      "path": "arrays/objective__evaluator_return_value.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        1
+      ],
+      "order": "F",
+      "nbytes": 8,
+      "sha256": "1606074fe9ca191136f0c80c148fe077889d052aef426f38e2882f641a64f2b6"
+    },
+    {
+      "name": "config/01_porv_relative_limits",
+      "path": "arrays/config__01_porv_relative_limits.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        2
+      ],
+      "order": "F",
+      "nbytes": 4800,
+      "sha256": "6756469d085911c71d03138b4576983c93a3e2811274e281320925cbc1a66ece"
+    },
+    {
+      "name": "config/01_porv_subset_1based",
+      "path": "arrays/config__01_porv_subset_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "7e082dd82439dac6bd1849697b92211390c89fbcd74d92dcedf30f4ca5b42e1f"
+    },
+    {
+      "name": "config/01_porv_subset_0based",
+      "path": "arrays/config__01_porv_subset_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "98e038d3a30a991777ce2f66d2e9b9f377e44b6444635d2b5dd70d38ae78f241"
+    },
+    {
+      "name": "config/02_permx_relative_limits",
+      "path": "arrays/config__02_permx_relative_limits.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        2
+      ],
+      "order": "F",
+      "nbytes": 4800,
+      "sha256": "3c8fa824d88ef24be5fdae76237cc3dc961deb079378d692b232d854ddda19b6"
+    },
+    {
+      "name": "config/02_permx_subset_1based",
+      "path": "arrays/config__02_permx_subset_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "7e082dd82439dac6bd1849697b92211390c89fbcd74d92dcedf30f4ca5b42e1f"
+    },
+    {
+      "name": "config/02_permx_subset_0based",
+      "path": "arrays/config__02_permx_subset_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "98e038d3a30a991777ce2f66d2e9b9f377e44b6444635d2b5dd70d38ae78f241"
+    },
+    {
+      "name": "config/03_permy_relative_limits",
+      "path": "arrays/config__03_permy_relative_limits.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        2
+      ],
+      "order": "F",
+      "nbytes": 4800,
+      "sha256": "3c8fa824d88ef24be5fdae76237cc3dc961deb079378d692b232d854ddda19b6"
+    },
+    {
+      "name": "config/03_permy_subset_1based",
+      "path": "arrays/config__03_permy_subset_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "7e082dd82439dac6bd1849697b92211390c89fbcd74d92dcedf30f4ca5b42e1f"
+    },
+    {
+      "name": "config/03_permy_subset_0based",
+      "path": "arrays/config__03_permy_subset_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "98e038d3a30a991777ce2f66d2e9b9f377e44b6444635d2b5dd70d38ae78f241"
+    },
+    {
+      "name": "config/04_permz_relative_limits",
+      "path": "arrays/config__04_permz_relative_limits.bin",
+      "dtype": "<f8",
+      "shape": [
+        300,
+        2
+      ],
+      "order": "F",
+      "nbytes": 4800,
+      "sha256": "3c8fa824d88ef24be5fdae76237cc3dc961deb079378d692b232d854ddda19b6"
+    },
+    {
+      "name": "config/04_permz_subset_1based",
+      "path": "arrays/config__04_permz_subset_1based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "7e082dd82439dac6bd1849697b92211390c89fbcd74d92dcedf30f4ca5b42e1f"
+    },
+    {
+      "name": "config/04_permz_subset_0based",
+      "path": "arrays/config__04_permz_subset_0based.bin",
+      "dtype": "<i8",
+      "shape": [
+        300,
+        1
+      ],
+      "order": "F",
+      "nbytes": 2400,
+      "sha256": "98e038d3a30a991777ce2f66d2e9b9f377e44b6444635d2b5dd70d38ae78f241"
+    },
+    {
+      "name": "parameters/pvec_unit_box",
+      "path": "arrays/parameters__pvec_unit_box.bin",
+      "dtype": "<f8",
+      "shape": [
+        1200,
+        1
+      ],
+      "order": "F",
+      "nbytes": 9600,
+      "sha256": "f45cd8e17728a4bfaf528690cb1ac68a2a22760921de3f7b55af0eb25d85f8f2"
+    },
+    {
+      "name": "parameters/nparam",
+      "path": "arrays/parameters__nparam.bin",
+      "dtype": "<i8",
+      "shape": [
+        4,
+        1
+      ],
+      "order": "F",
+      "nbytes": 32,
+      "sha256": "744f5a279eab390e31f59f22ffc0b6e8e6b3e5430f52c509824317eb527afe6a"
+    },
+    {
+      "name": "parameters/slices_1based_inclusive",
+      "path": "arrays/parameters__slices_1based_inclusive.bin",
+      "dtype": "<i8",
+      "shape": [
+        4,
+        2
+      ],
+      "order": "F",
+      "nbytes": 64,
+      "sha256": "72986c0577c4efe4e06e781be3a7ee46d4c978f558190b54c8bb81363998188b"
+    },
+    {
+      "name": "parameters/slices_0based_half_open",
+      "path": "arrays/parameters__slices_0based_half_open.bin",
+      "dtype": "<i8",
+      "shape": [
+        4,
+        2
+      ],
+      "order": "F",
+      "nbytes": 64,
+      "sha256": "e735c859e21d0572e26d7f4a900b2b9fa7a599ae8c697b5cb166346af5fa0764"
+    },
+    {
+      "name": "history/val",
+      "path": "arrays/history__val.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "f49816ca57984e83aba489e39f68a0ed6b00b1aec43c6096a81c5f816e639792"
+    },
+    {
+      "name": "history/u",
+      "path": "arrays/history__u.bin",
+      "dtype": "<f8",
+      "shape": [
+        2,
+        3
+      ],
+      "order": "F",
+      "nbytes": 48,
+      "sha256": "d0335190ed137e61a1597c9e9a95dcef9f32bb84e31a8f91c293b13a357e9a88"
+    },
+    {
+      "name": "history/pg",
+      "path": "arrays/history__pg.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "4d3c5fc49b1214ec6ea94efd4eae897839a6ff9a687566f96736e3ca47596edd"
+    },
+    {
+      "name": "history/alpha",
+      "path": "arrays/history__alpha.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "5cc24e5022c21d54809f60c43ed99e1187aa1a3a26b323e9321592eb960fa2f4"
+    },
+    {
+      "name": "history/lsit",
+      "path": "arrays/history__lsit.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "5cc24e5022c21d54809f60c43ed99e1187aa1a3a26b323e9321592eb960fa2f4"
+    },
+    {
+      "name": "history/lsfl",
+      "path": "arrays/history__lsfl.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "5cc24e5022c21d54809f60c43ed99e1187aa1a3a26b323e9321592eb960fa2f4"
+    },
+    {
+      "name": "history/rho",
+      "path": "arrays/history__rho.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "64a4be313b13706d7963b9bbb57214ac88ad727ea31e45e338c17019a2f38868"
+    },
+    {
+      "name": "history/r",
+      "path": "arrays/history__r.bin",
+      "dtype": "<f8",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 24,
+      "sha256": "c985466c8aee71254392210c63703adfb352c082db485f3c6fd03ce4a623dcfb"
+    },
+    {
+      "name": "history/hess_present",
+      "path": "arrays/history__hess_present.bin",
+      "dtype": "|u1",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+    },
+    {
+      "name": "history/params_present",
+      "path": "arrays/history__params_present.bin",
+      "dtype": "|u1",
+      "shape": [
+        1,
+        3
+      ],
+      "order": "F",
+      "nbytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+    }
+  ]
+}

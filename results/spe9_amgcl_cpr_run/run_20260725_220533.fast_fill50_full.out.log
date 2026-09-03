@@ -1,0 +1,708 @@
+--- SPE9 init ---
+cells=9000 steps=90 gas=True time=5.1s
+--- SPE9 simulate ---
+   Newton pre: residual=3.98045, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.167e+07, |dsW|=3.881e-01, |dx|=3.564e+02, |dqW|=7.389e-03, |dqO|=5.201e-05, |dqG|=1.762e+00, |dBHP|=5.189e+07
+   Newton 1: residual=18.3277, converged=False, worst=CNV_O, linear=2.54s, liniter=3, linres=8.671e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.235e+06, |dsW|=2.034e-01, |dx|=1.425e+02, |dqW|=1.968e-03, |dqO|=2.086e-03, |dqG|=9.549e-01, |dBHP|=3.223e+07
+   Newton 2: residual=0.747279, converged=False, worst=CNV_G, linear=2.95s, liniter=3, linres=5.134e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.707e+06, |dsW|=1.601e-01, |dx|=1.692e+02, |dqW|=1.544e-05, |dqO|=6.899e-05, |dqG|=1.004e+00, |dBHP|=6.442e+06
+   Newton 3: residual=1.25269, converged=False, worst=CNV_O, linear=3.33s, liniter=2, linres=5.681e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.667e+06, |dsW|=4.678e-02, |dx|=5.335e+01, |dqW|=1.990e-05, |dqO|=1.636e-04, |dqG|=6.444e-02, |dBHP|=2.164e+05
+   Newton 4: residual=0.213274, converged=False, worst=CNV_O, linear=3.10s, liniter=2, linres=3.945e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.011e+06, |dsW|=4.265e-03, |dx|=3.273e+01, |dqW|=2.045e-05, |dqO|=6.667e-04, |dqG|=1.770e-01, |dBHP|=1.113e+06
+   Newton 5: residual=0.293786, converged=False, worst=CNV_G, linear=3.23s, liniter=2, linres=1.604e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.988e+05, |dsW|=2.325e-03, |dx|=7.759e+00, |dqW|=5.891e-06, |dqO|=1.919e-04, |dqG|=7.220e-02, |dBHP|=6.197e+06
+   Newton 6: residual=0.29414, converged=False, worst=CNV_O, linear=3.34s, liniter=2, linres=8.389e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.705e+05, |dsW|=1.564e-03, |dx|=2.618e+00, |dqW|=1.518e-06, |dqO|=3.751e-06, |dqG|=3.640e-03, |dBHP|=7.060e+06
+   Newton 7: residual=0.0663307, converged=False, worst=CNV_O, linear=3.60s, liniter=2, linres=1.196e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.319e+05, |dsW|=8.736e-04, |dx|=6.517e-01, |dqW|=4.384e-06, |dqO|=3.061e-04, |dqG|=7.193e-02, |dBHP|=6.927e+06
+   Newton 8: residual=0.0251218, converged=False, worst=CNV_O, linear=3.83s, liniter=2, linres=4.131e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.110e+04, |dsW|=5.327e-04, |dx|=1.017e+00, |dqW|=5.366e-07, |dqO|=4.120e-05, |dqG|=1.061e-02, |dBHP|=6.036e+03
+   Newton 9: residual=0.000127321, converged=True, worst=CNV_O, linear=3.66s, liniter=2, linres=8.440e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=9 final
+   Newton pre: residual=0.0648226, converged=False, worst=CNV_O
+      update: relax=1, |dp|=9.489e+05, |dsW|=3.890e-02, |dx|=1.024e+03, |dqW|=3.686e-04, |dqO|=8.829e-04, |dqG|=2.152e-01, |dBHP|=2.244e+06
+   Newton 1: residual=0.140239, converged=False, worst=CNV_G, linear=3.76s, liniter=2, linres=1.075e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.506e+05, |dsW|=7.455e-03, |dx|=5.497e+02, |dqW|=2.195e-06, |dqO|=2.302e-04, |dqG|=6.551e-02, |dBHP|=7.136e+05
+   Newton 2: residual=0.0117721, converged=False, worst=CNV_G, linear=3.33s, liniter=2, linres=7.813e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.755e+05, |dsW|=2.913e-03, |dx|=1.773e+01, |dqW|=4.508e-06, |dqO|=2.729e-05, |dqG|=1.012e-02, |dBHP|=4.818e+05
+   Newton 3: residual=0.0318004, converged=False, worst=CNV_G, linear=2.97s, liniter=2, linres=3.717e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.823e+04, |dsW|=5.578e-04, |dx|=4.922e+01, |dqW|=5.482e-07, |dqO|=7.980e-07, |dqG|=4.044e-03, |dBHP|=2.354e+05
+   Newton 4: residual=0.000852437, converged=True, worst=CNV_G, linear=2.83s, liniter=2, linres=3.622e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.0411839, converged=False, worst=CNV_O
+      update: relax=1, |dp|=7.711e+05, |dsW|=2.680e-02, |dx|=1.379e+03, |dqW|=6.900e-05, |dqO|=2.333e-04, |dqG|=5.681e-02, |dBHP|=3.024e+06
+   Newton 1: residual=0.144462, converged=False, worst=CNV_G, linear=3.03s, liniter=2, linres=1.075e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.827e+05, |dsW|=4.358e-03, |dx|=1.130e+02, |dqW|=1.967e-05, |dqO|=5.011e-05, |dqG|=3.576e-02, |dBHP|=1.327e+06
+   Newton 2: residual=0.021736, converged=False, worst=CNV_O, linear=3.37s, liniter=2, linres=1.297e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.927e+05, |dsW|=8.047e-04, |dx|=3.127e+01, |dqW|=2.296e-06, |dqO|=8.171e-06, |dqG|=1.631e-03, |dBHP|=2.986e+05
+   Newton 3: residual=0.00123863, converged=False, worst=CNV_O, linear=3.18s, liniter=2, linres=2.817e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=9.814e+03, |dsW|=2.304e-04, |dx|=3.061e+00, |dqW|=1.377e-07, |dqO|=3.254e-07, |dqG|=8.135e-05, |dBHP|=7.613e+03
+   Newton 4: residual=2.92428e-06, converged=True, worst=CNV_O, linear=3.14s, liniter=2, linres=2.098e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.0273087, converged=False, worst=CNV_O
+      update: relax=1, |dp|=5.857e+05, |dsW|=1.914e-02, |dx|=2.945e+01, |dqW|=7.585e-05, |dqO|=2.188e-04, |dqG|=5.696e-02, |dBHP|=5.717e+06
+   Newton 1: residual=0.258517, converged=False, worst=CNV_G, linear=3.22s, liniter=2, linres=7.852e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.080e+05, |dsW|=6.571e-03, |dx|=1.893e+01, |dqW|=2.339e-05, |dqO|=1.818e-04, |dqG|=3.286e-02, |dBHP|=1.166e+06
+   Newton 2: residual=0.0978181, converged=False, worst=CNV_O, linear=3.30s, liniter=2, linres=2.454e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.854e+05, |dsW|=2.348e-03, |dx|=1.923e+01, |dqW|=5.854e-06, |dqO|=6.283e-04, |dqG|=1.736e-01, |dBHP|=7.067e+04
+   Newton 3: residual=0.00275122, converged=False, worst=CNV_O, linear=3.29s, liniter=3, linres=3.169e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.770e+05, |dsW|=1.762e-04, |dx|=1.278e+01, |dqW|=2.924e-06, |dqO|=2.450e-06, |dqG|=1.199e-01, |dBHP|=2.436e+06
+   Newton 4: residual=0.00102713, converged=False, worst=CNV_G, linear=2.98s, liniter=2, linres=2.059e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.920e+03, |dsW|=1.685e-05, |dx|=3.482e+01, |dqW|=1.223e-07, |dqO|=2.467e-06, |dqG|=3.991e-04, |dBHP|=1.721e+04
+   Newton 5: residual=5.26143e-05, converged=True, worst=CNV_O, linear=3.11s, liniter=2, linres=5.602e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=5 final
+   Newton pre: residual=0.0192944, converged=False, worst=CNV_O
+      update: relax=1, |dp|=5.835e+05, |dsW|=1.713e-02, |dx|=1.334e+02, |dqW|=7.825e-05, |dqO|=1.577e-04, |dqG|=4.148e-02, |dBHP|=7.548e+05
+   Newton 1: residual=0.931083, converged=False, worst=CNV_G, linear=2.95s, liniter=2, linres=4.133e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.075e+04, |dsW|=2.999e-03, |dx|=4.529e+01, |dqW|=8.902e-06, |dqO|=1.116e-05, |dqG|=5.243e-02, |dBHP|=2.223e+05
+   Newton 2: residual=0.147531, converged=False, worst=CNV_G, linear=2.92s, liniter=2, linres=1.459e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.642e+05, |dsW|=9.062e-04, |dx|=1.574e+01, |dqW|=2.768e-06, |dqO|=2.617e-07, |dqG|=1.354e-03, |dBHP|=2.332e+04
+   Newton 3: residual=0.00044763, converged=False, worst=CNV_G, linear=3.08s, liniter=3, linres=2.956e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.147e+03, |dsW|=1.001e-04, |dx|=1.171e+01, |dqW|=2.410e-08, |dqO|=2.319e-08, |dqG|=9.385e-06, |dBHP|=1.675e+02
+   Newton 4: residual=1.25043e-06, converged=True, worst=CNV_O, linear=3.19s, liniter=2, linres=2.000e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.0518039, converged=False, worst=CNV_O
+      update: relax=1, |dp|=7.350e+05, |dsW|=2.171e-02, |dx|=1.057e+02, |dqW|=5.390e-05, |dqO|=1.425e-04, |dqG|=7.404e-02, |dBHP|=8.404e+05
+   Newton 1: residual=0.0655409, converged=False, worst=CNV_G, linear=3.25s, liniter=2, linres=4.779e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=9.931e+04, |dsW|=9.914e-03, |dx|=7.453e+01, |dqW|=1.038e-05, |dqO|=1.027e-06, |dqG|=4.038e-02, |dBHP|=1.085e+05
+   Newton 2: residual=0.0105095, converged=False, worst=CNV_O, linear=3.02s, liniter=2, linres=7.558e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.142e+05, |dsW|=1.141e-03, |dx|=2.946e+01, |dqW|=8.933e-07, |dqO|=6.301e-07, |dqG|=3.519e-03, |dBHP|=2.357e+04
+   Newton 3: residual=0.000262977, converged=False, worst=CNV_G, linear=3.21s, liniter=2, linres=4.707e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.620e+03, |dsW|=8.243e-05, |dx|=2.341e+00, |dqW|=1.898e-08, |dqO|=4.932e-08, |dqG|=2.015e-05, |dBHP|=3.304e+02
+   Newton 4: residual=7.35181e-07, converged=True, worst=CNV_G, linear=2.97s, liniter=2, linres=2.910e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.306697, converged=False, worst=CNV_O
+      update: relax=1, |dp|=5.977e+05, |dsW|=1.967e-02, |dx|=1.528e+02, |dqW|=8.233e-05, |dqO|=1.294e-04, |dqG|=9.006e-02, |dBHP|=9.048e+05
+   Newton 1: residual=0.0682571, converged=False, worst=CNV_G, linear=3.01s, liniter=2, linres=2.560e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.790e+05, |dsW|=3.257e-03, |dx|=4.402e+03, |dqW|=1.341e-05, |dqO|=6.295e-05, |dqG|=4.371e-02, |dBHP|=1.528e+05
+   Newton 2: residual=0.0266989, converged=False, worst=CNV_O, linear=3.59s, liniter=2, linres=8.373e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.977e+04, |dsW|=3.351e-03, |dx|=1.958e+01, |dqW|=7.262e-06, |dqO|=3.831e-07, |dqG|=1.492e-03, |dBHP|=5.009e+04
+   Newton 3: residual=0.000461634, converged=False, worst=CNV_O, linear=3.34s, liniter=3, linres=5.311e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.206e+03, |dsW|=2.997e-04, |dx|=2.048e+01, |dqW|=2.458e-07, |dqO|=4.968e-08, |dqG|=2.224e-05, |dBHP|=3.135e+02
+   Newton 4: residual=4.43476e-06, converged=True, worst=CNV_G, linear=3.01s, liniter=2, linres=1.402e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.48317, converged=False, worst=CNV_O
+      update: relax=1, |dp|=6.532e+05, |dsW|=3.138e-02, |dx|=2.759e+01, |dqW|=1.037e-04, |dqO|=7.449e-05, |dqG|=1.147e-01, |dBHP|=9.922e+05
+   Newton 1: residual=0.10388, converged=False, worst=CNV_G, linear=3.08s, liniter=3, linres=5.817e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.680e+05, |dsW|=1.026e-03, |dx|=2.243e+01, |dqW|=1.803e-05, |dqO|=1.318e-04, |dqG|=2.337e-02, |dBHP|=7.366e+05
+   Newton 2: residual=0.00665966, converged=False, worst=CNV_G, linear=3.55s, liniter=2, linres=1.816e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.966e+04, |dsW|=7.679e-04, |dx|=9.698e+00, |dqW|=7.403e-07, |dqO|=1.132e-06, |dqG|=5.873e-04, |dBHP|=3.209e+03
+   Newton 3: residual=0.000367324, converged=False, worst=CNV_O, linear=3.11s, liniter=2, linres=4.276e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.704e+03, |dsW|=1.133e-04, |dx|=6.803e+00, |dqW|=3.225e-08, |dqO|=3.571e-08, |dqG|=2.055e-05, |dBHP|=1.080e+02
+   Newton 4: residual=3.7615e-07, converged=True, worst=CNV_G, linear=3.15s, liniter=2, linres=4.331e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.483762, converged=False, worst=CNV_G
+      update: relax=1, |dp|=8.875e+05, |dsW|=3.612e-02, |dx|=1.030e+02, |dqW|=1.339e-04, |dqO|=1.618e-04, |dqG|=1.342e-01, |dBHP|=1.184e+06
+   Newton 1: residual=0.0936751, converged=False, worst=CNV_O, linear=3.20s, liniter=2, linres=8.256e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.383e+05, |dsW|=4.958e-03, |dx|=4.162e+01, |dqW|=3.715e-06, |dqO|=1.103e-05, |dqG|=2.935e-02, |dBHP|=2.679e+05
+   Newton 2: residual=0.00824484, converged=False, worst=CNV_G, linear=2.97s, liniter=2, linres=1.093e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.581e+04, |dsW|=7.490e-04, |dx|=9.388e+01, |dqW|=2.333e-07, |dqO|=1.148e-06, |dqG|=2.961e-03, |dBHP|=8.247e+03
+   Newton 3: residual=0.000192432, converged=False, worst=CNV_G, linear=3.09s, liniter=3, linres=5.334e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.776e+03, |dsW|=5.755e-05, |dx|=2.742e+02, |dqW|=3.140e-09, |dqO|=7.934e-09, |dqG|=1.582e-05, |dBHP|=6.724e+01
+   Newton 4: residual=0.000108003, converged=True, worst=CNV_O, linear=3.52s, liniter=2, linres=5.776e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.468981, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.055e+06, |dsW|=1.673e-02, |dx|=1.395e+03, |dqW|=1.324e-04, |dqO|=1.362e-04, |dqG|=1.482e-01, |dBHP|=1.499e+06
+   Newton 1: residual=0.0631705, converged=False, worst=CNV_G, linear=3.02s, liniter=2, linres=2.509e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.379e+05, |dsW|=5.767e-03, |dx|=8.093e+01, |dqW|=8.957e-06, |dqO|=5.592e-06, |dqG|=2.597e-02, |dBHP|=2.705e+05
+   Newton 2: residual=0.0321404, converged=False, worst=CNV_O, linear=2.90s, liniter=2, linres=2.253e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.096e+04, |dsW|=1.062e-03, |dx|=1.131e+01, |dqW|=2.242e-06, |dqO|=5.004e-07, |dqG|=2.521e-03, |dBHP|=1.373e+04
+   Newton 3: residual=0.00118481, converged=False, worst=CNV_O, linear=3.55s, liniter=3, linres=6.845e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.075e+03, |dsW|=6.234e-05, |dx|=3.516e+00, |dqW|=5.233e-10, |dqO|=1.332e-08, |dqG|=2.424e-04, |dBHP|=1.681e+02
+   Newton 4: residual=2.05745e-06, converged=True, worst=CNV_O, linear=3.27s, liniter=2, linres=8.040e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.426807, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.594e+05, |dsW|=3.431e-02, |dx|=1.845e+01, |dqW|=1.440e-04, |dqO|=1.147e-04, |dqG|=1.501e-01, |dBHP|=2.005e+06
+   Newton 1: residual=0.137037, converged=False, worst=CNV_G, linear=3.00s, liniter=3, linres=2.009e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.300e+04, |dsW|=2.470e-03, |dx|=1.597e+01, |dqW|=9.418e-06, |dqO|=3.980e-05, |dqG|=1.927e-02, |dBHP|=4.494e+05
+   Newton 2: residual=0.00712066, converged=False, worst=CNV_G, linear=3.27s, liniter=2, linres=2.826e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.803e+04, |dsW|=6.375e-04, |dx|=1.312e+01, |dqW|=2.020e-07, |dqO|=4.431e-07, |dqG|=7.304e-04, |dBHP|=3.962e+03
+   Newton 3: residual=0.000155649, converged=True, worst=CNV_G, linear=3.23s, liniter=2, linres=2.594e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.383282, converged=False, worst=CNV_G
+      update: relax=1, |dp|=7.016e+05, |dsW|=4.490e-02, |dx|=1.852e+03, |dqW|=1.321e-04, |dqO|=2.344e-04, |dqG|=1.413e-01, |dBHP|=2.195e+06
+   Newton 1: residual=0.195556, converged=False, worst=CNV_O, linear=3.01s, liniter=2, linres=2.507e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.248e+05, |dsW|=1.046e-03, |dx|=5.007e+00, |dqW|=3.387e-06, |dqO|=1.128e-05, |dqG|=1.903e-02, |dBHP|=1.620e+06
+   Newton 2: residual=0.0209028, converged=False, worst=CNV_O, linear=3.23s, liniter=2, linres=3.645e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.535e+04, |dsW|=4.545e-04, |dx|=1.235e+01, |dqW|=1.932e-07, |dqO|=1.640e-06, |dqG|=4.912e-04, |dBHP|=3.106e+04
+   Newton 3: residual=0.000713533, converged=True, worst=CNV_G, linear=3.40s, liniter=2, linres=8.332e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.335731, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.440e+06, |dsW|=4.927e-02, |dx|=2.983e+00, |dqW|=1.410e-04, |dqO|=1.995e-04, |dqG|=1.425e-01, |dBHP|=7.201e+06
+   Newton 1: residual=0.3888, converged=False, worst=CNV_G, linear=3.09s, liniter=2, linres=1.143e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.301e+06, |dsW|=1.808e-02, |dx|=2.161e+00, |dqW|=3.394e-05, |dqO|=9.442e-04, |dqG|=8.001e-01, |dBHP|=7.054e+06
+   Newton 2: residual=1.56376, converged=False, worst=CNV_G, linear=3.37s, liniter=2, linres=2.988e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.347e+06, |dsW|=7.070e-03, |dx|=1.078e+01, |dqW|=1.006e-04, |dqO|=2.999e-04, |dqG|=3.489e-01, |dBHP|=3.150e+04
+   Newton 3: residual=0.199328, converged=False, worst=CNV_G, linear=3.41s, liniter=2, linres=1.619e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.788e+05, |dsW|=8.250e-04, |dx|=4.832e+00, |dqW|=5.738e-06, |dqO|=4.593e-05, |dqG|=3.841e-02, |dBHP|=4.009e+03
+   Newton 4: residual=0.00558417, converged=False, worst=CNV_G, linear=3.26s, liniter=2, linres=6.182e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.303e+03, |dsW|=7.060e-06, |dx|=3.041e+00, |dqW|=7.764e-08, |dqO|=5.971e-07, |dqG|=7.561e-05, |dBHP|=3.975e+01
+   Newton 5: residual=1.78732e-06, converged=True, worst=CNV_G, linear=3.08s, liniter=2, linres=3.412e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=5 final
+   Newton pre: residual=0.310442, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.882e+05, |dsW|=2.620e-02, |dx|=5.290e+02, |dqW|=1.294e-04, |dqO|=1.787e-04, |dqG|=1.431e-01, |dBHP|=5.830e+05
+   Newton 1: residual=0.0750146, converged=False, worst=CNV_G, linear=3.27s, liniter=2, linres=2.758e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.111e+05, |dsW|=3.430e-03, |dx|=6.548e+00, |dqW|=2.775e-06, |dqO|=4.820e-06, |dqG|=3.618e-02, |dBHP|=2.521e+04
+   Newton 2: residual=0.00428106, converged=False, worst=CNV_G, linear=3.57s, liniter=2, linres=3.099e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.504e+04, |dsW|=6.037e-04, |dx|=5.671e+00, |dqW|=1.891e-07, |dqO|=1.319e-06, |dqG|=7.542e-04, |dBHP|=2.982e+02
+   Newton 3: residual=0.00013473, converged=True, worst=CNV_G, linear=3.56s, liniter=2, linres=1.565e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.291046, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.804e+05, |dsW|=2.964e-02, |dx|=7.460e+01, |dqW|=1.411e-04, |dqO|=1.542e-04, |dqG|=1.411e-01, |dBHP|=6.318e+05
+   Newton 1: residual=0.119901, converged=False, worst=CNV_G, linear=3.10s, liniter=2, linres=7.696e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.483e+04, |dsW|=6.362e-03, |dx|=2.239e+01, |dqW|=5.729e-06, |dqO|=5.067e-05, |dqG|=3.285e-02, |dBHP|=3.924e+04
+   Newton 2: residual=0.0127837, converged=False, worst=CNV_O, linear=3.08s, liniter=2, linres=1.284e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.749e+04, |dsW|=5.869e-04, |dx|=6.615e+00, |dqW|=1.195e-07, |dqO|=2.309e-07, |dqG|=2.562e-03, |dBHP|=1.544e+04
+   Newton 3: residual=0.00395077, converged=False, worst=CNV_G, linear=2.98s, liniter=2, linres=2.878e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.830e+03, |dsW|=9.883e-05, |dx|=3.456e+00, |dqW|=8.752e-09, |dqO|=6.063e-08, |dqG|=2.422e-04, |dBHP|=1.103e+03
+   Newton 4: residual=9.34033e-06, converged=True, worst=CNV_G, linear=3.44s, liniter=2, linres=2.039e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.273884, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.790e+05, |dsW|=1.373e-02, |dx|=2.339e+02, |dqW|=1.538e-04, |dqO|=1.123e-04, |dqG|=1.344e-01, |dBHP|=6.334e+05
+   Newton 1: residual=0.206997, converged=False, worst=CNV_G, linear=3.13s, liniter=2, linres=1.401e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.495e+05, |dsW|=5.985e-03, |dx|=4.440e+01, |dqW|=2.284e-06, |dqO|=2.899e-06, |dqG|=2.821e-02, |dBHP|=1.025e+05
+   Newton 2: residual=0.00569336, converged=False, worst=CNV_G, linear=3.87s, liniter=2, linres=4.772e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.268e+04, |dsW|=4.875e-04, |dx|=8.528e+01, |dqW|=3.218e-07, |dqO|=2.419e-07, |dqG|=1.062e-03, |dBHP|=5.077e+02
+   Newton 3: residual=0.000184873, converged=True, worst=CNV_O, linear=2.84s, liniter=2, linres=6.831e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.255251, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.153e+05, |dsW|=1.979e-02, |dx|=2.448e+01, |dqW|=1.535e-04, |dqO|=1.070e-04, |dqG|=1.273e-01, |dBHP|=5.606e+05
+   Newton 1: residual=0.071651, converged=False, worst=CNV_G, linear=3.34s, liniter=2, linres=7.780e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.099e+04, |dsW|=6.944e-04, |dx|=2.102e+01, |dqW|=1.567e-06, |dqO|=6.043e-06, |dqG|=1.065e-02, |dBHP|=1.096e+05
+   Newton 2: residual=0.00294642, converged=False, worst=CNV_G, linear=2.83s, liniter=2, linres=2.231e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.592e+04, |dsW|=5.531e-04, |dx|=2.983e+00, |dqW|=1.464e-07, |dqO|=1.668e-07, |dqG|=9.887e-04, |dBHP|=1.033e+03
+   Newton 3: residual=0.000165655, converged=True, worst=CNV_O, linear=3.23s, liniter=3, linres=6.740e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.248555, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.099e+05, |dsW|=2.543e-02, |dx|=1.824e+01, |dqW|=1.564e-04, |dqO|=9.773e-05, |dqG|=1.198e-01, |dBHP|=7.123e+05
+   Newton 1: residual=0.148197, converged=False, worst=CNV_G, linear=3.11s, liniter=3, linres=1.908e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.413e+05, |dsW|=2.485e-03, |dx|=1.643e+01, |dqW|=1.931e-06, |dqO|=8.683e-07, |dqG|=1.302e-02, |dBHP|=7.517e+04
+   Newton 2: residual=0.00190294, converged=False, worst=CNV_G, linear=2.99s, liniter=2, linres=1.477e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.789e+04, |dsW|=4.040e-04, |dx|=4.005e+00, |dqW|=1.014e-07, |dqO|=7.738e-08, |dqG|=1.568e-04, |dBHP|=4.696e+02
+   Newton 3: residual=7.15156e-05, converged=True, worst=CNV_G, linear=3.23s, liniter=2, linres=1.837e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.226899, converged=False, worst=CNV_G
+      update: relax=1, |dp|=6.793e+05, |dsW|=2.748e-02, |dx|=1.985e+01, |dqW|=1.556e-04, |dqO|=9.760e-05, |dqG|=1.279e-01, |dBHP|=8.577e+05
+   Newton 1: residual=0.0335635, converged=False, worst=CNV_G, linear=3.24s, liniter=2, linres=3.969e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.423e+04, |dsW|=1.168e-03, |dx|=1.983e+00, |dqW|=2.139e-06, |dqO|=3.128e-05, |dqG|=1.798e-02, |dBHP|=1.025e+05
+   Newton 2: residual=0.0011967, converged=False, worst=CNV_G, linear=2.89s, liniter=2, linres=1.865e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.627e+04, |dsW|=4.687e-04, |dx|=9.304e+00, |dqW|=1.866e-07, |dqO|=1.024e-07, |dqG|=2.613e-04, |dBHP|=9.221e+02
+   Newton 3: residual=0.000103352, converged=True, worst=CNV_O, linear=3.22s, liniter=2, linres=1.058e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.207493, converged=False, worst=CNV_G
+      update: relax=1, |dp|=8.521e+05, |dsW|=2.623e-02, |dx|=4.088e+00, |dqW|=1.551e-04, |dqO|=9.088e-05, |dqG|=1.241e-01, |dBHP|=1.057e+06
+   Newton 1: residual=0.125457, converged=False, worst=CNV_G, linear=3.05s, liniter=3, linres=2.248e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.146e+05, |dsW|=2.303e-03, |dx|=2.723e+00, |dqW|=2.487e-06, |dqO|=9.983e-05, |dqG|=5.290e-02, |dBHP|=3.364e+05
+   Newton 2: residual=0.00215446, converged=False, worst=CNV_O, linear=3.22s, liniter=2, linres=1.188e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.054e+04, |dsW|=5.152e-04, |dx|=6.322e+00, |dqW|=2.489e-07, |dqO|=2.068e-07, |dqG|=2.183e-04, |dBHP|=3.504e+02
+   Newton 3: residual=9.03562e-05, converged=True, worst=CNV_G, linear=3.03s, liniter=2, linres=1.587e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.188764, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.233e+05, |dsW|=2.017e-02, |dx|=1.380e+00, |dqW|=1.636e-04, |dqO|=2.537e-04, |dqG|=1.243e-01, |dBHP|=1.263e+06
+   Newton 1: residual=0.0349203, converged=False, worst=CNV_O, linear=2.95s, liniter=2, linres=1.219e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.078e+05, |dsW|=6.668e-03, |dx|=1.516e+00, |dqW|=2.897e-06, |dqO|=1.326e-04, |dqG|=7.294e-02, |dBHP|=5.815e+05
+   Newton 2: residual=0.00758055, converged=False, worst=CNV_G, linear=3.02s, liniter=2, linres=1.526e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.837e+04, |dsW|=4.651e-04, |dx|=1.042e+00, |dqW|=1.849e-07, |dqO|=1.111e-06, |dqG|=1.118e-03, |dBHP|=2.094e+02
+   Newton 3: residual=9.38517e-05, converged=True, worst=CNV_O, linear=3.38s, liniter=2, linres=6.939e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.166933, converged=False, worst=CNV_G
+      update: relax=1, |dp|=5.173e+05, |dsW|=1.701e-02, |dx|=1.337e+00, |dqW|=1.676e-04, |dqO|=2.990e-04, |dqG|=1.345e-01, |dBHP|=8.845e+05
+   Newton 1: residual=0.0365379, converged=False, worst=CNV_G, linear=3.00s, liniter=2, linres=1.498e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.437e+05, |dsW|=1.743e-03, |dx|=3.700e+00, |dqW|=1.561e-06, |dqO|=1.218e-04, |dqG|=9.823e-02, |dBHP|=5.812e+05
+   Newton 2: residual=0.0011377, converged=False, worst=CNV_G, linear=2.88s, liniter=2, linres=5.749e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.294e+04, |dsW|=3.577e-04, |dx|=5.522e+01, |dqW|=9.970e-08, |dqO|=1.139e-06, |dqG|=2.472e-04, |dBHP|=1.528e+02
+   Newton 3: residual=8.78535e-05, converged=True, worst=CNV_G, linear=2.77s, liniter=2, linres=1.009e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.150597, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.851e+05, |dsW|=1.942e-02, |dx|=2.235e+01, |dqW|=1.648e-04, |dqO|=3.009e-04, |dqG|=1.241e-01, |dBHP|=5.870e+05
+   Newton 1: residual=0.0248044, converged=False, worst=CNV_G, linear=3.10s, liniter=3, linres=3.250e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.659e+04, |dsW|=1.762e-03, |dx|=2.422e+01, |dqW|=9.889e-07, |dqO|=6.011e-06, |dqG|=5.423e-03, |dBHP|=5.813e+03
+   Newton 2: residual=0.00109242, converged=False, worst=CNV_G, linear=3.29s, liniter=2, linres=3.253e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.897e+04, |dsW|=3.774e-04, |dx|=1.325e+00, |dqW|=2.357e-07, |dqO|=3.765e-08, |dqG|=5.248e-05, |dBHP|=1.375e+02
+   Newton 3: residual=5.64481e-05, converged=True, worst=CNV_G, linear=2.82s, liniter=2, linres=2.899e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.140426, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.737e+05, |dsW|=2.301e-02, |dx|=1.839e+00, |dqW|=1.660e-04, |dqO|=3.030e-04, |dqG|=1.216e-01, |dBHP|=5.828e+05
+   Newton 1: residual=0.14031, converged=False, worst=CNV_O, linear=2.95s, liniter=2, linres=1.653e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.126e+05, |dsW|=2.009e-03, |dx|=3.665e+00, |dqW|=2.082e-06, |dqO|=1.775e-04, |dqG|=1.253e-01, |dBHP|=4.615e+04
+   Newton 2: residual=0.091745, converged=False, worst=CNV_G, linear=3.36s, liniter=2, linres=2.536e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.334e+05, |dsW|=5.548e-04, |dx|=9.644e-01, |dqW|=1.087e-07, |dqO|=4.114e-05, |dqG|=4.057e-02, |dBHP|=4.942e+03
+   Newton 3: residual=0.000861056, converged=True, worst=CNV_G, linear=2.95s, liniter=2, linres=3.736e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.125025, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.650e+05, |dsW|=2.246e-02, |dx|=6.578e+00, |dqW|=1.582e-04, |dqO|=2.957e-04, |dqG|=1.259e-01, |dBHP|=5.814e+05
+   Newton 1: residual=0.0278136, converged=False, worst=CNV_G, linear=3.06s, liniter=2, linres=5.717e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.069e+04, |dsW|=2.029e-03, |dx|=5.812e+00, |dqW|=1.187e-06, |dqO|=2.078e-05, |dqG|=2.460e-02, |dBHP|=7.741e+04
+   Newton 2: residual=0.0010621, converged=False, worst=CNV_G, linear=2.78s, liniter=2, linres=9.582e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.502e+04, |dsW|=3.597e-04, |dx|=4.302e+00, |dqW|=8.708e-08, |dqO|=6.293e-08, |dqG|=4.417e-05, |dBHP|=1.545e+02
+   Newton 3: residual=9.10508e-05, converged=True, worst=CNV_G, linear=2.89s, liniter=2, linres=1.876e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.118144, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.472e+05, |dsW|=2.192e-02, |dx|=3.074e+00, |dqW|=1.445e-04, |dqO|=2.930e-04, |dqG|=1.392e-01, |dBHP|=4.610e+05
+   Newton 1: residual=0.0194812, converged=False, worst=CNV_G, linear=3.29s, liniter=3, linres=1.580e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.010e+05, |dsW|=1.049e-03, |dx|=1.914e+00, |dqW|=2.719e-06, |dqO|=1.586e-05, |dqG|=1.405e-02, |dBHP|=5.766e+03
+   Newton 2: residual=0.00107283, converged=False, worst=CNV_G, linear=3.42s, liniter=2, linres=5.965e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.400e+04, |dsW|=5.214e-04, |dx|=3.031e+00, |dqW|=2.576e-07, |dqO|=9.331e-08, |dqG|=9.710e-05, |dBHP|=7.555e+01
+   Newton 3: residual=8.76179e-05, converged=True, worst=CNV_W, linear=3.09s, liniter=2, linres=1.216e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.123356, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.235e+05, |dsW|=1.997e-02, |dx|=1.005e+01, |dqW|=1.379e-04, |dqO|=2.788e-04, |dqG|=1.569e-01, |dBHP|=4.314e+05
+   Newton 1: residual=0.0285759, converged=False, worst=CNV_G, linear=2.92s, liniter=3, linres=1.572e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.602e+05, |dsW|=1.490e-03, |dx|=9.892e+00, |dqW|=1.615e-05, |dqO|=1.218e-04, |dqG|=6.667e-02, |dBHP|=1.768e+05
+   Newton 2: residual=0.000926499, converged=False, worst=CNV_G, linear=3.14s, liniter=2, linres=2.294e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.367e+04, |dsW|=3.982e-04, |dx|=6.075e+00, |dqW|=1.314e-07, |dqO|=3.184e-07, |dqG|=1.486e-04, |dBHP|=1.256e+02
+   Newton 3: residual=4.1087e-05, converged=True, worst=CNV_G, linear=2.92s, liniter=2, linres=5.913e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.126451, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.634e+05, |dsW|=1.722e-02, |dx|=3.430e+00, |dqW|=1.307e-04, |dqO|=2.741e-04, |dqG|=1.625e-01, |dBHP|=4.156e+05
+   Newton 1: residual=0.0784124, converged=False, worst=CNV_G, linear=3.16s, liniter=2, linres=9.925e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.802e+05, |dsW|=4.112e-03, |dx|=4.074e+00, |dqW|=8.173e-06, |dqO|=1.160e-04, |dqG|=8.124e-02, |dBHP|=1.050e+04
+   Newton 2: residual=0.00548832, converged=False, worst=CNV_G, linear=3.03s, liniter=2, linres=8.919e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.525e+04, |dsW|=3.219e-04, |dx|=1.141e-01, |dqW|=9.776e-08, |dqO|=7.856e-07, |dqG|=9.414e-04, |dBHP|=1.853e+02
+   Newton 3: residual=3.16567e-05, converged=True, worst=CNV_G, linear=2.93s, liniter=2, linres=1.707e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.129009, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.960e+05, |dsW|=1.780e-02, |dx|=6.645e+00, |dqW|=1.219e-04, |dqO|=1.148e-04, |dqG|=9.566e-02, |dBHP|=4.032e+05
+   Newton 1: residual=0.0166687, converged=False, worst=CNV_G, linear=3.28s, liniter=2, linres=6.585e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.362e+04, |dsW|=8.930e-04, |dx|=4.515e+00, |dqW|=1.252e-06, |dqO|=1.773e-06, |dqG|=4.343e-03, |dBHP|=4.447e+03
+   Newton 2: residual=0.000892949, converged=False, worst=CNV_G, linear=3.05s, liniter=2, linres=8.017e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.926e+04, |dsW|=9.711e-05, |dx|=4.838e+00, |dqW|=4.910e-08, |dqO|=1.716e-08, |dqG|=3.626e-05, |dBHP|=6.399e+01
+   Newton 3: residual=4.99447e-05, converged=True, worst=CNV_O, linear=3.48s, liniter=2, linres=2.362e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.147335, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.120e+05, |dsW|=1.816e-02, |dx|=9.859e-01, |dqW|=1.203e-04, |dqO|=1.099e-04, |dqG|=9.192e-02, |dBHP|=3.923e+05
+   Newton 1: residual=0.0264577, converged=False, worst=CNV_G, linear=3.25s, liniter=2, linres=4.983e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.568e+04, |dsW|=6.300e-03, |dx|=9.429e+00, |dqW|=1.949e-06, |dqO|=4.237e-06, |dqG|=4.732e-03, |dBHP|=4.365e+03
+   Newton 2: residual=0.00143081, converged=False, worst=CNV_G, linear=2.91s, liniter=2, linres=4.238e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.033e+04, |dsW|=1.930e-04, |dx|=7.770e+00, |dqW|=1.438e-08, |dqO|=1.237e-08, |dqG|=1.032e-04, |dBHP|=7.927e+01
+   Newton 3: residual=2.61583e-06, converged=True, worst=CNV_O, linear=2.98s, liniter=2, linres=6.370e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.14528, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.500e+05, |dsW|=1.459e-02, |dx|=2.999e+00, |dqW|=1.205e-04, |dqO|=1.056e-04, |dqG|=9.097e-02, |dBHP|=3.893e+05
+   Newton 1: residual=0.0187081, converged=False, worst=CNV_G, linear=3.02s, liniter=2, linres=1.186e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.954e+04, |dsW|=2.081e-03, |dx|=1.521e+00, |dqW|=1.715e-06, |dqO|=2.247e-06, |dqG|=3.474e-03, |dBHP|=4.982e+03
+   Newton 2: residual=0.00138617, converged=False, worst=CNV_G, linear=3.17s, liniter=2, linres=1.045e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.578e+04, |dsW|=1.633e-04, |dx|=6.962e-01, |dqW|=1.542e-08, |dqO|=1.438e-08, |dqG|=4.269e-05, |dBHP|=5.431e+01
+   Newton 3: residual=1.39241e-05, converged=True, worst=CNV_G, linear=3.09s, liniter=3, linres=2.979e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.140337, converged=False, worst=CNV_G
+      update: relax=1, |dp|=4.456e+05, |dsW|=1.515e-02, |dx|=1.240e+00, |dqW|=1.193e-04, |dqO|=1.044e-04, |dqG|=9.081e-02, |dBHP|=3.848e+05
+   Newton 1: residual=0.0136432, converged=False, worst=CNV_G, linear=2.85s, liniter=2, linres=1.030e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.726e+04, |dsW|=7.663e-04, |dx|=9.195e+00, |dqW|=2.255e-06, |dqO|=2.732e-06, |dqG|=5.797e-03, |dBHP|=8.731e+03
+   Newton 2: residual=0.000804947, converged=False, worst=CNV_G, linear=2.69s, liniter=2, linres=4.039e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.822e+04, |dsW|=2.369e-04, |dx|=1.021e+00, |dqW|=7.883e-08, |dqO|=1.323e-08, |dqG|=8.525e-05, |dBHP|=6.677e+01
+   Newton 3: residual=2.86955e-05, converged=True, worst=CNV_O, linear=3.16s, liniter=2, linres=1.312e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.132176, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.891e+05, |dsW|=1.510e-02, |dx|=8.647e-01, |dqW|=1.178e-04, |dqO|=1.018e-04, |dqG|=9.707e-02, |dBHP|=3.812e+05
+   Newton 1: residual=0.0185825, converged=False, worst=CNV_G, linear=3.29s, liniter=3, linres=3.079e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.512e+04, |dsW|=1.730e-03, |dx|=4.113e+00, |dqW|=1.393e-06, |dqO|=4.295e-06, |dqG|=3.077e-03, |dBHP|=3.583e+03
+   Newton 2: residual=0.00229177, converged=False, worst=CNV_G, linear=3.11s, liniter=2, linres=5.213e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.415e+04, |dsW|=3.913e-04, |dx|=1.034e-01, |dqW|=1.080e-07, |dqO|=6.164e-08, |dqG|=1.122e-04, |dBHP|=9.814e+01
+   Newton 3: residual=0.000133711, converged=True, worst=CNV_O, linear=2.96s, liniter=2, linres=1.082e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.123165, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.795e+05, |dsW|=1.524e-02, |dx|=4.134e+00, |dqW|=1.163e-04, |dqO|=9.786e-05, |dqG|=9.754e-02, |dBHP|=3.760e+05
+   Newton 1: residual=0.0182494, converged=False, worst=CNV_G, linear=3.00s, liniter=3, linres=4.653e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.540e+04, |dsW|=5.870e-03, |dx|=1.851e+01, |dqW|=2.983e-06, |dqO|=1.332e-06, |dqG|=2.375e-03, |dBHP|=2.715e+03
+   Newton 2: residual=0.000780594, converged=False, worst=CNV_G, linear=2.88s, liniter=2, linres=6.235e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.469e+04, |dsW|=3.114e-04, |dx|=6.261e-02, |dqW|=3.856e-08, |dqO|=3.678e-08, |dqG|=2.883e-04, |dBHP|=2.117e+02
+   Newton 3: residual=4.87522e-06, converged=True, worst=CNV_G, linear=3.14s, liniter=2, linres=3.860e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.113594, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.749e+05, |dsW|=1.619e-02, |dx|=1.123e+00, |dqW|=1.135e-04, |dqO|=9.452e-05, |dqG|=9.868e-02, |dBHP|=3.683e+05
+   Newton 1: residual=0.029368, converged=False, worst=CNV_O, linear=3.08s, liniter=3, linres=6.813e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.860e+04, |dsW|=5.569e-04, |dx|=3.508e+00, |dqW|=1.173e-06, |dqO|=5.196e-05, |dqG|=6.304e-02, |dBHP|=1.588e+05
+   Newton 2: residual=0.00126921, converged=False, worst=CNV_G, linear=3.09s, liniter=2, linres=8.690e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.580e+04, |dsW|=1.686e-04, |dx|=9.643e-01, |dqW|=9.684e-08, |dqO|=6.935e-08, |dqG|=2.371e-04, |dBHP|=1.516e+02
+   Newton 3: residual=3.92953e-05, converged=True, worst=CNV_G, linear=2.84s, liniter=2, linres=4.781e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.103367, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.696e+05, |dsW|=1.666e-02, |dx|=1.297e+00, |dqW|=1.103e-04, |dqO|=1.005e-04, |dqG|=1.022e-01, |dBHP|=3.645e+05
+   Newton 1: residual=0.0417305, converged=False, worst=CNV_G, linear=3.18s, liniter=3, linres=2.571e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.774e+05, |dsW|=1.782e-03, |dx|=1.764e+00, |dqW|=1.219e-04, |dqO|=1.057e-04, |dqG|=1.987e-01, |dBHP|=2.549e+05
+   Newton 2: residual=0.000707203, converged=False, worst=CNV_G, linear=3.29s, liniter=2, linres=3.391e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.497e+04, |dsW|=1.014e-04, |dx|=1.077e+00, |dqW|=6.123e-07, |dqO|=6.151e-07, |dqG|=5.656e-04, |dBHP|=4.012e+02
+   Newton 3: residual=0.000139854, converged=True, worst=CNV_G, linear=2.89s, liniter=2, linres=3.439e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.097728, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.525e+05, |dsW|=1.683e-02, |dx|=8.703e-01, |dqW|=4.873e-05, |dqO|=1.414e-04, |dqG|=1.993e-01, |dBHP|=3.553e+05
+   Newton 1: residual=0.0215714, converged=False, worst=CNV_G, linear=3.32s, liniter=3, linres=1.014e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.093e+04, |dsW|=1.813e-03, |dx|=9.286e-01, |dqW|=1.467e-06, |dqO|=2.937e-05, |dqG|=3.159e-02, |dBHP|=9.676e+04
+   Newton 2: residual=0.00222839, converged=False, worst=CNV_G, linear=3.18s, liniter=3, linres=5.696e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.776e+04, |dsW|=8.604e-05, |dx|=3.911e+00, |dqW|=1.902e-08, |dqO|=4.301e-08, |dqG|=6.224e-04, |dBHP|=2.670e+02
+   Newton 3: residual=1.22571e-05, converged=True, worst=CNV_G, linear=2.68s, liniter=2, linres=1.225e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0895407, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.346e+05, |dsW|=1.732e-02, |dx|=1.572e+00, |dqW|=3.471e-05, |dqO|=1.244e-04, |dqG|=1.615e-01, |dBHP|=3.362e+05
+   Newton 1: residual=0.0667515, converged=False, worst=CNV_G, linear=3.08s, liniter=2, linres=1.855e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.137e+04, |dsW|=4.494e-03, |dx|=5.359e+00, |dqW|=2.182e-06, |dqO|=1.482e-06, |dqG|=9.430e-03, |dBHP|=1.189e+04
+   Newton 2: residual=0.000732911, converged=False, worst=CNV_G, linear=2.88s, liniter=2, linres=1.583e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.597e+04, |dsW|=4.943e-05, |dx|=1.447e-01, |dqW|=2.474e-08, |dqO|=1.558e-08, |dqG|=3.630e-05, |dBHP|=8.428e+01
+   Newton 3: residual=2.2118e-06, converged=True, worst=CNV_O, linear=3.20s, liniter=3, linres=4.927e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0813841, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.247e+05, |dsW|=1.786e-02, |dx|=7.112e-01, |dqW|=3.375e-05, |dqO|=1.107e-04, |dqG|=1.305e-01, |dBHP|=3.343e+05
+   Newton 1: residual=0.0678183, converged=False, worst=CNV_O, linear=3.27s, liniter=3, linres=2.013e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.416e+04, |dsW|=9.582e-03, |dx|=1.572e+00, |dqW|=1.181e-06, |dqO|=6.437e-05, |dqG|=7.921e-02, |dBHP|=1.365e+05
+   Newton 2: residual=0.0197089, converged=False, worst=CNV_G, linear=3.24s, liniter=2, linres=8.771e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.703e+04, |dsW|=4.333e-04, |dx|=1.120e-01, |dqW|=9.924e-09, |dqO|=2.469e-07, |dqG|=2.475e-03, |dBHP|=1.733e+03
+   Newton 3: residual=0.000151257, converged=True, worst=CNV_W, linear=3.29s, liniter=3, linres=9.366e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0944332, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.165e+05, |dsW|=1.499e-02, |dx|=4.704e-01, |dqW|=3.662e-05, |dqO|=1.368e-04, |dqG|=1.132e-01, |dBHP|=3.143e+05
+   Newton 1: residual=0.0331145, converged=False, worst=CNV_G, linear=2.99s, liniter=3, linres=3.479e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.585e+04, |dsW|=3.976e-03, |dx|=3.687e+00, |dqW|=1.624e-05, |dqO|=3.096e-06, |dqG|=1.480e-02, |dBHP|=2.385e+04
+   Newton 2: residual=0.000907685, converged=False, worst=CNV_G, linear=2.65s, liniter=2, linres=1.124e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.546e+04, |dsW|=7.211e-05, |dx|=3.006e-02, |dqW|=3.561e-07, |dqO|=2.351e-08, |dqG|=2.601e-04, |dBHP|=3.084e+02
+   Newton 3: residual=2.3083e-06, converged=True, worst=CNV_G, linear=2.56s, liniter=2, linres=1.806e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0952908, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.101e+05, |dsW|=1.624e-02, |dx|=8.008e-01, |dqW|=3.619e-05, |dqO|=1.222e-04, |dqG|=1.005e-01, |dBHP|=3.606e+05
+   Newton 1: residual=0.0631038, converged=False, worst=CNV_G, linear=2.65s, liniter=3, linres=4.776e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.631e+04, |dsW|=1.267e-03, |dx|=4.187e-01, |dqW|=8.977e-07, |dqO|=1.911e-06, |dqG|=7.299e-03, |dBHP|=5.671e+04
+   Newton 2: residual=0.00086017, converged=False, worst=CNV_G, linear=3.29s, liniter=2, linres=1.096e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.115e+04, |dsW|=1.484e-04, |dx|=9.539e-02, |dqW|=8.909e-08, |dqO|=5.416e-08, |dqG|=1.830e-04, |dBHP|=1.705e+02
+   Newton 3: residual=2.60686e-06, converged=True, worst=CNV_G, linear=2.88s, liniter=2, linres=1.591e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0939377, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.091e+05, |dsW|=1.711e-02, |dx|=5.831e-01, |dqW|=3.669e-05, |dqO|=1.136e-04, |dqG|=9.573e-02, |dBHP|=4.934e+05
+   Newton 1: residual=0.098205, converged=False, worst=CNV_G, linear=3.62s, liniter=3, linres=7.390e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.063e+05, |dsW|=1.178e-03, |dx|=4.047e+00, |dqW|=6.526e-07, |dqO|=9.673e-05, |dqG|=1.291e-01, |dBHP|=2.208e+05
+   Newton 2: residual=0.0222983, converged=False, worst=CNV_G, linear=3.10s, liniter=2, linres=1.132e-04, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.792e+04, |dsW|=9.675e-05, |dx|=4.157e-02, |dqW|=4.208e-08, |dqO|=7.792e-07, |dqG|=5.622e-03, |dBHP|=3.470e+03
+   Newton 3: residual=1.67767e-05, converged=True, worst=CNV_G, linear=2.99s, liniter=2, linres=8.340e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0885647, converged=False, worst=CNV_G
+      update: relax=1, |dp|=3.041e+05, |dsW|=1.784e-02, |dx|=5.405e-01, |dqW|=3.698e-05, |dqO|=1.013e-04, |dqG|=8.875e-02, |dBHP|=3.230e+05
+   Newton 1: residual=0.0374162, converged=False, worst=CNV_W, linear=2.88s, liniter=3, linres=1.731e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.329e+04, |dsW|=7.794e-03, |dx|=3.442e-01, |dqW|=6.158e-05, |dqO|=7.291e-06, |dqG|=4.510e-02, |dBHP|=2.108e+04
+   Newton 2: residual=0.00381363, converged=False, worst=CNV_G, linear=3.39s, liniter=3, linres=7.854e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.624e+04, |dsW|=9.396e-04, |dx|=3.751e-02, |dqW|=9.931e-06, |dqO|=7.354e-07, |dqG|=6.551e-03, |dBHP|=6.642e+02
+   Newton 3: residual=1.69286e-05, converged=True, worst=CNV_G, linear=2.79s, liniter=2, linres=1.059e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.084905, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.968e+05, |dsW|=1.362e-02, |dx|=1.226e+00, |dqW|=6.202e-05, |dqO|=1.098e-04, |dqG|=9.635e-02, |dBHP|=3.750e+05
+   Newton 1: residual=0.0395127, converged=False, worst=CNV_G, linear=3.07s, liniter=3, linres=6.039e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.753e+04, |dsW|=3.330e-03, |dx|=5.717e-01, |dqW|=2.577e-06, |dqO|=7.066e-07, |dqG|=1.136e-02, |dBHP|=6.266e+03
+   Newton 2: residual=0.000591535, converged=False, worst=CNV_G, linear=2.71s, liniter=3, linres=1.688e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.308e+04, |dsW|=8.766e-05, |dx|=3.146e+00, |dqW|=2.928e-08, |dqO|=9.071e-09, |dqG|=1.344e-04, |dBHP|=3.710e+02
+   Newton 3: residual=5.66065e-06, converged=True, worst=CNV_W, linear=3.16s, liniter=2, linres=2.408e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0849461, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.872e+05, |dsW|=1.439e-02, |dx|=7.644e-01, |dqW|=3.739e-05, |dqO|=1.037e-04, |dqG|=8.840e-02, |dBHP|=3.838e+05
+   Newton 1: residual=0.016509, converged=False, worst=CNV_G, linear=2.86s, liniter=3, linres=8.950e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.282e+04, |dsW|=9.655e-04, |dx|=2.831e-01, |dqW|=6.382e-07, |dqO|=1.766e-06, |dqG|=4.138e-03, |dBHP|=1.698e+04
+   Newton 2: residual=0.0024493, converged=False, worst=CNV_G, linear=2.72s, liniter=3, linres=2.189e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.852e+03, |dsW|=3.613e-05, |dx|=4.231e-03, |dqW|=1.031e-08, |dqO|=2.485e-08, |dqG|=4.729e-04, |dBHP|=1.222e+02
+   Newton 3: residual=2.43213e-06, converged=True, worst=CNV_G, linear=3.21s, liniter=3, linres=2.781e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0813779, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.831e+05, |dsW|=1.565e-02, |dx|=6.410e-01, |dqW|=3.795e-05, |dqO|=9.788e-05, |dqG|=8.386e-02, |dBHP|=4.196e+05
+   Newton 1: residual=0.025791, converged=False, worst=CNV_G, linear=2.71s, liniter=3, linres=1.553e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.213e+04, |dsW|=9.443e-04, |dx|=2.006e-01, |dqW|=3.778e-07, |dqO|=1.062e-04, |dqG|=8.744e-02, |dBHP|=2.012e+05
+   Newton 2: residual=0.0014518, converged=False, worst=CNV_G, linear=2.49s, liniter=3, linres=2.213e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=8.681e+03, |dsW|=3.278e-05, |dx|=1.667e-01, |dqW|=5.529e-08, |dqO|=9.149e-07, |dqG|=2.261e-04, |dBHP|=1.594e+02
+   Newton 3: residual=4.44851e-05, converged=True, worst=CNV_G, linear=3.06s, liniter=3, linres=4.340e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0578398, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.903e+05, |dsW|=1.428e-02, |dx|=2.587e-02, |dqW|=3.853e-05, |dqO|=2.087e-04, |dqG|=1.560e-01, |dBHP|=2.502e+05
+   Newton 1: residual=0.0150152, converged=False, worst=CNV_G, linear=2.75s, liniter=3, linres=6.426e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.306e+04, |dsW|=7.833e-04, |dx|=1.341e+00, |dqW|=9.381e-07, |dqO|=6.165e-06, |dqG|=1.847e-02, |dBHP|=3.137e+04
+   Newton 2: residual=0.000786331, converged=False, worst=CNV_G, linear=3.00s, liniter=2, linres=1.902e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.726e+04, |dsW|=3.640e-05, |dx|=8.455e-01, |dqW|=7.174e-08, |dqO|=5.239e-08, |dqG|=3.229e-04, |dBHP|=1.303e+02
+   Newton 3: residual=2.65814e-06, converged=True, worst=CNV_G, linear=2.90s, liniter=2, linres=1.942e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0273691, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.853e+05, |dsW|=1.269e-02, |dx|=1.072e+00, |dqW|=3.858e-05, |dqO|=1.733e-04, |dqG|=1.365e-01, |dBHP|=2.412e+05
+   Newton 1: residual=0.0248051, converged=False, worst=CNV_O, linear=2.80s, liniter=3, linres=2.820e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=5.105e+04, |dsW|=5.868e-04, |dx|=4.638e-01, |dqW|=1.136e-06, |dqO|=4.580e-05, |dqG|=3.076e-02, |dBHP|=1.330e+04
+   Newton 2: residual=0.00167372, converged=False, worst=CNV_G, linear=2.84s, liniter=3, linres=1.066e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=6.938e+03, |dsW|=4.929e-05, |dx|=1.547e-02, |dqW|=3.717e-08, |dqO|=1.254e-07, |dqG|=3.806e-05, |dBHP|=4.003e+00
+   Newton 3: residual=3.21216e-07, converged=True, worst=CNV_G, linear=3.07s, liniter=2, linres=9.626e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0235794, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.778e+05, |dsW|=1.318e-02, |dx|=7.797e-01, |dqW|=3.774e-05, |dqO|=8.640e-05, |dqG|=8.046e-02, |dBHP|=2.544e+05
+   Newton 1: residual=0.0103534, converged=False, worst=CNV_G, linear=3.09s, liniter=2, linres=4.095e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.797e+04, |dsW|=2.115e-03, |dx|=2.744e-01, |dqW|=5.832e-06, |dqO|=3.365e-05, |dqG|=3.849e-02, |dBHP|=5.597e+04
+   Newton 2: residual=0.000478413, converged=False, worst=CNV_G, linear=2.99s, liniter=3, linres=6.941e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.484e+04, |dsW|=3.529e-05, |dx|=2.804e-02, |dqW|=2.999e-08, |dqO|=1.148e-07, |dqG|=5.480e-05, |dBHP|=6.360e+00
+   Newton 3: residual=1.43349e-06, converged=True, worst=CNV_G, linear=3.33s, liniter=2, linres=3.979e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0285346, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.775e+05, |dsW|=1.353e-02, |dx|=6.941e-01, |dqW|=3.855e-05, |dqO|=8.095e-05, |dqG|=8.071e-02, |dBHP|=2.640e+05
+   Newton 1: residual=0.0136577, converged=False, worst=CNV_O, linear=2.61s, liniter=3, linres=8.444e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.517e+04, |dsW|=7.691e-04, |dx|=1.417e+01, |dqW|=5.660e-06, |dqO|=3.518e-05, |dqG|=2.222e-02, |dBHP|=5.331e+03
+   Newton 2: residual=0.000494543, converged=False, worst=CNV_G, linear=2.71s, liniter=3, linres=2.365e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.458e+04, |dsW|=1.170e-04, |dx|=8.222e-01, |dqW|=6.517e-08, |dqO|=1.726e-07, |dqG|=2.819e-05, |dBHP|=1.738e+01
+   Newton 3: residual=2.89475e-07, converged=True, worst=CNV_O, linear=2.77s, liniter=2, linres=3.806e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0240512, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.608e+05, |dsW|=1.357e-02, |dx|=1.737e+00, |dqW|=3.873e-05, |dqO|=1.183e-04, |dqG|=7.876e-02, |dBHP|=2.718e+05
+   Newton 1: residual=0.00567018, converged=False, worst=CNV_G, linear=2.99s, liniter=3, linres=1.506e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.191e+04, |dsW|=6.735e-04, |dx|=1.346e+00, |dqW|=4.040e-07, |dqO|=1.060e-06, |dqG|=3.097e-03, |dBHP|=7.096e+03
+   Newton 2: residual=0.000357271, converged=False, worst=CNV_G, linear=3.07s, liniter=2, linres=8.648e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.542e+04, |dsW|=2.600e-05, |dx|=1.520e-02, |dqW|=3.347e-09, |dqO|=8.282e-09, |dqG|=9.948e-06, |dBHP|=1.732e+01
+   Newton 3: residual=1.52376e-07, converged=True, worst=CNV_G, linear=2.96s, liniter=2, linres=4.682e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0216824, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.629e+05, |dsW|=1.345e-02, |dx|=3.005e-01, |dqW|=3.897e-05, |dqO|=1.208e-04, |dqG|=7.735e-02, |dBHP|=2.822e+05
+   Newton 1: residual=0.00658853, converged=False, worst=CNV_G, linear=3.39s, liniter=3, linres=2.934e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.283e+04, |dsW|=7.728e-04, |dx|=1.164e-01, |dqW|=3.098e-07, |dqO|=2.754e-06, |dqG|=4.847e-03, |dBHP|=1.016e+04
+   Newton 2: residual=0.00030176, converged=True, worst=CNV_G, linear=3.33s, liniter=2, linres=1.332e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0208922, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.611e+05, |dsW|=1.359e-02, |dx|=3.085e-01, |dqW|=3.912e-05, |dqO|=1.116e-04, |dqG|=7.629e-02, |dBHP|=3.005e+05
+   Newton 1: residual=0.0110774, converged=False, worst=CNV_G, linear=3.00s, liniter=3, linres=5.239e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=4.111e+04, |dsW|=8.151e-04, |dx|=3.312e+03, |dqW|=1.434e-07, |dqO|=5.002e-05, |dqG|=6.480e-02, |dBHP|=8.266e+04
+   Newton 2: residual=0.000477603, converged=False, worst=CNV_G, linear=3.03s, liniter=3, linres=4.437e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.074e+04, |dsW|=4.752e-05, |dx|=9.081e-01, |dqW|=1.981e-08, |dqO|=2.916e-07, |dqG|=2.805e-05, |dBHP|=2.732e+01
+   Newton 3: residual=1.0117e-06, converged=True, worst=CNV_G, linear=3.13s, liniter=2, linres=7.263e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0223589, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.574e+05, |dsW|=1.370e-02, |dx|=7.054e-01, |dqW|=3.911e-05, |dqO|=1.671e-04, |dqG|=1.789e-01, |dBHP|=1.389e+05
+   Newton 1: residual=0.028311, converged=False, worst=CNV_W, linear=3.05s, liniter=3, linres=4.140e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.228e+04, |dsW|=8.269e-03, |dx|=2.886e-01, |dqW|=3.422e-06, |dqO|=2.763e-06, |dqG|=9.402e-03, |dBHP|=1.747e+03
+   Newton 2: residual=0.00627595, converged=False, worst=CNV_W, linear=2.79s, liniter=3, linres=1.451e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.828e+03, |dsW|=2.056e-03, |dx|=2.621e-03, |dqW|=1.707e-06, |dqO|=1.195e-06, |dqG|=4.123e-03, |dBHP|=1.093e+03
+   Newton 3: residual=0.000158114, converged=True, worst=CNV_G, linear=2.65s, liniter=3, linres=4.655e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0341446, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.522e+05, |dsW|=1.379e-02, |dx|=5.717e-01, |dqW|=3.909e-05, |dqO|=1.411e-04, |dqG|=1.510e-01, |dBHP|=1.327e+05
+   Newton 1: residual=0.00523789, converged=False, worst=CNV_G, linear=2.63s, liniter=3, linres=3.266e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.029e+04, |dsW|=7.031e-04, |dx|=1.958e-01, |dqW|=1.794e-07, |dqO|=1.216e-06, |dqG|=3.209e-03, |dBHP|=2.322e+03
+   Newton 2: residual=0.000136177, converged=True, worst=CNV_G, linear=2.87s, liniter=2, linres=6.601e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0348319, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.548e+05, |dsW|=1.385e-02, |dx|=1.231e+00, |dqW|=3.908e-05, |dqO|=1.265e-04, |dqG|=1.207e-01, |dBHP|=1.252e+05
+   Newton 1: residual=0.00343381, converged=False, worst=CNV_G, linear=3.15s, liniter=3, linres=3.567e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.855e+04, |dsW|=4.477e-04, |dx|=5.510e-01, |dqW|=2.532e-07, |dqO|=9.500e-07, |dqG|=2.480e-03, |dBHP|=4.057e+03
+   Newton 2: residual=0.000832103, converged=False, worst=CNV_G, linear=2.69s, liniter=2, linres=3.669e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.582e+04, |dsW|=3.131e-04, |dx|=7.733e-03, |dqW|=2.802e-07, |dqO|=4.833e-09, |dqG|=2.350e-05, |dBHP|=1.756e+01
+   Newton 3: residual=3.1679e-07, converged=True, worst=CNV_G, linear=3.29s, liniter=2, linres=2.949e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0307568, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.666e+05, |dsW|=1.376e-02, |dx|=8.638e-01, |dqW|=3.817e-05, |dqO|=1.191e-04, |dqG|=1.120e-01, |dBHP|=1.218e+05
+   Newton 1: residual=0.0400211, converged=False, worst=CNV_G, linear=3.10s, liniter=3, linres=5.333e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.802e+04, |dsW|=7.202e-03, |dx|=2.955e-01, |dqW|=4.702e-06, |dqO|=7.163e-05, |dqG|=1.008e-01, |dBHP|=8.561e+04
+   Newton 2: residual=0.00179884, converged=False, worst=CNV_G, linear=2.56s, liniter=3, linres=1.950e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.033e+04, |dsW|=3.563e-04, |dx|=1.782e-01, |dqW|=2.551e-08, |dqO|=1.634e-07, |dqG|=4.132e-05, |dBHP|=7.426e+00
+   Newton 3: residual=4.43973e-06, converged=True, worst=CNV_G, linear=3.05s, liniter=2, linres=2.710e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0267847, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.737e+05, |dsW|=1.368e-02, |dx|=3.047e-02, |dqW|=3.796e-05, |dqO|=1.037e-04, |dqG|=1.108e-01, |dBHP|=1.190e+05
+   Newton 1: residual=0.00475772, converged=False, worst=CNV_G, linear=2.73s, liniter=3, linres=6.690e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.080e+04, |dsW|=1.065e-03, |dx|=3.038e-01, |dqW|=3.259e-07, |dqO|=8.243e-07, |dqG|=1.589e-03, |dBHP|=6.554e+02
+   Newton 2: residual=0.000786367, converged=False, worst=CNV_G, linear=2.73s, liniter=2, linres=7.629e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.290e+04, |dsW|=1.174e-05, |dx|=1.043e-04, |dqW|=1.452e-09, |dqO|=1.634e-08, |dqG|=2.455e-05, |dBHP|=2.738e+01
+   Newton 3: residual=1.1361e-07, converged=True, worst=CNV_G, linear=3.01s, liniter=2, linres=1.113e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0256857, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.765e+05, |dsW|=1.379e-02, |dx|=6.032e-02, |dqW|=3.779e-05, |dqO|=8.941e-05, |dqG|=1.040e-01, |dBHP|=1.173e+05
+   Newton 1: residual=0.0115273, converged=False, worst=CNV_G, linear=2.92s, liniter=3, linres=1.777e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.542e+04, |dsW|=1.356e-03, |dx|=6.258e-01, |dqW|=1.860e-07, |dqO|=7.348e-07, |dqG|=2.785e-03, |dBHP|=2.068e+03
+   Newton 2: residual=0.000516397, converged=False, worst=CNV_G, linear=3.05s, liniter=3, linres=4.572e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.251e+04, |dsW|=2.590e-05, |dx|=2.143e-02, |dqW|=2.437e-08, |dqO|=1.963e-09, |dqG|=9.092e-06, |dBHP|=9.550e+00
+   Newton 3: residual=1.41344e-07, converged=True, worst=CNV_G, linear=3.07s, liniter=2, linres=9.233e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.023286, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.756e+05, |dsW|=1.388e-02, |dx|=5.619e-02, |dqW|=3.748e-05, |dqO|=8.577e-05, |dqG|=9.991e-02, |dBHP|=1.155e+05
+   Newton 1: residual=0.00713285, converged=False, worst=CNV_G, linear=3.33s, liniter=3, linres=7.361e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.327e+04, |dsW|=2.151e-04, |dx|=2.562e-01, |dqW|=1.733e-06, |dqO|=1.080e-06, |dqG|=2.460e-03, |dBHP|=1.334e+03
+   Newton 2: residual=0.000672174, converged=False, worst=CNV_G, linear=2.91s, liniter=2, linres=1.356e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.777e+04, |dsW|=9.908e-06, |dx|=8.750e-05, |dqW|=1.475e-09, |dqO|=5.664e-09, |dqG|=1.022e-05, |dBHP|=2.055e+01
+   Newton 3: residual=2.51899e-08, converged=True, worst=CNV_G, linear=3.60s, liniter=1, linres=5.835e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0211393, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.716e+05, |dsW|=1.382e-02, |dx|=8.724e-02, |dqW|=3.735e-05, |dqO|=8.758e-05, |dqG|=9.726e-02, |dBHP|=1.146e+05
+   Newton 1: residual=0.00130447, converged=False, worst=CNV_G, linear=3.22s, liniter=3, linres=1.263e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.655e+04, |dsW|=4.716e-04, |dx|=1.209e+00, |dqW|=2.885e-07, |dqO|=2.847e-05, |dqG|=3.398e-02, |dBHP|=3.426e+04
+   Newton 2: residual=7.26409e-06, converged=True, worst=CNV_G, linear=2.95s, liniter=3, linres=7.012e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0189238, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.652e+05, |dsW|=1.369e-02, |dx|=3.982e-03, |dqW|=3.710e-05, |dqO|=8.179e-05, |dqG|=9.211e-02, |dBHP|=1.125e+05
+   Newton 1: residual=0.0321274, converged=False, worst=CNV_G, linear=2.59s, liniter=3, linres=6.692e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.097e+04, |dsW|=2.439e-03, |dx|=1.030e-03, |dqW|=1.507e-07, |dqO|=6.975e-06, |dqG|=1.160e-02, |dBHP|=3.264e+02
+   Newton 2: residual=0.000157333, converged=True, worst=CNV_G, linear=3.14s, liniter=2, linres=1.364e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0172056, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.493e+05, |dsW|=1.361e-02, |dx|=4.249e-03, |dqW|=3.719e-05, |dqO|=8.679e-05, |dqG|=9.585e-02, |dBHP|=1.101e+05
+   Newton 1: residual=0.00722607, converged=False, worst=CNV_G, linear=2.68s, liniter=3, linres=2.526e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.913e+04, |dsW|=1.296e-03, |dx|=1.441e-03, |dqW|=3.937e-07, |dqO|=2.313e-05, |dqG|=1.230e-02, |dBHP|=9.666e+02
+   Newton 2: residual=0.000256954, converged=True, worst=CNV_G, linear=2.95s, liniter=3, linres=9.496e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0161478, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.409e+05, |dsW|=1.345e-02, |dx|=3.807e-03, |dqW|=3.648e-05, |dqO|=6.730e-05, |dqG|=7.314e-02, |dBHP|=1.078e+05
+   Newton 1: residual=0.00551478, converged=False, worst=CNV_O, linear=3.22s, liniter=3, linres=5.270e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.012e+04, |dsW|=6.786e-04, |dx|=1.208e-03, |dqW|=2.994e-06, |dqO|=2.975e-05, |dqG|=1.545e-02, |dBHP|=2.666e+03
+   Newton 2: residual=9.91684e-05, converged=True, worst=CNV_G, linear=2.72s, liniter=3, linres=4.264e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0185583, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.316e+05, |dsW|=1.310e-02, |dx|=5.752e+00, |dqW|=3.614e-05, |dqO|=5.682e-05, |dqG|=7.082e-02, |dBHP|=1.033e+05
+   Newton 1: residual=0.00319734, converged=False, worst=CNV_G, linear=2.54s, liniter=3, linres=6.699e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.533e+04, |dsW|=5.237e-04, |dx|=4.828e+00, |dqW|=1.418e-07, |dqO|=7.799e-07, |dqG|=1.147e-03, |dBHP|=4.342e+02
+   Newton 2: residual=4.38686e-05, converged=True, worst=CNV_G, linear=3.05s, liniter=2, linres=1.139e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0217689, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.216e+05, |dsW|=1.274e-02, |dx|=2.446e-01, |dqW|=3.569e-05, |dqO|=5.741e-05, |dqG|=6.976e-02, |dBHP|=1.003e+05
+   Newton 1: residual=0.0104696, converged=False, worst=CNV_O, linear=2.85s, liniter=3, linres=6.967e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.023e+04, |dsW|=1.613e-03, |dx|=1.244e-01, |dqW|=5.628e-06, |dqO|=1.078e-06, |dqG|=2.003e-03, |dBHP|=1.167e+03
+   Newton 2: residual=0.000105928, converged=True, worst=CNV_G, linear=2.99s, liniter=2, linres=1.935e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0246373, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.113e+05, |dsW|=1.253e-02, |dx|=1.241e-01, |dqW|=3.527e-05, |dqO|=5.737e-05, |dqG|=6.983e-02, |dBHP|=9.823e+04
+   Newton 1: residual=0.00487663, converged=False, worst=CNV_W, linear=3.33s, liniter=3, linres=1.806e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.108e+04, |dsW|=2.520e-03, |dx|=4.199e-01, |dqW|=1.392e-05, |dqO|=6.738e-06, |dqG|=1.452e-03, |dBHP|=1.282e+03
+   Newton 2: residual=0.000156655, converged=True, worst=CNV_G, linear=2.83s, liniter=3, linres=1.086e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0240147, converged=False, worst=CNV_G
+      update: relax=1, |dp|=2.009e+05, |dsW|=1.224e-02, |dx|=4.020e-03, |dqW|=3.484e-05, |dqO|=6.576e-05, |dqG|=7.506e-02, |dBHP|=9.609e+04
+   Newton 1: residual=0.00451218, converged=False, worst=CNV_W, linear=3.21s, liniter=3, linres=2.926e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.283e+04, |dsW|=1.961e-03, |dx|=7.311e-04, |dqW|=6.956e-07, |dqO|=1.367e-06, |dqG|=2.595e-03, |dBHP|=7.299e+02
+   Newton 2: residual=0.000115699, converged=True, worst=CNV_G, linear=2.68s, liniter=3, linres=5.149e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0224094, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.932e+05, |dsW|=1.213e-02, |dx|=4.664e-03, |dqW|=3.434e-05, |dqO|=6.534e-05, |dqG|=7.811e-02, |dBHP|=9.399e+04
+   Newton 1: residual=0.0044035, converged=False, worst=CNV_O, linear=2.78s, liniter=3, linres=2.245e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.134e+04, |dsW|=1.566e-04, |dx|=6.023e-04, |dqW|=2.176e-07, |dqO|=1.804e-06, |dqG|=2.105e-03, |dBHP|=6.434e+02
+   Newton 2: residual=3.13695e-05, converged=True, worst=CNV_G, linear=3.11s, liniter=3, linres=4.727e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0230162, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.922e+05, |dsW|=1.187e-02, |dx|=5.100e-03, |dqW|=3.386e-05, |dqO|=6.442e-05, |dqG|=7.993e-02, |dBHP|=9.253e+04
+   Newton 1: residual=0.00549424, converged=False, worst=CNV_G, linear=2.90s, liniter=3, linres=3.933e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.649e+04, |dsW|=4.904e-04, |dx|=9.674e-02, |dqW|=1.432e-07, |dqO|=1.868e-06, |dqG|=2.461e-03, |dBHP|=9.082e+02
+   Newton 2: residual=2.38182e-05, converged=True, worst=CNV_G, linear=2.91s, liniter=3, linres=9.702e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0264865, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.905e+05, |dsW|=1.157e-02, |dx|=5.193e-03, |dqW|=3.337e-05, |dqO|=6.372e-05, |dqG|=8.042e-02, |dBHP|=9.109e+04
+   Newton 1: residual=0.0080823, converged=False, worst=CNV_G, linear=2.84s, liniter=3, linres=1.738e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.153e+04, |dsW|=2.934e-04, |dx|=2.396e-01, |dqW|=1.204e-07, |dqO|=1.869e-06, |dqG|=3.320e-03, |dBHP|=1.549e+03
+   Newton 2: residual=5.21579e-05, converged=True, worst=CNV_G, linear=2.81s, liniter=2, linres=2.359e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0307818, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.839e+05, |dsW|=1.131e-02, |dx|=5.666e-03, |dqW|=3.299e-05, |dqO|=6.284e-05, |dqG|=7.946e-02, |dBHP|=8.957e+04
+   Newton 1: residual=0.0647552, converged=False, worst=CNV_G, linear=4.01s, liniter=3, linres=1.901e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.139e+04, |dsW|=9.123e-04, |dx|=1.263e-03, |dqW|=1.793e-07, |dqO|=1.281e-05, |dqG|=2.323e-02, |dBHP|=2.284e+03
+   Newton 2: residual=0.000265824, converged=True, worst=CNV_G, linear=2.74s, liniter=3, linres=1.793e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0354238, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.795e+05, |dsW|=9.245e-03, |dx|=5.886e-03, |dqW|=3.253e-05, |dqO|=4.420e-05, |dqG|=5.319e-02, |dBHP|=8.326e+04
+   Newton 1: residual=0.0287982, converged=False, worst=CNV_O, linear=2.92s, liniter=3, linres=4.480e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.642e+04, |dsW|=1.427e-03, |dx|=1.885e-03, |dqW|=2.353e-07, |dqO|=8.150e-06, |dqG|=1.794e-02, |dBHP|=9.263e+03
+   Newton 2: residual=0.00332679, converged=False, worst=CNV_G, linear=2.95s, liniter=3, linres=5.085e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.385e+02, |dsW|=3.143e-05, |dx|=1.197e-04, |dqW|=1.338e-09, |dqO|=2.994e-08, |dqG|=4.838e-04, |dBHP|=1.449e+02
+   Newton 3: residual=9.20045e-07, converged=True, worst=CNV_G, linear=2.83s, liniter=3, linres=2.251e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.02305, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.764e+05, |dsW|=9.999e-03, |dx|=6.469e-03, |dqW|=3.205e-05, |dqO|=2.702e-05, |dqG|=4.710e-02, |dBHP|=8.183e+04
+   Newton 1: residual=0.0267553, converged=False, worst=CNV_W, linear=2.90s, liniter=3, linres=3.570e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.761e+04, |dsW|=4.967e-03, |dx|=5.996e-04, |dqW|=1.667e-07, |dqO|=1.875e-07, |dqG|=2.916e-03, |dBHP|=2.582e+03
+   Newton 2: residual=0.001771, converged=False, worst=CNV_W, linear=2.69s, liniter=3, linres=4.423e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.313e+02, |dsW|=8.454e-04, |dx|=1.131e-04, |dqW|=6.934e-08, |dqO|=8.174e-08, |dqG|=1.893e-03, |dBHP|=9.213e+02
+   Newton 3: residual=5.31463e-05, converged=True, worst=CNV_W, linear=2.86s, liniter=3, linres=1.272e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0203346, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.741e+05, |dsW|=1.072e-02, |dx|=6.902e-03, |dqW|=3.177e-05, |dqO|=2.635e-05, |dqG|=4.451e-02, |dBHP|=8.135e+04
+   Newton 1: residual=0.00369533, converged=False, worst=CNV_G, linear=2.67s, liniter=2, linres=3.272e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.345e+04, |dsW|=7.085e-04, |dx|=7.074e-04, |dqW|=4.601e-07, |dqO|=5.214e-07, |dqG|=5.615e-04, |dBHP|=1.530e+03
+   Newton 2: residual=3.63729e-05, converged=True, worst=CNV_G, linear=3.21s, liniter=3, linres=1.648e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0241776, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.710e+05, |dsW|=1.132e-02, |dx|=7.249e-03, |dqW|=3.115e-05, |dqO|=2.543e-05, |dqG|=4.362e-02, |dBHP|=8.025e+04
+   Newton 1: residual=0.0022011, converged=False, worst=CNV_G, linear=2.89s, liniter=3, linres=1.349e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.269e+04, |dsW|=4.339e-04, |dx|=2.401e-01, |dqW|=1.131e-07, |dqO|=8.006e-08, |dqG|=5.207e-04, |dBHP|=5.577e+02
+   Newton 2: residual=0.000642923, converged=False, worst=CNV_G, linear=2.52s, liniter=2, linres=3.317e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.597e+04, |dsW|=1.064e-05, |dx|=7.748e-05, |dqW|=3.313e-10, |dqO|=1.739e-09, |dqG|=2.229e-06, |dBHP|=5.394e+00
+   Newton 3: residual=2.24045e-08, converged=True, worst=CNV_G, linear=3.02s, liniter=1, linres=1.875e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0258732, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.675e+05, |dsW|=1.180e-02, |dx|=7.535e-03, |dqW|=3.071e-05, |dqO|=2.449e-05, |dqG|=4.245e-02, |dBHP|=7.904e+04
+   Newton 1: residual=0.00177801, converged=False, worst=CNV_G, linear=2.95s, liniter=3, linres=5.463e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.244e+04, |dsW|=7.562e-04, |dx|=7.638e-04, |dqW|=6.224e-08, |dqO|=1.330e-07, |dqG|=3.988e-04, |dBHP|=4.727e+02
+   Newton 2: residual=4.22836e-05, converged=True, worst=CNV_G, linear=2.88s, liniter=2, linres=5.372e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0264574, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.636e+05, |dsW|=1.223e-02, |dx|=7.192e-03, |dqW|=3.028e-05, |dqO|=2.371e-05, |dqG|=4.122e-02, |dBHP|=7.757e+04
+   Newton 1: residual=0.00295573, converged=False, worst=CNV_O, linear=2.82s, liniter=3, linres=2.554e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=9.912e+03, |dsW|=2.250e-04, |dx|=2.284e-04, |dqW|=2.269e-07, |dqO|=1.683e-07, |dqG|=7.940e-04, |dBHP|=4.926e+02
+   Newton 2: residual=1.84759e-05, converged=True, worst=CNV_G, linear=2.70s, liniter=2, linres=8.201e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0308572, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.592e+05, |dsW|=1.260e-02, |dx|=7.548e-03, |dqW|=2.974e-05, |dqO|=2.288e-05, |dqG|=3.971e-02, |dBHP|=7.589e+04
+   Newton 1: residual=0.00537649, converged=False, worst=CNV_G, linear=2.67s, liniter=3, linres=6.573e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.061e+04, |dsW|=7.843e-04, |dx|=8.138e-04, |dqW|=8.012e-08, |dqO|=1.765e-07, |dqG|=1.261e-03, |dBHP|=1.086e+03
+   Newton 2: residual=4.8363e-05, converged=True, worst=CNV_G, linear=3.02s, liniter=2, linres=5.238e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0259645, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.546e+05, |dsW|=1.212e-02, |dx|=6.972e-03, |dqW|=2.914e-05, |dqO|=2.187e-05, |dqG|=3.835e-02, |dBHP|=7.421e+04
+   Newton 1: residual=0.00816705, converged=False, worst=CNV_G, linear=2.80s, liniter=3, linres=2.022e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.781e+04, |dsW|=2.466e-04, |dx|=3.012e-04, |dqW|=3.995e-06, |dqO|=2.973e-05, |dqG|=4.712e-02, |dBHP|=4.384e+04
+   Newton 2: residual=7.97708e-05, converged=True, worst=CNV_G, linear=2.73s, liniter=2, linres=1.348e-04, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0243367, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.501e+05, |dsW|=1.203e-02, |dx|=6.816e-03, |dqW|=2.875e-05, |dqO|=4.453e-05, |dqG|=7.024e-02, |dBHP|=4.678e+04
+   Newton 1: residual=0.0112997, converged=False, worst=CNV_G, linear=2.87s, liniter=3, linres=9.216e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.864e+04, |dsW|=1.012e-03, |dx|=4.308e-04, |dqW|=4.109e-06, |dqO|=7.839e-07, |dqG|=4.213e-03, |dBHP|=1.081e+03
+   Newton 2: residual=5.2837e-05, converged=True, worst=CNV_G, linear=2.51s, liniter=2, linres=2.224e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0224442, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.463e+05, |dsW|=1.193e-02, |dx|=6.691e-03, |dqW|=2.826e-05, |dqO|=3.803e-05, |dqG|=5.994e-02, |dBHP|=4.751e+04
+   Newton 1: residual=0.0152452, converged=False, worst=CNV_G, linear=2.76s, liniter=3, linres=7.217e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=3.256e+04, |dsW|=1.153e-03, |dx|=1.185e-03, |dqW|=2.558e-07, |dqO|=4.367e-07, |dqG|=6.378e-04, |dBHP|=1.263e+03
+   Newton 2: residual=6.46419e-05, converged=True, worst=CNV_G, linear=2.53s, liniter=3, linres=6.474e-07, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0205501, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.414e+05, |dsW|=1.182e-02, |dx|=6.543e-03, |dqW|=2.773e-05, |dqO|=3.423e-05, |dqG|=5.378e-02, |dBHP|=4.871e+04
+   Newton 1: residual=0.0204743, converged=False, worst=CNV_G, linear=3.14s, liniter=3, linres=3.350e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.107e+04, |dsW|=1.132e-03, |dx|=4.074e+01, |dqW|=3.181e-06, |dqO|=2.642e-06, |dqG|=6.133e-03, |dBHP|=3.453e+03
+   Newton 2: residual=6.81813e-05, converged=True, worst=CNV_G, linear=3.03s, liniter=3, linres=1.230e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0213206, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.380e+05, |dsW|=1.191e-02, |dx|=6.542e-03, |dqW|=2.728e-05, |dqO|=3.324e-05, |dqG|=5.010e-02, |dBHP|=5.410e+04
+   Newton 1: residual=0.0285863, converged=False, worst=CNV_G, linear=2.60s, liniter=3, linres=6.137e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=9.561e+03, |dsW|=4.835e-04, |dx|=5.031e-04, |dqW|=9.343e-08, |dqO|=7.007e-08, |dqG|=8.282e-04, |dBHP|=2.124e+03
+   Newton 2: residual=9.04962e-05, converged=True, worst=CNV_G, linear=2.51s, liniter=2, linres=2.150e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0207732, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.365e+05, |dsW|=1.190e-02, |dx|=2.385e-01, |dqW|=2.675e-05, |dqO|=3.128e-05, |dqG|=4.668e-02, |dBHP|=5.679e+04
+   Newton 1: residual=0.0388047, converged=False, worst=CNV_G, linear=3.06s, liniter=3, linres=2.175e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.450e+04, |dsW|=3.010e-04, |dx|=3.806e-01, |dqW|=4.464e-07, |dqO|=1.184e-07, |dqG|=9.007e-04, |dBHP|=2.944e+03
+   Newton 2: residual=0.00011877, converged=True, worst=CNV_G, linear=2.52s, liniter=2, linres=2.019e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0176123, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.368e+05, |dsW|=1.183e-02, |dx|=6.339e-03, |dqW|=2.621e-05, |dqO|=2.947e-05, |dqG|=4.403e-02, |dBHP|=6.114e+04
+   Newton 1: residual=0.0538141, converged=False, worst=CNV_G, linear=2.76s, liniter=3, linres=9.796e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.887e+03, |dsW|=1.160e-03, |dx|=2.135e-01, |dqW|=4.745e-06, |dqO|=1.313e-06, |dqG|=5.419e-03, |dBHP|=4.058e+03
+   Newton 2: residual=0.000649734, converged=False, worst=CNV_G, linear=2.45s, liniter=3, linres=2.208e-07, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=2.326e+04, |dsW|=7.968e-06, |dx|=7.254e-05, |dqW|=1.797e-09, |dqO|=1.166e-08, |dqG|=4.179e-06, |dBHP|=5.518e+00
+   Newton 3: residual=1.96165e-08, converged=True, worst=CNV_G, linear=2.84s, liniter=1, linres=1.795e-05, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0150665, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.368e+05, |dsW|=1.175e-02, |dx|=6.214e-03, |dqW|=2.581e-05, |dqO|=2.766e-05, |dqG|=4.197e-02, |dBHP|=6.802e+04
+   Newton 1: residual=0.0150747, converged=False, worst=CNV_O, linear=2.82s, liniter=3, linres=3.757e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=9.108e+03, |dsW|=1.074e-04, |dx|=4.644e-04, |dqW|=8.532e-08, |dqO|=1.068e-07, |dqG|=2.516e-03, |dBHP|=2.058e+03
+   Newton 2: residual=7.46002e-05, converged=True, worst=CNV_O, linear=2.92s, liniter=3, linres=1.362e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0148083, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.362e+05, |dsW|=1.164e-02, |dx|=6.202e-03, |dqW|=2.542e-05, |dqO|=2.620e-05, |dqG|=4.019e-02, |dBHP|=6.340e+04
+   Newton 1: residual=0.0394394, converged=False, worst=CNV_O, linear=2.78s, liniter=3, linres=2.421e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.401e+04, |dsW|=3.830e-04, |dx|=3.726e-01, |dqW|=1.397e-07, |dqO|=3.336e-07, |dqG|=1.030e-02, |dBHP|=1.507e+04
+   Newton 2: residual=0.00645828, converged=False, worst=CNV_G, linear=2.67s, liniter=3, linres=1.089e-06, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.452e+02, |dsW|=3.378e-06, |dx|=1.108e-04, |dqW|=2.490e-09, |dqO|=1.549e-08, |dqG|=5.350e-04, |dBHP|=1.957e+02
+   Newton 3: residual=8.14686e-07, converged=True, worst=CNV_G, linear=2.98s, liniter=3, linres=1.867e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.0144428, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.350e+05, |dsW|=1.132e-02, |dx|=5.698e-03, |dqW|=2.483e-05, |dqO|=2.448e-05, |dqG|=3.891e-02, |dBHP|=4.182e+04
+   Newton 1: residual=0.00499069, converged=False, worst=CNV_G, linear=2.83s, liniter=3, linres=1.182e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=7.005e+03, |dsW|=6.610e-04, |dx|=1.326e+00, |dqW|=1.588e-06, |dqO|=1.585e-06, |dqG|=1.054e-03, |dBHP|=1.130e+03
+   Newton 2: residual=3.67149e-05, converged=True, worst=CNV_O, linear=2.57s, liniter=3, linres=2.151e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+   Newton pre: residual=0.0139935, converged=False, worst=CNV_G
+      update: relax=1, |dp|=1.336e+05, |dsW|=1.109e-02, |dx|=5.442e-03, |dqW|=2.449e-05, |dqO|=2.324e-05, |dqG|=3.759e-02, |dBHP|=4.319e+04
+   Newton 1: residual=0.00574014, converged=False, worst=CNV_G, linear=2.62s, liniter=2, linres=6.379e-05, prec=sparse-ilut-gmres-parity
+      update: relax=1, |dp|=1.079e+04, |dsW|=1.047e-04, |dx|=3.991e-01, |dqW|=2.371e-07, |dqO|=9.810e-07, |dqG|=8.291e-04, |dBHP|=2.033e+03
+   Newton 2: residual=4.46628e-06, converged=True, worst=CNV_G, linear=3.05s, liniter=3, linres=3.168e-06, prec=sparse-ilut-gmres-parity
+   Ministep 1: dt=864000, converged=True, iterations=2 final
+FAIL ValueError: not enough values to unpack (expected 3, got 2)

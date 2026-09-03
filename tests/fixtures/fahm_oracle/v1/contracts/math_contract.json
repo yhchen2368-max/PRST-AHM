@@ -1,0 +1,102 @@
+{
+  "contract_version": "FAHM-MATH-V1",
+  "indexing": {
+    "active_cell": {
+      "matlab": "G.cells.indexMap is 1-based",
+      "python": "active_index_map is 0-based",
+      "rule": "subtract exactly one only at the language boundary"
+    },
+    "control": {
+      "matlab": "schedule.step.control is 1-based",
+      "python": "step control indices are 0-based",
+      "rule": "subtract exactly one; do not reorder controls"
+    },
+    "equation_and_variable_blocks": {
+      "matlab": "block order is supplied by LinearizedProblem/model metadata",
+      "python": "must preserve the same named block order",
+      "rule": "never infer order from sorted dictionary keys"
+    },
+    "parameter": {
+      "matlab": "inclusive 1-based slices after vertical concatenation",
+      "python": "half-open 0-based slices",
+      "rule": "[start1,end1] maps to [start1-1,end1)"
+    },
+    "perforation": {
+      "matlab": "W.cells and getPerforationToWellMapping are 1-based",
+      "python": "well cells and p2w are 0-based",
+      "rule": "convert cell and well maps independently; sparse matrix data are not indices"
+    },
+    "timestep": {
+      "matlab": "states{1} is the first completed schedule step; state0 is separate",
+      "python": "states[0] is the first completed schedule step; state0 is separate",
+      "rule": "do not prepend state0 to the adjoint states list"
+    },
+    "well": {
+      "matlab": "schedule.control(...).W order is authoritative and 1-based when used as an index",
+      "python": "preserve W order and use 0-based indices",
+      "rule": "name matching may build a permutation but may not sort wells"
+    }
+  },
+  "jacobian_order": {
+    "equation_order": "model/LinearizedProblem equationNames",
+    "sparse_contract": "shape, row, column, data, duplicate accumulation and transpose must match",
+    "state_variable_order": "model primaryVariables followed by facility/well variables exactly as returned by MRST",
+    "status": "frozen as a contract; numeric Jacobian arrays are a Stage 12 Gate"
+  },
+  "objective_and_gradient_sign": {
+    "evaluateMatchFromEclipseRun": "returns -sum(matchObservedOWGProfile) and the negative scaled gradient",
+    "matchObservedOWGProfile": "returns one non-negative mismatch contribution per timestep",
+    "optimizer": "optimizeBoundConstrainedForFAHM defaults maximize=true and internally minimizes the negated callback",
+    "rule": "value and gradient signs are migrated as one indivisible contract"
+  },
+  "parameterization": {
+    "app_order": [
+      "porevolume",
+      "permx",
+      "permy",
+      "permz",
+      "krw",
+      "kro",
+      "krg",
+      "swl",
+      "swcr",
+      "swu",
+      "sowcr",
+      "sgl",
+      "sgcr",
+      "sgu",
+      "sogcr"
+    ],
+    "concatenation": "getScaledParameterVector vertically concatenates each ModelParameter vector in config order",
+    "default_enabled": [
+      "porevolume",
+      "permx",
+      "permy",
+      "permz"
+    ],
+    "dimension": "one value per selected active cell/endpoint entry; never one scalar multiplier per field",
+    "permeability_scaling": "log",
+    "porevolume_and_endpoint_scaling": "linear"
+  },
+  "reshape_and_storage": {
+    "matlab_linearization": "A(:)",
+    "numpy_required": "numpy.reshape(shape, order='F')",
+    "oracle_binary_dtype": "explicit little-endian dtype from manifest",
+    "oracle_binary_order": "F",
+    "rule": "numpy default C-order is forbidden for MATLAB-derived flattened arrays"
+  },
+  "unit_box": {
+    "bounds": [
+      0.0,
+      1.0
+    ],
+    "linear": "u=(x-lower)/(upper-lower)",
+    "log": "ModelParameter logScale/expScale followed exactly; the SPE1 default point is approximately 0.5",
+    "optimizer_updates": "performed in scaled unit-box coordinates"
+  },
+  "value_semantics": {
+    "matlab": "setup/deck/state/model value assignments isolate candidate evaluations unless handle objects are explicitly involved",
+    "python": "deep-copy or reconstruct mutable candidate inputs",
+    "required_invariant": "evaluating candidate B after A equals evaluating B from a clean baseline"
+  }
+}

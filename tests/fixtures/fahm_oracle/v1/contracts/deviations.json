@@ -1,0 +1,203 @@
+{
+  "allowed_classifications": [
+    "PARITY",
+    "FIX",
+    "PRST_EXTENSION"
+  ],
+  "entries": [
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-001",
+      "mrst_behavior": "addTracerObserved references undefined W and reads tracerNames after defining tracNames, so the tracer path fails before producing observations.",
+      "prst_action": "Report, use schedule W and one canonical tracer-name variable, then test valid tracer, missing wells, well order and multiple files.",
+      "source": [
+        "MRST/dev/utils/observed/addTracerObserved.m:2",
+        "MRST/dev/utils/observed/addTracerObserved.m:3",
+        "MRST/dev/utils/observed/addTracerObserved.m:17",
+        "MRST/dev/utils/observed/addTracerObserved.m:22"
+      ],
+      "stage": 6,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-002",
+      "mrst_behavior": "Tracer, profile and saturation writers assign wellsol while all readers and the base observed structure use wellSol; MATLAB field names are case-sensitive.",
+      "prst_action": "Use one canonical wellSol-equivalent field and regression-test all three data types.",
+      "source": [
+        "MRST/dev/utils/observed/addTracerObserved.m:11",
+        "MRST/dev/utils/observed/addProfileObserved.m:11",
+        "MRST/dev/utils/observed/addSaturationObserved.m:11",
+        "MRST/dev/utils/evaluate/matchObservedOWGProfile.m:53"
+      ],
+      "stage": 6,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-003",
+      "mrst_behavior": "Absolute permeability limits are converted from millidarcy in the absolute branch and converted a second time in the common permeability-scaling branch.",
+      "prst_action": "Apply exactly one millidarcy-to-SI conversion and test absolute PERMX/PERMY/PERMZ limits.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:618",
+        "MRST/dev/APP/FAHM.m:619",
+        "MRST/dev/APP/FAHM.m:629"
+      ],
+      "stage": 9,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-004",
+      "mrst_behavior": "A non-numeric objective weight becomes NaN through str2double; isempty(NaN) is false, so NaN enters the objective.",
+      "prst_action": "Reject non-finite weight input with a visible validation error; do not silently coerce it to zero.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:509",
+        "MRST/dev/APP/FAHM.m:510"
+      ],
+      "stage": 8,
+      "state": "reported; PRST validation fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-005",
+      "mrst_behavior": "omega.wp is mutated inside the timestep loop. A low observed BHP can therefore suppress the same well's BHP mismatch in later timesteps.",
+      "prst_action": "Build a timestep-local BHP weight mask without mutating the input or later timesteps.",
+      "source": [
+        "MRST/dev/utils/evaluate/matchObservedOWGProfile.m:120"
+      ],
+      "stage": 8,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-006",
+      "mrst_behavior": "The tracer cell-to-well sparse map uses p2w as matrix values instead of ones, multiplying concentrations by the one-based well number.",
+      "prst_action": "Use unit sparse aggregation weights and independently convert p2w row indices to zero-based Python indices.",
+      "source": [
+        "MRST/dev/utils/evaluate/matchObservedOWGProfile.m:24",
+        "MRST/dev/utils/evaluate/matchObservedOWGProfile.m:25",
+        "MRST/dev/utils/evaluate/matchObservedOWGProfile.m:116"
+      ],
+      "stage": 8,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-007",
+      "mrst_behavior": "Profile and saturation loops compute a unique time but index observed with the full data-date vector instead of the current unique time.",
+      "prst_action": "Map each unique observation date to exactly one schedule timestep and test multiple dates.",
+      "source": [
+        "MRST/dev/utils/observed/addProfileObserved.m:17",
+        "MRST/dev/utils/observed/addProfileObserved.m:20",
+        "MRST/dev/utils/observed/addSaturationObserved.m:17",
+        "MRST/dev/utils/observed/addSaturationObserved.m:20"
+      ],
+      "stage": 6,
+      "state": "reported; PRST fix pending"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-008",
+      "mrst_behavior": "modelSetUpCheck only changes monitoring flags from false to true. Once a monitoring source has been valid, unchecking it or invalidating its file leaves the old true flag latched and Proceed can remain enabled without current monitoring data.",
+      "prst_action": "Recompute every starting-model, simulator and monitoring predicate from current widget state on each event; never retain a prior true value.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:712",
+        "MRST/dev/APP/FAHM.m:722",
+        "MRST/dev/APP/FAHM.m:727",
+        "MRST/dev/APP/FAHM.m:732",
+        "MRST/dev/APP/FAHM.m:737",
+        "MRST/dev/APP/FAHM.m:742"
+      ],
+      "stage": 3,
+      "state": "reported; fixed in PRST with current-state recomputation"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-009",
+      "mrst_behavior": "CreatProjectButtonPushed discards system(command)'s exit status and immediately reads INIT, EGRID and UNRST. A failed simulator or a zero-exit run with no output therefore fails later in a reader without command diagnostics.",
+      "prst_action": "Retain the return code for diagnostics but preserve FAHM's output-based success rule: continue when all three required files exist, and otherwise raise a visible Create Project error listing the missing files without unlocking setup navigation.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:1744",
+        "MRST/dev/APP/FAHM.m:1755",
+        "MRST/dev/APP/FAHM.m:1756",
+        "MRST/dev/APP/FAHM.m:1763"
+      ],
+      "stage": 4,
+      "state": "reported; fixed in PRST with output validation and diagnostics"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-010",
+      "mrst_behavior": "CreatProjectButtonPushed concatenates simulator and baseCase paths into a shell command without quoting. A selected tNavigator path or model directory containing spaces is split into multiple command arguments.",
+      "prst_action": "Build logical argv as individual tokens and launch binaries directly; for a Windows batch wrapper, serialize those tokens once with subprocess.list2cmdline. Test simulator, model and cwd paths containing spaces.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:1728",
+        "MRST/dev/APP/FAHM.m:1730",
+        "MRST/dev/APP/FAHM.m:1736",
+        "MRST/dev/APP/FAHM.m:1737"
+      ],
+      "stage": 4,
+      "state": "reported; fixed in PRST with structured argv"
+    },
+    {
+      "classification": "FIX",
+      "id": "FAHM-FIX-011",
+      "mrst_behavior": "imposeCapPressScaling reads map.kw although getPcScalerMap creates map.pc, and its invalid-keyword branch calls warnProblem(prob) with undefined prob. Updating an existing pcscale or reporting an unsupported key therefore errors before applying the requested change.",
+      "prst_action": "Use the defined capillary mapping, pass the actual rejected keyword names to the warning path, and regression-test first creation plus subsequent in-place endpoint updates.",
+      "source": [
+        "MRST/dev/utils/imposeCapPressScaling.m:46",
+        "MRST/dev/utils/imposeCapPressScaling.m:66",
+        "MRST/dev/utils/imposeCapPressScaling.m:118"
+      ],
+      "stage": 5,
+      "state": "reported; fixed in PRST with the defined pc mapping and explicit rejected-key warnings"
+    },
+    {
+      "classification": "PRST_EXTENSION",
+      "id": "FAHM-EXT-004",
+      "mrst_behavior": "startupFcn blocks for 20 seconds with pause(20) before showing MainTabGroup.",
+      "prst_action": "Use a non-blocking two-second Tk after callback, as explicitly requested by the user; preserve the same before/after visibility states.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:891"
+      ],
+      "stage": 3,
+      "state": "user-authorized during Stage 4"
+    },
+    {
+      "classification": "PRST_EXTENSION",
+      "id": "FAHM-EXT-001",
+      "mrst_behavior": "Terminate has no bound callback.",
+      "prst_action": "PRST Terminate behavior may be retained and tested separately from parity.",
+      "source": [
+        "MRST/dev/APP/FAHM.m"
+      ],
+      "stage": 3,
+      "state": "user-authorized"
+    },
+    {
+      "classification": "PRST_EXTENSION",
+      "id": "FAHM-EXT-002",
+      "mrst_behavior": "Mismatch only switches empty view panels; result loading/population is not implemented.",
+      "prst_action": "PRST mismatch result loading and plots may be retained and tested separately from parity.",
+      "source": [
+        "MRST/dev/APP/FAHM.m:1113"
+      ],
+      "stage": 3,
+      "state": "user-authorized"
+    },
+    {
+      "classification": "PRST_EXTENSION",
+      "id": "FAHM-EXT-003",
+      "mrst_behavior": "View is empty.",
+      "prst_action": "PRST View functionality may be retained and tested separately from parity.",
+      "source": [
+        "MRST/dev/APP/FAHM.m"
+      ],
+      "stage": 3,
+      "state": "user-authorized"
+    }
+  ],
+  "policy": "All unlisted effective FAHM behavior defaults to PARITY. Confirmed MRST defects are reported and fixed only in PRST; MRST source remains untouched.",
+  "registry_version": "FAHM-DEVIATIONS-V1"
+}

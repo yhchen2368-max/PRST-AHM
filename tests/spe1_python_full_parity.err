@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_spe1_full_parity.py", line 16, in <module>
+    from Cgnet.ad_core.initialization.init_eclipse_problem_ad import init_eclipse_problem_ad
+ModuleNotFoundError: No module named 'Cgnet'

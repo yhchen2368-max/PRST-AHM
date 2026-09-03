@@ -1,0 +1,2 @@
+converged,error,step
+False,RuntimeError: Nonlinear solver failed to converge,1

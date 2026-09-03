@@ -1,0 +1,151 @@
+--- SPE9 init ---
+cells=9000 steps=90 gas=True time=9.1s
+nls=NonLinearSolver linear=AMGCL_CPRSolverAD tol=0.0001 maxit=50
+operators N=(25665, 2) T=(25665,)
+--- SPE9 simulate ---
+   Newton pre: residual=0.704947, converged=False
+   Newton 1: residual=0.0296603, converged=False, linear=12.98s, linres=1.167e-15
+   Newton 2: residual=0.0312885, converged=False, linear=13.49s, linres=2.712e-15
+   Newton 3: residual=0.00108508, converged=False, linear=13.79s, linres=2.534e-15
+   Newton 4: residual=9.48374e-05, converged=False, linear=14.29s, linres=1.946e-15
+   Newton 5: residual=0.000238098, converged=True, linear=19.67s, linres=1.435e-15
+   Ministep 1: dt=86400, converged=True, iterations=5
+   Newton pre: residual=0.0266606, converged=False
+   Newton 1: residual=0.00944611, converged=False, linear=21.48s, linres=2.017e-14
+   Newton 2: residual=0.00946755, converged=False, linear=20.75s, linres=6.175e-16
+   Newton 3: residual=0.00104011, converged=False, linear=18.28s, linres=3.712e-15
+   Newton 4: residual=4.72134e-07, converged=True, linear=16.67s, linres=1.928e-15
+   Ministep 2: dt=112320, converged=True, iterations=4
+   Newton pre: residual=0.0314157, converged=False
+   Newton 1: residual=0.0362599, converged=False, linear=16.39s, linres=2.151e-14
+   Newton 2: residual=0.0168609, converged=False, linear=18.70s, linres=1.309e-15
+   Newton 3: residual=0.0021937, converged=False, linear=22.04s, linres=1.010e-14
+   Newton 4: residual=0.000107075, converged=True, linear=24.28s, linres=5.068e-15
+   Ministep 3: dt=224640, converged=True, iterations=4
+   Newton pre: residual=0.0303138, converged=False
+   Newton 1: residual=0.0953948, converged=False, linear=19.37s, linres=1.801e-14
+   Newton 2: residual=0.00765329, converged=False, linear=17.86s, linres=1.190e-15
+   Newton 3: residual=0.0024331, converged=False, linear=17.08s, linres=1.180e-14
+   Newton 4: residual=7.82613e-05, converged=True, linear=14.28s, linres=2.993e-15
+   Ministep 4: dt=324480, converged=True, iterations=4
+   Newton pre: residual=0.00940284, converged=False
+   Newton 1: residual=0.00353489, converged=False, linear=12.08s, linres=6.037e-15
+   Newton 2: residual=0.00178414, converged=False, linear=13.06s, linres=8.859e-16
+   Newton 3: residual=4.61462e-05, converged=True, linear=14.76s, linres=3.014e-15
+   Ministep 5: dt=116160, converged=True, iterations=3 final
+   Newton pre: residual=0.0346908, converged=False
+   Newton 1: residual=0.0191239, converged=False, linear=13.21s, linres=2.180e-14
+   Newton 2: residual=0.00489339, converged=False, linear=14.00s, linres=1.657e-15
+   Newton 3: residual=0.00105792, converged=False, linear=16.14s, linres=1.086e-14
+   Newton 4: residual=0.000437267, converged=True, linear=14.44s, linres=9.710e-16
+   Ministep 1: dt=468693.333333, converged=True, iterations=4
+   Newton pre: residual=0.0209394, converged=False
+   Newton 1: residual=0.0410703, converged=False, linear=18.06s, linres=1.195e-14
+   Newton 2: residual=0.00268607, converged=False, linear=14.68s, linres=8.787e-16
+   Newton 3: residual=0.000411584, converged=False, linear=15.12s, linres=6.988e-15
+   Newton 4: residual=4.11012e-05, converged=True, linear=15.70s, linres=1.628e-15
+   Ministep 2: dt=395306.666667, converged=True, iterations=4 final
+   Newton pre: residual=0.0286132, converged=False
+   Newton 1: residual=0.0868032, converged=False, linear=15.70s, linres=1.757e-14
+   Newton 2: residual=0.00609827, converged=False, linear=17.65s, linres=1.953e-15
+   Newton 3: residual=0.000500977, converged=False, linear=16.67s, linres=1.245e-14
+   Newton 4: residual=9.27531e-07, converged=True, linear=17.54s, linres=3.760e-15
+   Ministep 1: dt=677001.481481, converged=True, iterations=4
+   Newton pre: residual=0.00566607, converged=False
+   Newton 1: residual=0.00287232, converged=False, linear=19.02s, linres=4.913e-15
+   Newton 2: residual=0.000718648, converged=False, linear=15.63s, linres=1.051e-15
+   Newton 3: residual=3.39801e-06, converged=True, linear=16.28s, linres=2.750e-15
+   Ministep 2: dt=186998.518519, converged=True, iterations=3 final
+   Newton pre: residual=0.0239725, converged=False
+   Newton 1: residual=0.228192, converged=False, linear=14.81s, linres=2.045e-14
+   Newton 2: residual=0.102499, converged=False, linear=16.35s, linres=7.183e-16
+   Newton 3: residual=0.00317379, converged=False, linear=17.91s, linres=2.867e-15
+   Newton 4: residual=0.00105983, converged=False, linear=17.15s, linres=2.594e-14
+   Newton 5: residual=7.96454e-05, converged=True, linear=14.26s, linres=1.749e-15
+   Ministep 1: dt=864000, converged=True, iterations=5 final
+   Newton pre: residual=0.018418, converged=False
+   Newton 1: residual=0.984627, converged=False, linear=20.38s, linres=1.836e-14
+   Newton 2: residual=0.160302, converged=False, linear=19.17s, linres=6.121e-16
+   Newton 3: residual=0.000509203, converged=False, linear=14.79s, linres=4.180e-15
+   Newton 4: residual=2.66859e-06, converged=True, linear=16.99s, linres=2.612e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.0544531, converged=False
+   Newton 1: residual=0.067949, converged=False, linear=17.11s, linres=1.818e-14
+   Newton 2: residual=0.0229578, converged=False, linear=21.41s, linres=3.982e-15
+   Newton 3: residual=0.000358311, converged=False, linear=17.43s, linres=6.786e-15
+   Newton 4: residual=2.58908e-06, converged=True, linear=14.00s, linres=2.924e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.313611, converged=False
+   Newton 1: residual=0.07227, converged=False, linear=16.33s, linres=1.794e-14
+   Newton 2: residual=0.0267515, converged=False, linear=18.41s, linres=3.192e-15
+   Newton 3: residual=0.00043468, converged=False, linear=17.85s, linres=3.407e-15
+   Newton 4: residual=2.95166e-07, converged=True, linear=17.80s, linres=2.278e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.483265, converged=False
+   Newton 1: residual=0.121359, converged=False, linear=21.29s, linres=1.427e-14
+   Newton 2: residual=0.00767068, converged=False, linear=16.43s, linres=1.474e-15
+   Newton 3: residual=0.00242521, converged=False, linear=20.08s, linres=1.196e-14
+   Newton 4: residual=2.82633e-05, converged=True, linear=16.63s, linres=1.661e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.481904, converged=False
+   Newton 1: residual=0.0970593, converged=False, linear=22.47s, linres=1.308e-14
+   Newton 2: residual=0.0090589, converged=False, linear=17.82s, linres=1.793e-15
+   Newton 3: residual=0.000177433, converged=False, linear=18.77s, linres=7.806e-15
+   Newton 4: residual=1.51162e-07, converged=True, linear=17.44s, linres=3.334e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.467968, converged=False
+   Newton 1: residual=0.0672434, converged=False, linear=18.08s, linres=1.882e-14
+   Newton 2: residual=0.0372553, converged=False, linear=18.62s, linres=2.190e-15
+   Newton 3: residual=0.00159128, converged=False, linear=16.43s, linres=2.769e-15
+   Newton 4: residual=3.65606e-06, converged=True, linear=19.19s, linres=1.442e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.425544, converged=False
+   Newton 1: residual=0.14096, converged=False, linear=14.45s, linres=1.897e-14
+   Newton 2: residual=0.00653889, converged=False, linear=17.45s, linres=1.176e-15
+   Newton 3: residual=0.000141536, converged=True, linear=17.87s, linres=8.743e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.382262, converged=False
+   Newton 1: residual=0.203414, converged=False, linear=23.75s, linres=1.507e-14
+   Newton 2: residual=0.0227028, converged=False, linear=23.36s, linres=7.289e-16
+   Newton 3: residual=0.000679172, converged=False, linear=21.35s, linres=4.428e-15
+   Newton 4: residual=1.47551e-06, converged=True, linear=20.16s, linres=2.174e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.33496, converged=False
+   Newton 1: residual=0.11183, converged=False, linear=16.95s, linres=1.767e-14
+   Newton 2: residual=2.80606, converged=False, linear=16.91s, linres=1.364e-15
+   Newton 3: residual=0.254157, converged=False, linear=18.19s, linres=2.529e-16
+   Newton 4: residual=0.0121763, converged=False, linear=16.24s, linres=1.730e-15
+   Newton 5: residual=1.85342e-05, converged=True, linear=22.07s, linres=1.241e-15
+   Ministep 1: dt=864000, converged=True, iterations=5 final
+   Newton pre: residual=0.309763, converged=False
+   Newton 1: residual=0.0790238, converged=False, linear=15.84s, linres=2.064e-14
+   Newton 2: residual=0.00443828, converged=False, linear=15.70s, linres=1.498e-15
+   Newton 3: residual=0.000151014, converged=True, linear=15.79s, linres=5.707e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.290311, converged=False
+   Newton 1: residual=0.0318326, converged=False, linear=18.68s, linres=2.678e-14
+   Newton 2: residual=0.0145411, converged=False, linear=19.33s, linres=2.234e-15
+   Newton 3: residual=0.00452612, converged=False, linear=19.61s, linres=3.142e-15
+   Newton 4: residual=1.21701e-05, converged=True, linear=25.08s, linres=2.753e-15
+   Ministep 1: dt=864000, converged=True, iterations=4 final
+   Newton pre: residual=0.273216, converged=False
+   Newton 1: residual=0.288575, converged=False, linear=19.35s, linres=2.125e-14
+   Newton 2: residual=0.00863211, converged=False, linear=19.49s, linres=1.405e-15
+   Newton 3: residual=0.000193017, converged=True, linear=20.98s, linres=4.419e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.254901, converged=False
+   Newton 1: residual=0.0722266, converged=False, linear=18.31s, linres=2.289e-14
+   Newton 2: residual=0.0030532, converged=False, linear=20.41s, linres=2.035e-15
+   Newton 3: residual=8.41143e-05, converged=True, linear=21.15s, linres=4.529e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.248155, converged=False
+   Newton 1: residual=0.155443, converged=False, linear=21.41s, linres=2.226e-14
+   Newton 2: residual=0.00212799, converged=False, linear=20.43s, linres=1.387e-15
+   Newton 3: residual=5.66083e-05, converged=True, linear=16.84s, linres=3.394e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.226434, converged=False
+   Newton 1: residual=0.0362019, converged=False, linear=22.64s, linres=2.997e-14
+   Newton 2: residual=0.00114536, converged=False, linear=27.72s, linres=3.294e-15
+   Newton 3: residual=0.000103909, converged=True, linear=21.72s, linres=9.196e-15
+   Ministep 1: dt=864000, converged=True, iterations=3 final
+   Newton pre: residual=0.207073, converged=False

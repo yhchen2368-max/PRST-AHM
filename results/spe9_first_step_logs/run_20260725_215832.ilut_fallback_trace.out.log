@@ -1,0 +1,33 @@
+cells=9000 dt=864000.0 gas=True
+Loaded MRST trace: mrst_spe9_first_step.mat ministeps=5
+   Newton pre: residual=0.398045, converged=False, worst=CNV_G | MRST residual=0.738744, diff=5.444e-01, worst[1]=0.19433/0.738744
+      update: relax=1, |dp|=6.124e+06, |dsW|=3.989e-02, |dx|=3.695e+01, |dqW|=5.912e-03, |dqO|=4.187e-05, |dqG|=1.763e+00, |dBHP|=4.187e+07
+   Newton 1: residual=0.366529, converged=False, worst=CNV_O, linear=1.86s, liniter=35, linres=2.654e-05, prec=sparse-ilut-gmres-parity | MRST residual=0.0296543, diff=3.599e-01, worst[1]=0.366529/0.00660209, MRST linear=0.37s
+      update: relax=1, |dp|=1.791e+06, |dsW|=4.022e-02, |dx|=3.212e+01, |dqW|=1.969e-03, |dqO|=2.418e-03, |dqG|=1.031e+00, |dBHP|=2.222e+07
+   Newton 2: residual=0.0446695, converged=False, worst=CNV_G, linear=13.88s, liniter=10, linres=1.703e-15, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.0312887, diff=1.338e-02, worst[2]=0.0446695/0.0312887, MRST linear=0.13s
+      update: relax=1, |dp|=1.595e+06, |dsW|=4.671e-03, |dx|=3.852e+02, |dqW|=1.182e-05, |dqO|=0.000e+00, |dqG|=6.226e-01, |dBHP|=8.449e+06
+   Newton 3: residual=0.0138452, converged=False, worst=CNV_G, linear=12.84s, liniter=46, linres=3.620e-15, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.0010852, diff=1.276e-02, worst[2]=0.0138452/0.0010852, MRST linear=0.12s
+      update: relax=1, |dp|=5.223e+05, |dsW|=2.258e-03, |dx|=1.836e+01, |dqW|=3.065e-06, |dqO|=0.000e+00, |dqG|=2.304e-02, |dBHP|=1.448e+06
+   Newton 4: residual=0.00102331, converged=False, worst=CNV_O, linear=13.78s, liniter=31, linres=1.943e-15, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=9.48362e-05, diff=9.285e-04, worst[1]=0.00102331/9.48362e-05, MRST linear=0.14s
+      update: relax=1, |dp|=1.682e+04, |dsW|=3.606e-05, |dx|=2.247e+01, |dqW|=2.617e-07, |dqO|=0.000e+00, |dqG|=1.418e-04, |dBHP|=1.963e+05
+   Newton 5: residual=0.000238163, converged=False, worst=CNV_O, linear=13.89s, liniter=24, linres=2.991e-16, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.000238097, diff=1.913e-05, worst[9]=2.02867e-05/1.15741e-06, MRST linear=0.19s
+      update: relax=1, |dp|=1.529e+04, |dsW|=7.953e-05, |dx|=5.588e+00, |dqW|=3.367e-07, |dqO|=1.969e-05, |dqG|=4.689e-03, |dBHP|=1.753e+05
+   Newton 6: residual=4.70044e-06, converged=True, worst=CNV_G, linear=13.13s, liniter=20, linres=4.420e-15, prec=sparse-ilut-gmres-with-direct-fallback
+   Ministep 1: dt=86400, converged=True, iterations=6 | MRST dt=86400, iterations=5, converged=True, dt_diff=0.000e+00, iter_diff=1
+   Newton pre: residual=0.0242364, converged=False, worst=CNV_O | MRST residual=0.0266605, diff=2.424e-03, worst[1]=0.0242364/0.0266605
+      update: relax=1, |dp|=1.200e+06, |dsW|=1.121e-02, |dx|=6.842e+01, |dqW|=1.007e-03, |dqO|=4.555e-04, |dqG|=1.170e-01, |dBHP|=2.518e+06
+   Newton 1: residual=0.00872878, converged=False, worst=CNV_G, linear=13.85s, liniter=1, linres=1.567e-14, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.00944614, diff=7.174e-04, worst[2]=0.00872878/0.00944614, MRST linear=0.14s
+      update: relax=1, |dp|=4.856e+04, |dsW|=4.892e-04, |dx|=9.640e+01, |dqW|=2.722e-07, |dqO|=9.968e-05, |dqG|=2.277e-02, |dBHP|=6.868e+05
+   Newton 2: residual=0.00875028, converged=False, worst=CNV_G, linear=34.03s, liniter=2500, linres=7.247e-16, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.00947833, diff=7.281e-04, worst[2]=0.00875028/0.00947833, MRST linear=0.14s
+      update: relax=1, |dp|=5.070e+05, |dsW|=1.946e-04, |dx|=1.858e+01, |dqW|=5.572e-08, |dqO|=1.050e-05, |dqG|=6.586e-03, |dBHP|=1.205e+05
+   Newton 3: residual=0.000861086, converged=False, worst=CNV_O, linear=12.85s, liniter=8, linres=2.982e-15, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.00108153, diff=4.705e-04, worst[1]=0.000861086/0.00039056, MRST linear=0.12s
+      update: relax=1, |dp|=2.411e+04, |dsW|=2.173e-04, |dx|=4.991e+00, |dqW|=3.539e-09, |dqO|=7.791e-07, |dqG|=2.139e-04, |dBHP|=6.561e+03
+   Newton 4: residual=1.94706e-05, converged=True, worst=CNV_O, linear=14.40s, liniter=35, linres=2.381e-15, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=5.18783e-07, diff=1.912e-05, worst[1]=1.94706e-05/3.45715e-07, MRST linear=0.14s
+   Ministep 2: dt=102109.090909, converged=True, iterations=4 | MRST dt=112320, iterations=4, converged=True, dt_diff=-1.021e+04, iter_diff=0
+   Newton pre: residual=0.0297538, converged=False, worst=CNV_O | MRST residual=0.0314156, diff=2.268e-03, worst[0]=0.0209977/0.0232661
+      update: relax=1, |dp|=6.447e+05, |dsW|=0.000e+00, |dx|=0.000e+00, |dqW|=0.000e+00, |dqO|=0.000e+00, |dqG|=0.000e+00, |dBHP|=0.000e+00
+   Newton 1: residual=0.111876, converged=False, worst=CNV_O, linear=7.61s, liniter=2, linres=1.756e+00, prec=CPR | MRST residual=0.0362603, diff=9.952e-02, worst[1]=0.111876/0.0123579, MRST linear=0.22s
+      update: relax=1, |dp|=2.467e+04, |dsW|=0.000e+00, |dx|=0.000e+00, |dqW|=0.000e+00, |dqO|=0.000e+00, |dqG|=0.000e+00, |dBHP|=0.000e+00
+   Newton 2: residual=0.0950373, converged=False, worst=CNV_O, linear=7.90s, liniter=2, linres=9.652e-01, prec=CPR | MRST residual=0.0168608, diff=8.980e-02, worst[1]=0.0950373/0.00524059, MRST linear=0.08s
+      update: relax=1, |dp|=1.146e+06, |dsW|=2.651e-02, |dx|=1.311e+02, |dqW|=4.728e-04, |dqO|=4.006e-04, |dqG|=1.054e-01, |dBHP|=3.123e+06
+   Newton 3: residual=0.0294038, converged=False, worst=CNV_G, linear=13.00s, liniter=11, linres=1.368e-14, prec=sparse-ilut-gmres-with-direct-fallback | MRST residual=0.00219371, diff=2.721e-02, worst[2]=0.0294038/0.00219371, MRST linear=0.25s

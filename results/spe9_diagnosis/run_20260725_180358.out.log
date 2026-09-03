@@ -1,0 +1,28 @@
+init cells=9000 steps=90 solver=NonLinearSolver linear=AMGCL_CPRSolverAD nls=(12, min=2, cuts=6)
+   Newton 1: residual=0.0296603, converged=False, linear=27.74s
+   Newton 2: residual=0.0312885, converged=False, linear=28.78s
+   Newton 3: residual=0.00108508, converged=False, linear=27.77s
+   Newton 4: residual=9.48374e-05, converged=False, linear=35.82s
+   Newton 5: residual=0.000238098, converged=True, linear=37.26s
+   Ministep 1: dt=86400.0, converged=True, iterations=5
+   Newton 1: residual=0.00944611, converged=False, linear=35.76s
+   Newton 2: residual=0.00946755, converged=False, linear=25.65s
+   Newton 3: residual=0.00104011, converged=False, linear=28.59s
+   Newton 4: residual=4.72134e-07, converged=True, linear=28.60s
+   Ministep 2: dt=112319.99999999999, converged=True, iterations=4
+   Newton 1: residual=0.0362599, converged=False, linear=28.58s
+   Newton 2: residual=0.0168609, converged=False, linear=24.74s
+   Newton 3: residual=0.0021937, converged=False, linear=27.82s
+   Newton 4: residual=0.000107075, converged=True, linear=25.69s
+   Ministep 3: dt=224639.99999999997, converged=True, iterations=4
+   Newton 1: residual=0.0953948, converged=False, linear=23.15s
+   Newton 2: residual=0.00765329, converged=False, linear=25.78s
+   Newton 3: residual=0.0024331, converged=False, linear=23.86s
+   Newton 4: residual=7.82613e-05, converged=True, linear=22.01s
+   Ministep 4: dt=324479.99999999994, converged=True, iterations=4
+   Newton 1: residual=0.00353489, converged=False, linear=25.23s
+   Newton 2: residual=0.00178414, converged=False, linear=27.53s
+   Newton 3: residual=4.61462e-05, converged=True, linear=30.81s
+   Ministep 5: dt=116160.0, converged=True, iterations=3
+STEP=001/90 days=10 ok=True iterations=20 ministeps=5 cuts=0 elapsed=593.19s total=594.88s resmax=1.226456e-01 rw=9.463000e-02 ro=1.226456e-01 rg=3.935326e-02
+   Newton 1: residual=0.0191239, converged=False, linear=30.08s

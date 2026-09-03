@@ -1,0 +1,214 @@
+{
+  "extensions": {
+    "mismatch_result_loading": "PRST_EXTENSION",
+    "startup_delay": "PRST_EXTENSION",
+    "terminate": "PRST_EXTENSION",
+    "view": "PRST_EXTENSION"
+  },
+  "model": {
+    "create_enabled": false,
+    "model_path": "",
+    "proceed_enabled": false,
+    "simulator_path": ""
+  },
+  "monitoring": {
+    "BHP": {
+      "browse_enabled": false,
+      "check_enabled": false,
+      "checked": false,
+      "path": "",
+      "path_enabled": false,
+      "source": "model",
+      "source_enabled": false
+    },
+    "Profile": {
+      "browse_enabled": false,
+      "check_enabled": false,
+      "checked": false,
+      "path": "",
+      "path_enabled": false
+    },
+    "Rates": {
+      "browse_enabled": false,
+      "check_enabled": false,
+      "checked": true,
+      "path": "",
+      "path_enabled": false,
+      "source": "model",
+      "source_enabled": false
+    },
+    "Saturation": {
+      "browse_enabled": false,
+      "check_enabled": false,
+      "checked": false,
+      "path": "",
+      "path_enabled": false
+    },
+    "Tracer": {
+      "browse_enabled": false,
+      "check_enabled": false,
+      "checked": false,
+      "path": "",
+      "path_enabled": false
+    }
+  },
+  "objective": {
+    "copy_items": [
+      "Copy selection to Oil",
+      "Copy selection to Water",
+      "Copy selection to Gas",
+      "Copy selection to Bhp",
+      "Copy selection to Tracer",
+      "Copy selection to Profile",
+      "Copy selection to Saturation"
+    ],
+    "copy_ok_enabled": false,
+    "copy_value": "Copy selection to Oil",
+    "manual_enabled": false,
+    "manual_table_visible": false,
+    "mode": "wizard",
+    "proceed_enabled": false,
+    "weight_enabled": {
+      "BHP": false,
+      "Gas": false,
+      "Oil": false,
+      "Profile": false,
+      "Saturation": false,
+      "Tracer": false,
+      "Water": false
+    },
+    "weights": {
+      "BHP": "0",
+      "Gas": "0",
+      "Oil": "0",
+      "Profile": "0",
+      "Saturation": "0",
+      "Tracer": "0",
+      "Water": "0"
+    },
+    "wizard_visible": true
+  },
+  "parameters": {
+    "checkbox_enabled": {
+      "PermX": true,
+      "PermY": true,
+      "PermZ": true,
+      "Porv": true,
+      "Sgcr": false,
+      "Sgl": false,
+      "Sgu": false,
+      "Sogcr": false,
+      "Sowcr": false,
+      "Swcr": false,
+      "Swl": false,
+      "Swu": false,
+      "krg": false,
+      "kro": false,
+      "krw": false
+    },
+    "checked": [
+      "Porv",
+      "PermX",
+      "PermY",
+      "PermZ"
+    ],
+    "mode": {
+      "PermX": "useRel",
+      "PermY": "useRel",
+      "PermZ": "useRel",
+      "Porv": "useRel",
+      "Sgcr": "useRel",
+      "Sgl": "useRel",
+      "Sgu": "useRel",
+      "Sogcr": "useRel",
+      "Sowcr": "useRel",
+      "Swcr": "useRel",
+      "Swl": "useRel",
+      "Swu": "useRel",
+      "krg": "useRel",
+      "kro": "useRel",
+      "krw": "useRel"
+    },
+    "proceed_enabled": false,
+    "table_rows": {
+      "PermX": 0,
+      "PermY": 0,
+      "PermZ": 0,
+      "Porv": 0,
+      "Sgcr": 0,
+      "Sgl": 0,
+      "Sgu": 0,
+      "Sogcr": 0,
+      "Sowcr": 0,
+      "Swcr": 0,
+      "Swl": 0,
+      "Swu": 0,
+      "krg": 0,
+      "kro": 0,
+      "krw": 0
+    }
+  },
+  "run": {
+    "base_name": "",
+    "case_directory": "",
+    "iterations": 50,
+    "launch_command": "",
+    "save_loop_parameters_only": false,
+    "starting_case": "",
+    "starting_case_items": [],
+    "work_directory": ""
+  },
+  "schema": "fahm-stage3-ui-v1",
+  "tabs": {
+    "main": [
+      "SetUp",
+      "Run",
+      "Mismatch",
+      "View"
+    ],
+    "parameters": [
+      "Porv",
+      "PermX",
+      "PermY",
+      "PermZ",
+      "krw",
+      "kro",
+      "krg",
+      "Swl",
+      "Swcr",
+      "Swu",
+      "Sowcr",
+      "Sgl",
+      "Sgcr",
+      "Sgu",
+      "Sogcr"
+    ],
+    "setup": [
+      "Model",
+      "Objective",
+      "Parameter"
+    ],
+    "setup_location": "left",
+    "wells": [
+      "Oil",
+      "Water",
+      "Gas",
+      "BHP",
+      "Tracer",
+      "Profile",
+      "Saturation"
+    ]
+  },
+  "visibility": {
+    "main": false,
+    "startup": true
+  },
+  "window": {
+    "size": [
+      915,
+      736
+    ],
+    "startup_delay_ms": 2000,
+    "title": "MATLAB App"
+  }
+}

@@ -1,0 +1,25 @@
+cells=44927 dt=691200 wells=3
+   Newton pre: residual=5.94523, converged=False
+   Newton 1: residual=239.508, converged=False, linear=14.99s, linres=1.219e-09
+   Newton 2: residual=1.45052, converged=False, linear=17.13s, linres=1.378e-07
+   Newton 3: residual=6.03605, converged=False, linear=18.20s, linres=2.264e-08
+   Newton 4: residual=1.81564, converged=False, linear=16.59s, linres=3.385e-08
+   Newton 5: residual=1.78963, converged=False, linear=17.22s, linres=1.769e-10
+   Newton 6: residual=1.18386, converged=False, linear=17.10s, linres=2.719e-10
+   Newton 7: residual=0.762411, converged=False, linear=18.55s, linres=2.088e-08
+   Newton 8: residual=4.53174, converged=False, linear=17.38s, linres=6.560e-06
+   Newton 9: residual=1.62949, converged=False, linear=17.26s, linres=5.371e-08
+   Newton 10: residual=1.05248, converged=False, linear=16.97s, linres=4.172e-08
+   Newton 11: residual=1.5994, converged=False, linear=18.42s, linres=7.760e-11
+   Newton 12: residual=5.35937, converged=False, linear=16.84s, linres=3.496e-08
+   Ministep 1: dt=69120.0001, converged=False, iterations=12
+   Cutting timestep from 69120.0001 to 34560.00005
+   Newton pre: residual=2.97262, converged=False
+   Newton 1: residual=112.975, converged=False, linear=14.21s, linres=1.011e-09
+   Newton 2: residual=1.16735, converged=False, linear=16.13s, linres=3.231e-07
+   Newton 3: residual=0.894878, converged=False, linear=17.05s, linres=7.168e-08
+   Newton 4: residual=0.501233, converged=False, linear=15.76s, linres=9.365e-07
+   Newton 5: residual=1.22422, converged=False, linear=15.61s, linres=2.003e-09
+   Newton 6: residual=0.762146, converged=False, linear=15.95s, linres=9.526e-10
+   Newton 7: residual=0.518015, converged=False, linear=15.50s, linres=6.154e-08
+   Newton 8: residual=1.21428, converged=False, linear=14.42s, linres=7.272e-11

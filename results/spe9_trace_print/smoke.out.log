@@ -1,0 +1,5 @@
+cells=9000 dt=864000.0 gas=True
+Loaded MRST trace: mrst_spe9_first_step.mat ministeps=5
+   Newton pre: residual=0.704947, converged=False | MRST residual=0.738744, diff=3.380e-02
+   Newton 1: residual=0.0296603, converged=False, linear=16.06s, linres=1.167e-15 | MRST residual=0.0296543, diff=6.006e-06, MRST linear=0.37s
+   Newton 2: residual=0.0312885, converged=False, linear=16.08s, linres=2.712e-15 | MRST residual=0.0312887, diff=1.705e-07, MRST linear=0.13s

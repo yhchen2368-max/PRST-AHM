@@ -1,0 +1,18 @@
+[project]
+name = "PRSTCore"
+version = "0.1.0"
+description = "Python migration of MRST PRSTCore and adjoint-enabled optimization"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "scipy",
+    "networkx",
+    "matplotlib"
+]
+
+[build-system]
+requires = ["setuptools>=65.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["PRSTCore*"]

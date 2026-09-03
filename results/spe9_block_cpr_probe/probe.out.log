@@ -1,0 +1,9 @@
+start
+init done
+assemble
+assembled (27104, 27104) 285382
+solve
+      block-cpr prep: n=27104, cells=9000, block=3, noncell=104
+      block-cpr schur: Ann=(104, 104), Acn nnz=218, Anc nnz=581
+      block-cpr prep done: 0.40s, Acc nnz=284468
+      block-cpr kernel: AMGCL block CPR start

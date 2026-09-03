@@ -1,0 +1,4 @@
+C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\operators.py:239: RuntimeWarning: divide by zero encountered in divide
+  t = 1.0 / (1.0 / hleft + 1.0 / hright)
+C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py:2606: RuntimeWarning: divide by zero encountered in divide
+  sscale = _np.minimum(dsmax / mag, 1.0)

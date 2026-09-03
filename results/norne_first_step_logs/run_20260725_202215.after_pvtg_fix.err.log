@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_norne_first_step.py", line 19, in <module>
+    state, report, _ = solver.solveTimestep(
+                       ~~~~~~~~~~~~~~~~~~~~^
+        deepcopy(state0), dt, model, drivingForces=forces,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initialGuess=deepcopy(state0), controlId=control_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\solvers\nonlinear_solver.py", line 286, in solveTimestep
+    state, step_report = model.stepFunction(deepcopy(state), deepcopy(state0_inner), dt,
+                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           drivingForces=drivingForces,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           linsolver=linear_solver,
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+                                           nonlinsolver=self,
+                                           ^^^^^^^^^^^^^^^^^^
+                                           iteration=1)
+                                           ^^^^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 1282, in stepFunction
+    convergence, values, resnames = self.checkConvergence(problem)
+                                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 183, in checkConvergence
+    return self._check_convergence_mrst_generic(problem)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\models\generic_black_oil_model.py", line 213, in _check_convergence_mrst_generic
+    gas_saturated_override=(so > 0.0),
+                            ^^
+NameError: name 'so' is not defined. Did you mean: 'sw'?

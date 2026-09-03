@@ -1,0 +1,818 @@
+{
+  "callback_bindings": [
+    {
+      "binding_line": 2120,
+      "control": "UIFigure",
+      "event": "SizeChangedFcn",
+      "handler": "UIFigureSizeChanged",
+      "handler_line": 897,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2127,
+      "control": "StartupPanel",
+      "event": "SizeChangedFcn",
+      "handler": "StartupPanelSizeChanged",
+      "handler_line": 2093,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2169,
+      "control": "ModelTab",
+      "event": "SizeChangedFcn",
+      "handler": "ModelTabSizeChanged",
+      "handler_line": 908,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2175,
+      "control": "StartingModelPanel",
+      "event": "SizeChangedFcn",
+      "handler": "StartingModelPanelSizeChanged",
+      "handler_line": 970,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2180,
+      "control": "ModelPathTextArea",
+      "event": "ValueChangedFcn",
+      "handler": "ModelPathTextAreaValueChanged",
+      "handler_line": 1856,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2185,
+      "control": "ModelBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ModelBrowseButtonPushed",
+      "handler_line": 1146,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2191,
+      "control": "CreatProjectButton",
+      "event": "ButtonPushedFcn",
+      "handler": "CreatProjectButtonPushed",
+      "handler_line": 1684,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2205,
+      "control": "MonitoringDataPanel",
+      "event": "SizeChangedFcn",
+      "handler": "MonitoringDataPanelSizeChanged",
+      "handler_line": 989,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2215,
+      "control": "RatesBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "RatesBrowseButtonPushed",
+      "handler_line": 1220,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2223,
+      "control": "RatesButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "RatesButtonGroupSelectionChanged",
+      "handler_line": 1208,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2249,
+      "control": "BhpBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "BhpBrowseButtonPushed",
+      "handler_line": 1261,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2257,
+      "control": "BhpButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "BhpButtonGroupSelectionChanged",
+      "handler_line": 1249,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2283,
+      "control": "TracerBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "TracerBrowseButtonPushed",
+      "handler_line": 1288,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2295,
+      "control": "ProfileBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ProfileBrowseButtonPushed",
+      "handler_line": 1315,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2307,
+      "control": "SaturationBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SaturationBrowseButtonPushed",
+      "handler_line": 1342,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2314,
+      "control": "RatesCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "RatesCheckBoxValueChanged",
+      "handler_line": 1169,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2322,
+      "control": "BhpCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "BhpCheckBoxValueChanged",
+      "handler_line": 1228,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2329,
+      "control": "TracerCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "TracerCheckBoxValueChanged",
+      "handler_line": 1269,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2336,
+      "control": "ProfileCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "ProfileCheckBoxValueChanged",
+      "handler_line": 1296,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2343,
+      "control": "SaturationCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SaturationCheckBoxValueChanged",
+      "handler_line": 1323,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2357,
+      "control": "SimulatorPanel",
+      "event": "SizeChangedFcn",
+      "handler": "SimulatorPanelSizeChanged",
+      "handler_line": 1031,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2362,
+      "control": "SimulatorPathTextArea",
+      "event": "ValueChangedFcn",
+      "handler": "SimulatorPathTextAreaValueChanged",
+      "handler_line": 1846,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2367,
+      "control": "SimulatorBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SimulatorBrowseButtonPushed",
+      "handler_line": 1132,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2379,
+      "control": "ModelProceedButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ModelProceedButtonPushed",
+      "handler_line": 1350,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2399,
+      "control": "ObjectiveButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "ObjectiveButtonGroupSelectionChanged",
+      "handler_line": 1045,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2423,
+      "control": "WellstoMatchTabGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "WellstoMatchTabGroupSelectionChanged",
+      "handler_line": 1646,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2470,
+      "control": "OilMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "OilMatchToIgnoreButtonPushed",
+      "handler_line": 1506,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2476,
+      "control": "OilEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "OilEmphasizeToMatchButtonPushed",
+      "handler_line": 1521,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2482,
+      "control": "OilMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "OilMatchToEmphasizeButtonPushed",
+      "handler_line": 1516,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2488,
+      "control": "OilIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "OilIgnoreToMatchButtonPushed",
+      "handler_line": 1511,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2542,
+      "control": "WaterMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "WaterMatchToIgnoreButtonPushed",
+      "handler_line": 1526,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2548,
+      "control": "WaterEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "WaterEmphasizeToMatchButtonPushed",
+      "handler_line": 1541,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2554,
+      "control": "WaterMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "WaterMatchToEmphasizeButtonPushed",
+      "handler_line": 1536,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2560,
+      "control": "WaterIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "WaterIgnoreToMatchButtonPushed",
+      "handler_line": 1531,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2614,
+      "control": "GasMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "GasMatchToIgnoreButtonPushed",
+      "handler_line": 1546,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2620,
+      "control": "GasEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "GasEmphasizeToMatchButtonPushed",
+      "handler_line": 1561,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2626,
+      "control": "GasMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "GasMatchToEmphasizeButtonPushed",
+      "handler_line": 1556,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2632,
+      "control": "GasIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "GasIgnoreToMatchButtonPushed",
+      "handler_line": 1551,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2686,
+      "control": "BhpMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "BhpMatchToIgnoreButtonPushed",
+      "handler_line": 1566,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2692,
+      "control": "BhpEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "BhpEmphasizeToMatchButtonPushed",
+      "handler_line": 1581,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2698,
+      "control": "BhpMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "BhpMatchToEmphasizeButtonPushed",
+      "handler_line": 1576,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2704,
+      "control": "BhpIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "BhpIgnoreToMatchButtonPushed",
+      "handler_line": 1571,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2758,
+      "control": "TracerMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "TracerMatchToIgnoreButtonPushed",
+      "handler_line": 1586,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2764,
+      "control": "TracerEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "TracerEmphasizeToMatchButtonPushed",
+      "handler_line": 1601,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2770,
+      "control": "TracerMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "TracerMatchToEmphasizeButtonPushed",
+      "handler_line": 1596,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2776,
+      "control": "TracerIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "TracerIgnoreToMatchButtonPushed",
+      "handler_line": 1591,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2830,
+      "control": "ProfileMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ProfileMatchToIgnoreButtonPushed",
+      "handler_line": 1606,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2836,
+      "control": "ProfileEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ProfileEmphasizeToMatchButtonPushed",
+      "handler_line": 1621,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2842,
+      "control": "ProfileMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ProfileMatchToEmphasizeButtonPushed",
+      "handler_line": 1616,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2848,
+      "control": "ProfileIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ProfileIgnoreToMatchButtonPushed",
+      "handler_line": 1611,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2902,
+      "control": "SaturationMatchToIgnoreButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SaturationMatchToIgnoreButtonPushed",
+      "handler_line": 1626,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2908,
+      "control": "SaturationEmphasizeToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SaturationEmphasizeToMatchButtonPushed",
+      "handler_line": 1641,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2914,
+      "control": "SaturationMatchToEmphasizeButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SaturationMatchToEmphasizeButtonPushed",
+      "handler_line": 1636,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2920,
+      "control": "SaturationIgnoreToMatchButton",
+      "event": "ButtonPushedFcn",
+      "handler": "SaturationIgnoreToMatchButtonPushed",
+      "handler_line": 1631,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2933,
+      "control": "CopySelectionDropDown",
+      "event": "ValueChangedFcn",
+      "handler": "CopySelectionDropDownValueChanged",
+      "handler_line": 1657,
+      "passes_event": true
+    },
+    {
+      "binding_line": 2939,
+      "control": "CopySelectionOKButton",
+      "event": "ButtonPushedFcn",
+      "handler": "CopySelectionOKButtonPushed",
+      "handler_line": 1668,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3035,
+      "control": "ObjectiveProceedButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ObjectiveProceedButtonPushed",
+      "handler_line": 1679,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3043,
+      "control": "ParameterTab",
+      "event": "SizeChangedFcn",
+      "handler": "ParameterTabSizeChanged",
+      "handler_line": 1065,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3053,
+      "control": "PorvCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "PorvCheckBoxValueChanged",
+      "handler_line": 2012,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3061,
+      "control": "PermXCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "PermXCheckBoxValueChanged",
+      "handler_line": 2017,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3069,
+      "control": "PermYCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "PermYCheckBoxValueChanged",
+      "handler_line": 2022,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3077,
+      "control": "PermZCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "PermZCheckBoxValueChanged",
+      "handler_line": 2027,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3085,
+      "control": "SwlCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SwlCheckBoxValueChanged",
+      "handler_line": 2047,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3093,
+      "control": "SwcrCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SwcrCheckBoxValueChanged",
+      "handler_line": 2052,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3101,
+      "control": "SwuCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SwuCheckBoxValueChanged",
+      "handler_line": 2057,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3109,
+      "control": "SowcrCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SowcrCheckBoxValueChanged",
+      "handler_line": 2062,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3117,
+      "control": "SogcrCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SogcrCheckBoxValueChanged",
+      "handler_line": 2067,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3125,
+      "control": "SglCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SglCheckBoxValueChanged",
+      "handler_line": 2072,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3133,
+      "control": "SgcrCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SgcrCheckBoxValueChanged",
+      "handler_line": 2077,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3141,
+      "control": "SguCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "SguCheckBoxValueChanged",
+      "handler_line": 2082,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3149,
+      "control": "krwCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "krwCheckBoxValueChanged",
+      "handler_line": 2032,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3157,
+      "control": "kroCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "kroCheckBoxValueChanged",
+      "handler_line": 2037,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3165,
+      "control": "krgCheckBox",
+      "event": "ValueChangedFcn",
+      "handler": "krgCheckBoxValueChanged",
+      "handler_line": 2042,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3190,
+      "control": "PorvButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "PorvButtonGroupSelectionChanged",
+      "handler_line": 1418,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3231,
+      "control": "PermXButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "PermXButtonGroupSelectionChanged",
+      "handler_line": 1423,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3272,
+      "control": "PermYButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "PermYButtonGroupSelectionChanged",
+      "handler_line": 1428,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3313,
+      "control": "PermZButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "PermZButtonGroupSelectionChanged",
+      "handler_line": 1433,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3354,
+      "control": "krwButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "krwButtonGroupSelectionChanged",
+      "handler_line": 1438,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3398,
+      "control": "kroButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "kroButtonGroupSelectionChanged",
+      "handler_line": 1443,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3442,
+      "control": "krgButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "krgButtonGroupSelectionChanged",
+      "handler_line": 1448,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3486,
+      "control": "SwlButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SwlButtonGroupSelectionChanged",
+      "handler_line": 1453,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3530,
+      "control": "SwcrButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SwcrButtonGroupSelectionChanged",
+      "handler_line": 1458,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3574,
+      "control": "SwuButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SwuButtonGroupSelectionChanged",
+      "handler_line": 1463,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3618,
+      "control": "SowcrButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SowcrButtonGroupSelectionChanged",
+      "handler_line": 1468,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3662,
+      "control": "SglButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SglButtonGroupSelectionChanged",
+      "handler_line": 1478,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3706,
+      "control": "SgcrButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SgcrButtonGroupSelectionChanged",
+      "handler_line": 1483,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3750,
+      "control": "SguButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SguButtonGroupSelectionChanged",
+      "handler_line": 1488,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3794,
+      "control": "SogcrButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "SogcrButtonGroupSelectionChanged",
+      "handler_line": 1473,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3832,
+      "control": "ParameterProceedButton",
+      "event": "ButtonPushedFcn",
+      "handler": "ParameterProceedButtonPushed",
+      "handler_line": 1404,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3840,
+      "control": "RunTab",
+      "event": "SizeChangedFcn",
+      "handler": "RunTabSizeChanged",
+      "handler_line": 1093,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3850,
+      "control": "RunDirectoryBrowseButton",
+      "event": "ButtonPushedFcn",
+      "handler": "RunDirectoryBrowseButtonPushed",
+      "handler_line": 1493,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3856,
+      "control": "StartButton",
+      "event": "ButtonPushedFcn",
+      "handler": "StartButtonPushed",
+      "handler_line": 1866,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3933,
+      "control": "StartingCaseDropDown",
+      "event": "DropDownOpeningFcn",
+      "handler": "StartingCaseDropDownOpening",
+      "handler_line": 2099,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3934,
+      "control": "StartingCaseDropDown",
+      "event": "ValueChangedFcn",
+      "handler": "StartingCaseDropDownValueChanged",
+      "handler_line": 2087,
+      "passes_event": true
+    },
+    {
+      "binding_line": 3960,
+      "control": "MismatchButtonGroup",
+      "event": "SelectionChangedFcn",
+      "handler": "MismatchButtonGroupSelectionChanged",
+      "handler_line": 1113,
+      "passes_event": true
+    }
+  ],
+  "key_flows": [
+    {
+      "classification": "PARITY",
+      "id": "FAHM-EVENT-STARTUP",
+      "steps": [
+        "FAHM constructor",
+        "createComponents",
+        "registerApp",
+        "runStartupFcn(startupFcn)",
+        "StartupPanel.Visible=on",
+        "MainTabGroup.Visible=off",
+        "pause(20)",
+        "StartupPanel.Visible=off",
+        "MainTabGroup.Visible=on"
+      ]
+    },
+    {
+      "classification": "PARITY",
+      "handler": "CreatProjectButtonPushed",
+      "id": "FAHM-EVENT-CREATE-PROJECT",
+      "steps": [
+        "read/process Eclipse deck",
+        "recreate baseCase",
+        "write NOSIM/tNavigator deck",
+        "run external simulator",
+        "read EGRID/INIT/UNRST",
+        "construct G/rock/fluid/model/state0",
+        "validate model and enable setup navigation"
+      ]
+    },
+    {
+      "classification": "PARITY",
+      "handler": "StartButtonPushed",
+      "id": "FAHM-EVENT-START-OPTIMIZATION",
+      "steps": [
+        "process monitoring data",
+        "merge observation and report times",
+        "construct observed/config/ModelParameter/pvec",
+        "construct evaluateMatchFromEclipseRun callback",
+        "call optimizeBoundConstrainedForFAHM",
+        "for each trial: external forward + objective + adjoint gradient",
+        "save caseN and history.mat"
+      ]
+    },
+    {
+      "classification": "PRST_EXTENSION",
+      "id": "FAHM-EVENT-PRST-EXTENSIONS",
+      "steps": [
+        "Terminate may use PRST behavior",
+        "Mismatch result loading may use PRST behavior",
+        "View may use PRST behavior"
+      ]
+    }
+  ]
+}

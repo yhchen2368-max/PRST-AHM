@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: PRSTCore
+Version: 0.1.0
+Summary: Python migration of MRST PRSTCore and adjoint-enabled optimization
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: networkx
+Requires-Dist: matplotlib

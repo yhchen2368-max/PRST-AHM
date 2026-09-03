@@ -1,0 +1,190 @@
+--- SPE9 init ---
+cells=9000 steps=90 gas=True init=5.20s
+linear=AMGCL_CPRSolverBlockAD blockSize=3 tol=0.0001 maxit=100 nl_maxit=15 step_verbose=True newton_verbose=False
+--- SPE9 simulate block CPR ---
+Step 1/90: dt=864000.0, converged=True
+Step 2/90: dt=864000.0, converged=True
+Step 3/90: dt=864000.0, converged=True
+Step 4/90: dt=864000.0, converged=True
+Step 5/90: dt=864000.0, converged=True
+Step 6/90: dt=864000.0, converged=True
+Step 7/90: dt=864000.0, converged=True
+Step 8/90: dt=864000.0, converged=True
+Step 9/90: dt=864000.0, converged=True
+Step 10/90: dt=864000.0, converged=True
+Step 11/90: dt=864000.0, converged=True
+Step 12/90: dt=864000.0, converged=True
+Step 13/90: dt=864000.0, converged=True
+Step 14/90: dt=864000.0, converged=True
+Step 15/90: dt=864000.0, converged=True
+Step 16/90: dt=864000.0, converged=True
+Step 17/90: dt=864000.0, converged=True
+Step 18/90: dt=864000.0, converged=True
+Step 19/90: dt=864000.0, converged=True
+Step 20/90: dt=864000.0, converged=True
+Step 21/90: dt=864000.0, converged=True
+Step 22/90: dt=864000.0, converged=True
+Step 23/90: dt=864000.0, converged=True
+Step 24/90: dt=864000.0, converged=True
+Step 25/90: dt=864000.0, converged=True
+Step 26/90: dt=864000.0, converged=True
+Step 27/90: dt=864000.0, converged=True
+Step 28/90: dt=864000.0, converged=True
+Step 29/90: dt=864000.0, converged=True
+Step 30/90: dt=864000.0, converged=True
+Step 31/90: dt=864000.0, converged=True
+Step 32/90: dt=864000.0, converged=True
+Step 33/90: dt=864000.0, converged=True
+Step 34/90: dt=864000.0, converged=True
+Step 35/90: dt=864000.0, converged=True
+Step 36/90: dt=864000.0, converged=True
+Step 37/90: dt=864000.0, converged=True
+Step 38/90: dt=864000.0, converged=True
+Step 39/90: dt=864000.0, converged=True
+Step 40/90: dt=864000.0, converged=True
+Step 41/90: dt=864000.0, converged=True
+Step 42/90: dt=864000.0, converged=True
+Step 43/90: dt=864000.0, converged=True
+Step 44/90: dt=864000.0, converged=True
+Step 45/90: dt=864000.0, converged=True
+Step 46/90: dt=864000.0, converged=True
+Step 47/90: dt=864000.0, converged=True
+Step 48/90: dt=864000.0, converged=True
+Step 49/90: dt=864000.0, converged=True
+Step 50/90: dt=864000.0, converged=True
+Step 51/90: dt=864000.0, converged=True
+Step 52/90: dt=864000.0, converged=True
+Step 53/90: dt=864000.0, converged=True
+Step 54/90: dt=864000.0, converged=True
+Step 55/90: dt=864000.0, converged=True
+Step 56/90: dt=864000.0, converged=True
+Step 57/90: dt=864000.0, converged=True
+Step 58/90: dt=864000.0, converged=True
+Step 59/90: dt=864000.0, converged=True
+Step 60/90: dt=864000.0, converged=True
+Step 61/90: dt=864000.0, converged=True
+Step 62/90: dt=864000.0, converged=True
+Step 63/90: dt=864000.0, converged=True
+Step 64/90: dt=864000.0, converged=True
+Step 65/90: dt=864000.0, converged=True
+Step 66/90: dt=864000.0, converged=True
+Step 67/90: dt=864000.0, converged=True
+Step 68/90: dt=864000.0, converged=True
+Step 69/90: dt=864000.0, converged=True
+Step 70/90: dt=864000.0, converged=True
+Step 71/90: dt=864000.0, converged=True
+Step 72/90: dt=864000.0, converged=True
+Step 73/90: dt=864000.0, converged=True
+Step 74/90: dt=864000.0, converged=True
+Step 75/90: dt=864000.0, converged=True
+Step 76/90: dt=864000.0, converged=True
+Step 77/90: dt=864000.0, converged=True
+Step 78/90: dt=864000.0, converged=True
+Step 79/90: dt=864000.0, converged=True
+Step 80/90: dt=864000.0, converged=True
+Step 81/90: dt=864000.0, converged=True
+Step 82/90: dt=864000.0, converged=True
+Step 83/90: dt=864000.0, converged=True
+Step 84/90: dt=864000.0, converged=True
+Step 85/90: dt=864000.0, converged=True
+Step 86/90: dt=864000.0, converged=True
+Step 87/90: dt=864000.0, converged=True
+Step 88/90: dt=864000.0, converged=True
+Step 89/90: dt=864000.0, converged=True
+Step 90/90: dt=864000.0, converged=True
+--- SPE9 block CPR summary ---
+OK control_steps=90 converged=True wall=1181.60s simtime=1181.59s
+nonlinear total_iterations=929 ministeps=90 failed_attempts=0
+linear count=929 solver_avg=0.882s solver_min=0.785s solver_max=1.169s linear_avg=0.387s prep_avg=0.493s kernel_avg=0.079s iters_avg=5.86 residual_max=9.993e-05 full_residual_max=1.107e+00 types=['amgcl-block-cpr-mrst']
+step 001: dt=864000 conv=True iters=15 ministeps=1 time=18.81s
+step 002: dt=864000 conv=True iters=11 ministeps=1 time=13.42s
+step 003: dt=864000 conv=True iters=11 ministeps=1 time=13.40s
+step 004: dt=864000 conv=True iters=11 ministeps=1 time=13.24s
+step 005: dt=864000 conv=True iters=10 ministeps=1 time=12.38s
+step 006: dt=864000 conv=True iters=11 ministeps=1 time=13.84s
+step 007: dt=864000 conv=True iters=11 ministeps=1 time=13.53s
+step 008: dt=864000 conv=True iters=12 ministeps=1 time=14.87s
+step 009: dt=864000 conv=True iters=12 ministeps=1 time=14.72s
+step 010: dt=864000 conv=True iters=12 ministeps=1 time=14.70s
+step 011: dt=864000 conv=True iters=12 ministeps=1 time=15.46s
+step 012: dt=864000 conv=True iters=12 ministeps=1 time=14.84s
+step 013: dt=864000 conv=True iters=12 ministeps=1 time=14.54s
+step 014: dt=864000 conv=True iters=12 ministeps=1 time=15.03s
+step 015: dt=864000 conv=True iters=13 ministeps=1 time=16.04s
+step 016: dt=864000 conv=True iters=13 ministeps=1 time=16.21s
+step 017: dt=864000 conv=True iters=13 ministeps=1 time=15.98s
+step 018: dt=864000 conv=True iters=13 ministeps=1 time=16.05s
+step 019: dt=864000 conv=True iters=13 ministeps=1 time=16.17s
+step 020: dt=864000 conv=True iters=13 ministeps=1 time=16.01s
+step 021: dt=864000 conv=True iters=13 ministeps=1 time=16.46s
+step 022: dt=864000 conv=True iters=13 ministeps=1 time=16.23s
+step 023: dt=864000 conv=True iters=13 ministeps=1 time=16.34s
+step 024: dt=864000 conv=True iters=13 ministeps=1 time=15.94s
+step 025: dt=864000 conv=True iters=13 ministeps=1 time=16.37s
+step 026: dt=864000 conv=True iters=13 ministeps=1 time=16.30s
+step 027: dt=864000 conv=True iters=13 ministeps=1 time=16.18s
+step 028: dt=864000 conv=True iters=13 ministeps=1 time=16.39s
+step 029: dt=864000 conv=True iters=13 ministeps=1 time=16.38s
+step 030: dt=864000 conv=True iters=13 ministeps=1 time=16.71s
+step 031: dt=864000 conv=True iters=13 ministeps=1 time=16.05s
+step 032: dt=864000 conv=True iters=13 ministeps=1 time=15.97s
+step 033: dt=864000 conv=True iters=13 ministeps=1 time=16.30s
+step 034: dt=864000 conv=True iters=12 ministeps=1 time=15.39s
+step 035: dt=864000 conv=True iters=12 ministeps=1 time=15.12s
+step 036: dt=864000 conv=True iters=12 ministeps=1 time=15.05s
+step 037: dt=864000 conv=True iters=11 ministeps=1 time=13.63s
+step 038: dt=864000 conv=True iters=11 ministeps=1 time=13.82s
+step 039: dt=864000 conv=True iters=10 ministeps=1 time=12.81s
+step 040: dt=864000 conv=True iters=10 ministeps=1 time=12.79s
+step 041: dt=864000 conv=True iters=10 ministeps=1 time=12.66s
+step 042: dt=864000 conv=True iters=10 ministeps=1 time=12.72s
+step 043: dt=864000 conv=True iters=10 ministeps=1 time=12.52s
+step 044: dt=864000 conv=True iters=10 ministeps=1 time=12.53s
+step 045: dt=864000 conv=True iters=10 ministeps=1 time=12.69s
+step 046: dt=864000 conv=True iters=9 ministeps=1 time=11.70s
+step 047: dt=864000 conv=True iters=9 ministeps=1 time=11.76s
+step 048: dt=864000 conv=True iters=9 ministeps=1 time=11.58s
+step 049: dt=864000 conv=True iters=9 ministeps=1 time=11.58s
+step 050: dt=864000 conv=True iters=8 ministeps=1 time=10.25s
+step 051: dt=864000 conv=True iters=8 ministeps=1 time=10.44s
+step 052: dt=864000 conv=True iters=9 ministeps=1 time=11.97s
+step 053: dt=864000 conv=True iters=9 ministeps=1 time=11.53s
+step 054: dt=864000 conv=True iters=9 ministeps=1 time=11.28s
+step 055: dt=864000 conv=True iters=9 ministeps=1 time=11.66s
+step 056: dt=864000 conv=True iters=9 ministeps=1 time=11.80s
+step 057: dt=864000 conv=True iters=8 ministeps=1 time=10.40s
+step 058: dt=864000 conv=True iters=8 ministeps=1 time=10.47s
+step 059: dt=864000 conv=True iters=8 ministeps=1 time=10.43s
+step 060: dt=864000 conv=True iters=8 ministeps=1 time=10.50s
+step 061: dt=864000 conv=True iters=8 ministeps=1 time=10.26s
+step 062: dt=864000 conv=True iters=8 ministeps=1 time=10.24s
+step 063: dt=864000 conv=True iters=8 ministeps=1 time=10.47s
+step 064: dt=864000 conv=True iters=8 ministeps=1 time=10.19s
+step 065: dt=864000 conv=True iters=8 ministeps=1 time=10.60s
+step 066: dt=864000 conv=True iters=9 ministeps=1 time=11.74s
+step 067: dt=864000 conv=True iters=9 ministeps=1 time=11.64s
+step 068: dt=864000 conv=True iters=9 ministeps=1 time=11.57s
+step 069: dt=864000 conv=True iters=9 ministeps=1 time=11.52s
+step 070: dt=864000 conv=True iters=9 ministeps=1 time=11.75s
+step 071: dt=864000 conv=True iters=9 ministeps=1 time=11.81s
+step 072: dt=864000 conv=True iters=9 ministeps=1 time=11.84s
+step 073: dt=864000 conv=True iters=9 ministeps=1 time=11.84s
+step 074: dt=864000 conv=True iters=8 ministeps=1 time=10.25s
+step 075: dt=864000 conv=True iters=9 ministeps=1 time=11.61s
+step 076: dt=864000 conv=True iters=9 ministeps=1 time=11.61s
+step 077: dt=864000 conv=True iters=9 ministeps=1 time=11.61s
+step 078: dt=864000 conv=True iters=9 ministeps=1 time=11.65s
+step 079: dt=864000 conv=True iters=9 ministeps=1 time=12.18s
+step 080: dt=864000 conv=True iters=9 ministeps=1 time=11.71s
+step 081: dt=864000 conv=True iters=9 ministeps=1 time=11.84s
+step 082: dt=864000 conv=True iters=9 ministeps=1 time=11.80s
+step 083: dt=864000 conv=True iters=9 ministeps=1 time=11.66s
+step 084: dt=864000 conv=True iters=9 ministeps=1 time=11.88s
+step 085: dt=864000 conv=True iters=9 ministeps=1 time=12.16s
+step 086: dt=864000 conv=True iters=9 ministeps=1 time=11.87s
+step 087: dt=864000 conv=True iters=9 ministeps=1 time=11.75s
+step 088: dt=864000 conv=True iters=8 ministeps=1 time=10.39s
+step 089: dt=864000 conv=True iters=8 ministeps=1 time=10.35s
+step 090: dt=864000 conv=True iters=8 ministeps=1 time=10.30s
+final pressure min=8.017297e+06 max=3.040488e+07
+well_solutions=90 states=90

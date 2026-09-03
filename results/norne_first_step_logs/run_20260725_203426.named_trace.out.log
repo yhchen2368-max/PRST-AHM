@@ -1,0 +1,51 @@
+cells=44927 dt=691200 wells=3
+   Newton pre: residual=5.94523, converged=False, worst=CNV_O
+   Newton 1: residual=239.518, converged=False, worst=CNV_W, linear=14.77s, linres=1.219e-09
+   Newton 2: residual=1.45058, converged=False, worst=CNV_W, linear=16.87s, linres=1.378e-07
+   Newton 3: residual=6.03605, converged=False, worst=CNV_O, linear=18.06s, linres=2.264e-08
+   Newton 4: residual=1.81572, converged=False, worst=CNV_W, linear=16.73s, linres=3.385e-08
+   Newton 5: residual=1.61064, converged=False, worst=CNV_O, linear=18.28s, linres=1.769e-10
+   Newton 6: residual=1.97521, converged=False, worst=CNV_O, linear=17.21s, linres=2.516e-10
+   Newton 7: residual=0.88945, converged=False, worst=CNV_W, linear=18.37s, linres=3.507e-08
+   Newton 8: residual=4.28614, converged=False, worst=CNV_W, linear=17.96s, linres=8.545e-10
+   Newton 9: residual=6.41249, converged=False, worst=CNV_O, linear=17.55s, linres=1.881e-09
+   Newton 10: residual=1.24605, converged=False, worst=CNV_O, linear=17.75s, linres=1.438e-08
+   Newton 11: residual=1.25033, converged=False, worst=CNV_W, linear=16.12s, linres=2.473e-09
+   Newton 12: residual=1.81895, converged=False, worst=CNV_O, linear=17.77s, linres=8.355e-11
+   Ministep 1: dt=69120.0001, converged=False, iterations=12
+   Cutting timestep from 69120.0001 to 34560.00005
+   Newton pre: residual=2.97262, converged=False, worst=CNV_O
+   Newton 1: residual=112.979, converged=False, worst=CNV_W, linear=13.82s, linres=1.011e-09
+   Newton 2: residual=1.1674, converged=False, worst=CNV_W, linear=14.76s, linres=3.231e-07
+   Newton 3: residual=0.894878, converged=False, worst=CNV_O, linear=15.77s, linres=7.168e-08
+   Newton 4: residual=0.501254, converged=False, worst=CNV_W, linear=15.45s, linres=9.365e-07
+   Newton 5: residual=0.803682, converged=False, worst=CNV_W, linear=14.87s, linres=2.003e-09
+   Newton 6: residual=3.06583, converged=False, worst=CNV_O, linear=15.98s, linres=8.917e-10
+   Newton 7: residual=0.907828, converged=False, worst=CNV_W, linear=13.85s, linres=5.795e-08
+   Newton 8: residual=0.805352, converged=False, worst=CNV_O, linear=15.21s, linres=7.544e-11
+   Newton 9: residual=0.553898, converged=False, worst=CNV_O, linear=13.39s, linres=6.225e-10
+   Newton 10: residual=0.802828, converged=False, worst=CNV_W, linear=15.13s, linres=5.885e-08
+   Newton 11: residual=3.06576, converged=False, worst=CNV_O, linear=15.43s, linres=7.669e-10
+   Newton 12: residual=0.596976, converged=False, worst=CNV_W, linear=16.02s, linres=2.698e-08
+   Ministep 1: dt=34560.00005, converged=False, iterations=12
+   Cutting timestep from 34560.00005 to 17280.000025
+   Newton pre: residual=1.48631, converged=False, worst=CNV_O
+   Newton 1: residual=51.1367, converged=False, worst=CNV_W, linear=12.19s, linres=1.481e-09
+   Newton 2: residual=0.596037, converged=False, worst=CNV_W, linear=14.37s, linres=6.160e-07
+   Newton 3: residual=0.985035, converged=False, worst=CNV_O, linear=13.41s, linres=2.230e-07
+   Newton 4: residual=1.16148, converged=False, worst=CNV_W, linear=12.50s, linres=8.900e-08
+   Newton 5: residual=0.60296, converged=False, worst=CNV_O, linear=14.51s, linres=8.569e-09
+   Newton 6: residual=0.316946, converged=False, worst=CNV_O, linear=14.55s, linres=1.630e-09
+   Newton 7: residual=1.62911, converged=False, worst=CNV_W, linear=14.87s, linres=7.955e-10
+   Newton 8: residual=0.669946, converged=False, worst=CNV_O, linear=13.65s, linres=5.892e-11
+   Newton 9: residual=0.205138, converged=False, worst=CNV_W, linear=14.00s, linres=3.674e-10
+   Newton 10: residual=0.611594, converged=False, worst=CNV_W, linear=14.17s, linres=3.480e-10
+   Newton 11: residual=0.447453, converged=False, worst=CNV_O, linear=14.92s, linres=8.423e-10
+   Newton 12: residual=0.205345, converged=False, worst=CNV_W, linear=12.88s, linres=1.726e-10
+   Ministep 1: dt=17280.000025, converged=False, iterations=12
+   Cutting timestep from 17280.000025 to 8640.0000125
+   Newton pre: residual=0.743154, converged=False, worst=CNV_O
+   Newton 1: residual=21.6568, converged=False, worst=CNV_W, linear=11.44s, linres=2.474e-09
+   Newton 2: residual=0.394323, converged=False, worst=CNV_W, linear=11.74s, linres=9.293e-07
+   Newton 3: residual=0.490299, converged=False, worst=CNV_O, linear=12.17s, linres=2.658e-07
+   Newton 4: residual=0.562056, converged=False, worst=CNV_W, linear=12.37s, linres=9.525e-08

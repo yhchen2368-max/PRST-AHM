@@ -1,0 +1,19 @@
+deck + init      : 27.2 s
+active cells     : 1121999   phases oil=True water=True gas=True
+min porosity     : 0.01
+assembly         : backend=diagonal  face operators=True
+linear solver    : AMGCL_CPRSolverBlockAD(trueIMPES, -, second stage=-)
+compiled kernels : divergence=True  face ops=True
+
+=== running 33 / 33 report steps ===
+  step   1   639.2 s  newton 29  |  assembly 256.1 s (34)  linear 358.9 s (29, 483 krylov)  other 24.2 s  |  pc setup  0.0 s  apply  0.0 s
+  step   2   529.1 s  newton 24  |  assembly 211.7 s (28)  linear 297.6 s (24, 378 krylov)  other 19.9 s  |  pc setup  0.0 s  apply  0.0 s
+  step   3   464.3 s  newton 21  |  assembly 181.6 s (24)  linear 265.9 s (21, 339 krylov)  other 16.9 s  |  pc setup  0.0 s  apply  0.0 s
+  step   4   247.1 s  newton  9  |  assembly  83.4 s (11)  linear 155.5 s ( 9, 227 krylov)  other  8.2 s  |  pc setup  0.0 s  apply  0.0 s
+  step   5   249.9 s  newton  9  |  assembly  83.7 s (11)  linear 158.0 s ( 9, 233 krylov)  other  8.2 s  |  pc setup  0.0 s  apply  0.0 s
+  step   6   237.6 s  newton  9  |  assembly  84.2 s (11)  linear 145.3 s ( 9, 206 krylov)  other  8.1 s  |  pc setup  0.0 s  apply  0.0 s
+  step   7   267.8 s  newton  9  |  assembly  84.0 s (11)  linear 175.8 s ( 9, 266 krylov)  other  8.0 s  |  pc setup  0.0 s  apply  0.0 s
+  step   8   204.5 s  newton  7  |  assembly  60.7 s ( 8)  linear 138.0 s ( 7, 210 krylov)  other  5.8 s  |  pc setup  0.0 s  apply  0.0 s
+  step   9   331.9 s  newton 11  |  assembly  98.7 s (13)  linear 223.8 s (11, 348 krylov)  other  9.4 s  |  pc setup  0.0 s  apply  0.0 s
+  step  10   304.5 s  newton 10  |  assembly  91.1 s (12)  linear 204.6 s (10, 317 krylov)  other  8.8 s  |  pc setup  0.0 s  apply  0.0 s
+  step  11   370.8 s  newton 12  |  assembly 104.0 s (14)  linear 257.2 s (12, 411 krylov)  other  9.6 s  |  pc setup  0.0 s  apply  0.0 s

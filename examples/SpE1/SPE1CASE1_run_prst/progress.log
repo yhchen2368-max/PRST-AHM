@@ -1,0 +1,245 @@
+[11:53:28] loading deck F:\GitHub\RSTCore\examples\SpE1\SPE1CASE1.DATA
+[11:53:29] loaded: 300 cells, 2 wells, 120 report steps
+[11:53:29] running AMGCL CPR
+[11:53:29] REPORT STEP 1  TIME=31.0 days (02-Oct-1999)  DT=31.0 d
+[11:53:31]    converged in 21 iterations, wall=2.13 s
+[11:53:31] REPORT STEP 2  TIME=59.0 days (30-Oct-1999)  DT=28.0 d
+[11:53:32]    converged in 7 iterations, wall=0.61 s
+[11:53:32] REPORT STEP 3  TIME=90.0 days (30-Nov-1999)  DT=31.0 d
+[11:53:33]    converged in 7 iterations, wall=0.67 s
+[11:53:33] REPORT STEP 4  TIME=120.0 days (30-Dec-1999)  DT=30.0 d
+[11:53:33]    converged in 5 iterations, wall=0.43 s
+[11:53:33] REPORT STEP 5  TIME=151.0 days (30-Jan-2000)  DT=31.0 d
+[11:53:33]    converged in 5 iterations, wall=0.43 s
+[11:53:33] REPORT STEP 6  TIME=181.0 days (29-Feb-2000)  DT=30.0 d
+[11:53:34]    converged in 5 iterations, wall=0.47 s
+[11:53:34] REPORT STEP 7  TIME=212.0 days (31-Mar-2000)  DT=31.0 d
+[11:53:34]    converged in 5 iterations, wall=0.41 s
+[11:53:34] REPORT STEP 8  TIME=243.0 days (01-May-2000)  DT=31.0 d
+[11:53:35]    converged in 4 iterations, wall=0.37 s
+[11:53:35] REPORT STEP 9  TIME=273.0 days (31-May-2000)  DT=30.0 d
+[11:53:35]    converged in 3 iterations, wall=0.26 s
+[11:53:35] REPORT STEP 10  TIME=304.0 days (01-Jul-2000)  DT=31.0 d
+[11:53:35]    converged in 4 iterations, wall=0.32 s
+[11:53:35] REPORT STEP 11  TIME=334.0 days (31-Jul-2000)  DT=30.0 d
+[11:53:35]    converged in 3 iterations, wall=0.28 s
+[11:53:35] REPORT STEP 12  TIME=365.0 days (31-Aug-2000)  DT=31.0 d
+[11:53:36]    converged in 5 iterations, wall=0.38 s
+[11:53:36] REPORT STEP 13  TIME=396.0 days (01-Oct-2000)  DT=31.0 d
+[11:53:36]    converged in 3 iterations, wall=0.26 s
+[11:53:36] REPORT STEP 14  TIME=424.0 days (29-Oct-2000)  DT=28.0 d
+[11:53:36]    converged in 4 iterations, wall=0.37 s
+[11:53:36] REPORT STEP 15  TIME=455.0 days (29-Nov-2000)  DT=31.0 d
+[11:53:37]    converged in 5 iterations, wall=0.44 s
+[11:53:37] REPORT STEP 16  TIME=485.0 days (29-Dec-2000)  DT=30.0 d
+[11:53:37]    converged in 4 iterations, wall=0.32 s
+[11:53:37] REPORT STEP 17  TIME=516.0 days (29-Jan-2001)  DT=31.0 d
+[11:53:37]    converged in 3 iterations, wall=0.25 s
+[11:53:37] REPORT STEP 18  TIME=546.0 days (28-Feb-2001)  DT=30.0 d
+[11:53:38]    converged in 3 iterations, wall=0.27 s
+[11:53:38] REPORT STEP 19  TIME=577.0 days (31-Mar-2001)  DT=31.0 d
+[11:53:38]    converged in 3 iterations, wall=0.27 s
+[11:53:38] REPORT STEP 20  TIME=608.0 days (01-May-2001)  DT=31.0 d
+[11:53:38]    converged in 3 iterations, wall=0.27 s
+[11:53:38] REPORT STEP 21  TIME=638.0 days (31-May-2001)  DT=30.0 d
+[11:53:39]    converged in 5 iterations, wall=0.39 s
+[11:53:39] REPORT STEP 22  TIME=669.0 days (01-Jul-2001)  DT=31.0 d
+[11:53:39]    converged in 3 iterations, wall=0.25 s
+[11:53:39] REPORT STEP 23  TIME=699.0 days (31-Jul-2001)  DT=30.0 d
+[11:53:39]    converged in 3 iterations, wall=0.25 s
+[11:53:39] REPORT STEP 24  TIME=730.0 days (31-Aug-2001)  DT=31.0 d
+[11:53:39]    converged in 3 iterations, wall=0.29 s
+[11:53:39] REPORT STEP 25  TIME=761.0 days (01-Oct-2001)  DT=31.0 d
+[11:53:40]    converged in 4 iterations, wall=0.34 s
+[11:53:40] REPORT STEP 26  TIME=789.0 days (29-Oct-2001)  DT=28.0 d
+[11:53:40]    converged in 3 iterations, wall=0.27 s
+[11:53:40] REPORT STEP 27  TIME=820.0 days (29-Nov-2001)  DT=31.0 d
+[11:53:41]    converged in 5 iterations, wall=0.44 s
+[11:53:41] REPORT STEP 28  TIME=850.0 days (29-Dec-2001)  DT=30.0 d
+[11:53:41]    converged in 3 iterations, wall=0.27 s
+[11:53:41] REPORT STEP 29  TIME=881.0 days (29-Jan-2002)  DT=31.0 d
+[11:53:41]    converged in 4 iterations, wall=0.33 s
+[11:53:41] REPORT STEP 30  TIME=911.0 days (28-Feb-2002)  DT=30.0 d
+[11:53:41]    converged in 3 iterations, wall=0.28 s
+[11:53:41] REPORT STEP 31  TIME=942.0 days (31-Mar-2002)  DT=31.0 d
+[11:53:42]    converged in 4 iterations, wall=0.32 s
+[11:53:42] REPORT STEP 32  TIME=973.0 days (01-May-2002)  DT=31.0 d
+[11:53:42]    converged in 4 iterations, wall=0.34 s
+[11:53:42] REPORT STEP 33  TIME=1003.0 days (31-May-2002)  DT=30.0 d
+[11:53:42]    converged in 3 iterations, wall=0.25 s
+[11:53:42] REPORT STEP 34  TIME=1034.0 days (01-Jul-2002)  DT=31.0 d
+[11:53:43]    converged in 3 iterations, wall=0.29 s
+[11:53:43] REPORT STEP 35  TIME=1064.0 days (31-Jul-2002)  DT=30.0 d
+[11:53:43]    converged in 3 iterations, wall=0.29 s
+[11:53:43] REPORT STEP 36  TIME=1095.0 days (31-Aug-2002)  DT=31.0 d
+[11:53:43]    converged in 3 iterations, wall=0.25 s
+[11:53:43] REPORT STEP 37  TIME=1126.0 days (01-Oct-2002)  DT=31.0 d
+[11:53:44]    converged in 5 iterations, wall=0.39 s
+[11:53:44] REPORT STEP 38  TIME=1154.0 days (29-Oct-2002)  DT=28.0 d
+[11:53:44]    converged in 4 iterations, wall=0.40 s
+[11:53:44] REPORT STEP 39  TIME=1185.0 days (29-Nov-2002)  DT=31.0 d
+[11:53:44]    converged in 3 iterations, wall=0.25 s
+[11:53:44] REPORT STEP 40  TIME=1215.0 days (29-Dec-2002)  DT=30.0 d
+[11:53:45]    converged in 4 iterations, wall=0.32 s
+[11:53:45] REPORT STEP 41  TIME=1246.0 days (29-Jan-2003)  DT=31.0 d
+[11:53:45]    converged in 5 iterations, wall=0.42 s
+[11:53:45] REPORT STEP 42  TIME=1276.0 days (28-Feb-2003)  DT=30.0 d
+[11:53:46]    converged in 6 iterations, wall=0.59 s
+[11:53:46] REPORT STEP 43  TIME=1307.0 days (31-Mar-2003)  DT=31.0 d
+[11:53:46]    converged in 5 iterations, wall=0.41 s
+[11:53:46] REPORT STEP 44  TIME=1338.0 days (01-May-2003)  DT=31.0 d
+[11:53:46]    converged in 4 iterations, wall=0.32 s
+[11:53:46] REPORT STEP 45  TIME=1368.0 days (31-May-2003)  DT=30.0 d
+[11:53:47]    converged in 4 iterations, wall=0.37 s
+[11:53:47] REPORT STEP 46  TIME=1399.0 days (01-Jul-2003)  DT=31.0 d
+[11:53:47]    converged in 3 iterations, wall=0.28 s
+[11:53:47] REPORT STEP 47  TIME=1429.0 days (31-Jul-2003)  DT=30.0 d
+[11:53:47]    converged in 3 iterations, wall=0.27 s
+[11:53:47] REPORT STEP 48  TIME=1460.0 days (31-Aug-2003)  DT=31.0 d
+[11:53:47]    converged in 3 iterations, wall=0.29 s
+[11:53:47] REPORT STEP 49  TIME=1491.0 days (01-Oct-2003)  DT=31.0 d
+[11:53:48]    converged in 3 iterations, wall=0.30 s
+[11:53:48] REPORT STEP 50  TIME=1519.0 days (29-Oct-2003)  DT=28.0 d
+[11:53:48]    converged in 4 iterations, wall=0.32 s
+[11:53:48] REPORT STEP 51  TIME=1550.0 days (29-Nov-2003)  DT=31.0 d
+[11:53:48]    converged in 4 iterations, wall=0.34 s
+[11:53:48] REPORT STEP 52  TIME=1580.0 days (29-Dec-2003)  DT=30.0 d
+[11:53:49]    converged in 4 iterations, wall=0.32 s
+[11:53:49] REPORT STEP 53  TIME=1611.0 days (29-Jan-2004)  DT=31.0 d
+[11:53:49]    converged in 4 iterations, wall=0.33 s
+[11:53:49] REPORT STEP 54  TIME=1641.0 days (28-Feb-2004)  DT=30.0 d
+[11:53:49]    converged in 4 iterations, wall=0.32 s
+[11:53:49] REPORT STEP 55  TIME=1672.0 days (30-Mar-2004)  DT=31.0 d
+[11:53:50]    converged in 5 iterations, wall=0.39 s
+[11:53:50] REPORT STEP 56  TIME=1703.0 days (30-Apr-2004)  DT=31.0 d
+[11:53:50]    converged in 4 iterations, wall=0.33 s
+[11:53:50] REPORT STEP 57  TIME=1733.0 days (30-May-2004)  DT=30.0 d
+[11:53:50]    converged in 4 iterations, wall=0.35 s
+[11:53:50] REPORT STEP 58  TIME=1764.0 days (30-Jun-2004)  DT=31.0 d
+[11:53:51]    converged in 4 iterations, wall=0.34 s
+[11:53:51] REPORT STEP 59  TIME=1794.0 days (30-Jul-2004)  DT=30.0 d
+[11:53:51]    converged in 4 iterations, wall=0.39 s
+[11:53:51] REPORT STEP 60  TIME=1825.0 days (30-Aug-2004)  DT=31.0 d
+[11:53:52]    converged in 4 iterations, wall=0.32 s
+[11:53:52] REPORT STEP 61  TIME=1856.0 days (30-Sep-2004)  DT=31.0 d
+[11:53:52]    converged in 4 iterations, wall=0.36 s
+[11:53:52] REPORT STEP 62  TIME=1884.0 days (28-Oct-2004)  DT=28.0 d
+[11:53:52]    converged in 4 iterations, wall=0.35 s
+[11:53:52] REPORT STEP 63  TIME=1915.0 days (28-Nov-2004)  DT=31.0 d
+[11:53:53]    converged in 4 iterations, wall=0.34 s
+[11:53:53] REPORT STEP 64  TIME=1945.0 days (28-Dec-2004)  DT=30.0 d
+[11:53:53]    converged in 4 iterations, wall=0.32 s
+[11:53:53] REPORT STEP 65  TIME=1976.0 days (28-Jan-2005)  DT=31.0 d
+[11:53:53]    converged in 4 iterations, wall=0.40 s
+[11:53:53] REPORT STEP 66  TIME=2006.0 days (27-Feb-2005)  DT=30.0 d
+[11:53:54]    converged in 4 iterations, wall=0.37 s
+[11:53:54] REPORT STEP 67  TIME=2037.0 days (30-Mar-2005)  DT=31.0 d
+[11:53:54]    converged in 5 iterations, wall=0.39 s
+[11:53:54] REPORT STEP 68  TIME=2068.0 days (30-Apr-2005)  DT=31.0 d
+[11:53:54]    converged in 5 iterations, wall=0.40 s
+[11:53:54] REPORT STEP 69  TIME=2098.0 days (30-May-2005)  DT=30.0 d
+[11:53:55]    converged in 5 iterations, wall=0.42 s
+[11:53:55] REPORT STEP 70  TIME=2129.0 days (30-Jun-2005)  DT=31.0 d
+[11:53:55]    converged in 4 iterations, wall=0.40 s
+[11:53:55] REPORT STEP 71  TIME=2159.0 days (30-Jul-2005)  DT=30.0 d
+[11:53:56]    converged in 4 iterations, wall=0.33 s
+[11:53:56] REPORT STEP 72  TIME=2190.0 days (30-Aug-2005)  DT=31.0 d
+[11:53:56]    converged in 4 iterations, wall=0.34 s
+[11:53:56] REPORT STEP 73  TIME=2221.0 days (30-Sep-2005)  DT=31.0 d
+[11:53:56]    converged in 4 iterations, wall=0.37 s
+[11:53:56] REPORT STEP 74  TIME=2249.0 days (28-Oct-2005)  DT=28.0 d
+[11:53:57]    converged in 4 iterations, wall=0.33 s
+[11:53:57] REPORT STEP 75  TIME=2280.0 days (28-Nov-2005)  DT=31.0 d
+[11:53:57]    converged in 5 iterations, wall=0.40 s
+[11:53:57] REPORT STEP 76  TIME=2310.0 days (28-Dec-2005)  DT=30.0 d
+[11:53:58]    converged in 6 iterations, wall=0.50 s
+[11:53:58] REPORT STEP 77  TIME=2341.0 days (28-Jan-2006)  DT=31.0 d
+[11:53:58]    converged in 5 iterations, wall=0.44 s
+[11:53:58] REPORT STEP 78  TIME=2371.0 days (27-Feb-2006)  DT=30.0 d
+[11:53:58]    converged in 5 iterations, wall=0.44 s
+[11:53:58] REPORT STEP 79  TIME=2402.0 days (30-Mar-2006)  DT=31.0 d
+[11:53:59]    converged in 5 iterations, wall=0.43 s
+[11:53:59] REPORT STEP 80  TIME=2433.0 days (30-Apr-2006)  DT=31.0 d
+[11:53:59]    converged in 6 iterations, wall=0.48 s
+[11:53:59] REPORT STEP 81  TIME=2463.0 days (30-May-2006)  DT=30.0 d
+[11:54:00]    converged in 6 iterations, wall=0.46 s
+[11:54:00] REPORT STEP 82  TIME=2494.0 days (30-Jun-2006)  DT=31.0 d
+[11:54:00]    converged in 5 iterations, wall=0.42 s
+[11:54:00] REPORT STEP 83  TIME=2524.0 days (30-Jul-2006)  DT=30.0 d
+[11:54:01]    converged in 5 iterations, wall=0.39 s
+[11:54:01] REPORT STEP 84  TIME=2555.0 days (30-Aug-2006)  DT=31.0 d
+[11:54:01]    converged in 5 iterations, wall=0.39 s
+[11:54:01] REPORT STEP 85  TIME=2586.0 days (30-Sep-2006)  DT=31.0 d
+[11:54:01]    converged in 5 iterations, wall=0.40 s
+[11:54:01] REPORT STEP 86  TIME=2614.0 days (28-Oct-2006)  DT=28.0 d
+[11:54:02]    converged in 5 iterations, wall=0.39 s
+[11:54:02] REPORT STEP 87  TIME=2645.0 days (28-Nov-2006)  DT=31.0 d
+[11:54:02]    converged in 5 iterations, wall=0.39 s
+[11:54:02] REPORT STEP 88  TIME=2675.0 days (28-Dec-2006)  DT=30.0 d
+[11:54:03]    converged in 5 iterations, wall=0.39 s
+[11:54:03] REPORT STEP 89  TIME=2706.0 days (28-Jan-2007)  DT=31.0 d
+[11:54:03]    converged in 6 iterations, wall=0.46 s
+[11:54:03] REPORT STEP 90  TIME=2736.0 days (27-Feb-2007)  DT=30.0 d
+[11:54:03]    converged in 5 iterations, wall=0.39 s
+[11:54:03] REPORT STEP 91  TIME=2767.0 days (30-Mar-2007)  DT=31.0 d
+[11:54:04]    converged in 6 iterations, wall=0.46 s
+[11:54:04] REPORT STEP 92  TIME=2798.0 days (30-Apr-2007)  DT=31.0 d
+[11:54:04]    converged in 6 iterations, wall=0.47 s
+[11:54:04] REPORT STEP 93  TIME=2828.0 days (30-May-2007)  DT=30.0 d
+[11:54:05]    converged in 6 iterations, wall=0.47 s
+[11:54:05] REPORT STEP 94  TIME=2859.0 days (30-Jun-2007)  DT=31.0 d
+[11:54:05]    converged in 6 iterations, wall=0.46 s
+[11:54:05] REPORT STEP 95  TIME=2889.0 days (30-Jul-2007)  DT=30.0 d
+[11:54:06]    converged in 6 iterations, wall=0.46 s
+[11:54:06] REPORT STEP 96  TIME=2920.0 days (30-Aug-2007)  DT=31.0 d
+[11:54:06]    converged in 6 iterations, wall=0.46 s
+[11:54:06] REPORT STEP 97  TIME=2951.0 days (30-Sep-2007)  DT=31.0 d
+[11:54:07]    converged in 5 iterations, wall=0.40 s
+[11:54:07] REPORT STEP 98  TIME=2979.0 days (28-Oct-2007)  DT=28.0 d
+[11:54:07]    converged in 6 iterations, wall=0.46 s
+[11:54:07] REPORT STEP 99  TIME=3010.0 days (28-Nov-2007)  DT=31.0 d
+[11:54:08]    converged in 6 iterations, wall=0.46 s
+[11:54:08] REPORT STEP 100  TIME=3040.0 days (28-Dec-2007)  DT=30.0 d
+[11:54:08]    converged in 6 iterations, wall=0.45 s
+[11:54:08] REPORT STEP 101  TIME=3071.0 days (28-Jan-2008)  DT=31.0 d
+[11:54:08]    converged in 6 iterations, wall=0.47 s
+[11:54:08] REPORT STEP 102  TIME=3101.0 days (27-Feb-2008)  DT=30.0 d
+[11:54:09]    converged in 6 iterations, wall=0.46 s
+[11:54:09] REPORT STEP 103  TIME=3132.0 days (29-Mar-2008)  DT=31.0 d
+[11:54:09]    converged in 5 iterations, wall=0.39 s
+[11:54:09] REPORT STEP 104  TIME=3163.0 days (29-Apr-2008)  DT=31.0 d
+[11:54:10]    converged in 6 iterations, wall=0.47 s
+[11:54:10] REPORT STEP 105  TIME=3193.0 days (29-May-2008)  DT=30.0 d
+[11:54:10]    converged in 5 iterations, wall=0.39 s
+[11:54:10] REPORT STEP 106  TIME=3224.0 days (29-Jun-2008)  DT=31.0 d
+[11:54:11]    converged in 6 iterations, wall=0.50 s
+[11:54:11] REPORT STEP 107  TIME=3254.0 days (29-Jul-2008)  DT=30.0 d
+[11:54:11]    converged in 6 iterations, wall=0.49 s
+[11:54:11] REPORT STEP 108  TIME=3285.0 days (29-Aug-2008)  DT=31.0 d
+[11:54:12]    converged in 6 iterations, wall=0.46 s
+[11:54:12] REPORT STEP 109  TIME=3316.0 days (29-Sep-2008)  DT=31.0 d
+[11:54:12]    converged in 6 iterations, wall=0.51 s
+[11:54:12] REPORT STEP 110  TIME=3344.0 days (27-Oct-2008)  DT=28.0 d
+[11:54:13]    converged in 6 iterations, wall=0.46 s
+[11:54:13] REPORT STEP 111  TIME=3375.0 days (27-Nov-2008)  DT=31.0 d
+[11:54:13]    converged in 6 iterations, wall=0.44 s
+[11:54:13] REPORT STEP 112  TIME=3405.0 days (27-Dec-2008)  DT=30.0 d
+[11:54:14]    converged in 7 iterations, wall=0.49 s
+[11:54:14] REPORT STEP 113  TIME=3436.0 days (27-Jan-2009)  DT=31.0 d
+[11:54:14]    converged in 6 iterations, wall=0.45 s
+[11:54:14] REPORT STEP 114  TIME=3466.0 days (26-Feb-2009)  DT=30.0 d
+[11:54:14]    converged in 6 iterations, wall=0.44 s
+[11:54:14] REPORT STEP 115  TIME=3497.0 days (29-Mar-2009)  DT=31.0 d
+[11:54:15]    converged in 7 iterations, wall=0.51 s
+[11:54:15] REPORT STEP 116  TIME=3528.0 days (29-Apr-2009)  DT=31.0 d
+[11:54:15]    converged in 7 iterations, wall=0.51 s
+[11:54:15] REPORT STEP 117  TIME=3558.0 days (29-May-2009)  DT=30.0 d
+[11:54:16]    converged in 7 iterations, wall=0.48 s
+[11:54:16] REPORT STEP 118  TIME=3589.0 days (29-Jun-2009)  DT=31.0 d
+[11:54:16]    converged in 7 iterations, wall=0.50 s
+[11:54:16] REPORT STEP 119  TIME=3619.0 days (29-Jul-2009)  DT=30.0 d
+[11:54:17]    converged in 7 iterations, wall=0.52 s
+[11:54:17] REPORT STEP 120  TIME=3650.0 days (29-Aug-2009)  DT=31.0 d
+[11:54:17]    converged in 7 iterations, wall=0.51 s
+[11:54:17] simulation done: 120 steps
+[11:54:18] wrote unified HDF5 results to F:\GitHub\RSTCore\examples\SpE1\SPE1CASE1_run_prst

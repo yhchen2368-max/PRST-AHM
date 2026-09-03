@@ -1,0 +1,15 @@
+{
+  "simulator": "prst",
+  "base_npv": -491887491.27822804,
+  "opt_npv": -480375911.7747816,
+  "improvement_pct": 2.340287099704905,
+  "converged": false,
+  "n_variables": 2,
+  "iterations": 1,
+  "max_it": 1,
+  "n_wells_producer": 2,
+  "n_wells_injector": 0,
+  "n_wells_shut": 0,
+  "wall_time_s": 293.8285457000602,
+  "param": "orat"
+}

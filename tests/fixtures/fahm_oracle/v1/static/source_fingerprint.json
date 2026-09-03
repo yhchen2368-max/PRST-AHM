@@ -1,0 +1,94 @@
+{
+  "app_metadata": {
+    "created_utc": "2023-06-13T01:27:03Z",
+    "minimum_supported_matlab_release": "R2018a",
+    "mlapp_version": "2",
+    "modified_utc": "2026-01-06T07:28:00Z",
+    "saved_by_matlab_release": "R2024b",
+    "screenshot_height": 736,
+    "screenshot_width": 915,
+    "title": "FROSIT",
+    "uuid": "f78846df-4381-4897-8e25-fd9e7235e3c7"
+  },
+  "artifact": "MRST/dev/APP/FAHM.mlapp",
+  "callback_binding_count": 95,
+  "embedded_code_matches_fahm_m": true,
+  "embedded_code_normalized_sha256": "136abf2f91b5f1573314c015d07de22e305c480313c4986bdd5f323453e96367",
+  "fahm_m": {
+    "logical_lines": 4404,
+    "path": "MRST/dev/APP/FAHM.m",
+    "sha256": "a1c29aedd7620438b94bbbcb529c7d9fb6fd62fe909def6d419a10385fb493c7",
+    "size": 213797
+  },
+  "format": "MATLAB App Designer MLAPPVersion 2",
+  "function_count": 119,
+  "mlapp": {
+    "path": "MRST/dev/APP/FAHM.mlapp",
+    "sha256": "fa1fbccb885136fd96a407b475b4dcaabb9189b00a992fe945e674e6ae481668",
+    "size": 1021870,
+    "zip_members": [
+      {
+        "crc32": "ffdcb03c",
+        "path": "[Content_Types].xml",
+        "sha256": "c99445bf9ec143087e6dcbfe2f349c7f5c279abfc8917525fa456ae6f4c65862",
+        "size": 1169
+      },
+      {
+        "crc32": "cc2f033f",
+        "path": "_rels/.rels",
+        "sha256": "a155ef97ab87740cc2fc82f5532b51d35598217840734644e8df7df09a27e806",
+        "size": 1512
+      },
+      {
+        "crc32": "32c80ef4",
+        "path": "appdesigner/appModel.mat",
+        "sha256": "8f9745f77c90067cd0e264deb8200dd8cf2273d8967857aa995a0105c4b024d8",
+        "size": 11662603
+      },
+      {
+        "crc32": "0d6cc9d4",
+        "path": "matlab/document.xml",
+        "sha256": "d85aa8bd8e4eb58926868369a240b9816f3ed7cd8eb1141bacfc4aabb4139bbb",
+        "size": 209646
+      },
+      {
+        "crc32": "47cd1971",
+        "path": "metadata/appMetadata.xml",
+        "sha256": "b07c8bce8cf9be0dbe881817d939afbe01951a4d908f5937502f63ede18f82fe",
+        "size": 444
+      },
+      {
+        "crc32": "b9afea85",
+        "path": "metadata/appScreenshot.png",
+        "sha256": "58b3d7eecf9dc75cb0398b7ee5d4b35352b69faa3bb6136736de7a23933c2cec",
+        "size": 27772
+      },
+      {
+        "crc32": "8fe1d390",
+        "path": "metadata/coreProperties.xml",
+        "sha256": "98431d52f5c02a64b618b8111a9239dcb04d6f0f89d30fe5958c474d593e9223",
+        "size": 662
+      },
+      {
+        "crc32": "8a06affd",
+        "path": "metadata/mwcoreProperties.xml",
+        "sha256": "e40c7deacb864426a9ebe684a7ce0c4a401f5f10797fdf10aec66343815f144c",
+        "size": 331
+      },
+      {
+        "crc32": "9d7e5d10",
+        "path": "metadata/mwcorePropertiesExtension.xml",
+        "sha256": "41763ba8e2fe6bec835ed3aa423e920a997e996a45b1210c10a4e972d32efeba",
+        "size": 222
+      },
+      {
+        "crc32": "13d61831",
+        "path": "metadata/mwcorePropertiesReleaseInfo.xml",
+        "sha256": "d53585549514f4f433b2e152803d3b36414d0a1e74799b9b93469171d60fef42",
+        "size": 301
+      }
+    ]
+  },
+  "public_component_count": 373,
+  "reference_policy": "FAHM.mlapp is the sole product reference; FAHM.m is its exact searchable code extraction."
+}

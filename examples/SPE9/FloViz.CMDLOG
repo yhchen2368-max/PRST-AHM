@@ -1,0 +1,24 @@
+   ImportGrid( Vendor = "Eclipse",  Location = "E:\shujin\SPE9\SPE9_CP.EGRID",   &
+      Grid = "Grid1",  PropManager = "PropManager1" )
+   ReadProperties( Vendor = "Eclipse",   &
+      Location = "E:\shujin\SPE9\SPE9_CP.INIT, InitialProperty",   &
+      PropManager = "PropManager1",  DefaultToPropUnits = "TRUE",   &
+      ReadNow = "TRUE" )
+   ReadProperties( Vendor = "Eclipse",   &
+      Location = "E:\shujin\SPE9\SPE9_CP.UNRST, MinReportStep, 1, &
+MaxReportSTep, 90, RestartProperty",  PropManager = "PropManager1",   &
+      DefaultToPropUnits = "TRUE",  ReadNow = "FALSE" )
+   ImportWells( Vendor = "Eclipse",   &
+      Location = "E:\shujin\SPE9\SPE9_CP.UNRST, MinReportStep, 1, &
+MaxReportSTep, 90",  Grid = "Grid1",  Wells = "Wells1",  ReadNow = "FALSE" )
+   ReadRestartFiles(  )
+   UpdateGridUnits( Grid = "Grid1" )
+   UpdateWellUnits( Wells = "Wells1" )
+   ReportGridDimensions( Grid = "Grid1" )
+   AddSimulationToView( Viewer = "3DViewer1",  Grid = "Grid1",   &
+      GridComposite = "GridComposite1",  Wells = "Wells1",   &
+      WellComposite = "WellComposite1" )
+   SelectProp( GridComposite = "GridComposite1",  PropName = "Cells",   &
+      PropType = "INIT",  Update = "TRUE" )
+   SelectProp( GridComposite = "GridComposite1",  PropName = "DEPTH",   &
+      PropType = "INIT",  Update = "TRUE" )

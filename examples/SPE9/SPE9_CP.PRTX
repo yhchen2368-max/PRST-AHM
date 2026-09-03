@@ -1,0 +1,4 @@
+Start Time,Timestamp,Duration,Simulation Time,Simulation Time Unit,Timestep,Average Timestep,Simulation Speed,Average Time Period,Simulation End Time,Fraction Complete,Time Remaining,Simulation Start Date,Simulation Date,Simulation End Date,Duration Rounded,Percent Complete,Time Remaining Rounded,Average Timestep Rounded,WARNING,PROBLEM,ERROR,BUG,FATAL,End Marker
+2026-07-26T10:53:09Z,2026-07-26T10:53:09Z,0.00,300.0,d,10.0,0.00,0.00,0.00,900.0,0.33,-1.00,01 Jan 2015,28 Oct 2015,19 Jun 2017,0 s,33%,unknown,0 s,8,0,0,0,0,%%
+2026-07-26T10:53:09Z,2026-07-26T10:53:11Z,2.21,660.0,d,10.0,10.00,163.24,2.21,900.0,0.73,1.47,01 Jan 2015,22 Oct 2016,19 Jun 2017,2 s,73%,1 s,10 d,10,0,0,0,0,%%
+2026-07-26T10:53:09Z,2026-07-26T10:53:12Z,3.41,900.0,d,10.0,10.00,176.15,3.41,900.0,1.00,0.00,01 Jan 2015,19 Jun 2017,19 Jun 2017,3 s,100%,0 s,10 d,10,0,0,0,0,%%

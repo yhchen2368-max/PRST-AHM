@@ -1,0 +1,17 @@
+INFO 2026-07-26 18:53:06,960 LJJ-PC-M Version 2022.7.0
+INFO 2026-07-26 18:53:07,068 LJJ-PC-M Workflow starting task: SPE9_CP
+INFO 2026-07-26 18:53:07,154 LJJ-PC-M Submission Command: C:\ecl\2022.4\bin\pc_x86_64\eclipse.exe SPE9_CP
+INFO 2026-07-26 18:53:13,418 LJJ-PC-M E100 has finished
+INFO 2026-07-26 18:53:13,703 LJJ-PC-M Workflow starting task: SPE9_CP summary conversion
+INFO 2026-07-26 18:53:13,707 LJJ-PC-M Creating temp conversion directory convert_20260726105313_e6935133
+INFO 2026-07-26 18:53:13,708 LJJ-PC-M Submission Command: C:\ecl\2022.4\bin\pc_x86_64\ConvertSummaryData2DataBase.exe SPE9_CP.DATA convert_20260726105313_e6935133
+INFO 2026-07-26 18:53:15,774 LJJ-PC-M Conversion has finished
+INFO 2026-07-26 18:53:15,784 LJJ-PC-M Removing temp conversion directory convert_20260726105313_e6935133
+INFO 2026-07-26 18:53:15,835 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:53:15,836 LJJ-PC-M Session in progress.
+INFO 2026-07-26 18:53:17,053 LJJ-PC-M Version 2022.7.0
+INFO 2026-07-26 18:53:17,068 LJJ-PC-M E100 has finished
+INFO 2026-07-26 18:53:17,071 LJJ-PC-M Conversion has finished
+INFO 2026-07-26 18:53:17,071 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:53:17,071 LJJ-PC-M Workflow has finished
+INFO 2026-07-26 18:53:17,071 LJJ-PC-M Session ended.

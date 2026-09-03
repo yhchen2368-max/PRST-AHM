@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\junji\Desktop\github\Cgnet\scripts\run_norne_first_step.py", line 19, in <module>
+    state, report, _ = solver.solveTimestep(
+                       ~~~~~~~~~~~~~~~~~~~~^
+        deepcopy(state0), dt, model, drivingForces=forces,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        initialGuess=deepcopy(state0), controlId=control_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\junji\Desktop\github\Cgnet\Cgnet\ad_core\solvers\nonlinear_solver.py", line 348, in solveTimestep
+    raise RuntimeError('Nonlinear solver failed to converge')
+RuntimeError: Nonlinear solver failed to converge

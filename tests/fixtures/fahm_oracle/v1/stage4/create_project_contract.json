@@ -1,0 +1,64 @@
+{
+  "branches": {
+    "E300": {
+      "argv_template": [
+        "eclrun",
+        "e300",
+        "{baseCase}"
+      ],
+      "match_token": "e300",
+      "nosim": true
+    },
+    "ECLIPSE": {
+      "argv_template": [
+        "eclrun",
+        "eclipse",
+        "{baseCase}"
+      ],
+      "match_token": "eclipse",
+      "nosim": true
+    },
+    "tNavigator": {
+      "argv_template": [
+        "{simulator}",
+        "--no-dump-res",
+        "--ecl-root",
+        "-e",
+        "-i",
+        "-r",
+        "-u",
+        "--no-gui",
+        "--ignore-lock",
+        "--use-gpu",
+        "--stop-step={first_welspec_report_step_1based}",
+        "{baseCase}"
+      ],
+      "match_token": "tNavigator",
+      "nosim": false
+    }
+  },
+  "directory": {
+    "delete_existing_tree": true,
+    "name": "baseCase",
+    "parent": "selected DATA file directory",
+    "recreate_empty_before_command_classification": true
+  },
+  "execution": {
+    "cwd": "inherit caller current working directory",
+    "required_next_files": [
+      ".INIT",
+      ".EGRID",
+      ".UNRST"
+    ],
+    "success_rule": "required_next_files_exist",
+    "system_return_status_used_by_mrst": false
+  },
+  "oracle": {
+    "artifact": "MRST/dev/APP/FAHM.mlapp",
+    "extracted_source": "MRST/dev/APP/FAHM.m",
+    "fahm_m_sha256": "a1c29aedd7620438b94bbbcb529c7d9fb6fd62fe909def6d419a10385fb493c7",
+    "source_lines": "1684-1763",
+    "write_deck": "MRST/model-io/deckformat/deckoutput/writeDeck.m:51-109"
+  },
+  "schema": "fahm-stage4-create-project-v1"
+}

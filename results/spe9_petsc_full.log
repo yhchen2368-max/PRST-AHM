@@ -1,0 +1,27 @@
+init: 0.9 s, cells=9000, steps=90
+linear solver: PETScSolverAD (strategy=cpr precond=gamg)
+  step 1/90: conv=True iters=9 wall=4.09 s
+  step 2/90: conv=True iters=28 wall=26.54 s
+  step 3/90: conv=True iters=25 wall=20.61 s
+  step 4/90: conv=True iters=25 wall=12.32 s
+  step 5/90: conv=True iters=25 wall=14.03 s
+  step 6/90: conv=True iters=25 wall=14.76 s
+  step 7/90: conv=True iters=21 wall=17.42 s
+  step 8/90: conv=True iters=9 wall=4.92 s
+  step 9/90: conv=True iters=22 wall=10.99 s
+  step 10/90: conv=True iters=22 wall=10.85 s
+  step 11/90: conv=True iters=42 wall=21.72 s
+  step 12/90: conv=True iters=25 wall=30.66 s
+  step 13/90: conv=True iters=26 wall=38.38 s
+  step 14/90: conv=True iters=41 wall=46.41 s
+  step 15/90: conv=True iters=41 wall=66.39 s
+  step 16/90: conv=True iters=25 wall=30.07 s
+  step 17/90: conv=True iters=42 wall=40.29 s
+  step 18/90: conv=True iters=25 wall=29.48 s
+  step 19/90: conv=True iters=41 wall=33.95 s
+  step 20/90: conv=True iters=43 wall=32.70 s
+  step 21/90: conv=True iters=43 wall=34.61 s
+  step 22/90: conv=True iters=27 wall=26.00 s
+  step 23/90: conv=True iters=40 wall=30.12 s
+  step 24/90: conv=True iters=44 wall=30.99 s
+  step 25/90: conv=True iters=43 wall=36.91 s

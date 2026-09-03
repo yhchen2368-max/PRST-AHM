@@ -1,0 +1,89 @@
+{
+  "deck": "C:\\Users\\junji\\Desktop\\github\\PRSTCore\\examples\\SPE9\\SPE9_CP.DATA",
+  "reference_source": "C:\\Users\\junji\\Desktop\\github\\PRSTCore\\examples\\SPE9\\RESULTS\\SPE9_CP.UNRST",
+  "fine_cart_dims": [
+    24,
+    25,
+    15
+  ],
+  "coarse_dims": [
+    1,
+    1,
+    1
+  ],
+  "fine_cells": 9000,
+  "cgnet_cells": 2,
+  "training_steps": 1,
+  "training_loss": 0.008269049909713446,
+  "training_unit_parameters": [
+    0.7,
+    0.5,
+    0.5054284660750155
+  ],
+  "calibrated_factors": {
+    "porevolume": 1.741101126592248,
+    "transmissibility": 1.0,
+    "well_index": 1.0253141055904178
+  },
+  "baseline_npv": -64324.59904032814,
+  "optimized_npv": -63860.006190975706,
+  "npv_improvement": 464.5928493524334,
+  "control_layout": [
+    {
+      "period": 0,
+      "category": "injector",
+      "entity": "all"
+    },
+    {
+      "period": 0,
+      "category": "producer",
+      "entity": "all"
+    }
+  ],
+  "control_unit_parameters": [
+    0.49999999995375805,
+    0.3
+  ],
+  "training_history": [
+    {
+      "iteration": 0,
+      "value": 0.0094703656114734,
+      "u": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "iteration": 1,
+      "value": 0.008269049909713446,
+      "u": [
+        0.7,
+        0.5,
+        0.5054284660750155
+      ],
+      "gradient_inf_norm": 0.009666141525409714,
+      "accepted_step": 0.2
+    }
+  ],
+  "control_history": [
+    {
+      "iteration": 0,
+      "value": 1.0,
+      "u": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "iteration": 1,
+      "value": 0.9927773689026625,
+      "u": [
+        0.49999999995375805,
+        0.3
+      ],
+      "gradient_inf_norm": 0.0384624187580895,
+      "accepted_step": 0.2
+    }
+  ]
+}
