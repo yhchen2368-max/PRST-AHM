@@ -31,7 +31,6 @@ def _value(x):
     """
     return x.val if _is_ad(x) else x
 
-
 def _ad_where(mask, when_true, when_false):
     """``numpy.where`` that also accepts an AD ``when_false``."""
     if _is_ad(when_false) or _is_ad(when_true):
