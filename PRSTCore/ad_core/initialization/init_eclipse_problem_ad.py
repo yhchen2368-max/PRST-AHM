@@ -23,7 +23,6 @@ from PRSTCore.deckformat.params.rock.init_eclipse_rock import init_eclipse_rock
 from PRSTCore.ad_core.models.generic_black_oil_model import make_generic_black_oil_model
 from PRSTCore.ad_core.solvers import NonLinearSolver, IterationCountTimeStepSelector
 
-
 def init_eclipse_problem_ad(deck, **opt) -> Tuple[Any, Any, Any, Any]:
     """Set up state0, model, schedule, nonlinear solver from an ECLIPSE deck.
     """
