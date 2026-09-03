@@ -93,7 +93,6 @@ def _interp_ragged(tables, record, query):
     x0, y0, slope = tables.segment(record, query.val if is_ad(query) else query)
     return query * slope + (y0 - slope * x0)
 
-
 class PVTable:
     """Simple PVT table wrapper with linear interpolation.
 
