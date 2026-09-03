@@ -48,7 +48,6 @@ def get_face_transmissibility(G, rock, fix_negative=True):
     T[~np.isfinite(T)] = 0.0
     return T
 
-
 def pore_volume(G, rock):
     """Port of MRST ``poreVolume``: ``poro .* G.cells.volumes .* ntg``."""
     # setupOperatorsTPFA.pore_volume first checks the simulator-derived
