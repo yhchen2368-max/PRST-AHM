@@ -137,7 +137,6 @@ def _axes_in(panel):
     axes._prst_canvas = canvas
     return axes
 
-
 def _draw(axes):
     if axes is not None:
         axes._prst_canvas.draw_idle()
