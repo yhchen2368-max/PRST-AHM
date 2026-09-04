@@ -55,6 +55,8 @@ from PRSTCore.hm.APP.fahm_parameters import (BACKEND_NAME, DEFAULTS,
                                              config_row, default_limits)
 from PRSTCore.hm.utils.observed.getObservedFromFile import (
     getObservedFromFile, split_observed_paths)
+from PRSTCore.hm.utils.observed.assembleObservedSchedule import (
+    assembleObservedSchedule)
 
 #: Window metadata frozen from ``FAHM.createComponents``.
 APP_TITLE = 'MATLAB App'
@@ -294,6 +296,13 @@ class FahmApp(ttk.Frame):
         self.state0 = None
         self.N = None
         self.T = None
+        self.schedule = None
+        self.observed = None
+        self.monitorData = None
+        self.time_obs = None
+        self.time_deck = None
+        self.time_sim = None
+        self.control_repeat = None
         self.baseCase = ''
         self.base_case_result = None
         self._status_text = ''
@@ -1328,6 +1337,29 @@ class FahmApp(ttk.Frame):
             out[key] = getObservedFromFile(paths, key) if paths else []
         return out
 
+    def prepare_observed_schedule(self, *, schedule_converter=None):
+        """Run only FAHM's Stage 7 portion of ``StartButtonPushed``.
+
+        The method deliberately stops before parameter construction,
+        objective setup, simulation and optimization.  Keeping this boundary
+        explicit makes the schedule/observation state independently testable.
+        """
+        monitor_data = self.read_monitoring_data()
+        options = {}
+        if schedule_converter is not None:
+            options['schedule_converter'] = schedule_converter
+        assembled = assembleObservedSchedule(
+            self.deck, self.model, monitor_data, **options)
+        self.deck = assembled.deck
+        self.monitorData = assembled.monitor_data
+        self.time_obs = assembled.time_obs
+        self.time_deck = assembled.time_deck
+        self.time_sim = assembled.time_sim
+        self.control_repeat = assembled.control_repeat
+        self.schedule = assembled.schedule
+        self.observed = assembled.observed
+        return assembled
+
     def _current_quantity(self):
         """The Wells-to-Match tab in front."""
         return self.WellstoMatchTabGroup.tab(
@@ -1397,6 +1429,9 @@ class FahmApp(ttk.Frame):
         self.model = None
         self.G = self.rock = self.fluid = self.state0 = None
         self.N = self.T = None
+        self.schedule = self.observed = self.monitorData = None
+        self.time_obs = self.time_deck = self.time_sim = None
+        self.control_repeat = None
         self.base_case_result = None
         try:
             result = create_base_case(
@@ -1518,6 +1553,16 @@ class FahmApp(ttk.Frame):
     def _start(self):
         if not self.ModelPath.get():
             messagebox.showwarning('No model', 'Select a deck first.')
+            return
+        if self.deck is None or self.model is None:
+            messagebox.showwarning(
+                'No project', 'Create the project before starting.')
+            return
+        try:
+            self.prepare_observed_schedule()
+        except Exception as exc:
+            messagebox.showerror('ERROR', str(exc))
+            self._say('Observed/schedule setup failed: %s' % exc)
             return
         config = self.config()
         if not config.parameters:
