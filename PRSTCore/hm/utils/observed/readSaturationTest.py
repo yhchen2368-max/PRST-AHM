@@ -10,6 +10,8 @@ Unlike the profile survey, the depth interval arrives already split into
 its own ``top``/``bottom`` columns.
 """
 
+import numpy as _np
+
 from ._tables import (group_by_well, parse_dates, read_sheets,
                       solve_key_similarities)
 
@@ -30,6 +32,8 @@ def readSaturationTest(fn):
     for sheet in read_sheets(fn):
         table = solve_key_similarities(sheet, POSSIBLE_KEYS)
         if 'name' not in table:
+            continue
+        if _np.asarray(table['name']).size == 0:
             continue
         table['date'] = parse_dates(table['date'])
         out.extend(group_by_well(table))
