@@ -39,6 +39,7 @@ Run it with::
 
     python -m PRSTCore.hm.APP.fahm_app
 """
+
 import os
 import queue
 import threading
@@ -52,6 +53,8 @@ from PRSTCore.hm.APP.fahm import (FahmConfig, create_base_case,
                                   run_history_match)
 from PRSTCore.hm.APP.fahm_parameters import (BACKEND_NAME, DEFAULTS,
                                              config_row, default_limits)
+from PRSTCore.hm.utils.observed.getObservedFromFile import (
+    getObservedFromFile, split_observed_paths)
 
 #: Window metadata frozen from ``FAHM.createComponents``.
 APP_TITLE = 'MATLAB App'
@@ -135,6 +138,7 @@ def _axes_in(panel):
     canvas.get_tk_widget().pack(fill='both', expand=True)
     axes._prst_canvas = canvas
     return axes
+
 
 def _draw(axes):
     if axes is not None:
@@ -1242,9 +1246,9 @@ class FahmApp(ttk.Frame):
             if name in self.monitor_source:
                 valid_source = (
                     self.monitor_source[name].get() == 'model' or
-                    os.path.isfile(self.monitor_path[name].get()))
+                    self._monitor_paths_exist(name))
             else:
-                valid_source = os.path.isfile(self.monitor_path[name].get())
+                valid_source = self._monitor_paths_exist(name)
             flags[name.lower()] = selected and valid_source
         self.dataCheck['monitorData'] = flags
         ready = (self.dataCheck['startingModel'] and
@@ -1252,6 +1256,16 @@ class FahmApp(ttk.Frame):
         for widget in (self.ModelProceedButton, self.ObjectiveProceedButton,
                        self.ParameterProceedButton):
             self._set_enabled(widget, ready)
+
+    def _monitor_paths_exist(self, name):
+        """Validate every file selected into FAHM's semicolon path field.
+
+        The MATLAB gate tests the joined display string as one path, which
+        rejects every genuine multi-file selection.  FAHM-FIX-012 keeps the
+        same selection order but validates its individual files.
+        """
+        paths = split_observed_paths(self.monitor_path[name].get())
+        return bool(paths) and all(os.path.isfile(path) for path in paths)
 
     def _browse_model(self):
         path = filedialog.askopenfilename(
@@ -1282,6 +1296,37 @@ class FahmApp(ttk.Frame):
                 self.monitor_source[name].set('file')
                 self._monitor_source_changed(name)
         self._model_setup_check()
+
+    def monitoring_config(self):
+        """Return the five App selections in FAHM display order."""
+        out = {}
+        for name, _has_source in MONITORING:
+            source = self.monitor_source[name].get() \
+                if name in self.monitor_source else 'file'
+            out[name.lower()] = {
+                'enabled': bool(self.monitor_use[name].get()),
+                'source': source,
+                'path': self.monitor_path[name].get(),
+                'files': tuple(split_observed_paths(
+                    self.monitor_path[name].get())),
+            }
+        return out
+
+    def read_monitoring_data(self):
+        """Port FAHM's five dependent monitoring-data getters."""
+        out = {}
+        for name, _has_source in MONITORING:
+            key = name.lower()
+            if not self.monitor_use[name].get():
+                out[key] = []
+                continue
+            if name in self.monitor_source and \
+                    self.monitor_source[name].get() == 'model':
+                out[key] = []
+                continue
+            paths = split_observed_paths(self.monitor_path[name].get())
+            out[key] = getObservedFromFile(paths, key) if paths else []
+        return out
 
     def _current_quantity(self):
         """The Wells-to-Match tab in front."""
@@ -1775,7 +1820,8 @@ class FahmApp(ttk.Frame):
                         if self.param_on[n].get()],
             weights=weights,
             max_iterations=int(self.NumberofIterations.get()),
-            parameter_limits=limits)
+            parameter_limits=limits,
+            monitoring=self.monitoring_config())
 
     @staticmethod
     def _well_names(deck):
