@@ -4,6 +4,8 @@ from .addProfileObserved import addProfileObserved
 from .addRatesObserved import addBhpObserved, addRatesObserved
 from .addSaturationObserved import addSaturationObserved
 from .addTracerObserved import addTracerObserved
+from .assembleObservedSchedule import (ObservedScheduleAssembly,
+                                       assembleObservedSchedule)
 from .getCellFacesDepth import getCellFacesDepth
 from .getMonitorData import getMonitorData
 from .getNormalizationFactors import getNormalizationFactors
@@ -15,7 +17,8 @@ from .readProfileTest import readProfileTest
 from .readSaturationTest import readSaturationTest
 from .readTracerTest import readTracerTest
 
-__all__ = ['addBhpObserved', 'addProfileObserved', 'addRatesObserved',
+__all__ = ['ObservedScheduleAssembly', 'addBhpObserved', 'addProfileObserved',
+           'addRatesObserved', 'assembleObservedSchedule',
            'addSaturationObserved', 'addTracerObserved', 'getCellFacesDepth',
            'getMonitorData', 'getNormalizationFactors', 'getObservedFromFile',
            'getObservedFromSchedule', 'processMonitorData',
