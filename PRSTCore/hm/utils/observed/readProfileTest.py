@@ -41,6 +41,8 @@ def readProfileTest(fn):
             sheet, POSSIBLE_KEYS, text_columns=('name', 'date', 'depth'))
         if 'name' not in table:
             continue
+        if _np.asarray(table['name']).size == 0:
+            continue
         table['date'] = parse_dates(table['date'], forward_fill=True)
         fill_missing_with(table, RATE_COLUMNS, 0.0)
         table['top'], table['bottom'] = split_depth_interval(table['depth'])
