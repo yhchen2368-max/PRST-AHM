@@ -13,6 +13,8 @@ add back up to it.
 import numpy as _np
 
 from .getCellFacesDepth import getCellFacesDepth
+from ._dates import serial_dates as _serial_dates
+from ._dates import step_for as _step_for
 
 _RATE_FIELD = {'W': 'qWs', 'O': 'qOs', 'G': 'qGs'}
 
@@ -25,7 +27,9 @@ def addProfileObserved(observed, time_sim, data, G, schedule, phNames):
     nphase = len(phNames)
 
     for step in range(len(observed)):
-        sols = observed[step].setdefault('wellsol', [{} for _ in range(nwells)])
+        sols = observed[step].setdefault('wellSol', [])
+        while len(sols) < nwells:
+            sols.append({'name': wellnames[len(sols)]})
         for w in range(nwells):
             ncells = _np.atleast_1d(_np.asarray(W[w]['cells'])).ravel().size
             sols[w]['cqs'] = _np.zeros((ncells, nphase))
@@ -35,7 +39,7 @@ def addProfileObserved(observed, time_sim, data, G, schedule, phNames):
         if w is None:
             continue
         top, bottom = getCellFacesDepth(G, W[w]['cells'])
-        dates = _np.asarray(table['date'])
+        dates = _serial_dates(table['date'])
         for value in _np.unique(dates):
             ix = dates == value
             step = _step_for(time_sim, value)
@@ -50,10 +54,9 @@ def addProfileObserved(observed, time_sim, data, G, schedule, phNames):
                 rate = float(observed[step]['wellSol'][w][field])
                 ratio = getDepthDependentAdditive(
                     subset, top, bottom, 'cq%s' % str(phase).upper())
-                total = ratio.sum()
-                if total != 0:
-                    ratio = ratio / total
-                observed[step]['wellsol'][w]['cqs'][:, p] = rate * ratio
+                with _np.errstate(divide='ignore', invalid='ignore'):
+                    ratio = ratio / ratio.sum()
+                observed[step]['wellSol'][w]['cqs'][:, p] = rate * ratio
     return observed
 
 
@@ -115,7 +118,3 @@ def _well_index(wellnames, name):
             return i
     return None
 
-
-def _step_for(time_sim, value):
-    matches = _np.flatnonzero(_np.asarray(time_sim) == value)
-    return int(matches[0]) if matches.size else None
