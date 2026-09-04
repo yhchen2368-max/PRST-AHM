@@ -7,7 +7,10 @@ dependencies = [
     "numpy",
     "scipy",
     "networkx",
-    "matplotlib"
+    "matplotlib",
+    "pandas",
+    "openpyxl",
+    "xlrd"
 ]
 
 [build-system]
