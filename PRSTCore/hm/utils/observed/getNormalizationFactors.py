@@ -14,8 +14,12 @@ import numpy as _np
 
 def getNormalizationFactors(observed):
     """Return ``{'ww', 'wo', 'wg', 'wp', 'wt'}``."""
+    if not observed:
+        raise ValueError('observed must contain at least one report step')
     ns = len(observed)
     nw = len(observed[0]['wellSol'])
+    if nw == 0:
+        raise ValueError('observed wellSol must contain at least one well')
 
     dt = _timestep_lengths(observed, ns)
 
@@ -28,7 +32,14 @@ def getNormalizationFactors(observed):
 
     for step in range(ns):
         sol = observed[step]['wellSol']
-        flag[:, step] = _vertcatIfPresent(sol, 'sign', nw, mask_by_status=False)
+        if len(sol) != nw:
+            raise ValueError(
+                'observed step %d has %d wells; expected %d'
+                % (step, len(sol), nw))
+        # MATLAB's helper multiplies *every* field by status, including
+        # sign.  A shut producer therefore has flag 0 and is excluded by
+        # ``flag == -1`` in getScaling.
+        flag[:, step] = _vertcatIfPresent(sol, 'sign', nw)
         qWs[:, step] = _vertcatIfPresent(sol, 'qWs', nw)
         qOs[:, step] = _vertcatIfPresent(sol, 'qOs', nw)
         qGs[:, step] = _vertcatIfPresent(sol, 'qGs', nw)
@@ -47,11 +58,24 @@ def getNormalizationFactors(observed):
 def _timestep_lengths(observed, ns):
     """``dt`` directly, or differenced from cumulative ``time``."""
     if 'dt' in observed[0]:
-        return _np.asarray([float(observed[s]['dt']) for s in range(ns)])
-    if 'time' in observed[0]:
-        T = _np.asarray([float(observed[s]['time']) for s in range(ns)])
-        return _np.concatenate([[T[0]], _np.diff(T)])
-    return _np.ones(ns)
+        if any('dt' not in observed[s] for s in range(ns)):
+            raise ValueError('dt must be present at every observed step')
+        dt = _np.asarray([_one_scalar(observed[s]['dt'], 'dt')
+                          for s in range(ns)])
+    elif 'time' in observed[0]:
+        if any('time' not in observed[s] for s in range(ns)):
+            raise ValueError('time must be present at every observed step')
+        T = _np.asarray([_one_scalar(observed[s]['time'], 'time')
+                         for s in range(ns)])
+        dt = _np.concatenate([[T[0]], _np.diff(T)])
+    else:
+        # In MATLAB ``dt`` is left undefined and the first getScaling call
+        # fails.  Raise at the source of the malformed fixture instead of
+        # silently inventing unit-length timesteps.
+        raise ValueError('observed must provide dt or cumulative time')
+    if not _np.all(_np.isfinite(dt)):
+        raise ValueError('observed timestep values must be finite')
+    return dt
 
 
 def _getScaling(qs, dt, flag):
@@ -67,37 +91,60 @@ def _getScaling(qs, dt, flag):
     return t / w if w > 0 else 0.0
 
 
-def _vertcatIfPresent(sol, field, nw, mask_by_status=True):
+def _vertcatIfPresent(sol, field, nw):
     """Port of ``vertcatIfPresent``: absent or empty -> zeros.
 
     A present field is multiplied by ``status``, so a shut well
     contributes nothing.
     """
-    if not sol or field not in sol[0]:
+    present = [field in well and well[field] is not None for well in sol]
+    if not any(present):
         return _np.zeros(nw)
-    values = _np.asarray([_scalar(w.get(field)) for w in sol], dtype=float)
-    if values.size == 0:
+    if not all(present):
+        raise ValueError('%s must be present for every well or none' % field)
+    raw = [_np.asarray(w[field], dtype=float).ravel() for w in sol]
+    if all(value.size == 0 for value in raw):
         return _np.zeros(nw)
-    if mask_by_status:
-        status = _np.asarray([float(bool(w.get('status', True))) for w in sol])
-        values = values * status
-    return values
+    values = _np.asarray([_one_scalar(value, field) for value in raw],
+                         dtype=float)
+    if values.size != nw:
+        raise ValueError('%s has width %d; expected %d'
+                         % (field, values.size, nw))
+    status = _statuses(sol)
+    return values * status
 
 
 def _tracer_mean(sol, nw):
     """``mean(vertcatIfPresent(wellSol, 'tracer'), 2)``."""
-    if not sol or 'tracer' not in sol[0]:
+    present = ['tracer' in well and well['tracer'] is not None
+               for well in sol]
+    if not any(present):
         return _np.zeros(nw)
-    out = _np.zeros(nw)
-    for i, w in enumerate(sol):
-        values = _np.atleast_1d(_np.asarray(w.get('tracer', 0.0), dtype=float)).ravel()
-        out[i] = float(_np.mean(values)) if values.size else 0.0
-        out[i] *= float(bool(w.get('status', True)))
-    return out
+    if not all(present):
+        raise ValueError('tracer must be present for every well or none')
+    rows = [_np.asarray(w['tracer'], dtype=float).ravel() for w in sol]
+    widths = {row.size for row in rows}
+    if len(widths) != 1:
+        raise ValueError('tracer width must agree for every well')
+    width = widths.pop()
+    if width == 0:
+        return _np.zeros(nw)
+    values = _np.vstack(rows)
+    if values.shape[0] != nw:
+        raise ValueError('tracer row count does not match wells')
+    values = values * _statuses(sol)[:, None]
+    return _np.mean(values, axis=1)
 
 
-def _scalar(value):
-    if value is None:
-        return 0.0
+def _statuses(sol):
+    if any('status' not in well for well in sol):
+        raise ValueError('status must be present for every well')
+    return _np.asarray([float(bool(well['status'])) for well in sol])
+
+
+def _one_scalar(value, name):
     arr = _np.atleast_1d(_np.asarray(value, dtype=float)).ravel()
-    return float(arr[0]) if arr.size else 0.0
+    if arr.size != 1:
+        raise ValueError('%s must contain exactly one scalar; got %d values'
+                         % (name, arr.size))
+    return float(arr[0])
