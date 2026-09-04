@@ -50,6 +50,8 @@ def readProductionHistory(fn):
         table = solveKeySimilarities(sheet)
         if 'name' not in table:
             continue
+        if _np.asarray(table['name']).size == 0:
+            continue
         table['date'] = parse_dates(table['date'])
         table = _drop_leading_idle_rows(table)
         _fill_missing(table)
@@ -69,7 +71,9 @@ def _drop_leading_idle_rows(table):
         return table
     total = _np.zeros(len(table[present[0]]))
     for column in present:
-        total = total + _np.nan_to_num(_np.asarray(table[column], dtype=float))
+        # MATLAB performs this sum before replacing NaNs, so a NaN in one
+        # phase makes that row's total NaN rather than treating it as zero.
+        total = total + _np.asarray(table[column], dtype=float)
     nonzero = _np.flatnonzero(_np.abs(total) > 0)
     if nonzero.size == 0 or nonzero[0] == 0:
         return table
@@ -90,5 +94,4 @@ def _fill_missing(table):
             values[_np.isnan(values) | (values == 0.0)] = ATMOSPHERIC_MPA
             table[column] = values
     return table
-
 
