@@ -21,6 +21,7 @@ Both are filled in with the evident intent rather than reproduced.
 import numpy as _np
 
 from .addProfileObserved import getDepthDependentAdditive
+from ._dates import step_for as _step_for
 from .getCellFacesDepth import getCellFacesDepth
 
 _DAY = 86400.0
@@ -37,13 +38,15 @@ def addTracerObserved(observed, time_sim, data, G, schedule, phNames):
     """
     W = schedule['control'][0]['W']
     wellnames = [w['name'] for w in W]
-    tracerNames = _unique_stable([str(rec['name']) for rec in data])
+    tracerNames = sorted(set(str(rec['name']) for rec in data))
     nwells = len(W)
     nphase = len(phNames)
     ntracer = len(tracerNames)
 
     for step in range(len(observed)):
-        sols = observed[step].setdefault('wellsol', [{} for _ in range(nwells)])
+        sols = observed[step].setdefault('wellSol', [])
+        while len(sols) < nwells:
+            sols.append({'name': wellnames[len(sols)]})
         for w in range(nwells):
             sols[w]['tracer'] = _np.zeros(ntracer)
 
@@ -67,15 +70,19 @@ def addTracerObserved(observed, time_sim, data, G, schedule, phNames):
         srcSat[0] = 1.0
         srcTracer = _np.zeros((srcCells.size, ntracer))
         total = float(srcVals.sum())
-        if total != 0:
-            srcTracer[:, c] = float(rec['dosage']) / (total * _DAY)
+        with _np.errstate(divide='ignore', invalid='ignore'):
+            srcTracer[:, c] = _np.divide(float(rec['dosage']), total * _DAY)
 
         src = {'cell': srcCells, 'rate': srcVals,
                'sat': _np.tile(srcSat, (srcCells.size, 1)),
                'tracer': srcTracer}
         step = _step_for(time_sim, rec['date'])
         if step is not None:
-            schedule['control'][step]['src'] = src
+            mapping = _np.asarray(
+                schedule.get('step', {}).get('control', []), dtype=int).ravel()
+            control = int(mapping[step]) if mapping.size else step
+            existing = schedule['control'][control].get('src')
+            schedule['control'][control]['src'] = _append_source(existing, src)
 
         output = _np.atleast_2d(_np.asarray(rec['output'], dtype=object))
         producers = list(rec['producer'])
@@ -87,9 +94,32 @@ def addTracerObserved(observed, time_sim, data, G, schedule, phNames):
                 pw = _index(wellnames, producer)
                 if pw is None:
                     continue
-                observed[step]['wellsol'][pw]['tracer'][c] = float(row[k + 1])
+                observed[step]['wellSol'][pw]['tracer'][c] = float(row[k + 1])
 
     return observed, schedule
+
+
+def _append_source(existing, incoming):
+    """Append simultaneous tracer slugs instead of discarding earlier ones.
+
+    FAHM assigns ``control.src = src`` once per tracer record, so two slugs
+    on one report date overwrite each other.  Concatenating the MRST source
+    rows preserves each injector/perforation and its tracer component.
+    """
+    if not existing:
+        return incoming
+    out = {}
+    for field in ('cell', 'rate'):
+        out[field] = _np.concatenate([
+            _np.asarray(existing[field]).ravel(),
+            _np.asarray(incoming[field]).ravel(),
+        ])
+    for field in ('sat', 'tracer'):
+        out[field] = _np.vstack([
+            _np.atleast_2d(_np.asarray(existing[field])),
+            _np.atleast_2d(_np.asarray(incoming[field])),
+        ])
+    return out
 
 
 def _index(names, target):
@@ -98,17 +128,3 @@ def _index(names, target):
         if str(n).lower() == lowered:
             return i
     return None
-
-
-def _step_for(time_sim, value):
-    matches = _np.flatnonzero(_np.asarray(time_sim) == value)
-    return int(matches[0]) if matches.size else None
-
-
-def _unique_stable(values):
-    seen, out = set(), []
-    for v in values:
-        if v not in seen:
-            seen.add(v)
-            out.append(v)
-    return out
