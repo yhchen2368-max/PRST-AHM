@@ -13,8 +13,11 @@ simulated values", and are then left alone.
 """
 
 import warnings as _warnings
+from copy import deepcopy as _deepcopy
 
 import numpy as _np
+
+from ._tables import matlab_datenum
 
 _CATEGORIES = (
     ('rates', 'observed rates'),
@@ -29,12 +32,16 @@ _FROM_MODEL = 'frommodel'
 
 def processMonitorData(data, wellnames):
     """Return ``(data, time)``."""
+    # A MATLAB struct has copy-on-write value semantics.  Filtering the
+    # returned struct must not mutate the App's saved reader result.
+    data = _deepcopy(data)
     known = {str(n).lower() for n in wellnames}
     times = []
 
     for key, description in _CATEGORIES:
         entries = data.get(key)
-        if not entries or _is_from_model(entries):
+        if _is_empty(entries) or (key in ('rates', 'bhp') and
+                                  _is_from_model(entries)):
             continue
 
         kept, category_times = [], []
@@ -82,10 +89,16 @@ def _entry_dates(key, entry):
 
 
 def _unique_sorted(values):
-    out = []
-    seen = set()
-    for v in values:
-        if v not in seen:
-            seen.add(v)
-            out.append(v)
-    return _np.asarray(sorted(out), dtype=object)
+    return _np.asarray(sorted({matlab_datenum(v) for v in values}),
+                       dtype=float)
+
+
+def _is_empty(value):
+    if value is None:
+        return True
+    if isinstance(value, str):
+        return value == ''
+    try:
+        return len(value) == 0
+    except TypeError:
+        return False
