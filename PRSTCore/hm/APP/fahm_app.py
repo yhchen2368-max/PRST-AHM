@@ -57,6 +57,8 @@ from PRSTCore.hm.utils.observed.getObservedFromFile import (
     getObservedFromFile, split_observed_paths)
 from PRSTCore.hm.utils.observed.assembleObservedSchedule import (
     assembleObservedSchedule)
+from PRSTCore.hm.utils.observed.getNormalizationFactors import (
+    getNormalizationFactors)
 
 #: Window metadata frozen from ``FAHM.createComponents``.
 APP_TITLE = 'MATLAB App'
@@ -1360,6 +1362,72 @@ class FahmApp(ttk.Frame):
         self.observed = assembled.observed
         return assembled
 
+    @property
+    def alpha(self):
+        """FAHM ``get.alpha`` as its option-name/value pair.
+
+        MATLAB's ``str2double`` lets NaN enter the objective.  The frozen
+        FAHM-FIX-004 policy instead rejects every non-finite edit-field
+        value at this boundary.
+        """
+        pairs = (('ww', 'Water'), ('wo', 'Oil'), ('wg', 'Gas'),
+                 ('wp', 'BHP'), ('wt', 'Tracer'), ('wf', 'Profile'),
+                 ('ws', 'Saturation'))
+        values = {}
+        for key, quantity in pairs:
+            try:
+                value = float(self.weights[quantity].get())
+            except (TypeError, ValueError) as exc:
+                raise ValueError(
+                    '%s objective weight must be numeric' % quantity) from exc
+            if not np.isfinite(value):
+                raise ValueError(
+                    '%s objective weight must be finite' % quantity)
+            values[key] = value
+        return 'ObjectiveWeight', values
+
+    @property
+    def beta(self):
+        """FAHM ``get.beta`` as its option-name/value pair."""
+        if self.observed is None:
+            raise ValueError('observed data must be assembled before beta')
+        return 'NormalizationFactor', getNormalizationFactors(self.observed)
+
+    @property
+    def omega(self):
+        """FAHM ``get.omega`` with stable, case-sensitive well matching."""
+        controls = (self.schedule or {}).get('control') or []
+        if not controls:
+            raise ValueError('schedule must be assembled before omega')
+        wells = [str(well.get('name', ''))
+                 for well in (controls[-1].get('W') or [])]
+        if not wells:
+            raise ValueError('schedule.control(end).W must not be empty')
+        if len(set(wells)) != len(wells):
+            raise ValueError('schedule well names must be unique')
+
+        pairs = (('ww', 'Water'), ('wo', 'Oil'), ('wg', 'Gas'),
+                 ('wp', 'BHP'), ('wt', 'Tracer'), ('wf', 'Profile'),
+                 ('ws', 'Saturation'))
+        values = {}
+        for key, quantity in pairs:
+            boxes = self.well_lists[quantity]
+            match = set(boxes['Match'].get(0, 'end'))
+            emphasize = set(boxes['Emphasize'].get(0, 'end'))
+            weight = np.zeros(len(wells), dtype=float)
+            for index, name in enumerate(wells):
+                if name in match:
+                    weight[index] = 1.0
+                if name in emphasize:
+                    weight[index] = 2.0
+            values[key] = weight
+        return 'WellsWeight', values
+
+    def objective_options(self):
+        """Return the three exact keyword arguments used by FAHM."""
+        options = (self.alpha, self.beta, self.omega)
+        return {name: value for name, value in options}
+
     def _current_quantity(self):
         """The Wells-to-Match tab in front."""
         return self.WellstoMatchTabGroup.tab(
@@ -1560,11 +1628,11 @@ class FahmApp(ttk.Frame):
             return
         try:
             self.prepare_observed_schedule()
+            config = self.config()
         except Exception as exc:
             messagebox.showerror('ERROR', str(exc))
-            self._say('Observed/schedule setup failed: %s' % exc)
+            self._say('Run setup failed: %s' % exc)
             return
-        config = self.config()
         if not config.parameters:
             messagebox.showwarning('No parameters',
                                    'Select at least one parameter on the '
@@ -1851,11 +1919,20 @@ class FahmApp(ttk.Frame):
 
         weights = {}
         for key, q in (('oil', 'Oil'), ('water', 'Water'), ('gas', 'Gas'),
-                       ('bhp', 'BHP')):
+                       ('bhp', 'BHP'), ('tracer', 'Tracer'),
+                       ('profile', 'Profile'), ('saturation', 'Saturation')):
             try:
                 weights[key] = float(self.weights[q].get())
             except ValueError:
                 weights[key] = 0.0
+
+        objective = None
+        normalization = None
+        well_weights = None
+        if self.observed is not None and self.schedule is not None:
+            objective = self.alpha[1]
+            normalization = self.beta[1]
+            well_weights = self.omega[1]
 
         return FahmConfig(
             deck_path=self.ModelPath.get(),
@@ -1866,7 +1943,10 @@ class FahmApp(ttk.Frame):
             weights=weights,
             max_iterations=int(self.NumberofIterations.get()),
             parameter_limits=limits,
-            monitoring=self.monitoring_config())
+            monitoring=self.monitoring_config(),
+            objective_weight=objective,
+            normalization_factor=normalization,
+            wells_weight=well_weights)
 
     @staticmethod
     def _well_names(deck):
