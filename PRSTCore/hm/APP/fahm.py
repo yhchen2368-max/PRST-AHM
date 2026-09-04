@@ -85,6 +85,7 @@ class MissingBaseCaseOutputError(CreateProjectError):
 class ProjectStateError(CreateProjectError):
     """INIT/EGRID/UNRST exists but cannot form FAHM's project state."""
 
+
 @dataclass(frozen=True)
 class BaseCaseCommand:
     """One of the three command branches at FAHM.m:1727-1737."""
@@ -174,6 +175,10 @@ class FahmConfig:
     #: Per-parameter overrides of DEFAULT_PARAMETER_LIMITS, as the
     #: Parameter tab's limits tables supply them.
     parameter_limits: dict = field(default_factory=dict)
+    #: Stage 6 App selection for rates/BHP/tracer/profile/saturation.  The
+    #: forward pipeline consumes it in Stage 7; carrying it here does not
+    #: change the current algorithm.
+    monitoring: dict = field(default_factory=dict)
 
     def limits_for(self, name):
         key = str(name).lower()
@@ -286,12 +291,70 @@ def _recreate_base_case_directory(base_dir):
     _os.mkdir(base_dir)
 
 
-def _launch_argv(argv, env):
-    """Resolve PATH and make Windows batch launch explicit and deterministic."""
+def _selected_eclrun(simulator):
+    """Find ECLIPSE's launcher from the executable selected in the App.
+
+    FAHM uses the selected ``eclipse.exe``/``e300.exe`` only to choose a
+    branch and then assumes that ``eclrun`` is on PATH.  A VS Code process
+    commonly has an older PATH than an interactive terminal.  Search the
+    selected installation tree as well, e.g.::
+
+        C:\\ecl\\2022.2\\bin\\pc_x86_64\\eclipse.exe
+        C:\\ecl\\macros\\eclrun.exe
+
+    No unrelated installation tree is searched: the selected simulator is
+    the sole anchor for this defect-corrected runtime lookup.
+    """
+    selected = _os.path.abspath(_os.fspath(simulator))
+    if not _os.path.isfile(selected):
+        return None
+    directory = _os.path.dirname(selected)
+    while True:
+        candidates = (
+            _os.path.join(directory, 'eclrun'),
+            _os.path.join(directory, 'eclrun.exe'),
+            _os.path.join(directory, 'eclrun.cmd'),
+            _os.path.join(directory, 'eclrun.bat'),
+            _os.path.join(directory, 'macros', 'eclrun'),
+            _os.path.join(directory, 'macros', 'eclrun.exe'),
+            _os.path.join(directory, 'macros', 'eclrun.cmd'),
+            _os.path.join(directory, 'macros', 'eclrun.bat'),
+        )
+        for candidate in candidates:
+            if _os.path.isfile(candidate):
+                return candidate
+        parent = _os.path.dirname(directory)
+        if parent == directory:
+            return None
+        directory = parent
+
+
+def _launch_argv(argv, env, simulator=None):
+    """Resolve the logical oracle command to a runnable physical command.
+
+    The returned logical command remains the exact MATLAB token contract.
+    FAHM-FIX-021 only changes executable resolution: PATH is tried first,
+    then an ``eclrun`` beside the selected ECLIPSE installation, and finally
+    the selected simulator executable itself.
+    """
     logical = tuple(_os.fspath(token) for token in argv)
     path = None if env is None else env.get('PATH')
     resolved = _shutil.which(logical[0], path=path)
-    physical = (resolved or logical[0],) + logical[1:]
+    physical = None
+    if resolved is not None:
+        physical = (resolved,) + logical[1:]
+    elif (simulator is not None and logical[0].lower() == 'eclrun'):
+        selected = _os.path.abspath(_os.fspath(simulator))
+        selected_launcher = _selected_eclrun(selected)
+        if selected_launcher is not None:
+            physical = (selected_launcher,) + logical[1:]
+        elif _os.path.isfile(selected):
+            # Direct launch is the last safe fallback.  Drop the eclrun
+            # product selector because eclipse.exe/e300.exe take the case
+            # path directly.
+            physical = (selected,) + logical[2:]
+    if physical is None:
+        physical = logical
     if _os.name == 'nt' and str(physical[0]).lower().endswith(('.bat', '.cmd')):
         # Passing a nested quoted command as the final ``cmd /c`` argv item
         # makes Python backslash-escape its quotes, which cmd.exe interprets
@@ -321,7 +384,8 @@ def create_base_case(deck, deck_path, simulator, *, runner=None,
                           NOSIM=command.nosim)
 
     logical_argv = tuple(command.argv)
-    run_argv, use_shell = _launch_argv(logical_argv, env)
+    run_argv, use_shell = _launch_argv(
+        logical_argv, env, simulator=simulator)
     run_cwd = _os.path.abspath(_os.fspath(cwd) if cwd is not None
                                else _os.getcwd())
     if runner is None:
@@ -331,7 +395,9 @@ def create_base_case(deck, deck_path, simulator, *, runner=None,
             run_argv if use_shell else list(run_argv), cwd=run_cwd, env=env,
             capture_output=True, text=True, check=False, shell=use_shell)
     except OSError as exc:
-        raise BaseCaseLaunchError(logical_argv, base_case, exc) from exc
+        attempted = ((run_argv,) if isinstance(run_argv, str)
+                     else tuple(run_argv))
+        raise BaseCaseLaunchError(attempted, base_case, exc) from exc
 
     output_files = tuple(
         _os.path.splitext(base_case)[0] + suffix
