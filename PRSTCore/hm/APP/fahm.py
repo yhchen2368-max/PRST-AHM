@@ -171,7 +171,9 @@ class FahmConfig:
     weights: dict = field(default_factory=lambda: {'oil': 1.0, 'water': 1.0,
                                                    'gas': 0.0, 'bhp': 0.0})
     max_iterations: int = 10
-    match_only_producers: bool = True
+    # Retained for legacy headless callers only. FAHM itself matches the
+    # wells selected by omega and does not apply a producer-only switch.
+    match_only_producers: bool = False
     #: Per-parameter overrides of DEFAULT_PARAMETER_LIMITS, as the
     #: Parameter tab's limits tables supply them.
     parameter_limits: dict = field(default_factory=dict)
@@ -179,6 +181,12 @@ class FahmConfig:
     #: forward pipeline consumes it in Stage 7; carrying it here does not
     #: change the current algorithm.
     monitoring: dict = field(default_factory=dict)
+    #: Exact arguments produced by FAHM's dependent ``alpha``, ``beta``
+    #: and ``omega`` properties.  ``None`` keeps the small headless API
+    #: backward-compatible by deriving them from ``weights``/observed data.
+    objective_weight: Optional[dict] = None
+    normalization_factor: Optional[dict] = None
+    wells_weight: Optional[dict] = None
 
     def limits_for(self, name):
         key = str(name).lower()
@@ -659,32 +667,134 @@ def prepare_run_dir(config, run_dir):
     return run_dir
 
 
-def mismatch(observed, simulated, schedule, weights, match_only_producers=True):
-    """Step 5: the weighted rate/pressure mismatch, summed over steps.
+def mismatch(observed, simulated, schedule, weights=None,
+             match_only_producers=False, *, objective_weight=None,
+             normalization_factor=None, wells_weight=None, model=None):
+    """Evaluate FAHM's sole objective and sum its report-step scalars.
 
-    Uses :func:`matchObservedOG` when gas carries weight and
-    :func:`matchObservedLW` otherwise, matching FAHM's own choice of
-    objective from the Mismatch button group.
+    The App supplies the exact ``alpha``/``beta``/``omega`` dictionaries.
+    ``weights`` remains only as a compatibility input for headless callers;
+    it is translated into FAHM's seven alpha fields before calling
+    :func:`matchObservedOWGProfile` and never selects another objective.
     """
-    from PRSTCore.hm.utils.evaluate.matchObservedLW import matchObservedLW
-    from PRSTCore.hm.utils.evaluate.matchObservedOG import matchObservedOG
+    from PRSTCore.hm.utils.evaluate.matchObservedOWGProfile import \
+        matchObservedOWGProfile
 
-    if weights.get('gas', 0.0) > 0:
-        terms = matchObservedOG(
-            None, simulated, schedule, observed,
-            GasRateWeight=weights.get('gas', 0.0),
-            OilRateWeight=weights.get('oil', 0.0),
-            BHPWeight=weights.get('bhp', 0.0),
-            matchOnlyProducers=match_only_producers)
+    schedule, objective_weight, normalization_factor, wells_weight = \
+        _objective_inputs(
+            observed, schedule, weights, match_only_producers,
+            objective_weight, normalization_factor, wells_weight)
+    model = model or _SummaryObjectiveModel(objective_weight)
+    terms = matchObservedOWGProfile(
+        model, simulated, schedule, observed,
+        ObjectiveWeight=objective_weight,
+        NormalizationFactor=normalization_factor,
+        WellsWeight=wells_weight)
+    return float(_np.sum([float(_np.sum(term)) for term in terms]))
+
+
+class _SummaryObjectiveModel:
+    """Minimal model surface for a rates/BHP-only summary evaluation."""
+
+    G = {'cells': {'num': 0}}
+
+    def __init__(self, alpha):
+        if any(float(alpha[key]) != 0.0 for key in ('wt', 'wf', 'ws')):
+            raise ValueError(
+                'Tracer/profile/saturation objectives require reservoir '
+                'states and a model, not summary-only well data')
+
+    @staticmethod
+    def getActivePhases():
+        return _np.ones(3, dtype=bool)
+
+    @staticmethod
+    def getPhaseNames():
+        return ['W', 'O', 'G']
+
+
+_OBJECTIVE_KEYS = ('ww', 'wo', 'wg', 'wp', 'wt', 'wf', 'ws')
+_OBJECTIVE_NAMES = {
+    'ww': 'Water', 'wo': 'Oil', 'wg': 'Gas', 'wp': 'BHP',
+    'wt': 'Tracer', 'wf': 'Profile', 'ws': 'Saturation',
+}
+
+
+def _legacy_alpha(weights):
+    weights = weights or {}
+    alpha = {
+        'ww': weights.get('water', 0.0),
+        'wo': weights.get('oil', 0.0),
+        'wg': weights.get('gas', 0.0),
+        'wp': weights.get('bhp', 0.0),
+        'wt': weights.get('tracer', 0.0),
+        'wf': weights.get('profile', 0.0),
+        'ws': weights.get('saturation', 0.0),
+    }
+    out = {key: float(value) for key, value in alpha.items()}
+    if not _np.all(_np.isfinite(list(out.values()))):
+        raise ValueError('objective weights must be finite')
+    return out
+
+
+def _schedule_with_objective_wells(schedule, observed):
+    """Give summary-only callers the W list FAHM's objective indexes.
+
+    This is schedule metadata construction, not value padding: one W entry
+    is created for each observed well in its existing order.  Completion
+    arrays remain empty because summary-only matching cannot score profile
+    or saturation terms.
+    """
+    out = _deepcopy(schedule)
+    controls = out.get('control') or []
+    if not controls:
+        controls = [{}]
+        out['control'] = controls
+    if not (controls[-1].get('W') or []):
+        if not observed or not observed[0].get('wellSol'):
+            raise ValueError('observed must contain at least one well')
+        controls[-1]['W'] = [
+            {'name': str(well.get('name', '')), 'cells': []}
+            for well in observed[0]['wellSol']
+        ]
+    return out
+
+
+def _objective_inputs(observed, schedule, weights,
+                      match_only_producers, objective_weight,
+                      normalization_factor, wells_weight):
+    from PRSTCore.hm.utils.observed.getNormalizationFactors import \
+        getNormalizationFactors
+
+    schedule = _schedule_with_objective_wells(schedule, observed)
+    alpha = (_legacy_alpha(weights) if objective_weight is None
+             else dict(objective_weight))
+    beta = (getNormalizationFactors(observed)
+            if normalization_factor is None else dict(normalization_factor))
+    nw = len(schedule['control'][-1]['W'])
+    if wells_weight is None:
+        omega = {key: _np.ones(nw) for key in _OBJECTIVE_KEYS}
+        # Compatibility for direct callers of the former headless helper.
+        # FAHM's App path always supplies omega from its seven list triples.
+        if match_only_producers:
+            sol = observed[0]['wellSol']
+            if len(sol) != nw:
+                raise ValueError('observed well order and schedule W disagree')
+            producing = _np.asarray(
+                [float(well.get('sign', 0.0)) == -1.0 for well in sol])
+            omega = {key: value * producing for key, value in omega.items()}
     else:
-        terms = matchObservedLW(
-            None, simulated, schedule, observed,
-            LiquidRateWeight=weights.get('oil', 0.0),
-            WaterCutWeight=weights.get('water', 0.0),
-            BHPWeight=weights.get('bhp', 0.0),
-            matchOnlyProducers=match_only_producers,
-            fix_observed_water_cut=True)
-    return float(_np.sum([float(_np.sum(t)) for t in terms]))
+        omega = {key: _np.asarray(value, dtype=float).copy()
+                 for key, value in wells_weight.items()}
+    return schedule, alpha, beta, omega
+
+
+def _config_objective_kwargs(config):
+    return {
+        'objective_weight': config.objective_weight,
+        'normalization_factor': config.normalization_factor,
+        'wells_weight': config.wells_weight,
+    }
 
 
 #: What the Plots view draws, and where each comes from. Water cut and
@@ -728,65 +838,35 @@ def well_series(observed, simulated, time):
             'observed': gather(observed), 'simulated': gather(simulated)}
 
 
-def mismatch_by_type(observed, simulated, schedule, weights,
-                     match_only_producers=True, per_well=False):
-    """The same misfit, split by what it is measuring.
+def mismatch_by_type(observed, simulated, schedule, weights=None,
+                     match_only_producers=False, per_well=False, *,
+                     objective_weight=None, normalization_factor=None,
+                     wells_weight=None, model=None):
+    """Read all seven score families from the sole FAHM objective."""
+    from PRSTCore.hm.utils.evaluate.matchObservedOWGProfile import \
+        matchObservedOWGProfile
 
-    Feeds FAHM's Mismatch Scores panel, which reports a figure per
-    quantity rather than the single number the optimiser minimises. The
-    same objective produces both: passing ``mismatchSum=False`` with
-    ``accumulateTypes`` keeps its three terms apart instead of adding
-    them up, so this is a different reading of one computation, not a
-    second one that could drift from it. The parts sum to
-    :func:`mismatch` exactly.
-
-    The keys are the interface's own, so ``Oil`` means the liquid-rate
-    term in the water-cut formulation and the oil-rate term in the
-    gas-oil one -- which is what each contributes to that well's rate
-    match. Quantities the objective does not cover are absent rather
-    than reported as zero.
-
-    With ``per_well`` each value is an array over wells, in the order the
-    well solutions carry, rather than their sum. That is the Well column
-    of the panel, where the Case column is the sum.
-    """
-    from PRSTCore.hm.utils.evaluate.matchObservedLW import matchObservedLW
-    from PRSTCore.hm.utils.evaluate.matchObservedOG import matchObservedOG
-
-    split = dict(mismatchSum=False, accumulateTypes=[1, 2, 3])
-    if weights.get('gas', 0.0) > 0:
-        terms = matchObservedOG(
-            None, simulated, schedule, observed,
-            GasRateWeight=weights.get('gas', 0.0),
-            OilRateWeight=weights.get('oil', 0.0),
-            BHPWeight=weights.get('bhp', 0.0),
-            matchOnlyProducers=match_only_producers, **split)
-        names = ('Oil', 'Gas', 'BHP')
-    else:
-        terms = matchObservedLW(
-            None, simulated, schedule, observed,
-            LiquidRateWeight=weights.get('oil', 0.0),
-            WaterCutWeight=weights.get('water', 0.0),
-            BHPWeight=weights.get('bhp', 0.0),
-            matchOnlyProducers=match_only_producers,
-            fix_observed_water_cut=True, **split)
-        names = ('Oil', 'Water', 'BHP')
-
-    # Each step contributes the three terms end to end: one block of nw
-    # per term, in the order accumulateTypes numbered them.
-    scores = {}
-    for step in terms:
-        block = _np.atleast_1d(_np.asarray(step, dtype=float)).ravel()
-        if not block.size or block.size % len(names):
-            continue
-        width = block.size // len(names)
-        for i, name in enumerate(names):
-            part = block[i * width:(i + 1) * width]
-            scores[name] = scores.get(name, 0.0) + part
-
+    schedule, alpha, beta, omega = _objective_inputs(
+        observed, schedule, weights, match_only_producers,
+        objective_weight, normalization_factor, wells_weight)
+    model = model or _SummaryObjectiveModel(alpha)
+    _terms, breakdown = matchObservedOWGProfile(
+        model, simulated, schedule, observed,
+        ObjectiveWeight=alpha, NormalizationFactor=beta,
+        WellsWeight=omega, return_breakdown=True)
+    nw = len(schedule['control'][-1]['W'])
+    scores = {key: _np.zeros(nw) for key in _OBJECTIVE_KEYS}
+    for step in breakdown:
+        for key in _OBJECTIVE_KEYS:
+            values = _np.asarray(step[key], dtype=float).ravel()
+            if values.size != nw:
+                raise ValueError('%s breakdown has width %d; expected %d'
+                                 % (key, values.size, nw))
+            scores[key] += values
+    named = {_OBJECTIVE_NAMES[key]: value for key, value in scores.items()}
     if per_well:
-        return {k: _np.asarray(v, dtype=float) for k, v in scores.items()}
-    return {k: float(_np.sum(v)) for k, v in scores.items()}
+        return named
+    return {name: float(_np.sum(value)) for name, value in named.items()}
 
 
 def run_forward(config, run_dir=None, keep=True):
@@ -811,11 +891,12 @@ def run_forward(config, run_dir=None, keep=True):
         observed, simulated, time = observed[1:], simulated[1:], time[1:]
     dt = _np.diff(_np.concatenate([[0.0], time]))
 
-    schedule = {'step': {'val': dt, 'control': _np.ones(dt.size, dtype=int)},
+    schedule = {'step': {'val': dt, 'control': _np.zeros(dt.size, dtype=int)},
                 'control': [{'W': []}]}
 
     value = mismatch(observed, simulated, schedule, config.weights,
-                     config.match_only_producers)
+                     config.match_only_producers,
+                     **_config_objective_kwargs(config))
     return {'misfit': value, 'prefix': prefix, 'observed': observed,
             'simulated': simulated, 'time': time, 'schedule': schedule}
 
@@ -893,10 +974,12 @@ def run_history_match(config, u0=None, gradient_step=0.05, verbose=True,
     # needs, so the breakdown costs no further simulator run.
     scores = mismatch_by_type(base['observed'], base['simulated'],
                               base['schedule'], config.weights,
-                              config.match_only_producers)
+                              config.match_only_producers,
+                              **_config_objective_kwargs(config))
     per_well = mismatch_by_type(base['observed'], base['simulated'],
                                 base['schedule'], config.weights,
-                                config.match_only_producers, per_well=True)
+                                config.match_only_producers, per_well=True,
+                                **_config_objective_kwargs(config))
 
     return {'value': v, 'u': u, 'multipliers': dict(zip(names,
                                                         objective.unscale(u))),
@@ -1170,10 +1253,11 @@ def make_objective(config, run_dir=None, base_misfit=None, should_stop=None):
             observed, simulated, time = observed[1:], simulated[1:], time[1:]
         dt = _np.diff(_np.concatenate([[0.0], time]))
         schedule = {'step': {'val': dt,
-                             'control': _np.ones(dt.size, dtype=int)},
+                             'control': _np.zeros(dt.size, dtype=int)},
                     'control': [{'W': []}]}
         value = mismatch(observed, simulated, schedule, config.weights,
-                         config.match_only_producers)
+                         config.match_only_producers,
+                         **_config_objective_kwargs(config))
         return value / base_misfit if base_misfit else value
 
     objective.unscale = unscale
@@ -1255,10 +1339,11 @@ def make_adjoint_objective(config, model=None, run_dir=None, base_misfit=None,
             observed, simulated, time = observed[1:], simulated[1:], time[1:]
         dt = _np.diff(_np.concatenate([[0.0], time]))
         schedule = {'step': {'val': dt,
-                             'control': _np.ones(dt.size, dtype=int)},
+                             'control': _np.zeros(dt.size, dtype=int)},
                     'control': [{'W': []}]}
         value = mismatch(observed, simulated, schedule, config.weights,
-                         config.match_only_producers)
+                         config.match_only_producers,
+                         **_config_objective_kwargs(config))
         scale = base_misfit or 1.0
 
         # MRST's own reader, not convert_restart_to_states directly. It
@@ -1326,7 +1411,7 @@ def _objective_partials(model, observed, schedule, config, scale, forces):
     """``dg_n/dx_n`` for the mismatch, as the adjoint sweep wants it.
 
     The same objective the loop minimises, asked for its derivative
-    rather than its value. ``matchObserved*`` reads the well quantities
+    rather than its value. ``matchObservedOWGProfile`` reads the quantities
     through ``FacilityModel.getProp``; given a state whose facility
     variables carry derivatives, the scalar it returns carries the whole
     partial in its Jacobian row. One expression of the objective serves
@@ -1343,44 +1428,61 @@ def _objective_partials(model, observed, schedule, config, scale, forces):
     entirely in the well block, returns a zero gradient that reads as
     converged.
     """
-    from PRSTCore.hm.utils.evaluate.matchObservedLW import matchObservedLW
-    from PRSTCore.hm.utils.evaluate.matchObservedOG import matchObservedOG
+    from PRSTCore.hm.utils.evaluate.matchObservedOWGProfile import \
+        matchObservedOWGProfile
 
-    weights = config.weights
-    use_gas = weights.get('gas', 0.0) > 0
+    objective_schedule, alpha, beta, omega = _objective_inputs(
+        observed, schedule, config.weights, config.match_only_producers,
+        config.objective_weight, config.normalization_factor,
+        config.wells_weight)
+    dts = _np.asarray(objective_schedule['step']['val'], dtype=float).ravel()
+    all_wells = objective_schedule['control'][-1]['W']
+    well_index = {str(well.get('name', '')): index
+                  for index, well in enumerate(all_wells)}
 
     def partials(step, state):
         forces_n = forces[step] if isinstance(forces, list) else forces
-        active = [w['name'] for w in model._mrst_active_wells(forces_n)]
-        if not active:
+        active_wells = list(model._mrst_active_wells(forces_n))
+        active = [str(w['name']) for w in active_wells]
+        if not active_wells:
             return _np.zeros(1)
+        if len(set(active)) != len(active):
+            raise ValueError('active well names must be unique')
+        missing = [name for name in active if name not in well_index]
+        if missing:
+            raise ValueError('active wells absent from objective schedule: %s'
+                             % ', '.join(missing))
 
         state = _seeded_state(model, state, forces_n, active)
-        # The sweep pads or trims this row to the unknown count, so a
-        # width that disagrees with the assembly would be silently
-        # truncated rather than rejected.
-        observed_n = [{'wellSol': _by_name(observed[step]['wellSol'],
-                                           active)}]
-        one_step = {'step': {'val': [schedule['step']['val'][step]],
-                             'control': [0]},
-                    'control': schedule.get('control', [{'W': []}])}
-
-        common = dict(matchOnlyProducers=config.match_only_producers,
-                      ComputePartials=True, tStep=0, state=state,
-                      from_states=False)
-        if use_gas:
-            terms = matchObservedOG(
-                model, None, one_step, observed_n,
-                GasRateWeight=weights.get('gas', 0.0),
-                OilRateWeight=weights.get('oil', 0.0),
-                BHPWeight=weights.get('bhp', 0.0), **common)
-        else:
-            terms = matchObservedLW(
-                model, None, one_step, observed_n,
-                LiquidRateWeight=weights.get('oil', 0.0),
-                WaterCutWeight=weights.get('water', 0.0),
-                BHPWeight=weights.get('bhp', 0.0),
-                fix_observed_water_cut=True, **common)
+        observed_n = [
+            dict(entry, wellSol=_by_name(entry['wellSol'], active))
+            for entry in observed
+        ]
+        model_schedule = (model.inputdata or {}).get('_schedule', {})
+        model_controls = model_schedule.get('control') or [{}]
+        model_mapping = _np.asarray(
+            model_schedule.get('step', {}).get(
+                'control', _np.zeros(dts.size, dtype=int)),
+            dtype=int).ravel()
+        control_index = int(model_mapping[step]) \
+            if step < model_mapping.size else 0
+        if control_index < 0 or control_index >= len(model_controls):
+            raise IndexError('model schedule control index is invalid')
+        current_control = _deepcopy(model_controls[control_index])
+        current_control['W'] = _deepcopy(active_wells)
+        partial_schedule = {
+            'step': {'val': dts.copy(),
+                     'control': _np.zeros(dts.size, dtype=int)},
+            'control': [current_control],
+        }
+        take = _np.asarray([well_index[name] for name in active], dtype=int)
+        omega_n = {key: _np.asarray(value, dtype=float).ravel()[take]
+                   for key, value in omega.items()}
+        terms = matchObservedOWGProfile(
+            model, None, partial_schedule, observed_n,
+            ObjectiveWeight=alpha, NormalizationFactor=beta,
+            WellsWeight=omega_n, ComputePartials=True, tStep=step,
+            state=state, from_states=False)
         return _partial_row(terms[0], scale)
 
     return partials
@@ -1388,11 +1490,6 @@ def _objective_partials(model, observed, schedule, config, scale, forces):
 
 def _by_name(sols, names):
     """The well solutions for ``names``, in that order, all marked open.
-
-    A well the summary does not report contributes zeros rather than
-    shifting every later well by one -- silently comparing well *i*
-    against well *i+1* is the kind of mistake that still produces a
-    plausible misfit.
 
     The open flag is set on every row deliberately. ``matchObserved*``
     otherwise reaches for ``expandToFull``, which scatters an open-well
@@ -1405,11 +1502,12 @@ def _by_name(sols, names):
     real observation and not an absent one.
     """
     index = {str(w.get('name')): w for w in sols}
-    blank = {'qWs': 0.0, 'qOs': 0.0, 'qGs': 0.0, 'bhp': 0.0, 'sign': -1.0}
     out = []
     for name in names:
         found = index.get(name)
-        row = dict(found) if found is not None else dict(blank, name=name)
+        if found is None:
+            raise ValueError('well %r is missing from wellSol' % name)
+        row = dict(found)
         row['status'] = True
         out.append(row)
     return out
