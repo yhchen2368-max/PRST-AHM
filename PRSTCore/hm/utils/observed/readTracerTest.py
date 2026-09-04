@@ -88,6 +88,9 @@ def readTracerTest(fn):
             raise ValueError("Unsupported keyword '%s' in tracer test data file"
                              % head)
 
+    if current:
+        raise ValueError('Tracer test record is missing its / terminator')
+
     return records
 
 
@@ -103,6 +106,8 @@ def _read_output_block(lines, i):
     while i < len(lines):
         parts = _split(lines[i])
         i += 1
+        if _is_comment(lines[i - 1]):
+            continue
         if parts and parts[0] in PRODUCER_KEYWORDS:
             producer = parts[1:]
             break
@@ -112,6 +117,9 @@ def _read_output_block(lines, i):
     ncol = len(producer) + 1
     output = []
     while i < len(lines):
+        if _is_comment(lines[i]):
+            i += 1
+            continue
         parts = _split(lines[i])
         if not parts:
             i += 1
@@ -151,3 +159,8 @@ def _check_single(current, field):
 def _split(line):
     """Port of ``splitString``: split on runs of whitespace."""
     return str(line).strip().split()
+
+
+def _is_comment(line):
+    text = str(line).lstrip()
+    return text.startswith('#') or text.startswith('--')
