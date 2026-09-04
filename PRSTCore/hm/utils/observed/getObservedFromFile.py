@@ -35,6 +35,13 @@ def getObservedFromFile(filename, fn):
     return data
 
 
+def split_observed_paths(value):
+    """Split FAHM's semicolon-joined path text without reordering it."""
+    if value is None:
+        return []
+    return [part.strip() for part in str(value).split(';') if part.strip()]
+
+
 def _reader(name):
     from importlib import import_module
     module = import_module('PRSTCore.hm.utils.observed.%s' % name)
