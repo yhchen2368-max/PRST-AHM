@@ -16,6 +16,8 @@ A profile given in percent (any value above one) is rescaled to fractions.
 import numpy as _np
 
 from .getCellFacesDepth import getCellFacesDepth
+from ._dates import serial_dates as _serial_dates
+from ._dates import step_for as _step_for
 
 _PHASE_COLUMN = {'W': 'water', 'O': 'oil', 'G': 'gas'}
 
@@ -29,8 +31,9 @@ def addSaturationObserved(observed, time_sim, data, G, schedule, phNames):
 
     # Every well starts with a zero profile of the right shape.
     for step in range(len(observed)):
-        sols = observed[step].setdefault('wellsol',
-                                         [{} for _ in range(nwells)])
+        sols = observed[step].setdefault('wellSol', [])
+        while len(sols) < nwells:
+            sols.append({'name': wellnames[len(sols)]})
         for w in range(nwells):
             ncells = _np.atleast_1d(_np.asarray(W[w]['cells'])).ravel().size
             sols[w]['sw'] = _np.zeros((ncells, nphase))
@@ -40,7 +43,7 @@ def addSaturationObserved(observed, time_sim, data, G, schedule, phNames):
         if w is None:
             continue
         top, bottom = getCellFacesDepth(G, W[w]['cells'])
-        dates = _np.asarray(table['date'])
+        dates = _serial_dates(table['date'])
         for value in _np.unique(dates):
             ix = dates == value
             step = _step_for(time_sim, value)
@@ -56,7 +59,7 @@ def addSaturationObserved(observed, time_sim, data, G, schedule, phNames):
                     top, bottom, column)
                 if _np.any(s > 1):
                     s = s / 100.0
-                observed[step]['wellsol'][w]['sw'][:, p] = s
+                observed[step]['wellSol'][w]['sw'][:, p] = s
     return observed
 
 
@@ -111,7 +114,3 @@ def _well_index(wellnames, name):
             return i
     return None
 
-
-def _step_for(time_sim, value):
-    matches = _np.flatnonzero(_np.asarray(time_sim) == value)
-    return int(matches[0]) if matches.size else None
