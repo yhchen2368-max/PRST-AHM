@@ -45,32 +45,60 @@ def parse_dates(values, forward_fill=False):
     ``forward_fill`` carries the previous date into a blank cell, which is
     how the profile sheets mark "same survey, next interval".
     """
-    values = _np.asarray(values, dtype=object)
-    if values.size and isinstance(values[0], (_dt.date, _dt.datetime)):
-        return values
-
-    text = []
+    values = _np.asarray(values, dtype=object).ravel()
+    out = []
     previous = None
     for v in values:
-        item = '' if v is None else str(v).strip()
-        if item in ('', 'nan', 'NaN', 'None'):
+        if _is_missing(v):
             if forward_fill and previous is not None:
-                item = previous
+                out.append(previous)
+                continue
             else:
                 raise ValueError('Blank date with nothing to carry forward')
+        if isinstance(v, _dt.datetime):
+            item = v.date()
+            out.append(item)
+            previous = item
+            continue
+        if isinstance(v, _dt.date):
+            out.append(v)
+            previous = v
+            continue
+        if isinstance(v, _np.datetime64):
+            item = _np.datetime_as_string(v, unit='D')
+        else:
+            item = str(v).strip()
         # A numeric date (20200101.0) loses its integer form via float.
         if item.endswith('.0'):
             item = item[:-2]
-        text.append(item)
-        previous = item
-
-    out = []
-    for item in text:
         fmt = DATE_FORMATS.get(len(item))
         if fmt is None:
             raise ValueError('Unrecognised date format: %r' % item)
-        out.append(_dt.datetime.strptime(item, fmt).date())
+        item = _dt.datetime.strptime(item, fmt).date()
+        out.append(item)
+        previous = item
     return _np.asarray(out, dtype=object)
+
+
+def matlab_datenum(value):
+    """Return MATLAB's serial-day representation of a date.
+
+    Python's ordinal starts at 0001-01-01 == 1, while MATLAB counts from
+    the fictitious 0000-01-00.  The calendars therefore differ by exactly
+    366 days.  A time-of-day is retained as a fractional day.
+    """
+    if isinstance(value, (_np.integer, int, _np.floating, float)):
+        return float(value)
+    if isinstance(value, _np.datetime64):
+        value = _dt.datetime.fromisoformat(
+            _np.datetime_as_string(value, unit='us'))
+    if not isinstance(value, (_dt.date, _dt.datetime)):
+        value = parse_dates([value])[0]
+    if isinstance(value, _dt.datetime):
+        midnight = _dt.datetime.combine(value.date(), _dt.time())
+        fraction = (value - midnight).total_seconds() / 86400.0
+        return float(value.date().toordinal() + 366) + fraction
+    return float(value.toordinal() + 366)
 
 
 def split_depth_interval(values):
@@ -102,7 +130,8 @@ def read_sheets(fn):
         import pandas as pd
     except ImportError as exc:
         raise ImportError(
-            'Reading %s requires pandas (CSV files do not)' % name) from exc
+            'Reading %s requires pandas and the matching Excel engine'
+            % name) from exc
     book = pd.read_excel(name, sheet_name=None)
     return [{c: frame[c].to_numpy() for c in frame.columns}
             for frame in book.values()]
@@ -135,14 +164,10 @@ def to_float(values):
 
 
 def group_by_well(table, name_column='name'):
-    """``[(well, table), ...]`` preserving first-appearance order."""
+    """``[(well, table), ...]`` in MATLAB ``unique(cellstr)`` order."""
     names = _np.asarray(table[name_column], dtype=object)
     out = []
-    seen = set()
-    for well in names:
-        if well in seen:
-            continue
-        seen.add(well)
+    for well in sorted(set(names), key=str):
         ix = names == well
         out.append((well, {k: _np.asarray(v)[ix] for k, v in table.items()}))
     return out
@@ -156,3 +181,15 @@ def fill_missing_with(table, columns, value):
             values[_np.isnan(values)] = value
             table[column] = values
     return table
+
+
+def _is_missing(value):
+    if value is None:
+        return True
+    try:
+        missing = _np.asarray(value != value).item()
+        if bool(missing):
+            return True
+    except (TypeError, ValueError):
+        pass
+    return str(value).strip() in ('', 'nan', 'NaN', 'NaT', 'None', '<NA>')
