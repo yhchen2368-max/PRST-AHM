@@ -1368,6 +1368,17 @@ class FahmApp(ttk.Frame):
         self.observed = assembled.observed
         return assembled
 
+    def prepare_training_parameters(self, config=None):
+        """Stage 10: owned parameters/constraints only; no forward/optimizer."""
+        config = self.config() if config is None else config
+        result = config.prepare_parameters(self.model, self.schedule, self.state0)
+        self.trainSetup = result['setup']
+        self.trainParms = result['parameters']
+        self.constraints = result['constraints']
+        self.pvec = result['pvec']
+        self.parameter_slices = result['slices']
+        return result
+
     @property
     def alpha(self):
         """FAHM ``get.alpha`` as its option-name/value pair.
@@ -1627,6 +1638,7 @@ class FahmApp(ttk.Frame):
         try:
             self.prepare_observed_schedule()
             config = self.config()
+            self.prepare_training_parameters(config)
         except Exception as exc:
             messagebox.showerror('ERROR', str(exc))
             self._say('Run setup failed: %s' % exc)
@@ -1952,9 +1964,7 @@ class FahmApp(ttk.Frame):
             objective_weight=objective,
             normalization_factor=normalization,
             wells_weight=well_weights)
-        # FahmConfig is intentionally not widened until Stage 10 connects
-        # ModelParameter.  It is a normal (non-slotted) dataclass, so the App
-        # can expose the exact Stage 9 contract without changing algorithms.
+        # Exact per-cell config is the only input to prepare_parameters.
         config.fahm_parameter_config = (self.parameter_config()
                                         if self.model is not None else None)
         return config
