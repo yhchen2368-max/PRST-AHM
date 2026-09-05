@@ -135,7 +135,7 @@ def init_model_parameters_adi(setup, params):
     offset = 0
     for p, value, width in zip(params, values, widths):
         if p.control_type not in WELL_CONTROL_TYPES:
-            p.set_parameter(new, SparseADI.variable(value, nvar, offset))
+            new = p.set_parameter(new, SparseADI.variable(value, nvar, offset))
         offset += width
     return new['model'], new.get('schedule')
 
