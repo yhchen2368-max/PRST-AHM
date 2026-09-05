@@ -8,6 +8,7 @@ A perforation is recomputed only where the deck defaulted it:
 ``WI <= 0 & Kh <= 0 & cstatus``.
 """
 
+import copy as _copy
 import numpy as _np
 
 from PRSTCore.ad_core.adi import SparseADI as _SparseADI
@@ -17,6 +18,7 @@ from .evaluate.computeWellIndexADI import computeWellIndexADI
 
 def recomputeWellIndex(model, schedule):
     """Return ``schedule`` with each control's ``W[*]['WI']`` refreshed."""
+    schedule = _copy.deepcopy(schedule)
     G = model.G
     dims = _cell_dims(G)
 
@@ -24,24 +26,22 @@ def recomputeWellIndex(model, schedule):
     if not controls:
         return schedule
 
-    first = controls[0].get('W', [])
-    n_cells = [len(_np.atleast_1d(_np.asarray(w['cells'])).ravel()) for w in first]
-    bounds = _np.concatenate([[0], _np.cumsum(n_cells)]).astype(int)
-    index = [_np.arange(bounds[i], bounds[i + 1]) for i in range(len(n_cells))]
-
     for ctrl in controls:
         W = ctrl.get('W')
         if not W:
             continue
         if not any('defaulted' in w for w in W):
             continue
+        n_cells = [_np.size(w['cells']) for w in W]
+        bounds = _np.r_[0, _np.cumsum(n_cells)].astype(int)
+        index = [_np.arange(bounds[i], bounds[i + 1]) for i in range(len(W))]
 
         r = _cat([w['r'] for w in W])
         direction = _np.concatenate(
             [_np.atleast_1d(_np.asarray(w['dir'])).ravel() for w in W])
         cells = _cat([w['cells'] for w in W]).astype(int)
         cstatus = _cat([w['cstatus'] for w in W]).astype(bool)
-        WI = _cat([w['WI'] for w in W])
+        WI = _cat([w['defaulted']['WI'] for w in W])
         Kh = _cat([w['defaulted']['Kh'] for w in W])
         Sk = _cat([w['defaulted']['Skin'] for w in W])
         WI_def = _cat([w['defaulted']['WI'] for w in W])
@@ -82,16 +82,33 @@ def _apply_deck_wpimult(model, schedule):
         return
 
     IJK = _grid_logical_indices(model.G)
-    W_prev = schedule['control'][0].get('W', [])
-    WI_prev = [_np.asarray(w['WI'], dtype=float).copy() for w in W_prev]
-    WI_raw = [v.copy() for v in WI_prev]
+    # Match history by well name, active cell and occurrence, not by the
+    # first control's completion count (FAHM-FIX-031).
+    raw_history, now_history = {}, {}
 
     for ctrl_idx, ctrl in enumerate(schedule['control']):
         wpi = ectrls[ctrl_idx].get('WPIMULT') if ctrl_idx < len(ectrls) else None
         wpi = _dedupe_wpimult(wpi)
         W = ctrl.get('W', [])
+        keys = [_perforation_keys(w) for w in W]
+        WI_raw, WI_prev = [], []
+        for w, wk in zip(W, keys):
+            WI_raw.append(_cat([raw_history.get(key, w['WI'][j:j+1]) for j, key in enumerate(wk)]))
+            WI_prev.append(_cat([now_history.get(key, w['WI'][j:j+1]) for j, key in enumerate(wk)]))
         W, WI_raw, WI_prev = _apply_wpimult(W, IJK, wpi, WI_raw, WI_prev)
+        for wk, raw, now in zip(keys, WI_raw, WI_prev):
+            for j, key in enumerate(wk):
+                raw_history[key] = _copy.deepcopy(raw[j:j+1])
+                now_history[key] = _copy.deepcopy(now[j:j+1])
         ctrl['W'] = W
+
+
+def _perforation_keys(well):
+    counts, keys = {}, []
+    for cell in _np.asarray(well['cells'], dtype=int).ravel():
+        counts[cell] = counts.get(cell, 0) + 1
+        keys.append((well['name'], int(cell), counts[cell]))
+    return keys
 
 
 def _dedupe_wpimult(wpi):
@@ -99,7 +116,15 @@ def _dedupe_wpimult(wpi):
     per (well, I, J, K)."""
     if not wpi:
         return []
-    rows = [list(r) for r in wpi if r]
+    def records(value):
+        if isinstance(value, _np.ndarray):
+            value = value.tolist()
+        if not len(value):
+            return []
+        if isinstance(value[0], str):
+            return [list(value)]
+        return [row for part in value for row in records(part)]
+    rows = records(wpi)
     blanket, specific = [], []
     for row in rows:
         if len(row) >= 5 and row[2] == -1 and row[3] == -1 and row[4] == -1:
@@ -110,7 +135,7 @@ def _dedupe_wpimult(wpi):
         last = {}
         for row in blanket:
             last[(row[0], row[2], row[3], row[4])] = row
-        blanket = list(last.values())
+        blanket = [last[key] for key in sorted(last)]
     return specific + blanket
 
 
@@ -121,13 +146,12 @@ def _apply_wpimult(W, IJK, WPIMULT, WI_raw, WI_now):
     # Carry forward any perforation whose index changed since the last
     # control, so a re-completed perforation restarts from its raw value.
     for i, w in enumerate(W):
-        if i >= len(WI_raw):
-            continue
-        current = _np.asarray(w['WI'], dtype=float)
-        n = min(current.size, WI_raw[i].size)
-        changed = WI_raw[i][:n] != current[:n]
-        WI_raw[i][:n][changed] = current[:n][changed]
-        WI_now[i][:n][changed] = current[:n][changed]
+        current = w['WI']
+        if i >= len(WI_raw) or _value(current).size != _value(WI_raw[i]).size:
+            raise ValueError('WPIMULT requires consistent well/perforation identity across controls')
+        changed = _value(WI_raw[i]) != _value(current)
+        WI_raw[i] = _replace(WI_raw[i], changed, current)
+        WI_now[i] = _replace(WI_now[i], changed, current)
 
     for row in WPIMULT or []:
         name, val = row[0], float(row[1])
@@ -139,7 +163,7 @@ def _apply_wpimult(W, IJK, WPIMULT, WI_raw, WI_now):
         assert val > 1e-10 and _np.isfinite(val), 'WPIMULT multiplier must be positive'
         well = matches[0]
 
-        N = WI_now[well].size
+        N = _value(WI_now[well]).size
         wc = _np.atleast_1d(_np.asarray(W[well]['cells'], dtype=int)).ravel()
         if start < 1:
             start = 1
@@ -153,19 +177,36 @@ def _apply_wpimult(W, IJK, WPIMULT, WI_raw, WI_now):
             active &= IJK[1][wc] == J
         if K > 0:
             active &= IJK[2][wc] == K
-        WI_now[well][active] *= val
+        WI_now[well] = WI_now[well] * _np.where(active, val, 1.0)
 
     for i, w in enumerate(W):
         if i < len(WI_now):
             # The MATLAB writes `w.WI = WI_now{well}.*w.cstatus` and then
             # immediately overwrites it with `w.WI = WI_now{well}`, so the
             # cstatus masking is dead; the unmasked value is what survives.
-            w['WI'] = WI_now[i]
+            w['WI'] = _copy.deepcopy(WI_now[i])
     return W, WI_raw, WI_now
 
 
 def _cat(values):
+    if any(isinstance(v, _SparseADI) for v in values):
+        nvar = next(v.nvar for v in values if isinstance(v, _SparseADI))
+        return _SparseADI.concat([v if isinstance(v, _SparseADI) else
+                                  _SparseADI.constant(_np.atleast_1d(v), nvar) for v in values])
     return _np.concatenate([_np.atleast_1d(_np.asarray(v)).ravel() for v in values])
+
+
+def _value(v):
+    return v.val if isinstance(v, _SparseADI) else _np.asarray(v)
+
+
+def _replace(out, mask, values):
+    if isinstance(out, _SparseADI) or isinstance(values, _SparseADI):
+        from PRSTCore.ad_core.adi import ad_select
+        return ad_select(mask, values, out)
+    out = _np.asarray(out).copy()
+    out[mask] = _np.asarray(values)[mask]
+    return out
 
 
 def _cell_dims(G):
