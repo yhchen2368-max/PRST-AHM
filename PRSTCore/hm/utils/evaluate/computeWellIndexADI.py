@@ -11,8 +11,8 @@ MATLAB and kept here:
 * every non-finite intermediate (``k2/k1``, ``k1/k2``, ``re``, and finally
   ``WI`` itself) is zeroed rather than propagated, so a zero-permeability
   perforation yields ``WI = 0`` instead of a NaN;
-* NTG multiplies the connection length ``ell`` -- but only on the branch
-  that ran last, see :func:`_connection_dimensions`.
+* NTG multiplies the connection length ``ell`` only for z perforations,
+  the last assigned direction mask in :func:`_connection_dimensions`.
 """
 
 import numpy as _np
@@ -97,7 +97,8 @@ def _connection_dimensions(G, rock, cells, radius, Dir, cellDims):
     k = _extract_permeability(rock, cells)
 
     ntg = _np.ones(cells.size, dtype=float)
-    if isinstance(rock, dict) and rock.get('ntg') is not None:
+    if (isinstance(rock, dict) and rock.get('ntg') is not None
+            and _np.shape(G['cells'].get('faces', []))[1:] == (2,)):
         values = _np.asarray(rock['ntg'], dtype=float).ravel()
         if values.size == 1:
             ntg = _np.full(cells.size, values[0])
@@ -115,7 +116,6 @@ def _connection_dimensions(G, rock, cells, radius, Dir, cellDims):
     k1 = _zeros_like_any(k, n)
     k2 = _zeros_like_any(k, n)
 
-    last = None
     for axis, (a, b, l, i1, i2) in {
         'x': (dy, dz, dx, 1, 2),
         'y': (dx, dz, dy, 0, 2),
@@ -129,14 +129,10 @@ def _connection_dimensions(G, rock, cells, radius, Dir, cellDims):
         ell[ci] = l[ci]
         k1 = _put(k1, ci, k[i1])
         k2 = _put(k2, ci, k[i2])
-        last = ci
 
-    # The MATLAB applies NTG as `ell(ci) = ntg(ci).*ell(ci)` *after* the
-    # three branches, so `ci` is whichever mask was assigned last -- the
-    # 'z' mask when any z perforation exists, otherwise 'y', otherwise 'x'.
-    # Reproduced rather than corrected.
-    if last is not None:
-        ell[last] = ntg[last] * ell[last]
+    # MATLAB assigns ci = welldir == 'z' even when that mask is empty.
+    ci = welldir == 'z'
+    ell[ci] = ntg[ci] * ell[ci]
     return d1, d2, ell, k1, k2
 
 
