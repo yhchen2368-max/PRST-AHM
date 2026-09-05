@@ -264,3 +264,42 @@ def config_row(model, name: str, enabled: bool, absolute: bool, limits):
     relative_limits = None if absolute else expanded.copy()
     return (backend_name, True, scaling, box_limits, relative_limits,
             None if subset is None else subset.copy(), bool(absolute))
+
+
+def build_parameter_setup(model, schedule, state0, config):
+    """FAHM StartButtonPushed 1918-1927/1966, stopping before evaluation.
+
+    Returns independent trainSetup/trainParms, pvec, constraints and explicit
+    zero-based half-open slices. No scalar/region lumping or optimizer runs.
+    """
+    import copy
+    from PRSTCore.optimization.utils.parameters import add_parameter, get_scaled_parameter_vector
+    from PRSTCore.hm.utils.optimizer.checkParameterConsistency import checkParameterConsistency
+
+    setup = copy.deepcopy({'model': model, 'schedule': schedule, 'state0': state0})
+    params = []
+    if len(config) != len(PARAMETERS):
+        raise ValueError('FAHM config must contain all 15 seven-column rows')
+    for expected, row in zip(PARAMETERS, config):
+        if len(row) != 7 or row[0] != BACKEND_NAME.get(expected, expected.lower()):
+            raise ValueError('FAHM config row order/name/column count differs')
+        name, enabled, scaling, box, relative, subset, uniform = row
+        if not enabled:
+            continue
+        params = add_parameter(params, setup, name=name, scaling=scaling,
+                               box_lims=box, relative_limits=relative,
+                               subset=subset, uniform_limits=uniform)
+    params, constraints = checkParameterConsistency(params, setup['model'])
+    for param in params:
+        box = param.box_lims
+        if not _np.all(_np.isfinite(box)) or _np.any(box[:, 1] <= box[:, 0]):
+            raise ValueError('%s has infeasible or degenerate limits after consistency checks' % param.name)
+    pvec = get_scaled_parameter_vector(setup, params)
+    if not _np.all(_np.isfinite(pvec)) or _np.any(pvec < 0) or _np.any(pvec > 1):
+        raise ValueError('Initial parameter vector is outside the final unit box')
+    if constraints is not None and _np.any(constraints['A'] @ pvec - constraints['b'] > 8*_np.finfo(float).eps):
+        raise ValueError('Initial parameter vector violates endpoint constraints')
+    offsets = _np.r_[0, _np.cumsum([p.nParam for p in params])].astype(int)
+    return {'setup': setup, 'parameters': params, 'pvec': pvec,
+            'constraints': constraints,
+            'slices': _np.column_stack((offsets[:-1], offsets[1:]))}
