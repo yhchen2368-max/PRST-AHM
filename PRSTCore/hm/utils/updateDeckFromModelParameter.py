@@ -10,6 +10,7 @@ tabulated ``krPts`` (indexed by SATNUM), then overwritten on the active
 cells -- so inactive cells keep a physically meaningful default.
 """
 
+import copy as _copy
 import numpy as _np
 
 _EDIT_FIELDS = ('porv',)
@@ -20,19 +21,22 @@ _PROPS_FIELDS = ('swl', 'swcr', 'swu', 'sowcr', 'sogcr', 'sgl', 'sgcr',
 
 def updateDeckFromModelParameter(deck, setup, parameters):
     """Return ``deck`` with each parameter's current value written back."""
-    dims = _np.asarray(deck['RUNSPEC']['cartDims'], dtype=int).ravel()
+    deck = _copy.deepcopy(deck)
+    dims = _np.asarray(deck['RUNSPEC']['cartDims'], dtype=int).ravel(order='F')
     n_total = int(_np.prod(dims))
 
     model = setup['model'] if isinstance(setup, dict) else setup.model
     act = model.G['cells'].get('indexMap')
     act = (_np.arange(int(model.G['cells']['num']), dtype=int)
            if act is None else _np.asarray(act, dtype=int).ravel())
+    if act.size != model.G['cells']['num'] or _np.any(act < 0) or _np.any(act >= n_total) or _np.unique(act).size != act.size:
+        raise ValueError('indexMap must map each active cell to a distinct full-grid cell')
 
     pts = _krpts(model)
 
     regions = deck.get('REGIONS', {}) or {}
     if 'SATNUM' in regions:
-        reg = _np.asarray(regions['SATNUM'], dtype=int).ravel() - 1
+        reg = _np.asarray(regions['SATNUM'], dtype=int).ravel(order='F') - 1
     else:
         reg = _np.zeros(n_total, dtype=int)
 
@@ -53,8 +57,11 @@ def updateDeckFromModelParameter(deck, setup, parameters):
         key = field.upper()
         if key not in section:
             section[key] = _initial_field(field, p, pts, reg, n_total)
-        arr = _np.asarray(section[key], dtype=float).ravel().copy()
-        arr[act] = _np.asarray(value, dtype=float).ravel()
+        arr = _np.asarray(section[key], dtype=float).ravel(order='F').copy()
+        values = _np.asarray(value, dtype=float).ravel(order='F')
+        if arr.size != n_total or values.size != act.size:
+            raise ValueError('%s requires full-grid keyword and complete active-cell value, not subset/pad/trim' % key)
+        arr[act] = values
         section[key] = arr
     return deck
 
@@ -81,10 +88,12 @@ def _initial_field(field, p, pts, reg, n_total):
             table = _np.atleast_2d(_np.asarray(table, dtype=float))
             col = _column_of(subscript)
             if col is None or col >= table.shape[1]:
-                return _np.zeros(n_total, dtype=float)
+                raise ValueError('Missing krPts column for %s' % field)
             values = table[:, col]
-            return values[_np.clip(reg, 0, values.size - 1)]
-    return _np.zeros(n_total, dtype=float)
+            if reg.size != n_total or _np.any(reg < 0) or _np.any(reg >= values.size):
+                raise ValueError('SATNUM must select a valid krPts row for every full-grid cell')
+            return values[reg].copy()
+    raise ValueError('Missing fluid.krPts for %s' % field)
 
 
 def _column_of(subscript):
