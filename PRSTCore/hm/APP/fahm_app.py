@@ -51,8 +51,9 @@ import numpy as np
 from PRSTCore.hm.APP.fahm import (FahmConfig, create_base_case,
                                   initialize_fahm_project, read_case,
                                   run_history_match)
-from PRSTCore.hm.APP.fahm_parameters import (BACKEND_NAME, DEFAULTS,
-                                             config_row, default_limits)
+from PRSTCore.hm.APP.fahm_parameters import (
+    BACKEND_NAME, DEFAULTS, config_row, default_limits, matlab_num2str,
+    phase_parameter_availability)
 from PRSTCore.hm.utils.observed.getObservedFromFile import (
     getObservedFromFile, split_observed_paths)
 from PRSTCore.hm.utils.observed.assembleObservedSchedule import (
@@ -1103,7 +1104,12 @@ class FahmApp(ttk.Frame):
         table.delete(*table.get_children())
         absolute = self.param_mode[name].get() == 'useAbs'
         for region, low, high in default_limits(self.model, name, absolute):
-            table.insert('', 'end', values=(region, '%g' % low, '%g' % high))
+            # FAHM calls scalar ``num2str`` for every table cell.  The
+            # displayed strings are later parsed back by get.config, so the
+            # R2022b formatting is part of the numerical contract.
+            table.insert('', 'end', values=(
+                matlab_num2str(region), matlab_num2str(low),
+                matlab_num2str(high)))
 
     def _parameter_mode_changed(self, name):
         """Port of ``ParameterButtonGroupSelectionChanged``: the table is
@@ -1567,10 +1573,11 @@ class FahmApp(ttk.Frame):
             for well in wells:
                 boxes['Match'].insert('end', well)
 
-        for name in PARAMETER_TABS:
-            if self.param_on[name].get() and not self.param_tables[
-                    name].get_children():
-                self._refresh_limits(name)
+        if self.model is not None:
+            for name in PARAMETER_TABS:
+                if self.param_on[name].get() and not self.param_tables[
+                        name].get_children():
+                    self._refresh_limits(name)
         self.SetUpTabGroup.select(1)
 
     def _apply_phase_gating(self):
@@ -1584,21 +1591,12 @@ class FahmApp(ttk.Frame):
             self.weights[quantity].set('1' if enabled else '0')
             self._set_enabled(self.weight_widgets[quantity], enabled)
 
-        fluid_enabled = {
-            'kro': phases['Oil'],
-            'krw': phases['Water'],
-            'Swu': phases['Water'],
-            'Swl': phases['Water'],
-            'Swcr': phases['Water'],
-            'krg': phases['Gas'],
-            'Sgu': phases['Gas'],
-            'Sgl': phases['Gas'],
-            'Sgcr': phases['Gas'],
-            'Sowcr': phases['Water'] and phases['Oil'],
-            'Sogcr': phases['Gas'] and phases['Oil'],
-        }
-        for name, enabled in fluid_enabled.items():
-            self._set_enabled(self.param_check_widgets[name], enabled)
+        availability = phase_parameter_availability(
+            oil=phases['Oil'], water=phases['Water'], gas=phases['Gas'])
+        for name in PARAMETERS:
+            if name not in DEFAULT_ON:
+                self._set_enabled(self.param_check_widgets[name],
+                                  availability[name])
 
     def _objective_proceed(self):
         self.SetUpTabGroup.select(2)
@@ -1690,8 +1688,9 @@ class FahmApp(ttk.Frame):
                 if not on:
                     continue
                 fh.write('%-12s scaling=%-6s %s=%s uniform=%s\n'
-                         % (name, scaling,
-                            'box' if box else 'relative', box or rel,
+                          % (name, scaling,
+                            'box' if box is not None else 'relative',
+                            box if box is not None else rel,
                             uniform))
         self._say('Wrote %s' % path)
 
@@ -1891,20 +1890,26 @@ class FahmApp(ttk.Frame):
         rows = []
         for name in PARAMETERS:
             enabled = bool(self.param_on[name].get())
+            if not enabled:
+                # FAHM's getter continues immediately after include=false;
+                # do not demand a phase-specific scaling point for a
+                # disabled row.
+                rows.append(config_row(self.model, name, False, False, ()))
+                continue
             absolute = self.param_mode[name].get() == 'useAbs'
             limits = self.limits_of(name) or \
                 default_limits(self.model, name, absolute)
-            rows.append(config_row(name, enabled, absolute, limits))
+            rows.append(config_row(self.model, name, enabled, absolute,
+                                   limits))
         return rows
 
     def config(self):
         """Collect the widget state into a :class:`FahmConfig`.
 
-        FahmConfig carries one interval per parameter, so a multi-region
-        parameter is narrowed to the tightest limits any region declares
-        -- the backend applies a single multiplier per parameter, and
-        offering per-region control it cannot honour would be worse than
-        saying so.
+        ``fahm_parameter_config`` on the returned object is the authoritative
+        FAHM seven-column, per-cell contract.  ``parameter_limits`` remains a
+        scalar compatibility view for the pre-Stage-10 experimental runner;
+        it must not be used to construct FAHM ModelParameters.
         """
         limits = {}
         for name in PARAMETERS:
@@ -1934,7 +1939,7 @@ class FahmApp(ttk.Frame):
             normalization = self.beta[1]
             well_weights = self.omega[1]
 
-        return FahmConfig(
+        config = FahmConfig(
             deck_path=self.ModelPath.get(),
             work_dir=self.RunDirectory.get(),
             simulator=self.SimulatorPath.get(),
@@ -1947,6 +1952,12 @@ class FahmApp(ttk.Frame):
             objective_weight=objective,
             normalization_factor=normalization,
             wells_weight=well_weights)
+        # FahmConfig is intentionally not widened until Stage 10 connects
+        # ModelParameter.  It is a normal (non-slotted) dataclass, so the App
+        # can expose the exact Stage 9 contract without changing algorithms.
+        config.fahm_parameter_config = (self.parameter_config()
+                                        if self.model is not None else None)
+        return config
 
     @staticmethod
     def _well_names(deck):
