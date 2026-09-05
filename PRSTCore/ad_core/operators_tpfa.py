@@ -48,6 +48,7 @@ def get_face_transmissibility(G, rock, fix_negative=True):
     T[~np.isfinite(T)] = 0.0
     return T
 
+
 def pore_volume(G, rock):
     """Port of MRST ``poreVolume``: ``poro .* G.cells.volumes .* ntg``."""
     # setupOperatorsTPFA.pore_volume first checks the simulator-derived
@@ -155,6 +156,7 @@ def setup_operators_tpfa(G, rock=None, neighbors=None, trans=None, porv=None):
     # handing over the cell pairs ECLIPSE's INIT file reports while
     # letting the transmissibility come from the grid.
     N_all = np.asarray(G['faces']['neighbors'], dtype=np.int64).reshape(-1, 2)
+    face_indices = None
 
     if trans is None:
         # grid_based_trans
@@ -172,6 +174,7 @@ def setup_operators_tpfa(G, rock=None, neighbors=None, trans=None, porv=None):
         # FAHM's saved array order, this keeps ``neighbors=base.N`` an
         # identity operation as it is in setupOperatorsTPFA.
         order = _mrst_corner_point_internal_order(N, G)
+        face_indices = np.flatnonzero(internal)[order]
         N, T = N[order], T[order]
     else:
         # user_provided_trans
@@ -263,6 +266,9 @@ def setup_operators_tpfa(G, rock=None, neighbors=None, trans=None, porv=None):
         'Grad': lambda x: _apply(negC, x),
         'faceAvg': lambda x: _apply(M, x),
     }
+    if face_indices is not None:
+        # Parameter setters must reuse the same face permutation as N/C.
+        ops['internalFaceIndices'] = face_indices.copy()
     if nf == 0:
         ops['Div'] = lambda x: np.zeros(nc)
         ops['AccDiv'] = lambda acc, flux: acc
