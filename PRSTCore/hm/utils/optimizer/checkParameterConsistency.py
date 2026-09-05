@@ -26,6 +26,8 @@ and the triple::
     Sogcr + Sgcr + Swl <= 1
 """
 
+import copy as _copy
+import itertools as _itertools
 import warnings as _warnings
 
 import numpy as _np
@@ -50,124 +52,74 @@ _TRIPLE = (('Sogcr', 'Sgcr', 'Swl'), (1, 1, 1), 1.0 - _EPS)
 
 
 def checkParameterConsistency(params, model):
-    """Return ``(params, constraints)``.
+    """Owned parameters and A*u<=b, in the exact FAHM pair/triple order.
 
-    ``params`` comes back with any box limits tightened; ``constraints``
-    is ``{'A', 'b'}`` or ``None``.
+    FAHM-FIX-027..030: signed fixed endpoints, subset indexing, triple
+    column selection and constraints expressed in the FINAL tightened box.
     """
+    params = _copy.deepcopy(params)
     nParams = [int(_get(p, 'nParam')) for p in params]
-    pos = _np.concatenate([[0], _np.cumsum(nParams)]).astype(int)
+    pos = _np.r_[0, _np.cumsum(nParams)].astype(int)
     names = [str(_get(p, 'name')) for p in params]
     scaling = as_dict(getRelpermScalingPoints(model))
-
-    A_rows, b_rows, record = [], [], []
-    n = int(sum(nParams))
-
-    for keys, sgn, rhs in _PAIRS:
-        ind = [_find(names, k) for k in keys]
-        if all(i is None for i in ind):
-            continue
-        limits, subset = _getBoxLimits(params, ind)
-
-        # One tuned, one tabulated -> tighten the tuned one's box.
-        for k in (0, 1):
-            other = 1 - k
+    templates, record = [], []
+    for keys, signs, rhs in (*_PAIRS, _TRIPLE):
+        ind = [_find(names, key) for key in keys]
+        limits, subsets = _getBoxLimits(params, ind)
+        count = len(keys)
+        for k in range(count):
             if ind[k] is None:
                 continue
-            sub, ia = _setdiff_stable(subset[k], subset[other])
-            if sub.size == 0:
+            others = [j for j in range(count) if j != k]
+            union = _np.unique(_np.concatenate([subsets[j] for j in others]))
+            sub, ia = _setdiff_stable(subsets[k], union)
+            if not sub.size:
                 continue
-            cons = _getConstraints(scaling, keys[other], sub)
-            if cons is None:
+            known = [_getConstraints(scaling, keys[j], sub) for j in others]
+            if count == 3 and k != 2 and known[1] is None:
+                known[1] = 0.0
+            if any(v is None for v in known):
                 continue
-            cons = rhs - sgn[other] * cons
-            flag = 'u' if sgn[k] > 0 else 'l'
-            limits[k], done = _enforceBoxLimits(limits[k], cons, ia, flag)
+            value = (rhs - sum(signs[j] * v for j, v in zip(others, known))) / signs[k]
+            limits[k], done = _enforceBoxLimits(limits[k], value, ia, 'u' if signs[k] > 0 else 'l')
             if done:
                 _set(params[ind[k]], 'boxLims', limits[k])
                 record.append(names[ind[k]])
-
-        # Both tuned -> a linear inequality.
-        if ind[0] is not None and ind[1] is not None:
-            sub, ia, ib = _intersect_stable(subset[0], subset[1])
-            if sub.size:
-                Ai = _makeInequalityMatrix(pos, limits, ind, [ia, ib],
-                                           sub.size, n)
-                A_rows.append(sgn[0] * Ai[0] + sgn[1] * Ai[1])
-                bi = (sgn[0] * limits[0][ia, 0] + sgn[1] * limits[1][ib, 0])
-                b_rows.append(rhs - bi)
-
-    keys, sgn, rhs = _TRIPLE
-    ind = [_find(names, k) for k in keys]
-    if not all(i is None for i in ind):
-        limits, subset = _getBoxLimits(params, ind)
-        for k in range(3):
-            others = [j for j in range(3) if j != k]
-            if ind[k] is None:
-                continue
-            union = _np.union1d(subset[others[0]], subset[others[1]])
-            sub, ia = _setdiff_stable(subset[k], union)
-            if sub.size == 0:
-                continue
-            cons = [_getConstraints(scaling, keys[j], sub) for j in others]
-            # The MATLAB substitutes zero for a missing second constraint
-            # on the first two rows only.
-            if k != 2 and cons[1] is None:
-                cons[1] = 0.0
-            if cons[0] is None or cons[1] is None:
-                continue
-            value = rhs - (sgn[others[0]] * cons[0] + sgn[others[1]] * cons[1])
-            flag = 'u' if sgn[k] > 0 else 'l'
-            limits[k], done = _enforceBoxLimits(limits[k], value, ia, flag)
-            if done:
-                _set(params[ind[k]], 'boxLims', limits[k])
-                record.append(names[ind[k]])
-
-        # Two tuned, one tabulated.
-        for f1, f2, f3 in ((0, 1, 2), (0, 2, 1), (1, 2, 0)):
-            if ind[f1] is None or ind[f2] is None:
-                continue
-            sub, ia, ib = _intersect_stable(subset[f1], subset[f2])
-            if sub.size == 0:
-                continue
-            sub2, s = _setdiff_stable(sub, subset[f3])
-            if sub2.size == 0:
-                continue
-            cons = _getConstraints(scaling, keys[f3], sub2)
-            if cons is None:
-                cons = 0.0
-            Ai = _makeInequalityMatrix(pos, limits, [ind[f1], ind[f2]],
-                                       [ia[s], ib[s]], sub2.size, n)
-            A_rows.append(sgn[f1] * Ai[0] + sgn[f2] * Ai[1])
-            bi = (sgn[f1] * limits[f1][ia[s], 0]
-                  + sgn[f2] * limits[f2][ib[s], 0] + sgn[f3] * cons)
-            b_rows.append(rhs - bi)
-
-        # All three tuned.
-        if all(i is not None for i in ind):
-            sub, ia, ib = _intersect_stable(subset[0], subset[1])
-            if sub.size:
-                sub2, s, ic = _intersect_stable(sub, subset[2])
-                if sub2.size:
-                    ia, ib = ia[s], ib[s]
-                    Ai = _makeInequalityMatrix(pos, limits, ind, [ia, ib, ic],
-                                               sub2.size, n)
-                    A_rows.append(sgn[0] * Ai[0] + sgn[1] * Ai[1]
-                                  + sgn[2] * Ai[2])
-                    bi = (sgn[0] * limits[0][ia, 0] + sgn[1] * limits[1][ib, 0]
-                          + sgn[2] * limits[2][ic, 0])
-                    b_rows.append(rhs - bi)
-
+        # Pair rows, then triple rows; stable cell order within each group.
+        for size in range(2, count + 1):
+            for chosen in _itertools.combinations(range(count), size):
+                if any(ind[k] is None for k in chosen):
+                    continue
+                cells = subsets[chosen[0]]
+                for k in chosen[1:]:
+                    cells, _, _ = _intersect_stable(cells, subsets[k])
+                others = [j for j in range(count) if j not in chosen]
+                for j in others:
+                    cells, _ = _setdiff_stable(cells, subsets[j])
+                if not cells.size:
+                    continue
+                selected = [[int(_np.flatnonzero(subsets[k] == c)[0]) for c in cells] for k in chosen]
+                fixed = _np.zeros(cells.size)
+                for j in others:
+                    value = _getConstraints(scaling, keys[j], cells)
+                    if value is not None:
+                        fixed += signs[j] * value
+                templates.append(([ind[k] for k in chosen], selected,
+                                  [signs[k] for k in chosen], rhs, fixed))
     if record:
-        _warnings.warn(
-            'The box-limits of the following parameters are adjusted '
-            'according to consistency requirements: %s' % ', '.join(record),
-            RuntimeWarning)
-
+        _warnings.warn('Box-limits adjusted according to consistency requirements: ' +
+                       ', '.join(record), RuntimeWarning)
+    A_rows, b_rows = [], []
+    for ind, selected, signs, rhs, fixed in templates:
+        limits, _ = _getBoxLimits(params, ind)
+        m = len(selected[0])
+        matrices = _makeInequalityMatrix(pos, limits, ind, selected, m, int(pos[-1]))
+        A_rows.append(sum(s * a for s, a in zip(signs, matrices)))
+        lower = sum(s * lim[sel, 0] for s, lim, sel in zip(signs, limits, selected))
+        b_rows.append(rhs - (lower + fixed))
     if not A_rows:
         return params, None
-    return params, {'A': _sp.vstack(A_rows, format='csr'),
-                    'b': _np.concatenate([_np.atleast_1d(b) for b in b_rows])}
+    return params, {'A': _sp.vstack(A_rows, format='csr'), 'b': _np.concatenate(b_rows)}
 
 
 def _makeInequalityMatrix(pos, limits, ind, sub, m, n):
@@ -188,7 +140,9 @@ def _makeInequalityMatrix(pos, limits, ind, sub, m, n):
             J = J[_np.asarray(sub[i], dtype=int)]
             V = V[_np.asarray(sub[i], dtype=int)]
         rows = _np.arange(m)
-        out.append(_sp.csr_matrix((V[:m], (rows, J[:m])), shape=(m, n)))
+        if V.size != m or J.size != m:
+            raise ValueError('Constraint row/column sizes differ; no pad/trim is allowed')
+        out.append(_sp.csr_matrix((V, (rows, J)), shape=(m, n)))
     return out
 
 
@@ -218,35 +172,20 @@ def _getConstraints(scaling, name, subset):
         if key.lower() == str(name).lower():
             values = _np.asarray(values, dtype=float).ravel()
             idx = _np.asarray(subset, dtype=int)
-            idx = idx[idx < values.size]
+            if _np.any(idx < 0) or _np.any(idx >= values.size):
+                raise ValueError('Constraint subset is outside active-cell values')
             return values[idx]
     return None
 
 
 def _enforceBoxLimits(limits, value, ia, flag):
-    """Port of ``enforceBoxLimits``: tighten one side of the box."""
     limits = _np.array(limits, dtype=float, copy=True)
-    ix = _np.zeros(limits.shape[0], dtype=bool)
-    ix[_np.asarray(ia, dtype=int)] = True
-    value = _np.broadcast_to(_np.atleast_1d(_np.asarray(value, dtype=float)),
-                             (limits.shape[0],)) \
-        if _np.size(value) == 1 else _np.asarray(value, dtype=float)
-
-    full = _np.zeros(limits.shape[0])
-    full[_np.asarray(ia, dtype=int)] = value[:_np.size(ia)] \
-        if _np.size(value) == _np.size(ia) else value[ix]
-
-    if str(flag).lower() == 'u':
-        ix = (limits[:, 1] > full) & ix
-        if _np.any(ix):
-            limits[ix, 1] = full[ix]
-            return limits, True
-    else:
-        ix = (limits[:, 0] < full) & ix
-        if _np.any(ix):
-            limits[ix, 0] = full[ix]
-            return limits, True
-    return limits, False
+    ia = _np.asarray(ia, dtype=int)
+    value = _np.broadcast_to(_np.asarray(value), (ia.size,))
+    col = 1 if flag == 'u' else 0
+    changed = limits[ia, col] > value if flag == 'u' else limits[ia, col] < value
+    limits[ia[changed], col] = value[changed]
+    return limits, bool(_np.any(changed))
 
 
 def _find(names, target):
