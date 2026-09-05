@@ -162,7 +162,9 @@ def _build_grid(cart_dims, coord, zcorn, act_num, u):
             # PRSTCore's process_grdecl takes neither and does not split,
             # which is the behaviour those options ask for.
             G = process_grdecl(grdecl)
-            return compute_geometry(G)
+            G = compute_geometry(G)
+            _assign_cp_geometry(G, grdecl)
+            return G
         except Exception as exc:
             _warnings.warn('Could not process the corner-point geometry '
                            '(%s); continuing with a cell list, so faces '
@@ -179,6 +181,30 @@ def _build_grid(cart_dims, coord, zcorn, act_num, u):
         "cartDims": np.asarray(cart_dims, dtype=int),
         "griddim": 3,
     }
+
+
+def _assign_cp_geometry(G, grdecl):
+    """computeCpGeometry: nominal corner means, before INIT DEPTH override.
+
+    These centers are distinct from volume-weighted geometric centroids and
+    simulator DEPTH. ModelParameter's loc_xyz transmissibility uses them.
+    """
+    from PRSTCore.deckformat.grid.init_eclipse_grid import _build_corner_point_nodes
+    nx, ny, nz = map(int, grdecl['cartDims'])
+    X, Y, Z = _build_corner_point_nodes(grdecl['COORD'],grdecl['ZCORN'],nx,ny,nz)
+    offsets = [(0,0,0),(1,0,0),(0,1,0),(1,1,0),
+               (0,0,1),(1,0,1),(0,1,1),(1,1,1)]
+    vertices = np.stack([np.stack((X[i::2,j::2,k::2],Y[i::2,j::2,k::2],Z[i::2,j::2,k::2]),axis=-1)
+                         for i,j,k in offsets],axis=-2).reshape((-1,8,3),order='F')
+    vertices = vertices[G['cells']['indexMap']]
+    face_nodes = np.array([[0,2,4,6],[1,3,5,7],[0,1,4,5],
+                           [2,3,6,7],[0,1,2,3],[4,5,6,7]])
+    fc = np.sum(vertices[:,face_nodes,:],axis=2)/4
+    cc = (fc[:,0,:]+fc[:,1,:])/2
+    extents = np.linalg.norm(fc[:,1::2,:]-fc[:,::2,:],axis=2)
+    cn = np.repeat(np.arange(G['cells']['num']),np.diff(G['cells']['facePos']))
+    tags = np.asarray(G['cells']['faces'])[:,1]-1
+    G['cells']['cpgeometry'] = {'centroids':cc,'extent':extents,'facecentroids':fc[cn,tags,:]}
 
 
 def _build_emap(G, act_num, na):
