@@ -56,12 +56,14 @@ class ModelParameter:
     def __init__(self, name, n_param, scaling="linear", box_lims=None,
                  lumping=None, subset=None, relative_limits=None,
                  setup=None, belongs_to=None, location=None,
-                 type="value", reference_value=None, control_steps=None):
+                 type="value", reference_value=None, control_steps=None,
+                 scaling_base=None):
         self.name = name
         self.n_param = int(n_param)
         self.scaling = scaling
-        self.lumping = lumping
-        self.subset = subset
+        self.lumping = copy.deepcopy(lumping)
+        self.subset = copy.deepcopy(subset)
+        self.scaling_base = scaling_base
         self.relative_limits = relative_limits
 
         # ``setupByName``'s outputs, and the custom accessors some
@@ -105,7 +107,7 @@ class ModelParameter:
                 box_lims = np.tile(box_lims, (self.n_param, 1))
             if box_lims.shape != (self.n_param, 2):
                 raise ValueError(f"box_lims must have shape ({self.n_param}, 2), got {box_lims.shape}")
-            self.box_lims = box_lims
+            self.box_lims = box_lims.copy()
 
     # ------------------------------------------------ setupByName --
 
@@ -192,11 +194,15 @@ class ModelParameter:
         target = setup[self.belongs_to]
         value = self.getfun(target, *self.location)
         if self.subset is not None:
-            value = np.asarray(value)[self.subset]
-        return collapse_lumps(value, self.lumping) if collapse else value
+            value = value[self.subset] if hasattr(value, 'val') else np.asarray(value)[self.subset]
+        return copy.deepcopy(collapse_lumps(value, self.lumping) if collapse else value)
 
     def set_parameter_value(self, setup, value, expand=True):
         """Port of ``setParameterValue``."""
+        return self._set_parameter_value_owned(copy.deepcopy(setup), value, expand)
+
+    def _set_parameter_value_owned(self, setup, value, expand=True):
+        """Internal writer: caller owns every mutable object in setup."""
         if expand:
             value = expand_lumps(value, self.lumping)
 
@@ -214,7 +220,7 @@ class ModelParameter:
         if self.setfun is not None:
             setup[self.belongs_to] = self.setfun(target, self, value)
         else:
-            _setfield(target, self.location, value)
+            _setfield(target, self.location, copy.deepcopy(value))
         return setup
 
     def collapse_gradient(self, g):
@@ -243,6 +249,13 @@ class ModelParameter:
     @property
     def boxLims(self):
         return self.box_lims
+
+    @boxLims.setter
+    def boxLims(self, value):
+        limits = np.atleast_2d(np.asarray(value, dtype=float))
+        if limits.shape not in ((1, 2), (self.n_param, 2)):
+            raise ValueError('boxLims must have one row or nParam rows')
+        self.box_lims = limits.copy()
 
     @property
     def relativeLimits(self):
@@ -292,46 +305,64 @@ class ModelParameter:
         return int(steps[0]) if steps else 0
 
     def unscale(self, u):
-        u = np.asarray(u, dtype=float)
+        u = np.asarray(u, dtype=float).ravel(order='F')
         lower, upper = self.box_lims[:, 0], self.box_lims[:, 1]
-        if self.scaling == "linear":
-            return lower + u * (upper - lower)
         if self.scaling == "log":
-            if np.any(lower <= 0):
-                raise ValueError("Log scaling requires positive lower bounds")
-            factor = upper / lower
-            return lower * np.power(factor, u)
-        raise ValueError(f"Unsupported scaling: {self.scaling}")
+            base = self._scaling_base()
+            u = (base ** u - 1) / (base - 1)
+        elif self.scaling == "exp":
+            base = self._scaling_base()
+            u = np.log((base - 1) * u + 1) / np.log(base)
+        elif self.scaling != "linear":
+            raise ValueError(f"Unsupported scaling: {self.scaling}")
+        return u * (upper - lower) + lower
 
     def scale(self, pval):
-        pval = np.asarray(pval, dtype=float)
+        pval = np.asarray(pval, dtype=float).ravel(order='F')
         lower, upper = self.box_lims[:, 0], self.box_lims[:, 1]
-        if self.scaling == "linear":
-            return (pval - lower) / (upper - lower)
+        vs = (pval - lower) / (upper - lower)
         if self.scaling == "log":
-            if np.any(pval <= 0) or np.any(lower <= 0):
-                raise ValueError("Log scaling requires positive values")
-            factor = upper / lower
-            return np.log(pval / lower) / np.log(factor)
-        raise ValueError(f"Unsupported scaling: {self.scaling}")
+            base = self._scaling_base()
+            vs = np.log((base - 1) * vs + 1) / np.log(base)
+        elif self.scaling == "exp":
+            base = self._scaling_base()
+            vs = (base ** vs - 1) / (base - 1)
+        elif self.scaling != "linear":
+            raise ValueError(f"Unsupported scaling: {self.scaling}")
+        return vs
 
     def scale_gradient(self, grad, pval):
-        grad = np.asarray(grad, dtype=float)
+        grad = np.asarray(grad, dtype=float).ravel(order='F')
         lower, upper = self.box_lims[:, 0], self.box_lims[:, 1]
-        if self.scaling == "linear":
-            return grad * (upper - lower)
+        gs = grad * (upper - lower)
+        v = (np.asarray(pval).ravel(order='F') - lower) / (upper - lower)
         if self.scaling == "log":
-            if np.any(pval <= 0):
-                raise ValueError("Log scaling requires positive values")
-            factor = upper / lower
-            return grad * pval * np.log(factor)
-        raise ValueError(f"Unsupported scaling: {self.scaling}")
+            base = self._scaling_base()
+            gs = gs / ((base - 1) / (((base - 1) * v + 1) * np.log(base)))
+        elif self.scaling == "exp":
+            base = self._scaling_base()
+            gs = gs / (base ** v * (np.log(base) / (base - 1)))
+        elif self.scaling != "linear":
+            raise ValueError(f"Unsupported scaling: {self.scaling}")
+        return gs
+
+    def _scaling_base(self):
+        if self.scaling_base is not None:
+            return self.scaling_base
+        lower, upper = self.box_lims[:, 0], self.box_lims[:, 1]
+        if np.any(lower <= 0) or np.any(upper <= lower):
+            raise ValueError('Log/exp scaling requires positive, non-degenerate bounds')
+        return upper / lower
 
 
 # ------------------------------------------------------ field access --
 
 def _step(obj, key):
     if isinstance(key, tuple):
+        if isinstance(obj, list):
+            return obj[key[1]][key[0]]
+        if hasattr(obj, 'val'):
+            return obj[key]
         return np.asarray(obj)[key]
     if isinstance(obj, dict):
         return obj[key]
@@ -372,6 +403,12 @@ def _setfield(obj, location, value):
 
 
 def _set_subset(whole, value, subset):
+    if hasattr(whole, 'val') or hasattr(value, 'val'):
+        from PRSTCore.ad_core.adi import SparseADI
+        nvar = whole.nvar if hasattr(whole, 'val') else value.nvar
+        out = whole if hasattr(whole, 'val') else SparseADI.constant(np.asarray(whole), nvar)
+        val = value if hasattr(value, 'val') else SparseADI.constant(np.asarray(value), nvar)
+        return out + SparseADI.scatter(subset, val - out[subset], out.val.size)
     out = np.asarray(whole, dtype=float).copy()
     out[subset] = value
     return out
@@ -422,36 +459,9 @@ def _set_control_value(control, control_type, value):
 # --------------------------------------------------- custom writers --
 
 def perm2directional_trans(model, perm_column, direction):
-    """Port of ``perm2directionalTrans``.
-
-    The half-transmissibilities a permeability contributes along one
-    coordinate direction: build a diagonal tensor that is zero in the
-    other two directions and run ``computeTrans`` on it.
-
-    ``ti`` is *linear* in the permeability, which is what makes the AD
-    cheap -- compute it once from the numbers, then multiply by
-    ``p/value(p)`` per cell to attach the derivative, instead of pushing
-    an AD object through the geometry.
-    """
-    from PRSTCore.solvers.incomp.compute_trans import compute_trans
-
-    values = perm_column.val if hasattr(perm_column, 'val') \
-        else np.asarray(perm_column, dtype=float)
-    values = np.asarray(values, dtype=float).ravel()
-
-    perm = np.zeros((values.size, 3), dtype=float)
-    perm[:, direction] = values
-    ti = compute_trans(model.G, {'perm': perm})
-
-    if not hasattr(perm_column, 'val'):
-        return ti
-
-    # One cell index per half-face, so the per-cell factor lines up.
-    cellno = _half_face_cells(model.G)
-    with np.errstate(divide='ignore', invalid='ignore'):
-        ratio = perm_column / values
-    return ratio[cellno] * ti
-
+    """MRST local-coordinate half-transmissibility, retaining AD."""
+    from .parameter_transmissibility import directional_trans
+    return directional_trans(model, perm_column, direction)
 
 def _half_face_cells(G):
     """``rldecode(1:num, diff(facePos))`` -- the owning cell of each
@@ -462,56 +472,19 @@ def _half_face_cells(G):
 
 
 def set_permeability_fun(model, param, value):
-    """Port of ``setPermeabilityFun``.
-
-    Writing a permeability is not writing one array: the
-    transmissibilities are a function of all three directions, so they
-    are rebuilt here from every column. Doing it this way is what lets an
-    AD permeability produce ``dT/dperm`` exactly -- including the
-    harmonic averaging of the two half faces -- on any grid, rather than
-    relying on a rule like "scaling PERMX scales the I-faces by the same
-    factor", which only holds for an axis-aligned Cartesian grid.
-    """
-    import scipy.sparse as sp
-
-    rock = model['rock'] if isinstance(model, dict) else model.rock
+    """Set one diagonal PERM column and rebuild MRST T, including NNC."""
+    from .parameter_transmissibility import assemble_trans
+    rock = _model_get(model, 'rock')
     perm = rock['perm']
-    columns = list(perm) if isinstance(perm, list) else \
-        [np.asarray(perm, dtype=float)[:, k]
-         for k in range(np.asarray(perm).shape[1])]
-
+    columns = list(perm) if isinstance(perm, list) else [
+        np.asarray(perm)[:, k].copy() for k in range(np.asarray(perm).shape[1])]
     column = param.location[-1][-1]
     if column >= len(columns):
-        raise ValueError("Can't set column %d: perm has %d column(s)"
-                         % (column, len(columns)))
-    columns[column] = value
-
-    half = 0
-    for k, col in enumerate(columns):
-        half = half + perm2directional_trans(model, col, k)
-
-    G = model['G'] if isinstance(model, dict) else model.G
-    cf = np.asarray(G['cells']['faces'], dtype=int)
-    cf = cf[:, 0] if cf.ndim == 2 else cf
-    nf = int(np.asarray(G['faces']['neighbors']).shape[0])
-    M = sp.csr_matrix((np.ones(cf.size), (cf, np.arange(cf.size))),
-                      shape=(nf, cf.size))
-    neighbors = np.asarray(G['faces']['neighbors'], dtype=int)
-    internal = (neighbors[:, 0] >= 0) & (neighbors[:, 1] >= 0)
-
-    reciprocal = 1.0 / half
-    stacked = (reciprocal.linear_map(M[internal])
-               if hasattr(reciprocal, 'val') else M[internal] @ reciprocal)
-    operators = model['operators'] if isinstance(model, dict) \
-        else model.operators
-    operators['T'] = 1.0 / stacked
-
-    if all(not hasattr(c, 'val') for c in columns):
-        rock['perm'] = np.column_stack(columns)
-    else:
-        rock['perm'] = columns
+        raise ValueError("Requested permeability direction is absent")
+    columns[column] = copy.deepcopy(value)
+    _model_get(model, 'operators')['T'] = assemble_trans(model, columns)
+    rock['perm'] = columns if any(hasattr(c, 'val') for c in columns) else np.column_stack(columns)
     return model
-
 
 def set_relperm_scalers_fun(model, param, value):
     """Port of ``setRelPermScalersFun``: write an endpoint into every
@@ -520,7 +493,17 @@ def set_relperm_scalers_fun(model, param, value):
     curve, and writing only the first would leave half the derivative
     behind."""
     for location in (param.location,) + tuple(param.extra_locations):
-        _setfield(model, location, value)
+        table = _getfield(model, location[:-1])
+        if isinstance(table, list) or hasattr(value, 'val'):
+            # MATLAB stores AD columns in drainage.tmp.<phase> and exposes
+            # a column-indexing callback. Python uses an explicit column
+            # list; _step implements the same cells/column access.
+            columns = copy.deepcopy(table) if isinstance(table, list) else [
+                np.asarray(table)[:, k].copy() for k in range(np.asarray(table).shape[1])]
+            columns[location[-1][1]] = copy.deepcopy(value)
+            _setfield(model, location[:-1], columns)
+        else:
+            _setfield(model, location, value)
     return model
 
 
@@ -552,25 +535,32 @@ def add_parameter(param_list, setup, *, name, scaling="linear",
     if subset is not None:
         probe.subset = (np.flatnonzero(np.asarray(subset))
                         if np.asarray(subset).dtype == bool else subset)
-    try:
-        pval = np.asarray(probe.get_parameter_value(setup, collapse=False),
-                          dtype=float).ravel()
-    except Exception:
-        pval = np.asarray(_get_model_parameter_value(setup["model"], name),
-                          dtype=float).ravel()
+    pval = np.asarray(probe.get_parameter_value(setup, collapse=False),
+                      dtype=float).ravel(order='F')
+    if pval.size == 0:
+        raise ValueError('Parameter %s has an empty active-cell subset' % name)
+    if probe.subset is not None:
+        sub = np.asarray(probe.subset)
+        if sub.ndim != 1 or sub.dtype.kind not in 'iu' or np.any(sub < 0) or np.unique(sub).size != sub.size:
+            raise ValueError('subset must contain distinct zero-based indices')
 
     if box_lims is None:
         if relative_limits is None:
             relative_limits = [0.5, 2.0]
-        rlo, rhi = float(relative_limits[0]), float(relative_limits[1])
+        relative_limits = np.atleast_2d(np.asarray(relative_limits, dtype=float))
+        if relative_limits.shape not in ((1, 2), (pval.size, 2)):
+            raise ValueError('relative_limits must have one row or one row per selected cell')
+        rlo, rhi = relative_limits[:, 0], relative_limits[:, 1]
 
         if uniform_limits:
             # One box for all entries. A negative endpoint takes the
             # *other* relative limit, since scaling a negative number by
             # the larger factor produces the smaller value.
             lo_v, hi_v = float(np.min(pval)), float(np.max(pval))
-            lo = lo_v * (rhi if lo_v < 0 else rlo)
-            hi = hi_v * (rlo if hi_v < 0 else rhi)
+            # MATLAB linear indexing of rlim uses its first two elements.
+            flat = relative_limits.ravel(order='F')
+            lo = lo_v * flat[int(lo_v < 0)]
+            hi = hi_v * flat[1 - int(hi_v < 0)]
             lower = np.full(pval.size, lo)
             upper = np.full(pval.size, hi)
         else:
@@ -611,18 +601,27 @@ def add_parameter(param_list, setup, *, name, scaling="linear",
                 "limits ('boxLims') to [0 1]" % name, RuntimeWarning,
                 stacklevel=2)
 
-        # Not in MRST: log scaling cannot represent a non-positive
-        # bound, so clamp rather than produce a box the scaler will
-        # return NaN from.
-        if scaling == "log":
-            lower = np.maximum(lower, 1e-12)
-            upper = np.maximum(upper, lower * 2)
         box_lims = np.column_stack([lower, upper])
 
-    param = ModelParameter(name, n_param=pval.size,
+    if lumping is not None:
+        lumping = np.asarray(lumping, dtype=int).ravel()
+        # Python lump IDs are zero-based; MATLAB's scalar lump 1 is 0 here.
+        if lumping.size == 1 and lumping[0] == 0:
+            lumping = np.zeros(pval.size, dtype=int)
+        if lumping.size != pval.size or np.any(lumping < 0):
+            raise ValueError('Lumping vector has incorrect size or indices')
+        n_param = int(lumping.max()) + 1
+    else:
+        n_param = pval.size
+    param = ModelParameter(name, n_param=n_param,
                            scaling=scaling, box_lims=box_lims,
                            lumping=lumping, subset=probe.subset,
                            relative_limits=relative_limits, setup=setup)
+    check = np.asarray(param.get_parameter(setup))
+    if np.any((check < param.box_lims[:, 0]) | (check > param.box_lims[:, 1])):
+        raise ValueError('Parameter values are not within given limits: %s' % name)
+    if scaling in ('log', 'exp'):
+        param._scaling_base()  # Never silently clamp SI permeabilities.
     if param_list is None:
         return [param]
     if isinstance(param_list, list):
@@ -641,7 +640,9 @@ def update_setup_from_scaled_parameters(setup, parameters, pvec,
     three property-function caches are cleared afterwards because they
     hold values derived from what has just changed.
     """
-    pvec = np.asarray(pvec, dtype=float)
+    pvec = np.asarray(pvec, dtype=float).ravel(order='F')
+    if pvec.size != sum(p.n_param for p in parameters):
+        raise ValueError('Parameter vector length does not match parameter definitions')
     pvals = []
     idx = 0
     for param in parameters:
@@ -651,16 +652,14 @@ def update_setup_from_scaled_parameters(setup, parameters, pvec,
     if idx != pvec.size:
         raise ValueError("Parameter vector length does not match parameter definitions")
 
-    setup_new = dict(setup)
-    setup_new["model"] = _copy_model(setup["model"])
-    if "schedule" in setup:
-        setup_new["schedule"] = copy.deepcopy(setup["schedule"])
-    if "state0" in setup:
-        setup_new["state0"] = copy.deepcopy(setup["state0"])
+    setup_new = copy.deepcopy(setup)
 
     for param, pval in zip(parameters, pvals):
-        setup_new = param.set_parameter(setup_new,
-                                        np.asarray(pval, dtype=float))
+        if param.type == 'multiplier':
+            pval = expand_lumps(pval, param.lumping) * param.reference_value
+            setup_new = param._set_parameter_value_owned(setup_new, pval, expand=False)
+        else:
+            setup_new = param._set_parameter_value_owned(setup_new, pval)
 
     if recompute_wi:
         from PRSTCore.hm.utils.recomputeWellIndex import recomputeWellIndex
@@ -669,7 +668,9 @@ def update_setup_from_scaled_parameters(setup, parameters, pvec,
 
     for field in ("FlowDiscretization", "FlowPropertyFunctions",
                   "PVTPropertyFunctions"):
-        if hasattr(setup_new["model"], field):
+        if isinstance(setup_new['model'], dict):
+            setup_new['model'][field] = None
+        elif hasattr(setup_new["model"], field):
             setattr(setup_new["model"], field, None)
     return setup_new
 
@@ -687,22 +688,11 @@ def get_scaled_parameter_vector(setup, params):
     for p in params:
         val = np.asarray(p.get_parameter(setup), dtype=float).ravel()
         u.append(p.scale(val))
-    return np.concatenate(u)
+    return np.concatenate(u) if u else np.empty(0, dtype=float)
 
 
 def _copy_model(model):
-    if isinstance(model, dict):
-        out = dict(model)
-        if "operators" in out and isinstance(out["operators"], dict):
-            out["operators"] = {k: np.array(v, copy=True) if isinstance(v, np.ndarray) else copy.deepcopy(v)
-                                for k, v in out["operators"].items()}
-        return out
-    out = copy.copy(model)
-    ops = getattr(model, "operators", None)
-    if isinstance(ops, dict):
-        setattr(out, "operators", {k: np.array(v, copy=True) if isinstance(v, np.ndarray) else copy.deepcopy(v)
-                                   for k, v in ops.items()})
-    return out
+    return copy.deepcopy(model)
 
 
 def _model_get(model, name, default=None):
