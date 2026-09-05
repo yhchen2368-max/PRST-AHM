@@ -187,8 +187,18 @@ class FahmConfig:
     objective_weight: Optional[dict] = None
     normalization_factor: Optional[dict] = None
     wells_weight: Optional[dict] = None
+    #: Authoritative FAHM per-active-cell seven-column config (Stage 9/10).
+    fahm_parameter_config: Optional[list] = None
+
+    def prepare_parameters(self, model, schedule, state0):
+        from .fahm_parameters import build_parameter_setup
+        if self.fahm_parameter_config is None:
+            raise ValueError('FAHM per-cell config is required; scalar limits are not ModelParameters')
+        return build_parameter_setup(model, schedule, state0, self.fahm_parameter_config)
 
     def limits_for(self, name):
+        if self.fahm_parameter_config is not None:
+            raise RuntimeError('FAHM per-cell parameters cannot use the legacy multiplier runner; Stage 11+ evaluation is not connected yet')
         key = str(name).lower()
         if key in self.parameter_limits:
             lo, hi = self.parameter_limits[key]
@@ -941,6 +951,8 @@ def run_history_match(config, u0=None, gradient_step=0.05, verbose=True,
         raise ValueError("gradient must be 'adjoint' or 'fd', not %r"
                          % gradient)
 
+    if config.fahm_parameter_config is not None:
+        raise RuntimeError('Stage 10 parameters are ready; the Stage 11+ per-cell evaluator is not connected yet. No simulator was started.')
     base = run_forward(config, run_dir=_os.path.join(config.work_dir, 'base'))
     if gradient == 'adjoint':
         f = objective = make_adjoint_objective(
