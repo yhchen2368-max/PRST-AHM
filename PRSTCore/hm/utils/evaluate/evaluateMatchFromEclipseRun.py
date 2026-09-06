@@ -7,14 +7,9 @@ of PRSTCore: the tuned parameters are written back into the deck, the deck
 is written to disk, the simulator is invoked, and its restart output is
 read back for the adjoint.
 
-.. warning::
-   These cannot be exercised here. They shell out to ``eclrun eclipse``,
-   ``eclrun e300`` or tNavigator, none of which is present, so what is
-   ported is the deck-preparation, command-construction and
-   result-alignment logic; the invocation itself is faithful but untested.
-   Everything that does not depend on an external binary -- the parameter
-   round-trip, the well-index recompute trigger, the command strings -- is
-   factored out so it can be, and is, tested directly.
+The external-result reader is covered by Stage 11 MATLAB binary oracles.
+This legacy evaluator's full command/optimization workflow is not thereby
+certified: later stages still own the external evaluation/adjoint integration.
 
 One behaviour worth naming: ``evaluateMatchFromEclipseRun`` **negates**
 the misfit (``misfitVal = -sum(...)/objScaling``) where
@@ -23,6 +18,7 @@ the misfit (``misfitVal = -sum(...)/objScaling``) where
 
 import os as _os
 import subprocess as _subprocess
+from copy import deepcopy as _deepcopy
 
 import numpy as _np
 
@@ -70,7 +66,7 @@ def apply_parameters(setup, parameters, pvec, enforceBounds=True):
         p = _np.clip(p, 0.0, 1.0)
     bounds = _np.concatenate([[0], _np.cumsum(nparam)]).astype(int)
 
-    setupNew = dict(setup)
+    setupNew = _deepcopy(setup)
     model = setupNew['model']
     for field in ('FlowDiscretization', 'FlowPropertyFunctions',
                   'PVTPropertyFunctions'):
@@ -115,12 +111,12 @@ def evaluateMatchFromEclipseRun(pvec, obj, setup, parameters, states_ref, deck,
 
     try:
         states, wellSols, setupNew = _read_results(path, name, setupNew)
-    except Exception:
+    except Exception as exc:
         # MATLAB prints and returns; a failed external run leaves nothing
         # to score, so say so rather than returning a misleading number.
         raise RuntimeError(
             'Unable to read Eclipse results. There may be some errors '
-            'during simulation.')
+            'during simulation. ' + str(exc)) from exc
 
     misfitVals = obj(setupNew['model'], states, setupNew['schedule'],
                      states_ref, False, None, None)
