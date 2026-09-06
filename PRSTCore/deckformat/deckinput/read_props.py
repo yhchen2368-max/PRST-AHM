@@ -121,6 +121,34 @@ def _pad_fixed_records(tokens, width, default):
     return out
 
 
+def _read_rockopts(lines, line_no, initial):
+    """readPROPS.m:201 / readFixedNumRecords: four words, ONE slash.
+
+    A data word such as PRESSURE is not a new PROPS keyword while this
+    fixed record is open. Keep defaulted positions and trailing defaults.
+    """
+    values = ['PRESSURE', 'NOSTORE', 'PVTNUM', 'DEFLATION']
+    column = 0
+    line = initial
+    while True:
+        for token in re.findall(r"'[^']*'|/|[^\s/]+", line):
+            if token == '/':
+                return values, line_no
+            token = token.strip("'")
+            default = re.fullmatch(r'(\d+)\*', token or '1*')
+            if default:
+                column += int(default.group(1))
+            else:
+                if column >= len(values):
+                    raise ValueError('ROCKOPTS expects four character items')
+                values[column] = token
+                column += 1
+        if line_no >= len(lines):
+            raise ValueError('ROCKOPTS ended before its slash-terminated record')
+        line = lines[line_no]
+        line_no += 1
+
+
 def read_props(block, cart_dims=None):
     lines = [ln.split('--', 1)[0].strip() for ln in block.splitlines()]
     records = {}
@@ -144,6 +172,11 @@ def read_props(block, cart_dims=None):
         if not parts:
             continue
         head = parts[0].upper()
+        if head == 'ROCKOPTS':
+            records[head], line_no = _read_rockopts(
+                lines, line_no, line[len(parts[0]):])
+            current = None
+            continue
         if head == 'SCALECRS':
             # SCALECRS is a one-record character keyword.  Without this
             # explicit branch, a following ``YES /`` line is mistaken for
