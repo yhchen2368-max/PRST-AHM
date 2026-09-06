@@ -381,7 +381,9 @@ def _dump_arrays(fid, dirname, section, keys, f, kind):
 
 def _dump_tables(fid, dirname, section, f):
     """Write a PROPS/SOLUTION section: one INCLUDE per keyword."""
-    for key in sorted(section):
+    # MRST walks fieldnames(deck.PROPS), i.e. source insertion order.
+    # Alphabetic sorting moves ROCK before ROCKOPTS, which ECLIPSE rejects.
+    for key in section:
         if key.startswith('_'):
             # Internal bookkeeping such as ``_miscible_pvt_records``, not
             # a deck keyword.
@@ -517,8 +519,13 @@ def _dump_text(fid, dirname, field, values):
     if isinstance(values, str):
         records = [[values]]
     else:
-        records = [item if isinstance(item, (list, tuple)) else [item]
-                   for item in values]
+        # MRST dump_vector writes all entries of a cellstr vector before
+        # ONE slash. Treating each word as a record breaks ROCKOPTS after
+        # PRESSURE and exposes NOSTORE/ROCKNUM/DEFLATION as new keywords.
+        array = _np.asarray(values, dtype=object)
+        if array.ndim > 2:
+            raise ValueError('%s character records must be 1-D or 2-D' % field)
+        records = _np.atleast_2d(array).tolist()
     lines = [field.upper()]
     for record in records:
         lines.append(' '.join(str(v) for v in record) + ' /')
