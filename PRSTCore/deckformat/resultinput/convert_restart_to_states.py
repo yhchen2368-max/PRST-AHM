@@ -3,12 +3,16 @@
 from __future__ import annotations
 
 import os
+import re
+from copy import deepcopy
+from .restart_contract import RestartContractError
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 
 from ..unit_conversion_factors import unit_conversion_factors
+
 
 def convert_restart_to_states(prefix, G, restart_info=None, steps=None,
                                include_well_sols=True, include_fluxes=True,
@@ -21,10 +25,11 @@ def convert_restart_to_states(prefix, G, restart_info=None, steps=None,
                                set_to_closed_tol=0.0,
                                add_trajectory=True,
                                include_components=False,
+                               include_mobilities=False,
                                unit_system=None):
     """Convert an ECLIPSE unified restart file to state dictionaries.
 
-    Follows MRST-0's ``convertRestartToStates``. Each state carries
+    Follows the local FAHM ``convertRestartToStates``. Each state carries
     pressure, saturations, Rs/Rv and time, and -- when the restart has
     well records -- a full well solution per step: name, open/shut, sign,
     control mode, perforated cells, rates, bhp, reservoir rate, and
@@ -34,54 +39,95 @@ def convert_restart_to_states(prefix, G, restart_info=None, steps=None,
     ``remove_crossflow`` and ``set_to_closed_tol`` are applied by
     :func:`process_well_states`.
     """
-    # Reservoir-face fluxes and the summary-based well-solution alternative
-    # are not needed by FAHM's ``includeWellSols=false`` state0 import.  The
-    # options remain explicit so callers do not silently change call shape;
-    # aquifers and compositional cell fields, which FAHM does request, are
-    # handled below.
-    del (include_fluxes, neighbors, well_sols_from_restart,
-         consistent_well_sols, add_trajectory)
-
+    # FAHM explicitly disables flux/mobility reconstruction. Refuse requested
+    # but unimplemented payloads, rather than pretending that they were read.
+    del neighbors, add_trajectory
     prefix = _restart_prefix(prefix)
-    restart_file = _resolve_restart_file(prefix)
-
     from .read_eclipse_output_file_unfmt import read_eclipse_output_file_unfmt
     from .process_eclipse_restart_spec import process_eclipse_restart_spec
+    from .restart_contract import RestartContractError, report_indices, time_vector
+    from .restart_well_solutions import make_well_sols_consistent, merge_summary
+    from .restart_summary import read_restart_summary
 
     rsspec = restart_info
-    if rsspec is None:
-        try:
-            rsspec, _ = process_eclipse_restart_spec(prefix, "all")
-        except (FileNotFoundError, KeyError, ValueError, OSError):
-            rsspec = None
-
-    raw_restart = read_eclipse_output_file_unfmt(str(restart_file))
-    restart_blocks = _restart_blocks_from_records(raw_restart.get("__records__", []))
-    if steps is not None:
-        restart_blocks = [
-            restart_blocks[int(step)]
-            for step in steps
-            if 0 <= int(step) < len(restart_blocks)
-        ]
-
-    unit_name = _restart_unit_name(unit_system, rsspec, raw_restart)
+    if isinstance(rsspec, tuple):
+        rsspec = rsspec[0]
+    if rsspec is None and Path(prefix + '.RSSPEC').exists():
+        rsspec, _ = process_eclipse_restart_spec(prefix, "all")
+    if rsspec is not None and rsspec.get('type') == 'multiple':
+        files = rsspec['fnames']
+        if any(not name for name in files):
+            raise RestartContractError('Missing multiple restart file')
+        restart_blocks = []
+        for name in files:
+            data = read_eclipse_output_file_unfmt(name)
+            blocks = _restart_blocks_from_records(data.get('__records__', []))
+            if len(blocks) != 1:
+                raise RestartContractError('Multiple restart file must contain exactly one state')
+            restart_blocks.extend(blocks)
+    else:
+        restart_file = _resolve_restart_file(prefix)
+        data = read_eclipse_output_file_unfmt(str(restart_file))
+        restart_blocks = _restart_blocks_from_records(data.get('__records__', []))
+    if not restart_blocks:
+        raise RestartContractError('Restart contains no states')
+    if rsspec is not None and len(restart_blocks) != len(rsspec['time']):
+        raise RestartContractError('RSSPEC/restart state count mismatch')
+    if steps is not None and np.size(steps):
+        selected = np.asarray(steps).ravel(order='F')
+        if np.any(selected != selected.astype(int)) or np.any(selected < 0) or np.any(selected >= len(restart_blocks)):
+            raise RestartContractError('Restart step index out of range')
+        restart_blocks = [restart_blocks[i] for i in selected.astype(int)]
+    first = restart_blocks[0]
+    unit_name = _restart_unit_name(unit_system, None, first)
+    if unit_name not in ('METRIC', 'FIELD'):
+        raise RestartContractError('FAHM restart supports METRIC/FIELD units only')
     units = unit_conversion_factors(unit_name)
-    states = [
-        _restart_block_to_state(
-            block, G, units, index, rsspec, include_well_sols,
-            include_aquifers=include_aquifers,
-            include_components=include_components)
-        for index, block in enumerate(restart_blocks)
-        if "PRESSURE" in block
-    ]
-    if include_well_sols and states and states[0].get("wellSol"):
-        states = process_well_states(
-            states,
-            split_wells_on_sign_change=split_wells_on_sign_change,
-            remove_closed_wells=remove_closed_wells,
-            remove_crossflow=remove_crossflow,
-            set_to_closed_tol=set_to_closed_tol,
-        )
+    has_flux = any(k.startswith(('FLR', 'FLO')) for k in first)
+    if has_flux and include_fluxes:
+        raise NotImplementedError('Reservoir flux reconstruction is outside FAHM includeFluxes=false; request false explicitly')
+    if include_mobilities and include_fluxes and has_flux:
+        raise NotImplementedError('Mobility reconstruction is not implemented')
+    states = []
+    for index, block in enumerate(restart_blocks):
+        for required in ('INTEHEAD', 'DOUBHEAD', 'PRESSURE'):
+            if required not in block or not np.size(block[required]['values']):
+                raise RestartContractError(f'Restart state {index}: missing {required}')
+        if not np.array_equal(np.asarray(block['INTEHEAD']['values'])[[2, 8, 9, 10, 11, 14]],
+                              np.asarray(first['INTEHEAD']['values'])[[2, 8, 9, 10, 11, 14]]):
+            raise RestartContractError('Restart grid/unit/phase header changed across states')
+        state = _restart_block_to_state(
+            block, G, units, index, None, include_well_sols and well_sols_from_restart,
+            include_aquifers=include_aquifers, include_components=include_components)
+        states.append(state)
+    time_vector([s['time'] for s in states], 'restart DOUBHEAD')
+    if include_well_sols:
+        summary, tm = read_restart_summary(prefix, unit_name)
+        if summary:
+            if states[0]['time'] == 0 and tm[0] != 0:
+                tm = np.r_[0., tm]
+                summary = [[]] + summary
+            selection = report_indices(tm, [s['time'] for s in states], allow_trailing=True)
+            summary = [summary[i] for i in selection]
+        if not well_sols_from_restart:
+            if not summary:
+                raise RestartContractError('Requested summary well solutions are missing')
+            for state, wells in zip(states, summary):
+                state['wellSol'] = deepcopy(wells)
+        elif consistent_well_sols:
+            if summary:
+                merge_summary(states, summary, is_eclipse=_is_eclipse_restart(first),
+                              program=int(first['INTEHEAD']['values'][94]),
+                              include_components=include_components, connection_quantities=False)
+            states = make_well_sols_consistent(states)
+            if summary:
+                merge_summary(states, summary, is_eclipse=_is_eclipse_restart(first),
+                              program=int(first['INTEHEAD']['values'][94]),
+                              include_components=False, well_quantities=False)
+            states = process_well_states(
+                states, split_wells_on_sign_change=split_wells_on_sign_change,
+                remove_closed_wells=remove_closed_wells,
+                remove_crossflow=remove_crossflow, set_to_closed_tol=set_to_closed_tol)
     return states, restart_blocks
 
 
@@ -105,7 +151,8 @@ def process_well_states(states, split_wells_on_sign_change=False,
     if not states:
         return states
 
-    nphase = 3
+    states = deepcopy(states)
+    nphase = states[0]['s'].shape[1] if 's' in states[0] else 3
     nw = len(states[0].get("wellSol") or [])
     if nw == 0:
         return states
@@ -128,8 +175,9 @@ def process_well_states(states, split_wells_on_sign_change=False,
                 _shut(well, nphase)
         status = np.array([bool(w.get("status"))
                            for w in state.get("wellSol") or []])
-        if status.size == always_closed.size:
-            always_closed &= ~status
+        if status.size != always_closed.size:
+            raise RestartContractError('Inconsistent well count in processWellStates')
+        always_closed &= ~status
 
     if remove_closed_wells and np.any(always_closed):
         keep = ~always_closed
@@ -170,7 +218,7 @@ def _split_on_sign_change(states, nphase):
 
         for state in states:
             original = state["wellSol"][k]
-            twin = dict(original)
+            twin = deepcopy(original)
             state["wellSol"].append(twin)
 
             original["name"] = first_name
@@ -200,7 +248,7 @@ def _restart_prefix(prefix) -> str:
 def _resolve_restart_file(prefix: str) -> Path:
     base = Path(prefix)
     for suffix in (".UNRST", ".FUNRST"):
-        candidate = base.with_suffix(suffix)
+        candidate = Path(str(base) + suffix)
         if candidate.exists():
             return candidate
     raise FileNotFoundError(f"Could not find unified restart file for prefix {prefix!r}")
@@ -209,6 +257,8 @@ def _resolve_restart_file(prefix: str) -> Path:
 def _restart_blocks_from_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     blocks: list[dict[str, Any]] = []
     current: dict[str, dict[str, Any]] = {}
+    counts = {}
+    next_suffix = None
 
     for record in records:
         keyword = str(record.get("name", "")).strip().upper()
@@ -218,6 +268,16 @@ def _restart_blocks_from_records(records: list[dict[str, Any]]) -> list[dict[str
             if current:
                 blocks.append(current)
             current = {}
+            counts = {}
+        if keyword == 'LGR':
+            raise NotImplementedError('Restart LGR cannot be merged into the active grid')
+        if keyword in ('ICAQNUM', 'SCAQNUM', 'ACAQNUM'):
+            counts[keyword] = counts.get(keyword, 0) + 1
+            next_suffix = '_' + str(counts[keyword])
+            keyword += next_suffix
+        elif next_suffix is not None:
+            keyword += next_suffix
+            next_suffix = None
         _put_keyword(current, keyword, {
             "values": record.get("values"),
             "type": record.get("type", ""),
@@ -254,18 +314,16 @@ def _restart_unit_name(unit_system, rsspec, raw_restart) -> str:
 
     ih = raw_restart.get("INTEHEAD", {}).get("values", np.zeros(0))
     ih = np.asarray(ih).ravel()
-    if ih.size > 2:
-        units = ["METRIC", "FIELD", "LAB"]
-        return units[max(0, min(int(ih[2]) - 1, len(units) - 1))]
-    return "METRIC"
+    if ih.size <= 2 or int(ih[2]) not in (1, 2, 3):
+        raise RestartContractError('Missing/unknown restart unit indicator')
+    return ["METRIC", "FIELD", "LAB"][int(ih[2]) - 1]
 
 
 def _restart_block_to_state(block, G, units, index, rsspec,
                             include_well_sols, *, include_aquifers=False,
                             include_components=False):
     nc = int(G["cells"]["num"])
-    pressure = _mapped_restart_vector(
-        block, "PRESSURE", G, np.full(nc, 200.0))
+    pressure = _mapped_restart_vector(block, "PRESSURE", G)
     pressure = np.asarray(pressure, dtype=float) * float(units["press"])
 
     phase_names = _active_restart_phases(block)
@@ -284,7 +342,7 @@ def _restart_block_to_state(block, G, units, index, rsspec,
     if missing:
         present = [np.asarray(v, dtype=float) for v in saturation
                    if v is not None]
-        saturation[missing[0]] = 1.0 - np.sum(present, axis=0)
+        saturation[missing[0]] = 1.0 - (np.sum(present, axis=0) if present else np.zeros(nc))
     s = np.column_stack(saturation)
     sw = (s[:, phase_names.index('WAT')]
           if 'WAT' in phase_names else np.zeros(nc))
@@ -300,6 +358,7 @@ def _restart_block_to_state(block, G, units, index, rsspec,
         "sW": np.array(sw, dtype=float, copy=True),
         "sG": np.array(sg, dtype=float, copy=True),
         "wellSol": [],
+        "flux": np.array([]),
     }
 
     if "RS" in block:
@@ -325,7 +384,7 @@ def _restart_block_to_state(block, G, units, index, rsspec,
         _add_restart_components(state, block, G,
                                 is_eclipse=_is_eclipse_restart(block))
 
-    if include_well_sols and "IWEL" in block:
+    if include_well_sols:
         state["wellSol"] = _parse_well_solutions(block, G, units)
     if include_aquifers:
         aquifers = _parse_aquifer_solutions(block, G, units)
@@ -349,20 +408,21 @@ def _mapped_restart_vector(block, keyword: str, G, default=None):
     taking the first ``G.cells.num`` entries is not equivalent.
     """
     nc = int(G["cells"]["num"])
-    if default is None:
-        default = np.zeros(nc)
-    values = _restart_vector(block, keyword, default)
-    if values.size == 1:
-        return np.full(nc, float(values[0]))
+    if keyword not in block:
+        raise RestartContractError('Missing restart field ' + keyword)
+    values = _restart_vector(block, keyword, [])
+    na = int(np.asarray(block['INTEHEAD']['values'])[11])
+    if values.size != na:
+        raise RestartContractError(f'{keyword} has {values.size} rows; INTEHEAD requires {na}')
     emap = G.get("cells", {}).get("eMap", slice(None))
     if not isinstance(emap, slice):
-        indices = np.asarray(emap, dtype=int).ravel()
-        if indices.size == nc and indices.size and indices.max() < values.size:
-            return np.asarray(values[indices], dtype=float)
-    if values.size < nc:
-        raise ValueError('%s has %d rows for a %d-cell grid'
-                         % (keyword, values.size, nc))
-    return np.asarray(values[:nc], dtype=float)
+        indices = np.asarray(emap, dtype=int).ravel(order='F')
+        if indices.size != nc or np.unique(indices).size != nc or np.any(indices < 0) or np.any(indices >= na):
+            raise RestartContractError('Invalid G.cells.eMap')
+        return values[indices].copy()
+    if values.size != nc:
+        raise RestartContractError(f'{keyword} has {values.size} rows for a {nc}-cell grid')
+    return values.copy()
 
 
 def _active_restart_phases(block):
@@ -375,7 +435,9 @@ def _active_restart_phases(block):
         5: ('WAT', 'GAS'), 6: ('OIL', 'GAS'),
         7: ('WAT', 'OIL', 'GAS'),
     }
-    return mapping.get(indicator, mapping[7])
+    if indicator not in mapping:
+        raise RestartContractError('Unknown restart phase indicator')
+    return mapping[indicator]
 
 
 def _is_eclipse_restart(block):
@@ -414,6 +476,15 @@ def _add_restart_cell_fields(state, block, G, units):
             state[field] = _mapped_restart_vector(block, keyword, G) * factor
             assigned.add(field)
 
+    for keyword, field in (('GAS_PRES', 'PGAS'), ('WAT_PRES', 'PWAT')):
+        if keyword in block:
+            state[field] = _mapped_restart_vector(block, keyword, G) * units['press']
+    if 'TEMP' in block:
+        state['T'] = (_mapped_restart_vector(block, 'TEMP', G) + units['tempoffset']) * units['temp']
+    molar = 1000.0 if units['length'] == 1.0 else 453.59237 / units['liqvol_s']
+    for keyword, field in (('BWAT', 'rhoWM'), ('BOIL', 'rhoOM'), ('BGAS', 'rhoGM')):
+        if keyword in block:
+            state[field] = _mapped_restart_vector(block, keyword, G) * molar
     is_eclipse = _is_eclipse_restart(block)
     for keyword, field in (('PCOW', 'pcow'), ('PCOG', 'pcog'),
                            ('PPCW', 'ppcw')):
@@ -434,6 +505,10 @@ def _add_restart_components(state, block, G, *, is_eclipse):
         if is_eclipse else (('XMF_', 'x'), ('YMF_', 'y'),
                             ('ZMF_', 'components'))
     for prefix, field in prefixes:
+        ids = sorted(int(match.group(1)) for key in block
+                     if (match := re.fullmatch(re.escape(prefix) + r'(\d+)', key)))
+        if ids and (ids != list(range(1, max(ids) + 1)) or max(ids) > 1000):
+            raise RestartContractError(f'{prefix}: component keywords must be contiguous from 1')
         columns = []
         for component in range(1, 1001):
             keyword = '%s%d' % (prefix, component)
@@ -459,43 +534,52 @@ def _parse_aquifer_solutions(block, G, units):
     if ih.size <= 47:
         return []
     naq = int(ih[40])
-    if naq <= 0 or 'XAAQ' not in block or not any(
-            name in block for name in ('ACAQ', 'ACAQ_1')):
+    if naq <= 0:
         return []
+    payload = any(name.startswith(('IAAQ', 'SAAQ', 'XAAQ', 'ICAQ', 'ACAQ')) for name in block)
+    if not payload:
+        return []  # Source path: the model reconstructs wholly absent output.
+    if 'XAAQ' not in block or not any(name in block for name in ('ACAQ', 'ACAQ_1')):
+        raise RestartContractError('Incomplete aquifer output')
     niaaq, nsaaq, nxaaq = int(ih[42]), int(ih[43]), int(ih[44])
     nicaq, nacaq = int(ih[45]), int(ih[47])
     iaaq = _restart_vector(block, 'IAAQ', [])
     saaq = _restart_vector(block, 'SAAQ', [])
     xaaq = _restart_vector(block, 'XAAQ', [])
-    if min(niaaq, nsaaq, nxaaq, nicaq, nacaq) <= 0 or \
-            xaaq.size != naq * nxaaq:
-        return []
+    if niaaq < 11 or nsaaq < 2 or nxaaq < 3 or nicaq < 3 or nacaq < 1 or \
+            xaaq.size != naq * nxaaq or iaaq.size != naq * niaaq or saaq.size != naq * nsaaq:
+        raise RestartContractError('Invalid aquifer record dimensions')
     type_indices = np.concatenate([
         np.asarray([9, 10], dtype=int) + k * niaaq for k in range(naq)])
     if type_indices.max(initial=-1) >= iaaq.size or \
             np.any(iaaq[type_indices] != 0):
-        return []
+        raise RestartContractError('Only Fetkovich aquifer restart records are supported')
 
     lookup = _ijk_to_active(G, np.asarray(G['cartDims'], dtype=int))
     qfactor = float(units['resvolume']) / float(units['time'])
     aquifers = []
     for k in range(naq):
         count_index = k * niaaq
-        nconn = int(iaaq[count_index]) if count_index < iaaq.size else 0
-        suffix = '' if naq == 1 else '_%d' % (k + 1)
+        nconn = int(iaaq[count_index])
+        if nconn < 0:
+            raise RestartContractError('Negative aquifer connection count')
+        suffix = '' if naq == 1 and 'ICAQ' in block else '_%d' % (k + 1)
         icaq = _restart_vector(block, 'ICAQ' + suffix, [])
         acaq = _restart_vector(block, 'ACAQ' + suffix, [])
-        numbers = _restart_vector(block, 'ACAQNUM' + suffix, [k + 1])
+        numbers = _restart_vector(block, 'ACAQNUM' + suffix, [])
+        if numbers.size != 1 or numbers[0] < 1 or numbers[0] != int(numbers[0]):
+            raise RestartContractError('Missing/invalid aquifer number')
         offsets_i = np.arange(nconn, dtype=int) * nicaq
-        if nconn and offsets_i[-1] + 2 < icaq.size:
+        if icaq.size != nconn * nicaq or acaq.size != nconn * nacaq:
+            raise RestartContractError('Aquifer connection array count mismatch')
+        if nconn:
             cijk = np.column_stack([icaq[offsets_i + j]
                                     for j in range(3)]).astype(int)
             cells = _connection_cells(cijk, np.asarray(G['cartDims']), lookup)
         else:
             cells = np.zeros(0, dtype=int)
         offsets_a = np.arange(nconn, dtype=int) * nacaq
-        flux = (acaq[offsets_a] * qfactor
-                if nconn and offsets_a[-1] < acaq.size else np.zeros(nconn))
+        flux = acaq[offsets_a] * qfactor
         xoff, soff = k * nxaaq, k * nsaaq
         pressure = xaaq[xoff + 1] * float(units['press'])
         q_w = xaaq[xoff] * qfactor
@@ -504,22 +588,18 @@ def _parse_aquifer_solutions(block, G, units):
             'cells': np.asarray(cells, dtype=int),
             'pressure': float(pressure), 'qW': float(q_w),
             'flux': np.asarray(flux, dtype=float), 'volume': float(volume),
-            'num': int(numbers[0]) if numbers.size else k + 1,
+            'num': int(numbers[0]),
         })
+    if len({aq['num'] for aq in aquifers}) != len(aquifers):
+        raise RestartContractError('Duplicate aquifer numbers')
     return aquifers
 
 
 def _restart_time(block, index: int, rsspec, units) -> float:
-    if isinstance(rsspec, dict):
-        times = np.asarray(rsspec.get("time", []), dtype=float).ravel()
-        if index < times.size:
-            return float(times[index] * units["time"])
-
-    if "DOUBHEAD" in block:
-        values = np.asarray(block["DOUBHEAD"]["values"], dtype=float).ravel()
-        if values.size:
-            return float(values[0] * units["time"])
-    return 0.0
+    values = np.asarray(block.get("DOUBHEAD", {}).get("values", []), dtype=float).ravel(order='F')
+    if not values.size or not np.isfinite(values[0]):
+        raise RestartContractError('Missing/nonfinite restart DOUBHEAD time')
+    return float(values[0] * units["time"])
 
 
 #: IWEL's well-type code. 1 is a producer; the rest are injectors of
@@ -528,49 +608,8 @@ _PRODUCER = 1
 
 
 def _parse_well_solutions(block, G, units):
-    """Well solutions for one restart step, from its ZWEL/IWEL/... records.
-
-    Connections are mapped from their (i, j, k) back to active cell
-    numbers through the grid's index map, so ``cells`` lines up with the
-    rest of the state.
-    """
-    from .get_restart_well_info import getRestartWellInfo
-
-    records = {name: block[name]["values"] for name in
-               ("INTEHEAD", "ZWEL", "IWEL", "SWEL", "XWEL", "ICON", "SCON",
-                "XCON") if name in block}
-    info, ih = getRestartWellInfo(records)
-    u = _rate_units(units)
-
-    cart_dims = np.asarray(G.get("cartDims",
-                                 (ih["nx"], ih["ny"], ih["nz"])), dtype=int)
-    ijk_to_active = _ijk_to_active(G, cart_dims)
-
-    wells = []
-    for k, w in enumerate(info):
-        sign = -1.0 if w.get("type") == _PRODUCER else 1.0
-        cells = _connection_cells(w.get("cijk"), cart_dims, ijk_to_active)
-        cqs = np.asarray(w.get("cqs", np.zeros((0, 3))), dtype=float)
-        cqr = np.asarray(w.get("cqr", np.zeros(0)), dtype=float)
-        wells.append({
-            "name": w.get("name") or ("W%d" % (k + 1)),
-            "status": bool(w.get("stat")),
-            "sign": sign,
-            "type": "bhp" if w.get("cntr") == 0 else "rate",
-            "cells": cells,
-            "cstatus": np.asarray(w.get("cstat", np.zeros(0)),
-                                  dtype=int) > 0,
-            "qOs": float(w.get("qOs") or 0.0) * u["ql"],
-            "qWs": float(w.get("qWs") or 0.0) * u["ql"],
-            "qGs": float(w.get("qGs") or 0.0) * u["qg"],
-            "bhp": float(w.get("bhp") or 0.0) * units["press"],
-            "resv": float(w.get("qr") or 0.0) * u["qr"],
-            "flux": cqr * u["qr"],
-            "cqs": cqs * u["ql"],
-            "depth": (float(w["depth"]) * units["length"]
-                      if w.get("depth") is not None else None),
-        })
-    return wells
+    from .restart_well_solutions import create_well_solutions
+    return create_well_solutions(block, G, units)
 
 
 def _rate_units(units):
@@ -598,6 +637,8 @@ def _ijk_to_active(G, cart_dims):
         lookup[:] = np.arange(n)
     else:
         index_map = np.asarray(index_map, dtype=int).ravel()
+        if index_map.size != int(G['cells']['num']) or np.unique(index_map).size != index_map.size or np.any(index_map < 0) or np.any(index_map >= n):
+            raise RestartContractError('Invalid active-cell indexMap')
         lookup[index_map] = np.arange(index_map.size)
     return lookup
 
@@ -610,5 +651,8 @@ def _connection_cells(cijk, cart_dims, lookup):
     cijk = np.atleast_2d(np.asarray(cijk, dtype=int)) - 1
     nx, ny = int(cart_dims[0]), int(cart_dims[1])
     linear = cijk[:, 0] + nx * (cijk[:, 1] + ny * cijk[:, 2])
-    linear = np.clip(linear, 0, lookup.size - 1)
-    return lookup[linear]
+    if np.any(cijk < 0) or np.any(cijk >= np.asarray(cart_dims)):
+        raise RestartContractError('Well/aquifer IJK outside cartesian grid')
+    if np.any(lookup[linear] < 0):
+        raise RestartContractError('Well/aquifer connection refers to inactive cell')
+    return lookup[linear].copy()
