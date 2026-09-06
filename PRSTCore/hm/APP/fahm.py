@@ -1379,7 +1379,9 @@ def make_adjoint_objective(config, model=None, run_dir=None, base_misfit=None,
         state_first = setup['state0']
 
         with scaled_operators(model, factors):
-            steps = min(len(states), dt.size)
+            if len(states) != dt.size:
+                raise ValueError('Restart/report state count mismatch; trimming is forbidden')
+            steps = len(states)
             # One set of driving forces per step: a history-matching deck
             # restates WCONHIST at every report step, so the well targets
             # -- and which wells are open at all -- change under the
@@ -1389,8 +1391,8 @@ def make_adjoint_objective(config, model=None, run_dir=None, base_misfit=None,
             forces = _forces_per_step(model, steps)
             partials = _objective_partials(model, observed, schedule,
                                            config, scale, forces)
-            fields = adjoint_gradient(model, state_first, states[:steps],
-                                      dt[:steps], forces, targets, partials,
+            fields = adjoint_gradient(model, state_first, states,
+                                      dt, forces, targets, partials,
                                       linear_solver=linear_solver)
             gradient = multiplier_gradient(model, fields, names)
 
