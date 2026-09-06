@@ -5,6 +5,8 @@
 
 import numpy as np
 import os
+from pathlib import Path
+from .restart_contract import RestartContractError
 
 
 def process_eclipse_restart_spec(prefix, restart_amount="default"):
@@ -44,7 +46,9 @@ def process_eclipse_restart_spec(prefix, restart_amount="default"):
     t = rsspec.get("TIME", {}).get("values", np.zeros(1))
     d = rsspec.get("ITIME", {}).get("values", np.zeros(3))
     n_steps = len(t)
-    date = d.reshape(-1, n_steps).T if len(d) >= n_steps * 3 else np.zeros((n_steps, 3))
+    if not n_steps or len(d) % n_steps or len(d) < n_steps * 4:
+        raise RestartContractError('RSSPEC TIME/ITIME dimensions are inconsistent')
+    date = np.asarray(d).reshape(-1, n_steps, order='F').T
     rep_num = date[:, 0].astype(int)
     date = date[:, 1:4]
 
@@ -62,6 +66,10 @@ def process_eclipse_restart_spec(prefix, restart_amount="default"):
     # Keywords and pointers
     name_vals = np.array(names)
     nf_list = [i for i, n in enumerate(names) if n == first_field]
+    if len(nf_list) != n_steps or rtype == 'unknown':
+        raise RestartContractError('RSSPEC keyword block count/type mismatch')
+    if 'LGR' in names:
+        raise NotImplementedError('FAHM restart LGR output requires an explicit LGR mapping')
 
     keywords = []
     pointers = []
@@ -77,7 +85,15 @@ def process_eclipse_restart_spec(prefix, restart_amount="default"):
             if restart_amount == "default":
                 sub_ix = [i for i in sub_ix if _is_default_field(name_vals[i])]
 
-            keywords.append([name_vals[i] for i in sub_ix])
+            step_names = [str(name_vals[i]) for i in sub_ix]
+            for field in ('ICAQNUM', 'SCAQNUM', 'ACAQNUM'):
+                positions = [j for j, name in enumerate(step_names) if name == field]
+                for count, j in enumerate(positions, 1):
+                    if j + 1 >= len(step_names):
+                        raise RestartContractError('Aquifer identifier has no following data')
+                    step_names[j] += '_' + str(count)
+                    step_names[j + 1] += '_' + str(count)
+            keywords.append(step_names)
 
             ptr_b = rsspec.get("POINTERB", {}).get("values", np.zeros(len(name_vals)))
             ptr = rsspec.get("POINTER", {}).get("values", np.zeros(len(name_vals)))
@@ -103,6 +119,18 @@ def process_eclipse_restart_spec(prefix, restart_amount="default"):
     }
 
     spec_lgr = []
+    if rtype == 'multiple':
+        candidates = sorted(Path(pth or '.').glob(name + '.X[0-9][0-9][0-9][0-9]'))
+        numbers = [int(p.suffix[2:]) for p in candidates]
+        if numbers and min(numbers) == 0:
+            numbers = [i + 1 for i in numbers]
+        if len(candidates) == n_steps:
+            spec['fnames'] = [str(p) for p in candidates]
+        else:
+            lookup = dict(zip(numbers, candidates))
+            if any(i not in rep_num for i in numbers):
+                raise RestartContractError('Unable to match multiple restart-files to RSSPEC')
+            spec['fnames'] = [str(lookup[i]) if i in lookup else '' for i in rep_num]
     return spec, spec_lgr
 
 
