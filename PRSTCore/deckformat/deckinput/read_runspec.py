@@ -1,42 +1,65 @@
 """Read RUNSPEC section from an ECLIPSE deck."""
 
+import math
+import re
+
+
+# Local MRST readRUNSPEC.m readDefaultedRecord templates. A default is an
+# occupied item, never a deletion: TABDIMS item 13 selects ROCKNUM tables.
+_DIMENSION_DEFAULTS = {
+    'EQLDIMS': [1, 100, 50, 1, 50],
+    'TABDIMS': [1, 1, 20, 20, 1, 20, 20, 1, 1, math.nan, 10, 1, 1,
+                0, 0, math.nan, 10, 10, 10, math.nan, 5, 5, 5, 0, math.nan],
+    'WELLDIMS': [0, 0, 0, 0, 5, 10, 5, 4, 3, 0, 1, 1, 10, 201],
+    'AQUDIMS': [1, 1, 1, 36, 1, 1, 0, 0],
+    'REGDIMS': [1, 1, 0, 0, 0, 1, 0, 0, 0],
+    'VFPIDIMS': [0, 0, 0],
+    'VFPPDIMS': [0, 0, 0, 0, 0, 0],
+}
+
 
 def _record_tokens(lines, start, initial):
     """Read one slash-terminated ECLIPSE record, like MRST readRecordString."""
-    tokens = list(initial)
-    i = start
-    while i < len(lines):
-        for token in lines[i].strip().split():
+    tokens = []
+    i = start - 1
+    record_line = ' '.join(initial)
+    while True:
+        for token in re.findall(r"'[^']*'|/|[^\s/]+", record_line):
             if token == '/':
                 return tokens, i
-            if token.endswith('/'):
-                tokens.append(token[:-1])
-                return tokens, i
-            tokens.append(token)
+            tokens.append(token.strip("'"))
         i += 1
+        if i >= len(lines):
+            break
+        record_line = lines[i].split('--', 1)[0]
     return tokens, i
 
 
-def _integer_tokens(tokens):
-    values = []
+def _integer_tokens(tokens, defaults=None):
+    values = [] if defaults is None else list(defaults)
+    position = 0
     for token in tokens:
-        # DIMENS and the dimensions records used here are integer records.
-        # Preserve MRST's defaulted-item convention by simply omitting an
-        # unspecified ``n*`` item; downstream code only needs explicit
-        # cartesian dimensions.
+        # readDefaultedRecord's replaceEmpty: quoted '' occupies one slot.
+        token = token or '1*'
+        count, value = 1, token
         if '*' in token:
-            count, _, value = token.partition('*')
+            repeat, _, value = token.partition('*')
+            count = int(repeat)
             if not value:
+                if defaults is None:
+                    raise ValueError('Defaulted integer item requires a keyword template')
+                position += count
                 continue
-            try:
-                values.extend([int(float(value))] * int(count))
-            except ValueError:
-                continue
-            continue
-        try:
-            values.append(int(float(token)))
-        except ValueError:
-            continue
+        number = float(value.replace('D', 'E').replace('d', 'e'))
+        number = int(number) if math.isfinite(number) else number
+        for _ in range(count):
+            if defaults is None:
+                values.append(number)
+            else:
+                if position >= len(values):
+                    raise ValueError('Too many items in RUNSPEC dimension record')
+                values[position] = number
+            position += 1
     return values
 
 
@@ -49,13 +72,12 @@ def read_runspec(block):
     ``readRecordString`` for those keyword forms.
     """
     data = {}
-    lines = block.split("\n")
+    lines = [line.split('--', 1)[0] for line in block.split('\n')]
     i = 0
     flags = {"METRIC", "FIELD", "LAB", "PVT_M", "PVT-M", "SI",
              "OIL", "WATER", "GAS", "DISGAS", "VAPOIL", "BLACKOIL",
              "POLYMER", "SURFACT", "BRINE", "TEMP", "THERMAL", "MECH"}
-    dimensions = {"TABDIMS", "WELLDIMS", "AQUDIMS", "EQLDIMS", "REGDIMS",
-                  "VFPIDIMS", "VFPPDIMS"}
+    dimensions = _DIMENSION_DEFAULTS
     while i < len(lines):
         parts = lines[i].strip().split()
         if not parts:
@@ -75,7 +97,9 @@ def read_runspec(block):
                 data["DIMENS"] = values[:3]
         elif kw in dimensions:
             record, i = _record_tokens(lines, i + 1, parts[1:])
-            data[kw] = _integer_tokens(record)
+            data[kw] = _integer_tokens(record, dimensions[kw])
+            if kw == 'WELLDIMS' and not math.isfinite(data[kw][1]):
+                data[kw][1] = data['cartDims'][2]
         elif kw == "ENDSCALE":
             # Keep the presence of ENDSCALE and its record.  MRST's
             # FlowPropertyFunctions enables endpoint scaling from this
